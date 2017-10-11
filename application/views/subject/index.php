@@ -11,7 +11,7 @@
                 <table id="subjectTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Suject ID</th>
+						<th>ID#</th>
 						<th>Subject Type</th>
 						<th>Subject Code</th>
 						<th>Subject Name</th>

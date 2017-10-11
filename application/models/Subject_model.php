@@ -33,7 +33,7 @@ class Subject_model extends CI_Model
      */
     function get_all_subjects($params = array())
     {
-        $this->db->order_by('sujectID', 'desc');
+        $this->db->order_by('sujectID', 'asc');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);

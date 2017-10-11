@@ -1,3 +1,4 @@
+<?php echo form_open_multipart('./announcement/add');?>
 <div class="row">
     <div class="col-md-12">
       	<div class="box box-info">
@@ -17,7 +18,7 @@
 								{
 									$selected = ($user['userID'] == $this->input->post('userID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].' '.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
@@ -32,9 +33,10 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="announceFile" class="control-label"><span class="text-danger">*</span>Announcement File</label>
+						<label for="announceFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
-							<input type="file" name="file" size="20" class="form-control" id="file" />
+							<input type="file" name="filen" size="20" class="form-control" id="announceFile" />
+							<span class="text-danger"><?php if (isset($error)) { echo $error; } ?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -54,7 +56,7 @@
 				</div>
 			</div>
           	<div class="box-footer">
-            	<button type="submit" class="btn btn-success" name="submit">
+            	<button type="submit" class="btn btn-success" name="Submit">
             		<i class="fa fa-check"></i> Save
             	</button>
           	</div>

@@ -11,7 +11,7 @@
 						<label for="classID" class="control-label">Class</label>
 						<div class="form-group">
 							<select name="classID" class="form-control">
-								<option value="">Selct a Class</option>
+								<option value="">Select a Class</option>
 								<?php 
 								foreach($all_theclasses as $theclass)
 								{

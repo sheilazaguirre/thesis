@@ -34,7 +34,7 @@
 								{
 									$selected = ($user['userID'] == $this->input->post('facultyID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
@@ -62,7 +62,7 @@
 						<label for="venueID" class="control-label"><span class="text-danger">*</span>Venue</label>
 						<div class="form-group">
 							<select name="venueID" class="form-control">
-								<option value="">Select a Venue</option>
+								<option value="">Select a  Venue</option>
 								<?php 
 								foreach($all_venues as $venue)
 								{

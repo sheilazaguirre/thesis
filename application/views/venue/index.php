@@ -2,19 +2,19 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List of Venues</h3>
+                <h3 class="box-title">Venues Listing</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('venue/add'); ?>" class="btn btn-success btn-sm">Add Venues</a> 
+                    <a href="<?php echo site_url('venue/add'); ?>" class="btn btn-success btn-sm">Add</a> 
                 </div>
             </div>
             <div class="box-body">
                 <table id="venueTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Venue ID</th>
-						<th>Venue Type</th>
-						<th>Venue Code</th>
-						<th>Venue Name</th>
+						<th>ID#</th>
+						<th>VenueType</th>
+						<th>Code</th>
+						<th>Name</th>
 						<th>Status</th>
 						<th>Actions</th>
                     </tr>

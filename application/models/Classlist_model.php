@@ -24,7 +24,7 @@ class Classlist_model extends CI_Model
      */
     function get_all_classlist()
     {
-        $this->db->order_by('classListID', 'desc');
+        $this->db->order_by('classListID', 'asc');
         return $this->db->get('classlist')->result_array();
     }
         

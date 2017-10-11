@@ -24,18 +24,32 @@ class Announcement extends CI_Controller{
         $config['total_rows'] = $this->Announcement_model->get_all_announcements_count();
         $this->pagination->initialize($config);
 
-        $data['announcements'] = $this->Announcement_model->get_all_announcements($params);
+        $data['announcements'] = $this->Announcement_model->get_announcement();
         
         $data['_view'] = 'announcement/index';
         $this->load->view('layouts/main',$data);
-        
     }
 
     /*
      * Adding a new announcement
      */
 
-    
+    // function do_upload(){
+    //     $config['upload_path'] = 'uploads/files/';
+    //     $config['allowed_types'] = 'jpg|jpeg|png|gif|docx|pdf|txt';
+    //     $config['file_name'] = $_FILES['filen']['name'];
+        
+    //     //Load upload library and initialize configuration
+    //     $this->load->library('upload',$config);
+    //     $this->upload->initialize($config);
+        
+    //     if($this->upload->do_upload('filen')){
+    //         $uploadData = $this->upload->data();
+    //         $announceFile = $uploadData['file_name'];
+    //     }else{
+    //         $announceFile = 'abc';
+    //     }
+    // } 
 
     function add()
     {   
@@ -48,48 +62,47 @@ class Announcement extends CI_Controller{
 		
 		if($this->form_validation->run())     
         {   
-            $config['upload_path']   = 'uploads/files/';
-            $config['allowed_types'] = 'gif|jpg|png|pdf|docx|txt';
-            $config['max_size']      = 1024;
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+
             $this->load->library('upload', $config);
-
-            //upload file to directory
-            if($this->upload->do_upload('file')){
-                $uploadData = $this->upload->data();
-                $uploadedFile = $uploadData['file_name'];
-                
-                //Load upload library and initialize configuration
-                $this->load->library('upload',$config);
-                $this->upload->initialize($config);
-                
-            }else{
-                    $announceFile = '';
-                }    
-            
-
-                $params = array(
-                    'userID' => $this->input->post('userID'),
-                    'announceTitle' => $this->input->post('announceTitle'),
-                    'announceFile' => $this->input->post('file'),
-                    'announceDetail' => $this->input->post('announceDetail'),
-                    'announceDate' => $this->input->post('announceDate'),
-                );
-                $this->db->set('dateUploaded', 'NOW()', FALSE);
-                $this->db->set('status', 'Active');
-                $announcement_id = $this->Announcement_model->add_announcement($params);
-                redirect('announcement/index');
-
-            }else
+            $var;
+            if ( ! $this->upload->do_upload('filen'))
             {
-                $this->load->model('User_model');
-                $data['all_users'] = $this->User_model->get_all_users();
-                
-                $data['_view'] = 'announcement/add';
-                $this->load->view('layouts/main',$data);
+                    $error = array('error' => $this->upload->display_errors());
             }
-    
-    }
+            else
+            {
+                    $data = array('upload_data' => $this->upload->data());
+                    
+                    $var = $this->upload->data()["file_name"];
+                    var_dump($var);
+            }
 
+            $params = array(
+				'userID' => $this->input->post('userID'),
+				'announceTitle' => $this->input->post('announceTitle'),
+				'announceFile' => $var,
+				'announceDetail' => $this->input->post('announceDetail'),
+				'announceDate' => $this->input->post('announceDate'),
+            );
+            $this->db->set('dateUploaded', 'NOW()', FALSE);
+            $this->db->set('status', 'Active');
+            $announcement_id = $this->Announcement_model->add_announcement($params);
+            redirect('announcement/index');
+        }
+        else
+        {
+			$this->load->model('User_model');
+			$data['all_users'] = $this->User_model->get_all_users();
+            
+            $data['_view'] = 'announcement/add';
+            $this->load->view('layouts/main',$data);
+        }
+    }  
 
     /*
      * Editing a announcement
@@ -108,6 +121,9 @@ class Announcement extends CI_Controller{
 			$this->form_validation->set_rules('announceFile','AnnounceFile','required|max_length[150]');
 			$this->form_validation->set_rules('announceDetail','AnnounceDetail','required|max_length[150]');
 			$this->form_validation->set_rules('announceDate','AnnounceDate','required|max_length[50]');
+			$this->form_validation->set_rules('dateUploaded','DateUploaded','required');
+			$this->form_validation->set_rules('dateModified','DateModified','required');
+			$this->form_validation->set_rules('dateExpiry','DateExpiry','required');
 		
 			if($this->form_validation->run())     
             {   
@@ -117,8 +133,12 @@ class Announcement extends CI_Controller{
 					'announceFile' => $this->input->post('announceFile'),
 					'announceDetail' => $this->input->post('announceDetail'),
 					'announceDate' => $this->input->post('announceDate'),
+					'dateUploaded' => $this->input->post('dateUploaded'),
+					'dateModified' => $this->input->post('dateModified'),
+					'dateExpiry' => $this->input->post('dateExpiry'),
+					'status' => $this->input->post('status'),
                 );
-                $this->db->set('dateModified', 'NOW()', FALSE);
+
                 $this->Announcement_model->update_announcement($announceID,$params);            
                 redirect('announcement/index');
             }

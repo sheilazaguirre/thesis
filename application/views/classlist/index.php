@@ -4,14 +4,14 @@
             <div class="box-header">
                 <h3 class="box-title">List of Classlist</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('classlist/add'); ?>" class="btn btn-success btn-sm">Add Classlist</a> 
+                    <a href="<?php echo site_url('classlist/add'); ?>" class="btn btn-success btn-sm">Add a Classlist</a> 
                 </div>
             </div>
             <div class="box-body">
                 <table id="classlistTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Classlist ID</th>
+						<th>ID#</th>
 						<th>Class ID</th>
 						<th>Student ID</th>
 						<th>Midterm Grade</th>

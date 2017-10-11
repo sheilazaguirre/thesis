@@ -11,9 +11,9 @@
                 <table id="auditTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Audit ID</th>
-						<th>UserID</th>
-						<th>Description</th>
+						<th>ID#</th>
+						<th>Name</th>
+						<th>Descripton</th>
 						<th>Timestamp</th>
 						<th>Status</th>
 						<th>Actions</th>
@@ -22,7 +22,7 @@
                     <?php foreach($auditlogs as $a){ ?>
                     <tr>
 						<td><?php echo $a['auditID']; ?></td>
-						<td><?php echo $a['userID']; ?></td>
+						<td><?php echo $a['auname']; ?></td>
 						<td><?php echo $a['auditDesc']; ?></td>
 						<td><?php echo $a['timestamp']; ?></td>
 						<td><?php echo $a['status']; ?></td>

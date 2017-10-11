@@ -33,7 +33,7 @@ class Faculty_model extends CI_Model
      */
     function get_all_faculty($params = array())
     {
-        $this->db->order_by('facultyID', 'desc');
+        $this->db->order_by('facultyID', 'asc');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);

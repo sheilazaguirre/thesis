@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List of Usertype</h3>
+                <h3 class="box-title">List of Usertypes</h3>
             	<div class="box-tools">
                     <a href="<?php echo site_url('usertype/add'); ?>" class="btn btn-success btn-sm">Add Usertype</a> 
                 </div>
@@ -11,7 +11,7 @@
                 <table id="usertypeTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>User Type ID</th>
+						<th>ID#</th>
 						<th>User Type</th>
 						<th>Actions</th>
                     </tr>

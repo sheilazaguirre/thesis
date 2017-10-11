@@ -8,7 +8,7 @@
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="subjectType" class="control-label"><span class="text-danger">*</span>Subject Type</label>
+						<label for="subjectType" class="control-label"><span class="text-danger">*</span>SubjectType</label>
 						<div class="form-group">
 							<select name="subjectType" class="form-control">
 								<option value="">Select a Subject Type</option>

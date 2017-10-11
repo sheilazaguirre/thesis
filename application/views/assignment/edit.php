@@ -24,14 +24,14 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="assignFile" class="control-label"><span class="text-danger">*</span>Assignment File</label>
+						<label for="assignFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
 							<input type="text" name="assignFile" value="<?php echo ($this->input->post('assignFile') ? $this->input->post('assignFile') : $assignment['assignFile']); ?>" class="form-control" id="assignFile" />
 							<span class="text-danger"><?php echo form_error('assignFile');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="assignDesc" class="control-label"><span class="text-danger">*</span>Description</label>
+						<label for="assignDesc" class="control-label"><span class="text-danger">*</span>Assign Description</label>
 						<div class="form-group">
 							<input type="text" name="assignDesc" value="<?php echo ($this->input->post('assignDesc') ? $this->input->post('assignDesc') : $assignment['assignDesc']); ?>" class="form-control" id="assignDesc" />
 							<span class="text-danger"><?php echo form_error('assignDesc');?></span>

@@ -24,7 +24,7 @@ class Timeslot_model extends CI_Model
      */
     function get_all_timeslots()
     {
-        $this->db->order_by('timeSlotID', 'desc');
+        $this->db->order_by('timeSlotID', 'asc');
         return $this->db->get('timeslots')->result_array();
     }
         

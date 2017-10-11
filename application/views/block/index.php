@@ -11,7 +11,7 @@
                 <table id="blockTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Block ID</th>
+						<th>ID#</th>
 						<th>Block Code</th>
 						<th>Status</th>
 						<th>Actions</th>

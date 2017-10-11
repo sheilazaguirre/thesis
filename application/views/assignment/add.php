@@ -24,7 +24,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="assignFile" class="control-label"><span class="text-danger">*</span>Assignment File</label>
+						<label for="assignFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
 							<input type="text" name="assignFile" value="<?php echo $this->input->post('assignFile'); ?>" class="form-control" id="assignFile" />
 							<span class="text-danger"><?php echo form_error('assignFile');?></span>

@@ -4,21 +4,21 @@
             <div class="box-header">
                 <h3 class="box-title">List of Users</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('user/add'); ?>" class="btn btn-success btn-sm">Add</a> 
+                    <a href="<?php echo site_url('user/add'); ?>" class="btn btn-success btn-sm">Add User</a> 
                 </div>
             </div>
             <div class="box-body">
                 <table id="userTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>User ID</th>
-						<th>User Type ID</th>
-						<th>ID Number</th>
-						<th>User Last Name</th>
-						<th>User First Name</th>
-						<th>User Email</th>
-						<th>User Password</th>
-						<th>User Mobile Number</th>
+						<th>ID#</th>
+						<th>UserType</th>
+						<th>User ID No.</th>
+						<th>Last Name</th>
+						<th>First Name</th>
+						<th>Email</th>
+						<th>Password</th>
+						<th>Mobile Number</th>
 						<th>Status</th>
 						<th>Actions</th>
                     </tr>

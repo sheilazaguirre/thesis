@@ -24,7 +24,7 @@ class Student_model extends CI_Model
      */
     function get_all_students()
     {
-        $this->db->order_by('studentID', 'desc');
+        $this->db->order_by('studentID', 'asc');
         return $this->db->get('students')->result_array();
     }
         

@@ -34,7 +34,7 @@
 								{
 									$selected = ($user['userID'] == $theclass['facultyID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>

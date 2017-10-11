@@ -24,7 +24,7 @@ class Theclass_model extends CI_Model
      */
     function get_all_theclasses()
     {
-        $this->db->order_by('classID', 'desc');
+        $this->db->order_by('classID', 'asc');
         return $this->db->get('classes')->result_array();
     }
         

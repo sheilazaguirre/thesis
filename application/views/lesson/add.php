@@ -25,14 +25,14 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="lessonFile" class="control-label"><span class="text-danger">*</span>Lesson File</label>
+						<label for="lessonFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
 							<input type="text" name="lessonFile" value="<?php echo $this->input->post('lessonFile'); ?>" class="form-control" id="lessonFile" />
 							<span class="text-danger"><?php echo form_error('lessonFile');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="lessonDesc" class="control-label"><span class="text-danger">*</span>]Description</label>
+						<label for="lessonDesc" class="control-label"><span class="text-danger">*</span>Description</label>
 						<div class="form-group">
 							<input type="text" name="lessonDesc" value="<?php echo $this->input->post('lessonDesc'); ?>" class="form-control" id="lessonDesc" />
 							<span class="text-danger"><?php echo form_error('lessonDesc');?></span>

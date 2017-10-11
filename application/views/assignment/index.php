@@ -11,9 +11,9 @@
                 <table id="assignmentTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Assignment ID</th>
+						<th>ID#</th>
 						<th>Class ID</th>
-						<th>Assignment File</th>
+						<th>File</th>
 						<th>Description</th>
 						<th>Title</th>
 						<th>Date Uploaded</th>

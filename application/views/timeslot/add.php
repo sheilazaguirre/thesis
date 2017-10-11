@@ -15,8 +15,8 @@
 								<?php 
 								$dayOfWeek_values = array(
 									'mwf'=>'MWF',
-									'tth'=>'TTH',
-									's'=>'S',
+									'tth' =>'TTH',
+									's' => 'S',
 								);
 
 								foreach($dayOfWeek_values as $value => $display_text)

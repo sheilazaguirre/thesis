@@ -11,7 +11,7 @@
                 <table id="studentTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Student ID</th>
+						<th>ID#</th>
 						<th>User ID</th>
 						<th>Block ID</th>
 						<th>Course</th>

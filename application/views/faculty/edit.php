@@ -17,7 +17,7 @@
 								{
 									$selected = ($user['userID'] == $faculty['userID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>

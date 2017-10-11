@@ -17,7 +17,7 @@
 								{
 									$selected = ($user['userID'] == $student['userID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
@@ -27,7 +27,7 @@
 						<label for="blockID" class="control-label"><span class="text-danger">*</span>Block</label>
 						<div class="form-group">
 							<select name="blockID" class="form-control">
-								<option value="">Select a Block</option>
+								<option value="">select block</option>
 								<?php 
 								foreach($all_blocks as $block)
 								{

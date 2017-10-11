@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List of Classes</h3>
+                <h3 class="box-title">List of Class</h3>
             	<div class="box-tools">
                     <a href="<?php echo site_url('theclass/add'); ?>" class="btn btn-success btn-sm">Add Class</a> 
                 </div>
@@ -11,7 +11,7 @@
                 <table id="classTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Class ID</th>
+						<th>ID#</th>
 						<th>Subject ID</th>
 						<th>Faculty ID</th>
 						<th>TimeSlot ID</th>

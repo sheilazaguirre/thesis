@@ -24,7 +24,7 @@ class Assignment_model extends CI_Model
      */
     function get_all_assignments()
     {
-        $this->db->order_by('assignID', 'desc');
+        $this->db->order_by('assignID', 'asc');
         return $this->db->get('assignments')->result_array();
     }
         

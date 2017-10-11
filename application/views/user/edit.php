@@ -11,7 +11,7 @@
 						<label for="userTypeID" class="control-label">Usertype</label>
 						<div class="form-group">
 							<select name="userTypeID" class="form-control">
-								<option value="">Select a Usertype</option>
+								<option value="">Select a UserType</option>
 								<?php 
 								foreach($all_usertype as $usertype)
 								{
@@ -24,42 +24,42 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userIDNo" class="control-label"><span class="text-danger">*</span>User ID Number</label>
+						<label for="userIDNo" class="control-label"><span class="text-danger">*</span>JD No.</label>
 						<div class="form-group">
 							<input type="text" name="userIDNo" value="<?php echo ($this->input->post('userIDNo') ? $this->input->post('userIDNo') : $user['userIDNo']); ?>" class="form-control" id="userIDNo" />
 							<span class="text-danger"><?php echo form_error('userIDNo');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userLN" class="control-label"><span class="text-danger">*</span>User Last Name</label>
+						<label for="userLN" class="control-label"><span class="text-danger">*</span>Last Name</label>
 						<div class="form-group">
 							<input type="text" name="userLN" value="<?php echo ($this->input->post('userLN') ? $this->input->post('userLN') : $user['userLN']); ?>" class="form-control" id="userLN" />
 							<span class="text-danger"><?php echo form_error('userLN');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userFN" class="control-label"><span class="text-danger">*</span>User First Name</label>
+						<label for="userFN" class="control-label"><span class="text-danger">*</span>First Name</label>
 						<div class="form-group">
 							<input type="text" name="userFN" value="<?php echo ($this->input->post('userFN') ? $this->input->post('userFN') : $user['userFN']); ?>" class="form-control" id="userFN" />
 							<span class="text-danger"><?php echo form_error('userFN');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userEmail" class="control-label"><span class="text-danger">*</span>User Email</label>
+						<label for="userEmail" class="control-label"><span class="text-danger">*</span>Email</label>
 						<div class="form-group">
 							<input type="text" name="userEmail" value="<?php echo ($this->input->post('userEmail') ? $this->input->post('userEmail') : $user['userEmail']); ?>" class="form-control" id="userEmail" />
 							<span class="text-danger"><?php echo form_error('userEmail');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userPassword" class="control-label"><span class="text-danger">*</span>User Password</label>
+						<label for="userPassword" class="control-label"><span class="text-danger">*</span>Password</label>
 						<div class="form-group">
 							<input type="password" name="userPassword" value="<?php echo ($this->input->post('userPassword') ? $this->input->post('userPassword') : $user['userPassword']); ?>" class="form-control" id="userPassword" />
 							<span class="text-danger"><?php echo form_error('userPassword');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="userMobile" class="control-label"><span class="text-danger">*</span>User Mobile</label>
+						<label for="userMobile" class="control-label"><span class="text-danger">*</span>Mobile</label>
 						<div class="form-group">
 							<input type="text" name="userMobile" value="<?php echo ($this->input->post('userMobile') ? $this->input->post('userMobile') : $user['userMobile']); ?>" class="form-control" id="userMobile" />
 							<span class="text-danger"><?php echo form_error('userMobile');?></span>

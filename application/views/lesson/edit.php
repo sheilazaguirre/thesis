@@ -25,7 +25,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="lessonFile" class="control-label"><span class="text-danger">*</span>Lesson File</label>
+						<label for="lessonFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
 							<input type="text" name="lessonFile" value="<?php echo ($this->input->post('lessonFile') ? $this->input->post('lessonFile') : $lesson['lessonFile']); ?>" class="form-control" id="lessonFile" />
 							<span class="text-danger"><?php echo form_error('lessonFile');?></span>

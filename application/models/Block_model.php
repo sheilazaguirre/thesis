@@ -24,7 +24,7 @@ class Block_model extends CI_Model
      */
     function get_all_blocks()
     {
-        $this->db->order_by('blockID', 'desc');
+        $this->db->order_by('blockID', 'asc');
         return $this->db->get('blocks')->result_array();
     }
         

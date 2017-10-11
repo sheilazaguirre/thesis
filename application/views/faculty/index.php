@@ -11,7 +11,7 @@
                 <table id="facultyTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Faculty ID</th>
+						<th>ID#</th>
 						<th>User ID</th>
 						<th>Faculty Type</th>
 						<th>Min Units</th>

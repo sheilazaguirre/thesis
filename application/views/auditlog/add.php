@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Auditlog Add</h3>
+              	<h3 class="box-title">Add Auditlog</h3>
             </div>
             <?php echo form_open('auditlog/add'); ?>
           	<div class="box-body">
@@ -11,13 +11,13 @@
 						<label for="userID" class="control-label"><span class="text-danger">*</span>User</label>
 						<div class="form-group">
 							<select name="userID" class="form-control">
-								<option value="">Select a User</option>
+								<option value="">Select a  User</option>
 								<?php 
 								foreach($all_users as $user)
 								{
 									$selected = ($user['userID'] == $this->input->post('userID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
@@ -25,7 +25,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="auditDesc" class="control-label"><span class="text-danger">*</span>Description</label>
+						<label for="auditDesc" class="control-label"><span class="text-danger">*</span>\Description</label>
 						<div class="form-group">
 							<input type="text" name="auditDesc" value="<?php echo $this->input->post('auditDesc'); ?>" class="form-control" id="auditDesc" />
 							<span class="text-danger"><?php echo form_error('auditDesc');?></span>

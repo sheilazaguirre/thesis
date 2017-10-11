@@ -11,9 +11,9 @@
                 <table id="lessonTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>Lesson ID</th>
+						<th>ID#</th>
 						<th>Class ID</th>
-						<th>Lesson File</th>
+						<th>File</th>
 						<th>Description</th>
 						<th>Title</th>
 						<th>Date Uploaded</th>

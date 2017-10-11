@@ -14,9 +14,14 @@ class Announcement_model extends CI_Model
     /*
      * Get announcement by announceID
      */
-    function get_announcement($announceID)
+     
+    function get_announcement()
     {
-        return $this->db->get_where('announcements',array('announceID'=>$announceID))->row_array();
+        $query = $this->db->query(
+            "SELECT a.announceID, CONCAT(u.userFN,' ', u.userLN) as userName, a.announceTitle, a.announceFile, a.announceDetail, a.announceDate, a.dateUploaded, a.dateModified, a.dateExpiry, a.status from announcements a
+            INNER JOIN users u ON a.userID = u.userID"
+        );
+        return $query->result();
     }
     
     /*
@@ -33,7 +38,7 @@ class Announcement_model extends CI_Model
      */
     function get_all_announcements($params = array())
     {
-        $this->db->order_by('announceID', 'desc');
+        $this->db->order_by('announceID', 'asc');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);

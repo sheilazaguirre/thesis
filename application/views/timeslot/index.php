@@ -11,7 +11,7 @@
                 <table id="timeslotTable" class="table table-striped">
                 <thead>
                     <tr>
-						<th>TimeSlot ID</th>
+						<th>ID#</th>
 						<th>Day Of Week</th>
 						<th>Start Time</th>
 						<th>End Time</th>

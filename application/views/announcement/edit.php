@@ -11,13 +11,13 @@
 						<label for="userID" class="control-label"><span class="text-danger">*</span>User</label>
 						<div class="form-group">
 							<select name="userID" class="form-control">
-								<option value="">Select User</option>
+								<option value="">Select a User</option>
 								<?php 
 								foreach($all_users as $user)
 								{
 									$selected = ($user['userID'] == $announcement['userID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="announceFile" class="control-label"><span class="text-danger">*</span>Announcement File</label>
+						<label for="announceFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
 							<input type="text" name="announceFile" value="<?php echo ($this->input->post('announceFile') ? $this->input->post('announceFile') : $announcement['announceFile']); ?>" class="form-control" id="announceFile" />
 							<span class="text-danger"><?php echo form_error('announceFile');?></span>
