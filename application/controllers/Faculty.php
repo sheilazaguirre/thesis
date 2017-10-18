@@ -103,6 +103,7 @@ class Faculty extends CI_Controller{
         // check if the faculty exists before trying to delete it
         if(isset($faculty['facultyID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Faculty_model->delete_faculty($facultyID);
             redirect('faculty/index');
         }

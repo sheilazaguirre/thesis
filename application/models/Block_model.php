@@ -51,6 +51,7 @@ class Block_model extends CI_Model
      */
     function delete_block($blockID)
     {
-        return $this->db->delete('blocks',array('blockID'=>$blockID));
+        $this->db->where('blockID',$blockID);
+        return $this->db->update('blocks',$params);
     }
 }

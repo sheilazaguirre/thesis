@@ -29,27 +29,41 @@ class Assignment extends CI_Controller{
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('assignFile','AssignFile','required|max_length[150]');
 		$this->form_validation->set_rules('assignDesc','AssignDesc','required|max_length[150]');
 		$this->form_validation->set_rules('assignTitle','AssignTitle','required|max_length[50]');
-		$this->form_validation->set_rules('dateUploaded','DateUploaded','required');
-		$this->form_validation->set_rules('dateModified','DateModified','required');
-		$this->form_validation->set_rules('dateExpiry','DateExpiry','required');
-		$this->form_validation->set_rules('status','Status','required|max_length[15]');
 		
 		if($this->form_validation->run())     
         {   
+
+            $config['upload_path'] = './uploads/assignments';
+            $config['allowed_types'] = 'jpg|png|pdf|docx|txt';
+            $config['max_size'] = 0;
+            $config['max_width'] = 0;
+            $config['max_height'] = 0;
+
+            $this->load->library('upload', $config);
+            $var;
+            if ( ! $this->upload->do_upload('filen'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+            }
+            else
+            {
+                    $data = array('upload_data' => $this->upload->data());
+                    
+                    $var = $this->upload->data()["file_name"];
+                    //var_dump($var);
+            }
+
             $params = array(
 				'classID' => $this->input->post('classID'),
-				'assignFile' => $this->input->post('assignFile'),
+				'assignFile' => $var,
 				'assignDesc' => $this->input->post('assignDesc'),
 				'assignTitle' => $this->input->post('assignTitle'),
-				'dateUploaded' => $this->input->post('dateUploaded'),
-				'dateModified' => $this->input->post('dateModified'),
-				'dateExpiry' => $this->input->post('dateExpiry'),
-				'status' => $this->input->post('status'),
             );
-            
+            $this->db->set('dateUploaded', 'NOW()', FALSE);
+            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
+            $this->db->set('status', 'Active');
             $assignment_id = $this->Assignment_model->add_assignment($params);
             redirect('assignment/index');
         }
@@ -75,27 +89,39 @@ class Assignment extends CI_Controller{
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('assignFile','AssignFile','required|max_length[150]');
 			$this->form_validation->set_rules('assignDesc','AssignDesc','required|max_length[150]');
 			$this->form_validation->set_rules('assignTitle','AssignTitle','required|max_length[50]');
-			$this->form_validation->set_rules('dateUploaded','DateUploaded','required');
-			$this->form_validation->set_rules('dateModified','DateModified','required');
-			$this->form_validation->set_rules('dateExpiry','DateExpiry','required');
-			$this->form_validation->set_rules('status','Status','required|max_length[15]');
 		
 			if($this->form_validation->run())     
             {   
+
+                $config['upload_path'] = './uploads/assignments';
+                $config['allowed_types'] = 'jpg|png|pdf|docx|txt';
+                $config['max_size'] = 100;
+                $config['max_width'] = 1024;
+                $config['max_height'] = 768;
+    
+                $this->load->library('upload', $config);
+                $var;
+                if ( ! $this->upload->do_upload('filen'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+                        
+                        $var = $this->upload->data()["file_name"];
+                        //var_dump($var);
+                }
+
                 $params = array(
 					'classID' => $this->input->post('classID'),
-					'assignFile' => $this->input->post('assignFile'),
+					'assignFile' => $var,
 					'assignDesc' => $this->input->post('assignDesc'),
 					'assignTitle' => $this->input->post('assignTitle'),
-					'dateUploaded' => $this->input->post('dateUploaded'),
-					'dateModified' => $this->input->post('dateModified'),
-					'dateExpiry' => $this->input->post('dateExpiry'),
-					'status' => $this->input->post('status'),
                 );
-
+                $this->db->set('dateModified', 'NOW()', FALSE);
                 $this->Assignment_model->update_assignment($assignID,$params);            
                 redirect('assignment/index');
             }
@@ -122,6 +148,7 @@ class Assignment extends CI_Controller{
         // check if the assignment exists before trying to delete it
         if(isset($assignment['assignID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Assignment_model->delete_assignment($assignID);
             redirect('assignment/index');
         }

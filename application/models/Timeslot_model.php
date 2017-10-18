@@ -51,6 +51,7 @@ class Timeslot_model extends CI_Model
      */
     function delete_timeslot($timeSlotID)
     {
-        return $this->db->delete('timeslots',array('timeSlotID'=>$timeSlotID));
+        $this->db->where('timeSlotID',$timeSlotID);
+        return $this->db->update('timeslots',$params);
     }
 }

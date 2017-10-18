@@ -64,6 +64,7 @@ class Venue_model extends CI_Model
      */
     function delete_venue($venueID)
     {
-        return $this->db->delete('venues',array('venueID'=>$venueID));
+        $this->db->where('venueID',$venueID);
+        return $this->db->update('venues',$params);
     }
 }

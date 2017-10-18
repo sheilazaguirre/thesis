@@ -113,6 +113,7 @@ class Student extends CI_Controller{
         // check if the student exists before trying to delete it
         if(isset($student['studentID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Student_model->delete_student($studentID);
             redirect('student/index');
         }

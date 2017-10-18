@@ -101,6 +101,7 @@ class Auditlog extends CI_Controller{
         // check if the auditlog exists before trying to delete it
         if(isset($auditlog['auditID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Auditlog_model->delete_auditlog($auditID);
             redirect('auditlog/index');
         }

@@ -64,6 +64,7 @@ class Faculty_model extends CI_Model
      */
     function delete_faculty($facultyID)
     {
-        return $this->db->delete('faculty',array('facultyID'=>$facultyID));
+        $this->db->where('facultyID',$facultyID);
+        return $this->db->update('faculty',$params);
     }
 }

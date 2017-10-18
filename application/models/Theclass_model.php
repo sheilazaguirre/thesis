@@ -51,6 +51,7 @@ class Theclass_model extends CI_Model
      */
     function delete_theclass($classID)
     {
-        return $this->db->delete('classes',array('classID'=>$classID));
+        $this->db->where('classID',$classID);
+        return $this->db->update('classes',$params);
     }
 }

@@ -69,6 +69,7 @@ class Announcement_model extends CI_Model
      */
     function delete_announcement($announceID)
     {
-        return $this->db->delete('announcements',array('announceID'=>$announceID));
+        $this->db->where('announceID',$announceID);
+        return $this->db->update('announcements',$params);
     }
 }

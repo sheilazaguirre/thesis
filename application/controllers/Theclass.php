@@ -134,6 +134,7 @@ class Theclass extends CI_Controller{
         // check if the theclass exists before trying to delete it
         if(isset($theclass['classID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Theclass_model->delete_theclass($classID);
             redirect('theclass/index');
         }

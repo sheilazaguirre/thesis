@@ -64,6 +64,7 @@ class Subject_model extends CI_Model
      */
     function delete_subject($sujectID)
     {
-        return $this->db->delete('subjects',array('sujectID'=>$sujectID));
+        $this->db->where('sujectID',$sujectID);
+        return $this->db->update('subjects',$params);
     }
 }

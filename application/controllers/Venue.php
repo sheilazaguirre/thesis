@@ -108,6 +108,7 @@ class Venue extends CI_Controller{
         // check if the venue exists before trying to delete it
         if(isset($venue['venueID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Venue_model->delete_venue($venueID);
             redirect('venue/index');
         }

@@ -51,6 +51,7 @@ class Assignment_model extends CI_Model
      */
     function delete_assignment($assignID)
     {
-        return $this->db->delete('assignments',array('assignID'=>$assignID));
+        $this->db->where('assignID',$assignID);
+        return $this->db->update('assignments',$params);
     }
 }

@@ -51,6 +51,7 @@ class Auditlog_model extends CI_Model
      */
     function delete_auditlog($auditID)
     {
-        return $this->db->delete('auditlogs',array('auditID'=>$auditID));
+        $this->db->where('auditID',$suditID);
+        return $this->db->update('auditlogs',$params);
     }
 }

@@ -110,6 +110,7 @@ class Classlist extends CI_Controller{
         // check if the classlist exists before trying to delete it
         if(isset($classlist['classListID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Classlist_model->delete_classlist($classListID);
             redirect('classlist/index');
         }

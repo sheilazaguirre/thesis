@@ -51,6 +51,7 @@ class Lesson_model extends CI_Model
      */
     function delete_lesson($lessonID)
     {
-        return $this->db->delete('lessons',array('lessonID'=>$lessonID));
+        $this->db->where('lessonID',$lessonID);
+        return $this->db->update('lessons',$params);
     }
 }

@@ -51,6 +51,7 @@ class Classlist_model extends CI_Model
      */
     function delete_classlist($classListID)
     {
-        return $this->db->delete('classlist',array('classListID'=>$classListID));
+        $this->db->where('classListID',$classListID);
+        return $this->db->update('classlist',$params);
     }
 }

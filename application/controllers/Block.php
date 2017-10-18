@@ -90,6 +90,7 @@ class Block extends CI_Controller{
         // check if the block exists before trying to delete it
         if(isset($block['blockID']))
         {
+            $this->db->set('status', 'Archive');
             $this->Block_model->delete_block($blockID);
             redirect('block/index');
         }

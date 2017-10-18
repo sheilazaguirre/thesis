@@ -118,6 +118,7 @@ class User extends CI_Controller{
         // check if the user exists before trying to delete it
         if(isset($user['userID']))
         {
+            $this->db->set('status', 'Archive');
             $this->User_model->delete_user($userID);
             redirect('user/index');
         }
