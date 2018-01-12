@@ -94,8 +94,8 @@
 					   <!-- Slide -->
 					   <li>
 						   <div class="flex-caption">
-								<h1>Hello, we are puremedia. We make awesome and stunning digital stuff.</h1>	
-								<p><a class="button stroke smoothscroll" href="#about">More About Us</a></p>																   
+								<!--<h1>Hello, we are puremedia. We make awesome and stunning digital stuff.</h1>	
+								<p><a class="button stroke smoothscroll" href="#about">More About Us</a></p>	-->															   
 							</div>						
 					   </li>
 
