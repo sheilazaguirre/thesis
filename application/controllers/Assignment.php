@@ -22,6 +22,16 @@ class Assignment extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
+    public function download($filen)
+    {
+    
+        $this->load->helper('download');
+        $name = $filen;
+        $data = file_get_contents('./uploads/assignments/'.$filen); 
+        force_download($name, $data); 
+            redirect('assignment/index','refresh');
+    }
+
     /*
      * Adding a new assignment
      */
@@ -36,8 +46,8 @@ class Assignment extends CI_Controller{
         {   
 
             $config['upload_path'] = './uploads/assignments';
-            $config['allowed_types'] = 'jpg|png|pdf|docx|txt';
-            $config['max_size'] = 0;
+            $config['allowed_types'] = 'pdf|docx|txt';
+            $config['max_size'] = 1024;
             $config['max_width'] = 0;
             $config['max_height'] = 0;
 

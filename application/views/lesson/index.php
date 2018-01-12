@@ -27,7 +27,9 @@
                     <tr>
 						<td><?php echo $l['lessonID']; ?></td>
 						<td><?php echo $l['classID']; ?></td>
-						<td><?php echo $l['lessonFile']; ?></td>
+                        <td><a href="../../uploads/lessons<?php echo $l['lessonFile']; ?>" target="_blank" class='btn btn-success'>
+                        Download
+                        </a></td>
 						<td><?php echo $l['lessonDesc']; ?></td>
 						<td><?php echo $l['lessonTitle']; ?></td>
 						<td><?php echo $l['dateUploaded']; ?></td>
@@ -36,7 +38,7 @@
 						<td><?php echo $l['status']; ?></td>
 						<td>
                             <a href="<?php echo site_url('lesson/edit/'.$l['lessonID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a href="<?php echo site_url('lesson/remove/'.$l['lessonID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a onclick='return confirm("Archive Record?");' href="<?php echo site_url('lesson/remove/'.$l['lessonID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
                         </td>
                     </tr>
                     <?php } ?>

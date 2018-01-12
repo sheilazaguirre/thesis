@@ -30,27 +30,6 @@ class Announcement extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
-    /*
-     * Adding a new announcement
-     */
-
-    // function do_upload(){
-    //     $config['upload_path'] = 'uploads/files/';
-    //     $config['allowed_types'] = 'jpg|jpeg|png|gif|docx|pdf|txt';
-    //     $config['file_name'] = $_FILES['filen']['name'];
-        
-    //     //Load upload library and initialize configuration
-    //     $this->load->library('upload',$config);
-    //     $this->upload->initialize($config);
-        
-    //     if($this->upload->do_upload('filen')){
-    //         $uploadData = $this->upload->data();
-    //         $announceFile = $uploadData['file_name'];
-    //     }else{
-    //         $announceFile = 'abc';
-    //     }
-    // } 
-
     function add()
     {   
         $this->load->library('form_validation');

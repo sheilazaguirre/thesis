@@ -30,24 +30,67 @@ class User extends CI_Controller{
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('userIDNo','UserIDNo','required|integer');
+		$this->form_validation->set_rules('userTypeID','UserTypeID','required|integer');
 		$this->form_validation->set_rules('userLN','UserLN','required|max_length[50]');
 		$this->form_validation->set_rules('userFN','UserFN','required|max_length[50]');
 		$this->form_validation->set_rules('userEmail','UserEmail','required|max_length[100]');
 		$this->form_validation->set_rules('userPassword','UserPassword','required|max_length[300]');
 		$this->form_validation->set_rules('userMobile','UserMobile','required|max_length[15]');
+		$this->form_validation->set_rules('status','Status','required|max_length[15]');
+        $this->form_validation->set_rules('course','Course','required|max_length[50]');
+		$this->form_validation->set_rules('birthdate','Birthdate','required');
+		$this->form_validation->set_rules('age','Age','required');
+		$this->form_validation->set_rules('birthplace','Birthplace','required|max_length[150]');
+		$this->form_validation->set_rules('gender','Gender','required|max_length[20]');
+		$this->form_validation->set_rules('civstat','Civstat','required|max_length[20]');
+		$this->form_validation->set_rules('nationality','Nationality','required|max_length[20]');
+		$this->form_validation->set_rules('religion','Religion','required|max_length[20]');
+		$this->form_validation->set_rules('addcity','Addcity','required|max_length[150]');
+		$this->form_validation->set_rules('addprovince','Addprovince','max_length[150]');
+		$this->form_validation->set_rules('elemschool','Elemschool','required|max_length[50]');
+		$this->form_validation->set_rules('secschool','Secschool','required|max_length[50]');
+		$this->form_validation->set_rules('tertchool','Tertchool','required|max_length[50]');
+		$this->form_validation->set_rules('guardian','Guardian','max_length[100]');
+		$this->form_validation->set_rules('relation','Relation','max_length[30]');
+		$this->form_validation->set_rules('fathername','Fathername','required|max_length[100]');
+		$this->form_validation->set_rules('fatherocc','Fatherocc','required|max_length[50]');
+		$this->form_validation->set_rules('mothername','Mothername','required|max_length[100]');
+		$this->form_validation->set_rules('motherocc','Motherocc','required|max_length[50]');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
 				'userTypeID' => $this->input->post('userTypeID'),
+				'status' => $this->input->post('status'),
+				'gender' => $this->input->post('gender'),
+				'userPassword' => $this->input->post('userPassword'),
 				'userIDNo' => $this->input->post('userIDNo'),
 				'userLN' => $this->input->post('userLN'),
 				'userFN' => $this->input->post('userFN'),
 				'userEmail' => $this->input->post('userEmail'),
-				'userPassword' => $this->input->post('userPassword'),
 				'userMobile' => $this->input->post('userMobile'),
+				'birthdate' => $this->input->post('birthdate'),
+				'age' => $this->input->post('age'),
+				'civstat' => $this->input->post('civstat'),
+				'nationality' => $this->input->post('nationality'),
+				'religion' => $this->input->post('religion'),
+				'elemschool' => $this->input->post('elemschool'),
+				'secschool' => $this->input->post('secschool'),
+				'tertchool' => $this->input->post('tertchool'),
+				'guardian' => $this->input->post('guardian'),
+				'relation' => $this->input->post('relation'),
+				'fathername' => $this->input->post('fathername'),
+				'fatherocc' => $this->input->post('fatherocc'),
+				'mothername' => $this->input->post('mothername'),
+				'motherocc' => $this->input->post('motherocc'),
+				'birthplace' => $this->input->post('birthplace'),
+				'addcity' => $this->input->post('addcity'),
+				'addprovince' => $this->input->post('addprovince'),
+                'dateadded' => date('Y-m-d H:i:s'),
+                'datemodified' => null,
+                'course' => $this->input->post('course'),
             );
-            $this->db->set('status', 'Active');
+            
             $user_id = $this->User_model->add_user($params);
             redirect('user/index');
         }
@@ -74,22 +117,64 @@ class User extends CI_Controller{
             $this->load->library('form_validation');
 
 			$this->form_validation->set_rules('userIDNo','UserIDNo','required|integer');
+			$this->form_validation->set_rules('userTypeID','UserTypeID','required|integer');
 			$this->form_validation->set_rules('userLN','UserLN','required|max_length[50]');
 			$this->form_validation->set_rules('userFN','UserFN','required|max_length[50]');
 			$this->form_validation->set_rules('userEmail','UserEmail','required|max_length[100]');
 			$this->form_validation->set_rules('userPassword','UserPassword','required|max_length[300]');
 			$this->form_validation->set_rules('userMobile','UserMobile','required|max_length[15]');
+			$this->form_validation->set_rules('status','Status','required|max_length[15]');
+            $this->form_validation->set_rules('course','Course','required|max_length[50]');
+			$this->form_validation->set_rules('birthdate','Birthdate','required');
+			$this->form_validation->set_rules('age','Age','required');
+			$this->form_validation->set_rules('birthplace','Birthplace','required|max_length[150]');
+			$this->form_validation->set_rules('gender','Gender','required|max_length[20]');
+			$this->form_validation->set_rules('civstat','Civstat','required|max_length[20]');
+			$this->form_validation->set_rules('nationality','Nationality','required|max_length[20]');
+			$this->form_validation->set_rules('religion','Religion','required|max_length[20]');
+			$this->form_validation->set_rules('addcity','Addcity','required|max_length[150]');
+			$this->form_validation->set_rules('addprovince','Addprovince','max_length[150]');
+			$this->form_validation->set_rules('elemschool','Elemschool','required|max_length[50]');
+			$this->form_validation->set_rules('secschool','Secschool','required|max_length[50]');
+			$this->form_validation->set_rules('tertchool','Tertchool','required|max_length[50]');
+			$this->form_validation->set_rules('guardian','Guardian','max_length[100]');
+			$this->form_validation->set_rules('relation','Relation','max_length[30]');
+			$this->form_validation->set_rules('fathername','Fathername','required|max_length[100]');
+			$this->form_validation->set_rules('fatherocc','Fatherocc','required|max_length[50]');
+			$this->form_validation->set_rules('mothername','Mothername','required|max_length[100]');
+			$this->form_validation->set_rules('motherocc','Motherocc','required|max_length[50]');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
 					'userTypeID' => $this->input->post('userTypeID'),
+					'status' => $this->input->post('status'),
+					'gender' => $this->input->post('gender'),
+					'userPassword' => $this->input->post('userPassword'),
 					'userIDNo' => $this->input->post('userIDNo'),
 					'userLN' => $this->input->post('userLN'),
 					'userFN' => $this->input->post('userFN'),
 					'userEmail' => $this->input->post('userEmail'),
-					'userPassword' => $this->input->post('userPassword'),
 					'userMobile' => $this->input->post('userMobile'),
+					'birthdate' => $this->input->post('birthdate'),
+					'age' => $this->input->post('age'),
+					'civstat' => $this->input->post('civstat'),
+					'nationality' => $this->input->post('nationality'),
+					'religion' => $this->input->post('religion'),
+					'elemschool' => $this->input->post('elemschool'),
+					'secschool' => $this->input->post('secschool'),
+					'tertchool' => $this->input->post('tertchool'),
+					'guardian' => $this->input->post('guardian'),
+					'relation' => $this->input->post('relation'),
+					'fathername' => $this->input->post('fathername'),
+					'fatherocc' => $this->input->post('fatherocc'),
+					'mothername' => $this->input->post('mothername'),
+					'motherocc' => $this->input->post('motherocc'),
+					'birthplace' => $this->input->post('birthplace'),
+					'addcity' => $this->input->post('addcity'),
+					'addprovince' => $this->input->post('addprovince'),
+                    'course' => $this->input->post('course'),
+                    'datemodified' => date('Y-m-d H:i:s')
                 );
 
                 $this->User_model->update_user($userID,$params);            
@@ -118,7 +203,6 @@ class User extends CI_Controller{
         // check if the user exists before trying to delete it
         if(isset($user['userID']))
         {
-            $this->db->set('status', 'Archive');
             $this->User_model->delete_user($userID);
             redirect('user/index');
         }

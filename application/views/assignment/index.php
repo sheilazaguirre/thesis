@@ -27,8 +27,8 @@
                     <tr>
 						<td><?php echo $a['assignID']; ?></td>
 						<td><?php echo $a['classID']; ?></td>
-						<td><img src=" <?php echo base_url ('uploads/assignments/' . $a['assignFile']); ?>" width="100"/></td>
-						<td><?php echo $a['assignDesc']; ?></td>
+						<td><?php echo $a['assignFile']; ?></td>
+                        <td><?php echo $a['assignDesc']; ?></td>
 						<td><?php echo $a['assignTitle']; ?></td>
 						<td><?php echo $a['dateUploaded']; ?></td>
 						<td><?php echo $a['dateModified']; ?></td>

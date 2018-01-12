@@ -20,6 +20,7 @@
 						<th>Semester</th>
 						<th>Status</th>
 						<th>Actions</th>
+                        <th>Block ID</th>
                     </tr>
                 </thead>
                     <?php foreach($theclasses as $c){ ?>

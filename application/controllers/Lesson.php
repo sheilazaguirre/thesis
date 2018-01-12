@@ -22,6 +22,16 @@ class Lesson extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
+    public function download($filen)
+    {
+    
+        $this->load->helper('download');
+        $name = $filen;
+        $data = file_get_contents('./uploads/assignments/'.$filen); 
+        force_download($name, $data); 
+            redirect('lesson/index','refresh');
+    }
+
     /*
      * Adding a new lesson
      */

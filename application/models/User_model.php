@@ -24,7 +24,7 @@ class User_model extends CI_Model
      */
     function get_all_users()
     {
-        $this->db->order_by('userID', 'asc');
+        $this->db->order_by('userID', 'desc');
         return $this->db->get('users')->result_array();
     }
         
@@ -51,7 +51,6 @@ class User_model extends CI_Model
      */
     function delete_user($userID)
     {
-        $this->db->where('userID',$userID);
-        return $this->db->update('users',$params);
+        return $this->db->delete('users',array('userID'=>$userID));
     }
 }
