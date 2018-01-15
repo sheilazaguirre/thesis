@@ -1,0 +1,22 @@
+Things to do:
+
+Applicant table into users and student
+
+
+UserIDNo 114+id no 
+
+Get the add from USER to approve in the Applicant
+
+*Changes
+Student Table :
+drop course and major
+input into?
+
+
+from applicant table-> course into student table
+from applicant table-> data into users table
+from applicant table-> 
+from applicant table-> users auto usertype student'
+from applicant table-> 
+
+

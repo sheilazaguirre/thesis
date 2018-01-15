@@ -27,16 +27,16 @@
                     <tr>
 						<td><?php echo $a['assignID']; ?></td>
 						<td><?php echo $a['classID']; ?></td>
-						<td><?php echo $a['assignFile']; ?></td>
-                        <td><?php echo $a['assignDesc']; ?></td>
+						<td><img src=" <?php echo base_url ('uploads/assignments/' . $a['assignFile']); ?>"</td>
+						<td><?php echo $a['assignDesc']; ?></td>
 						<td><?php echo $a['assignTitle']; ?></td>
 						<td><?php echo $a['dateUploaded']; ?></td>
 						<td><?php echo $a['dateModified']; ?></td>
 						<td><?php echo $a['dateExpiry']; ?></td>
 						<td><?php echo $a['status']; ?></td>
 						<td>
-                            <a href="<?php echo site_url('assignment/edit/'.$a['assignID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a onclick='return confirm("Archive Record?");' href="<?php echo site_url('assignment/remove/'.$a['assignID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?php echo site_url('assignment/edit/'.$a['assignID']); ?>" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Edit</a>
+                            <a href="<?php echo site_url('assignment/remove/'.$a['assignID']); ?>" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
                         </td>
                     </tr>
                     <?php } ?>

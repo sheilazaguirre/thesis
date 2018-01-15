@@ -14,9 +14,9 @@
 								<option value="">Select Day of Week</option>
 								<?php 
 								$dayOfWeek_values = array(
-									'mwf'=>'MWF',
-									'tth' =>'TTH',
-									's' => 'S',
+									'MWF'=>'MWF',
+									'TTH' =>'TTH',
+									'S' => 'S',
 								);
 
 								foreach($dayOfWeek_values as $value => $display_text)

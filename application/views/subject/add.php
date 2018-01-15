@@ -14,9 +14,9 @@
 								<option value="">Select a Subject Type</option>
 								<?php 
 								$subjectType_values = array(
-									'lecture'=>'Lecture',
-									'laboratory'=>'Laboratory',
-									'pe'=>'P.E.',
+									'Lecture'=>'Lecture',
+									'Laboratory'=>'Laboratory',
+									'P.E.'=>'P.E.',
 								);
 
 								foreach($subjectType_values as $value => $display_text)

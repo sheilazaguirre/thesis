@@ -42,14 +42,14 @@
 					<div class="col-md-6">
 						<label for="announceDetail" class="control-label"><span class="text-danger">*</span>Details</label>
 						<div class="form-group">
-							<input type="textarea" name="announceDetail" value="<?php echo $this->input->post('announceDetail'); ?>" class="form-control" id="announceDetail" />
+							<input type="text" name="announceDetail" value="<?php echo $this->input->post('announceDetail'); ?>" class="form-control" id="announceDetail" />
 							<span class="text-danger"><?php echo form_error('announceDetail');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="announceDate" class="control-label"><span class="text-danger">*</span>Announcement Date</label>
 						<div class="form-group">
-							<input type="datepicker" name="announceDate" value="<?php echo $this->input->post('announceDate'); ?>" class="form-control" id="announceDate" />
+							<input type="datetime" name="announceDate" value="<?php echo $this->input->post('announceDate'); ?>" class="date form-control" id="announceDate" />
 							<span class="text-danger"><?php echo form_error('announceDate');?></span>
 						</div>
 					</div>

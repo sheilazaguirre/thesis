@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>thesis</title>
+        <title>GAPC Main</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -20,24 +20,23 @@
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="<?php echo site_url('resources/css/_all-skins.min.css');?>">
 
-        <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
 
-        
-        
+
+
     </head>
     
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-red sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->
                 <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini">thesis</span>
+                    <span class="logo-mini">GAPC</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg">thesis</span>
+                    <span class="logo-lg">GAPC</span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -54,17 +53,17 @@
                         <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="<?php echo site_url('resources/img/user2-160x160.jpg');?>" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Alexander Pierce</span>
+
+                                    <span class="hidden-xs">Admin GAPC</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="<?php echo site_url('resources/img/user2-160x160.jpg');?>" class="img-circle" alt="User Image">
+
 
                                     <p>
-                                        Alexander Pierce - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        Beper Ong - Admin
+
                                     </p>
                                     </li>
                                     <!-- Menu Footer-->
@@ -89,10 +88,10 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="<?php echo site_url('resources/img/user2-160x160.jpg');?>" class="img-circle" alt="User Image">
+
                         </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <p>Beper Ong - Admin</p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
@@ -114,6 +113,19 @@
                                 </li>
 								<li>
                                     <a href="<?php echo site_url('announcement/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                </li>
+							</ul>
+                        </li>
+						<li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Applicant</span>
+                            </a>
+                            <ul class="treeview-menu">
+								<li class="active">
+                                    <a href="<?php echo site_url('applicant/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                </li>
+								<li>
+                                    <a href="<?php echo site_url('applicant/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
                                 </li>
 							</ul>
                         </li>
@@ -158,7 +170,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Theclass</span>
+                                <i class="fa fa-desktop"></i> <span>Class</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -184,7 +196,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-address-book"></i> <span>Faculty</span>
+                                <i class="fa fa-desktop"></i> <span>Faculty</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -223,7 +235,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-book"></i> <span>Subject</span>
+                                <i class="fa fa-desktop"></i> <span>Subject</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -236,7 +248,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-print"></i> <span>Timeslot</span>
+                                <i class="fa fa-desktop"></i> <span>Timeslot</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -249,7 +261,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-address-card-o"></i> <span>User</span>
+                                <i class="fa fa-inbox"></i> <span>User</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -262,7 +274,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-database"></i> <span>Usertype</span>
+                                <i class="fa fa-desktop"></i> <span>Usertype</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -275,7 +287,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-university"></i> <span>Venue</span>
+                                <i class="fa fa-desktop"></i> <span>Venue</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -304,7 +316,7 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-                <strong>Generated By <a href="http://www.crudigniter.com/">CRUDigniter</a> 3.2</strong>
+                <strong>Created By <a href="http://www.facebook.com/ibeeep">Team CodeOps</a> 2017</strong>
             </footer>
 
             <!-- Control Sidebar -->
@@ -334,7 +346,7 @@
         <!-- ./wrapper -->
 
         <!-- jQuery 2.2.3 -->
-        <script src="<?php echo site_url('resources/js/jquery-2.2.3.min.js');?>"></script>
+        <script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="<?php echo site_url('resources/js/bootstrap.min.js');?>"></script>
         <!-- FastClick -->
@@ -347,93 +359,47 @@
         <script src="<?php echo site_url('resources/js/moment.js');?>"></script>
         <script src="<?php echo site_url('resources/js/bootstrap-datetimepicker.min.js');?>"></script>
         <script src="<?php echo site_url('resources/js/global.js');?>"></script>
-        <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+        <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.js');?>"></script>
+        <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.extensions.js');?>"></script>
+        <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
+
+
+
+
+        <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+
+
+
 
         <script>
+            $('[data-mask]').inputmask();
 
             $(document).ready(function(){
-            $('#announcementTable').DataTable();
-        });
+                 $('#tbapp').DataTable();
+            });
+
+            $(document).ready(function(){
+                $('#tbuser').DataTable();
+            });
+            $(document).ready(function(){
+                $('#facultyTable').DataTable();
+            });
+            $(document).ready(function(){
+                $('#subjectTable').DataTable();
+            });
+            $(document).ready(function(){
+                $('#timeslotTable').DataTable();
+            });
+            $(document).ready(function(){
+                $('#tblstudent').DataTable();
+            });
 
         </script>
 
-        <script>
-            $(document).ready(function(){
-            $('#assignmentTable').DataTable();
-        });
-        </script>
 
-        <script>
-            $(document).ready(function(){
-            $('#auditTable').DataTable();
-        });
-        </script>
 
-        <script>
-            $(document).ready(function(){
-            $('#blockTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#classlistTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#facultyTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#lessonTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#studentTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#subjectTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#classTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#timeslotTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#userTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#usertypeTable').DataTable();
-        });
-        </script>
-
-        <script>
-            $(document).ready(function(){
-            $('#venueTable').DataTable();
-        });
-        </script>
-       
-    </body>
+            </body>
 </html>

@@ -8,7 +8,7 @@
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="userID" class="control-label">User</label>
+						<label for="userID" class="control-label">Faculty</label>
 						<div class="form-group">
 							<select name="userID" class="form-control">
 								<option value="">Select a User</option>
@@ -17,7 +17,7 @@
 								{
 									$selected = ($user['userID'] == $faculty['userID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
+                                    echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].' '.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
@@ -26,7 +26,21 @@
 					<div class="col-md-6">
 						<label for="facultyType" class="control-label">Faculty Type</label>
 						<div class="form-group">
-							<input type="text" name="facultyType" value="<?php echo ($this->input->post('facultyType') ? $this->input->post('facultyType') : $faculty['facultyType']); ?>" class="form-control" id="facultyType" />
+                            <select name="facultyType" class="form-control">
+                                <option value="">select</option>
+                                <?php
+                                $ftype_values = array(
+                                    'Part-time'=>'Part-time',
+                                    'Full time'=>'Full time',
+                                );
+                                foreach($ftype_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $this->input->post('course')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
 						</div>
 					</div>
 					<div class="col-md-6">

@@ -14,9 +14,9 @@
 								<option value="">Select VenueType</option>
 								<?php 
 								$venueType_values = array(
-									'classroom'=>'Classroom',
-									'laboratory'=>'Laboratory',
-									'field'=>'Field',
+									'Classroom'=>'Classroom',
+									'Laboratory'=>'Laboratory',
+									'Field'=>'Field',
 								);
 
 								foreach($venueType_values as $value => $display_text)

@@ -8,19 +8,40 @@
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="userID" class="control-label">User</label>
+						<label for="userID" class="control-label"><span class="text-danger">*</span>User</label>
 						<div class="form-group">
 							<select name="userID" class="form-control">
-								<option value="">Select a User</option>
+								<option value="">select user</option>
 								<?php 
 								foreach($all_users as $user)
 								{
 									$selected = ($user['userID'] == $student['userID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
+                                    echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].' '.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
+							<span class="text-danger"><?php echo form_error('userID');?></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="course" class="control-label"><span class="text-danger">*</span>Course</label>
+						<div class="form-group">
+							<select name="course" class="form-control">
+								<option value="">select</option>
+								<?php 
+								$course_values = array(
+								);
+
+								foreach($course_values as $value => $display_text)
+								{
+									$selected = ($value == $student['course']) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('course');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -41,17 +62,24 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="course" class="control-label"><span class="text-danger">*</span>Course</label>
+						<label for="dateAdded" class="control-label"><span class="text-danger">*</span>DateAdded</label>
 						<div class="form-group">
-							<input type="text" name="course" value="<?php echo ($this->input->post('course') ? $this->input->post('course') : $student['course']); ?>" class="form-control" id="course" />
-							<span class="text-danger"><?php echo form_error('course');?></span>
+							<input type="text" name="dateAdded" value="<?php echo ($this->input->post('dateAdded') ? $this->input->post('dateAdded') : $student['dateAdded']); ?>" class="form-control" id="dateAdded" />
+							<span class="text-danger"><?php echo form_error('dateAdded');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="major" class="control-label"><span class="text-danger">*</span>Major</label>
+						<label for="dateModified" class="control-label"><span class="text-danger">*</span>DateModified</label>
 						<div class="form-group">
-							<input type="text" name="major" value="<?php echo ($this->input->post('major') ? $this->input->post('major') : $student['major']); ?>" class="form-control" id="major" />
-							<span class="text-danger"><?php echo form_error('major');?></span>
+							<input type="text" name="dateModified" value="<?php echo ($this->input->post('dateModified') ? $this->input->post('dateModified') : $student['dateModified']); ?>" class="form-control" id="dateModified" />
+							<span class="text-danger"><?php echo form_error('dateModified');?></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="status" class="control-label"><span class="text-danger">*</span>Status</label>
+						<div class="form-group">
+							<input type="text" name="status" value="<?php echo ($this->input->post('status') ? $this->input->post('status') : $student['status']); ?>" class="form-control" id="status" />
+							<span class="text-danger"><?php echo form_error('status');?></span>
 						</div>
 					</div>
 				</div>

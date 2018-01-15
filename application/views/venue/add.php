@@ -11,12 +11,12 @@
 						<label for="venueType" class="control-label"><span class="text-danger">*</span>VenueType</label>
 						<div class="form-group">
 							<select name="venueType" class="form-control">
-								<option value="">Select a VenueType</option>
+								<option value="">Select a Venue Type</option>
 								<?php 
 								$venueType_values = array(
-									'classroom'=>'Classroom',
-									'laboratory'=>'Laboratory',
-									'field'=>'Field',
+									'Classroom'=>'Classroom',
+									'Laboratory'=>'Laboratory',
+									'Field'=>'Field',
 								);
 
 								foreach($venueType_values as $value => $display_text)

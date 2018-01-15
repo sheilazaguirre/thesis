@@ -2,27 +2,37 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Add Student</h3>
+              	<h3 class="box-title">Student Add</h3>
             </div>
             <?php echo form_open('student/add'); ?>
           	<div class="box-body">
           		<div class="row clearfix">
 					<div class="col-md-6">
-						<label for="userID" class="control-label">User</label>
+						<label for="userID" class="control-label"><span class="text-danger">*</span>Student Name</label>
 						<div class="form-group">
-							<select name="userID" class="form-control">
-								<option value="">Select a User</option>
+							<select name="userID" id="userID" class="form-control">
+								<option value="">select student</option>
 								<?php 
 								foreach($all_users as $user)
 								{
 									$selected = ($user['userID'] == $this->input->post('userID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].''.$user['userLN'].'</option>';
+                                    echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userFN'].' '.$user['userLN'].'</option>';
 								} 
 								?>
 							</select>
+							<span class="text-danger"><?php echo form_error('userID');?></span>
 						</div>
 					</div>
+
+                    <div class="col-md-6">
+                        <label for="course" class="control-label"><span class="text-danger">*</span>Course</label>
+                        <div class="form-group">
+                            <div id="course" class="form-control"> </div>
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+
 					<div class="col-md-6">
 						<label for="blockID" class="control-label"><span class="text-danger">*</span>Block</label>
 						<div class="form-group">
@@ -40,20 +50,6 @@
 							<span class="text-danger"><?php echo form_error('blockID');?></span>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<label for="course" class="control-label"><span class="text-danger">*</span>Course</label>
-						<div class="form-group">
-							<input type="text" name="course" value="<?php echo $this->input->post('course'); ?>" class="form-control" id="course" />
-							<span class="text-danger"><?php echo form_error('course');?></span>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="major" class="control-label"><span class="text-danger">*</span>Major</label>
-						<div class="form-group">
-							<input type="text" name="major" value="<?php echo $this->input->post('major'); ?>" class="form-control" id="major" />
-							<span class="text-danger"><?php echo form_error('major');?></span>
-						</div>
-					</div>
 				</div>
 			</div>
           	<div class="box-footer">
@@ -65,3 +61,23 @@
       	</div>
     </div>
 </div>
+
+
+<!--<script type="text/javascript">
+    $(document).ready(function() {
+
+        var userID;
+
+        $("#userID").change(function() {
+            userID = $(this).val();
+            $.get('<?php /*echo site_url();*/?>student/findcourse/' + userID, function(data) {
+                console.log(data);
+                $('#course').html(data);
+                $('#loader').slideUp(200, function() {
+                    $(this).remove();
+                });
+            });
+        });
+
+    });
+</script>-->

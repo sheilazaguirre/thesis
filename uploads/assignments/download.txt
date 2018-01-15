@@ -1,0 +1,18 @@
+Click Button-> Download
+Insert to Audit
+UserID -> Usertype
+
+Button if click = 'Downloaded'
+Description-> Download 
+
+
+Audit downloads
+Download Activity?
+UserID->
+ 
+Track Download Table
+DLID -> count
+UserID -> Person who donwload
+lessonID - null
+AssignID - null
+TimeStamp
