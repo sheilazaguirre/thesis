@@ -33,7 +33,6 @@ class User extends CI_Controller{
 		$this->form_validation->set_rules('userFN','UserFN','required|max_length[50]');
 		$this->form_validation->set_rules('userEmail','UserEmail','required|max_length[100]');
 		$this->form_validation->set_rules('userMobile','UserMobile','required|max_length[15]');
-        $this->form_validation->set_rules('course','Course','max_length[50]');
 		$this->form_validation->set_rules('birthdate','Birthdate','required');
 		$this->form_validation->set_rules('birthplace','Birthplace','required|max_length[150]');
 		$this->form_validation->set_rules('gender','Gender','required|max_length[20]');
@@ -91,7 +90,6 @@ class User extends CI_Controller{
 				'addprov' => $this->input->post('addprov'),
                 'dateadded' => date('Y-m-d H:i:s'),
                 'datemodified' => null,
-                'course' => $this->input->post('course'),
             );
             
             $user_id = $this->User_model->add_user($params);
@@ -128,7 +126,6 @@ class User extends CI_Controller{
 			$this->form_validation->set_rules('userPassword','UserPassword','required|max_length[300]');
 			$this->form_validation->set_rules('userMobile','UserMobile','required|max_length[15]');
 			$this->form_validation->set_rules('status','Status','required|max_length[15]');
-            $this->form_validation->set_rules('course','Course','max_length[50]');
 			$this->form_validation->set_rules('birthdate','Birthdate','required');
 			$this->form_validation->set_rules('age','Age');
 			$this->form_validation->set_rules('birthplace','Birthplace','required|max_length[150]');
@@ -176,7 +173,6 @@ class User extends CI_Controller{
 					'birthplace' => $this->input->post('birthplace'),
 					'addcity' => $this->input->post('addcity'),
 					'addprovince' => $this->input->post('addprovince'),
-                    'course' => $this->input->post('course'),
                     'datemodified' => date('Y-m-d H:i:s')
                 );
 

@@ -24,31 +24,31 @@
 							<span class="text-danger"><?php echo form_error('userTypeID');?></span>
 						</div>
 					</div>
-                    <div class="col-md-6">
+                    <!--<div class="col-md-6">
                         <label for="course" class="control-label"><span class="text-danger"></span>Course</label>
                         <div class="form-group">
                             <select name="course" class="form-control">
                                 <option value="">select</option>
-                                <?php
-                                $course_values = array(
-                                    'Bachelor of Science in Computer Science'=>'Bachelor of Science in Computer Science',
-                                    'Bachelor of Elementary Education'=>'Bachelor of Elementary Education',
-                                    'BSE- Major in English'=>'Bachelor of Secondary Education - Major in English',
-                                    'BSE - Major in Mathematics'=>'Bachelor of Secondary Education - Major in Mathematics',
-                                    'BSE - Major in Filipino'=>'Bachelor of Secondary Education - Major in Filipino',
-                                    'BSBA - Major in Mathematics'=>'Bachelor of Science in Business Administration - Major in Management',
-                                );
-                                foreach($course_values as $value => $display_text)
-                                {
-                                    $selected = ($value == $this->input->post('course')) ? ' selected="selected"' : "";
+                                <?//php
+                                // $course_values = array(
+                                //     'Bachelor of Science in Computer Science'=>'Bachelor of Science in Computer Science',
+                                //     'Bachelor of Elementary Education'=>'Bachelor of Elementary Education',
+                                //     'BSE- Major in English'=>'Bachelor of Secondary Education - Major in English',
+                                //     'BSE - Major in Mathematics'=>'Bachelor of Secondary Education - Major in Mathematics',
+                                //     'BSE - Major in Filipino'=>'Bachelor of Secondary Education - Major in Filipino',
+                                //     'BSBA - Major in Mathematics'=>'Bachelor of Science in Business Administration - Major in Management',
+                                // );
+                                // foreach($course_values as $value => $display_text)
+                                // {
+                                //     $selected = ($value == $this->input->post('course')) ? ' selected="selected"' : "";
 
-                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
-                                }
+                                //     echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                // }
                                 ?>
                             </select>
-                            <span class="text-danger"><?php echo form_error('course');?></span>
+                            <span class="text-danger"><//?php echo form_error('course');?></span>
                         </div>
-                    </div>
+                    </div>-->
 
 					<div class="col-md-6">
 						<label for="gender" class="control-label"><span class="text-danger">*</span>Gender</label>
