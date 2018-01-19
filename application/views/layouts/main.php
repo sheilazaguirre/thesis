@@ -109,10 +109,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('announcement/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('announcement/add');?>"><i class="fa fa-plus"></i> Add Announcement</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('announcement/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('announcement/index');?>"><i class="fa fa-list-ul"></i> View Announcements</a>
                                 </li>
 							</ul>
                         </li>
@@ -122,10 +122,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('applicant/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('applicant/add');?>"><i class="fa fa-plus"></i> Add Applicant</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('applicant/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('applicant/index');?>"><i class="fa fa-list-ul"></i> View Applicants</a>
                                 </li>
 							</ul>
                         </li>
@@ -135,10 +135,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('assignment/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('assignment/add');?>"><i class="fa fa-plus"></i> Add Assignment</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('assignment/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('assignment/index');?>"><i class="fa fa-list-ul"></i> View Assignments</a>
                                 </li>
 							</ul>
                         </li>
@@ -148,7 +148,7 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('auditlog/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('auditlog/add');?>"><i class="fa fa-plus"></i> Add Auditlog</a>
                                 </li>
 								<li>
                                     <a href="<?php echo site_url('auditlog/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
@@ -161,10 +161,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('block/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('block/add');?>"><i class="fa fa-plus"></i> Add Block</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('block/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('block/index');?>"><i class="fa fa-list-ul"></i> View Block</a>
                                 </li>
 							</ul>
                         </li>
@@ -200,10 +200,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('faculty/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('faculty/add');?>"><i class="fa fa-plus"></i> Add Faculty</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('faculty/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('faculty/index');?>"><i class="fa fa-list-ul"></i> View Faculties</a>
                                 </li>
 							</ul>
                         </li>
@@ -226,10 +226,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('student/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('student/add');?>"><i class="fa fa-plus"></i> Add Student</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('student/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('student/index');?>"><i class="fa fa-list-ul"></i> View Students</a>
                                 </li>
 							</ul>
                         </li>
@@ -239,10 +239,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('subject/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('subject/add');?>"><i class="fa fa-plus"></i> Add Subject</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('subject/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('subject/index');?>"><i class="fa fa-list-ul"></i> View Subjects</a>
                                 </li>
 							</ul>
                         </li>
@@ -265,10 +265,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('user/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('user/add');?>"><i class="fa fa-plus"></i> Add User</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('user/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('user/index');?>"><i class="fa fa-list-ul"></i> View Users</a>
                                 </li>
 							</ul>
                         </li>
@@ -316,7 +316,7 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-                <strong>Created By <a href="http://www.facebook.com/ibeeep">Team CodeOps</a> 2017</strong>
+                <strong>Created By <a href="http://www.facebook.com/ibeeep">Team CodeOps</a> 2018</strong>
             </footer>
 
             <!-- Control Sidebar -->
