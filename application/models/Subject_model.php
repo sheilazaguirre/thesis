@@ -13,7 +13,7 @@ class Subject_model extends CI_Model
      */
     function get_subject($sujectID)
     {
-        return $this->db->get_where('subjects',array('sujectID'=>$sujectID))->row_array();
+        return $this->db->get_where('subjects',array('subjectID'=>$subjectID))->row_array();
     }
     
     /*
@@ -30,7 +30,7 @@ class Subject_model extends CI_Model
      */
     function get_all_subjects($params = array())
     {
-        $this->db->order_by('sujectID', 'asc');
+        $this->db->order_by('subjectID', 'asc');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);
@@ -50,18 +50,18 @@ class Subject_model extends CI_Model
     /*
      * function to update subject
      */
-    function update_subject($sujectID,$params)
+    function update_subject($subjectID,$params)
     {
-        $this->db->where('sujectID',$sujectID);
+        $this->db->where('subjectID',$subjectID);
         return $this->db->update('subjects',$params);
     }
     
     /*
      * function to delete subject
      */
-    function delete_subject($sujectID)
+    function delete_subject($subjectID)
     {
-        $this->db->where('sujectID',$sujectID);
+        $this->db->where('subjectID',$subjectID);
         return $this->db->update('subjects',$params);
     }
 }

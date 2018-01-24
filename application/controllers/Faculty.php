@@ -38,9 +38,7 @@ class Faculty extends CI_Controller{
         {   
             $params = array(
 				'userID' => $this->input->post('userID'),
-				'facultyType' => $this->input->post('facultyType'),
-				'minUnits' => $this->input->post('minUnits'),
-				'maxUnits' => $this->input->post('maxUnits'),
+				'subjectID' => $this->input->post('subjectID'),
             );
             $this->db->set('dateAdded', 'NOW()', FALSE);
             $this->db->set('status', 'Active');
@@ -50,7 +48,10 @@ class Faculty extends CI_Controller{
         else
         {
 			$this->load->model('User_model');
-			$data['all_users'] = $this->User_model->get_all_faculty();
+            $data['all_users'] = $this->User_model->get_all_faculty();
+            
+            $this->load->model('Subject_model');
+			$data['all_subjects'] = $this->Subject_model->get_all_subjects();
 
             $data['_view'] = 'faculty/add';
             $this->load->view('layouts/main',$data);
@@ -71,9 +72,7 @@ class Faculty extends CI_Controller{
             {   
                 $params = array(
 					'userID' => $this->input->post('userID'),
-					'facultyType' => $this->input->post('facultyType'),
-					'minUnits' => $this->input->post('minUnits'),
-					'maxUnits' => $this->input->post('maxUnits'),
+                    'subjectID' => $this->input->post('subjectID'),
                 );
                 $this->db->set('dateModified', 'NOW()', FALSE);
                 $this->Faculty_model->update_faculty($facultyID,$params);            

@@ -151,7 +151,7 @@
                                     <a href="<?php echo site_url('auditlog/add');?>"><i class="fa fa-plus"></i> Add Auditlog</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('auditlog/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('auditlog/index');?>"><i class="fa fa-list-ul"></i> View Auditlogs</a>
                                 </li>
 							</ul>
                         </li>
@@ -174,10 +174,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('theclass/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('theclass/add');?>"><i class="fa fa-plus"></i> Add Class</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('theclass/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('theclass/index');?>"><i class="fa fa-list-ul"></i> View Classes</a>
                                 </li>
 							</ul>
                         </li>
@@ -187,10 +187,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('classlist/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('classlist/add');?>"><i class="fa fa-plus"></i> Add Classlist</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('classlist/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('classlist/index');?>"><i class="fa fa-list-ul"></i> View Classlist</a>
                                 </li>
 							</ul>
                         </li>
@@ -213,10 +213,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('lesson/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('lesson/add');?>"><i class="fa fa-plus"></i> Add Lesson</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('lesson/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('lesson/index');?>"><i class="fa fa-list-ul"></i> View Lessons</a>
                                 </li>
 							</ul>
                         </li>
@@ -252,10 +252,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('timeslot/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('timeslot/add');?>"><i class="fa fa-plus"></i> Add Timeslot</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('timeslot/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('timeslot/index');?>"><i class="fa fa-list-ul"></i> View Timeslot</a>
                                 </li>
 							</ul>
                         </li>
@@ -278,10 +278,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('usertype/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('usertype/add');?>"><i class="fa fa-plus"></i> Add Usertype</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('usertype/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('usertype/index');?>"><i class="fa fa-list-ul"></i> View Usertype</a>
                                 </li>
 							</ul>
                         </li>
@@ -291,10 +291,10 @@
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
-                                    <a href="<?php echo site_url('venue/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                    <a href="<?php echo site_url('venue/add');?>"><i class="fa fa-plus"></i> Add Venue</a>
                                 </li>
 								<li>
-                                    <a href="<?php echo site_url('venue/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                    <a href="<?php echo site_url('venue/index');?>"><i class="fa fa-list-ul"></i> View Venues</a>
                                 </li>
 							</ul>
                         </li>

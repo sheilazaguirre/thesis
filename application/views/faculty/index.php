@@ -13,9 +13,7 @@
                     <tr>
 						<th>ID#</th>
 						<th>Faculty Name</th>
-						<th>Faculty Type</th>
-						<th>Min Units</th>
-						<th>Max Units</th>
+						<th>Subject</th>
 						<th>Date Added</th>
 						<th>Date Modified</th>
 						<th>Status</th>
@@ -28,9 +26,7 @@
                         <tr>
                             <td><?php echo $f['facultyID']; ?></td>
                             <td><?php echo $f['userFN']; ?> <?php echo $f['userLN']; ?></td>
-                            <td><?php echo $f['facultyType']; ?></td>
-                            <td><?php echo $f['minUnits']; ?></td>
-                            <td><?php echo $f['maxUnits']; ?></td>
+                            <td><?php echo $f['subjectCode']; ?></td>
                             <td><?php echo $f['dateAdded']; ?></td>
                             <td><?php echo $f['dateModified']; ?></td>
                             <td><?php echo $f['status']; ?></td>

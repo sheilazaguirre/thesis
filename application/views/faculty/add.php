@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       	<div class="box box-info">
             <div class="box-header with-border">
               	<h3 class="box-title">Add Faculty</h3>
@@ -7,7 +7,7 @@
             <?php echo form_open('faculty/add'); ?>
           	<div class="box-body">
           		<div class="row clearfix">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<label for="userID" class="control-label">Faculty</label>
 						<div class="form-group">
 							<select name="userID" class="form-control">
@@ -23,38 +23,29 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<label for="facultyType" class="control-label">Faculty Type</label>
+					<div class="col-md-12">
+						<label for="subjectID" class="control-label"><span class="text-danger">*</span>Subject</label>
 						<div class="form-group">
-                            <select name="facultyType" class="form-control">
-                                <option value="">select</option>
-                                <?php
-                                $ftype_values = array(
-                                    'Part-time'=>'Part-time',
-                                    'Full time'=>'Full time',
-                                );
-                                foreach($ftype_values as $value => $display_text)
-                                {
-                                    $selected = ($value == $this->input->post('course')) ? ' selected="selected"' : "";
+							<select name="subjectID" class="form-control">
+								<option value="">Select a Subject</option>
+								<?php 
+								foreach($all_subjects as $subject)
+								{
+									$selected = ($subject['subjectID'] == $this->input->post('subjectID')) ? ' selected="selected"' : "";
 
-                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
-                                }
-                                ?>
-                            </select>
+									echo '<option value="'.$subject['subjectID'].'" '.$selected.'>'.$subject['subjectCode'].'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('subjectID');?></span>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<label for="minUnits" class="control-label">Min Units</label>
-						<div class="form-group">
-							<input type="text" name="minUnits" value="<?php echo $this->input->post('minUnits'); ?>" class="form-control" id="minUnits" />
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="maxUnits" class="control-label">Max Units</label>
-						<div class="form-group">
-							<input type="text" name="maxUnits" value="<?php echo $this->input->post('maxUnits'); ?>" class="form-control" id="maxUnits" />
-						</div>
-					</div>
+					<div class="col-md-12">
+                        <label for="remarks" class="control-label">Remarks</label>
+                        <div class="form-group">
+                            <textarea name="remarks" class="form-control" id="remarks"><?php echo $this->input->post('remarks'); ?></textarea>
+                        </div>
+                    </div>
 				</div>
 			</div>
           	<div class="box-footer">
@@ -64,5 +55,28 @@
           	</div>
             <?php echo form_close(); ?>
       	</div>
+    </div>
+	<div class="col-md-6">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">View</h3>
+            </div>
+            <div class="box-body">
+                <table id="facultyTable" class="table table-striped">
+                <thead>
+                    <tr>
+						<th>ID#</th>
+						<th>Faculty Name</th>
+						<th>Subject</th>
+						<th>Actions</th>
+                    </tr>
+                </thead>
+
+                </table>
+                <div class="pull-right">
+                    <?php echo $this->pagination->create_links(); ?>                    
+                </div>                
+            </div>
+        </div>
     </div>
 </div>
