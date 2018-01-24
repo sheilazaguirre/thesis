@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2018 at 10:58 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.1.10
+-- Generation Time: Jan 24, 2018 at 08:19 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,7 @@ CREATE TABLE `announcements` (
 -- Dumping data for table `announcements`
 --
 
-INSERT IGNORE INTO `announcements` (`announceID`, `userID`, `announceTitle`, `announceFile`, `announceDetail`, `announceDate`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
+INSERT INTO `announcements` (`announceID`, `userID`, `announceTitle`, `announceFile`, `announceDetail`, `announceDate`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
 (1, 1, 'shgjs', '', 'shfgk', '10-11-17', '2017-10-11 19:13:33', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active'),
 (2, 1, 'sdufyi', 'abc', 'shdgfkj', '10-11-17', '2017-10-11 19:17:10', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active'),
 (3, 1, 'DFHKJ', 'abc', 'AKJDF', '10-11-17', '2017-10-11 19:18:09', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active'),
@@ -94,7 +94,7 @@ CREATE TABLE `applicant` (
 -- Dumping data for table `applicant`
 --
 
-INSERT IGNORE INTO `applicant` (`apid`, `apfn`, `apln`, `apmn`, `course`, `email`, `mobile`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `reasonleave`, `guardianame`, `relationship`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `datesubmitted`, `datemodified`, `studentstat`, `status`) VALUES
+INSERT INTO `applicant` (`apid`, `apfn`, `apln`, `apmn`, `course`, `email`, `mobile`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `reasonleave`, `guardianame`, `relationship`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `datesubmitted`, `datemodified`, `studentstat`, `status`) VALUES
 (11, 'First', 'Last', 'Middle', 'Bachelor of Elementary Education', 'beper.ong@benilde.edu.ph', '(0926)047-2440', '2016-12-30', 22, 'Mamburao Occidental Mindoro', 'Transginger', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'asdzxca', 'dzxcasdas', 'zvcads', 'asdzxcasd', '', '', 'xcvzafd', 'adsfsdfz', 'fdsafdsf', 'aadfsasdf', '2017-10-24 08:20:40', '2017-11-07 09:59:01', 'Approved', 'Closed'),
 (12, 'Beper', 'Ong', 'Middle', 'BEE', 'beper.ong@benilde.edu.ph', '09260472440', '1995-11-06', 22, 'Mamburao Occidental Mindoro', 'Transginger', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'MCS', 'OMNHS', 'Huh?', 'I hate the school bow\r\n', 'Cardo Dalisay', 'Waifu', 'Darth Vader', 'My father', 'Never met her', 'Single wut?!', '2017-10-24 08:48:04', '0000-00-00 00:00:00', 'Approved', 'Closed'),
 (13, 'Beper', 'Ong', 'Test 3', 'BSE', 'beper.ong@benilde.edu.ph', '09260472440', '2012-09-28', 22, 'Mamburao Occidental Mindoro', 'She-male', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'MCS', 'OMNHS', 'Huh?', 'I dont layk', '', '', 'Bernabe', 'Worker', 'Perla', 'Bahay', '2017-10-24 09:12:45', '2017-10-24 09:13:01', 'Pending', 'Archived'),
@@ -127,7 +127,7 @@ CREATE TABLE `assignments` (
 -- Dumping data for table `assignments`
 --
 
-INSERT IGNORE INTO `assignments` (`assignID`, `classID`, `assignFile`, `assignDesc`, `assignTitle`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
+INSERT INTO `assignments` (`assignID`, `classID`, `assignFile`, `assignDesc`, `assignTitle`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
 (1, 2, 'download.txt', 'try', 'test', '2017-11-08 15:19:17', '0000-00-00 00:00:00', '2018-05-08 15:19:17', 'Active'),
 (2, 2, 'things_to_do_friday.txt', 'Test', 'Test', '2017-11-08 17:15:25', '0000-00-00 00:00:00', '2018-05-08 17:15:25', 'Active');
 
@@ -149,7 +149,7 @@ CREATE TABLE `auditlogs` (
 -- Dumping data for table `auditlogs`
 --
 
-INSERT IGNORE INTO `auditlogs` (`auditID`, `userID`, `auditDesc`, `timestamp`, `status`) VALUES
+INSERT INTO `auditlogs` (`auditID`, `userID`, `auditDesc`, `timestamp`, `status`) VALUES
 (1, 11410020, '$2y$10$Paaa31jLytojwEun8CYSt.5G9GAChZwerlRrbXgqRvb', '2017-11-08 09:31:01', ''),
 (2, 11210032, '$2y$10$97Z2wvhDh86npDvOqdhZ4OYgHju74U.dXx2egvD5vE1', '2017-11-08 11:15:11', ''),
 (3, 11210032, '$2y$10$97Z2wvhDh86npDvOqdhZ4OYgHju74U.dXx2egvD5vE1', '2017-11-09 12:13:25', '');
@@ -170,7 +170,7 @@ CREATE TABLE `blocks` (
 -- Dumping data for table `blocks`
 --
 
-INSERT IGNORE INTO `blocks` (`blockID`, `blockCode`, `status`) VALUES
+INSERT INTO `blocks` (`blockID`, `blockCode`, `status`) VALUES
 (1, 'TI101', 'Active'),
 (2, 'TI102', 'Active'),
 (3, 'Semento', 'Archive'),
@@ -187,9 +187,9 @@ CREATE TABLE `classes` (
   `subjectID` int(11) NOT NULL,
   `facultyID` int(11) NOT NULL,
   `timeSlotID` int(11) NOT NULL,
-  `venueID` int(11) NOT NULL,
   `academicYear` varchar(4) NOT NULL,
   `semester` varchar(10) NOT NULL,
+  `remarks` varchar(100) NOT NULL,
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -197,11 +197,11 @@ CREATE TABLE `classes` (
 -- Dumping data for table `classes`
 --
 
-INSERT IGNORE INTO `classes` (`classID`, `subjectID`, `facultyID`, `timeSlotID`, `venueID`, `academicYear`, `semester`, `status`) VALUES
-(1, 1, 1, 1, 1, '2017', '1st', 'Active'),
-(2, 1, 1, 1, 1, '2018', '1st', 'Active'),
-(3, 1, 9, 1, 1, '2018', '1ST', 'Active'),
-(4, 1, 33, 2, 1, '2018', '2nd', 'Active');
+INSERT INTO `classes` (`classID`, `subjectID`, `facultyID`, `timeSlotID`, `academicYear`, `semester`, `remarks`, `status`) VALUES
+(1, 1, 1, 1, '2017', '1st', '', 'Active'),
+(2, 1, 1, 1, '2018', '1st', '', 'Active'),
+(3, 1, 9, 1, '2018', '1ST', '', 'Active'),
+(4, 1, 33, 2, '2018', '2nd', '', 'Active');
 
 -- --------------------------------------------------------
 
@@ -213,18 +213,17 @@ CREATE TABLE `classlist` (
   `classListID` int(11) NOT NULL,
   `classID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
-  `midtermGrade` decimal(1,1) NOT NULL,
-  `finalGrade` decimal(1,1) NOT NULL,
-  `status` varchar(15) NOT NULL
+  `remarks` int(11) NOT NULL,
+  `dateAdded` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `classlist`
 --
 
-INSERT IGNORE INTO `classlist` (`classListID`, `classID`, `studentID`, `midtermGrade`, `finalGrade`, `status`) VALUES
-(1, 0, 0, '0.9', '0.9', 'Active'),
-(2, 2, 1, '0.9', '0.9', 'Active');
+INSERT INTO `classlist` (`classListID`, `classID`, `studentID`, `remarks`, `dateAdded`) VALUES
+(1, 0, 0, 0, 0),
+(2, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -250,29 +249,12 @@ CREATE TABLE `download` (
 CREATE TABLE `faculty` (
   `facultyID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `facultyType` varchar(50) NOT NULL,
-  `minUnits` int(11) NOT NULL,
-  `maxUnits` int(11) NOT NULL,
+  `sujectID` int(11) NOT NULL,
+  `remarks` varchar(100) DEFAULT NULL,
   `dateAdded` datetime NOT NULL,
   `dateModified` datetime NOT NULL,
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `faculty`
---
-
-INSERT IGNORE INTO `faculty` (`facultyID`, `userID`, `facultyType`, `minUnits`, `maxUnits`, `dateAdded`, `dateModified`, `status`) VALUES
-(1, 16, 'Full time', 6, 18, '2018-01-18 21:51:21', '0000-00-00 00:00:00', 'Active'),
-(2, 15, 'Part-time', 6, 12, '2018-01-18 21:52:52', '0000-00-00 00:00:00', 'Active'),
-(3, 14, 'Full time', 6, 18, '2018-01-18 21:53:02', '0000-00-00 00:00:00', 'Active'),
-(4, 13, 'Full time', 6, 18, '2018-01-18 21:53:16', '0000-00-00 00:00:00', 'Active'),
-(5, 12, 'Part-time', 6, 12, '2018-01-18 21:53:31', '0000-00-00 00:00:00', 'Active'),
-(6, 11, 'Part-time', 6, 12, '2018-01-18 21:53:45', '0000-00-00 00:00:00', 'Active'),
-(7, 10, 'Part-time', 6, 12, '2018-01-18 21:54:01', '0000-00-00 00:00:00', 'Active'),
-(8, 9, 'Full time', 6, 18, '2018-01-18 21:54:13', '0000-00-00 00:00:00', 'Active'),
-(9, 8, 'Full time', 6, 18, '2018-01-18 21:54:29', '0000-00-00 00:00:00', 'Active'),
-(10, 7, 'Part-time', 6, 12, '2018-01-18 21:54:46', '0000-00-00 00:00:00', 'Active');
 
 -- --------------------------------------------------------
 
@@ -311,7 +293,7 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT IGNORE INTO `students` (`studentID`, `userID`, `blockID`, `dateAdded`, `dateModified`, `status`) VALUES
+INSERT INTO `students` (`studentID`, `userID`, `blockID`, `dateAdded`, `dateModified`, `status`) VALUES
 (1, 1, 1, '2017-09-30 05:54:54', '2017-09-30 05:56:23', 'Active'),
 (2, 32, 1, '2017-11-08 03:34:20', '2017-11-08 10:34:20', 'Active');
 
@@ -334,7 +316,7 @@ CREATE TABLE `subjects` (
 -- Dumping data for table `subjects`
 --
 
-INSERT IGNORE INTO `subjects` (`sujectID`, `subjectCode`, `subjectName`, `subjectType`, `units`, `status`) VALUES
+INSERT INTO `subjects` (`sujectID`, `subjectCode`, `subjectName`, `subjectType`, `units`, `status`) VALUES
 (1, 'Eng1', 'English Communication 1', 'Lecture', 3, 'Active'),
 (2, 'Fil1', 'Sining ng Komunikasyon', 'Lecture', 3, 'Active'),
 (3, 'SocSci1', 'Philippine History', 'Lecture', 3, 'Active'),
@@ -404,7 +386,7 @@ CREATE TABLE `timeslots` (
 -- Dumping data for table `timeslots`
 --
 
-INSERT IGNORE INTO `timeslots` (`timeSlotID`, `dayOfWeek`, `startTime`, `endTime`, `status`) VALUES
+INSERT INTO `timeslots` (`timeSlotID`, `dayOfWeek`, `startTime`, `endTime`, `status`) VALUES
 (1, 'mwf', '08:00', '09:30', 'Active'),
 (2, 'MWF', '9:00', '10:30', 'Active');
 
@@ -452,7 +434,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT IGNORE INTO `users` (`userID`, `userIDNo`, `userTypeID`, `userLN`, `userFN`, `userMN`, `userEmail`, `userPassword`, `userMobile`, `status`, `course`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `guardian`, `relation`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `dateadded`, `datemodified`) VALUES
+INSERT INTO `users` (`userID`, `userIDNo`, `userTypeID`, `userLN`, `userFN`, `userMN`, `userEmail`, `userPassword`, `userMobile`, `status`, `course`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `guardian`, `relation`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `dateadded`, `datemodified`) VALUES
 (1, 1, 1, 'Kho', 'Hidden', 'Que', 'hiddenkho@outlook.com', '$2y$10$1/4ENc8h6Ske/jBSk9sqiedU2SSMEvr94ptBT5GnaoQ2yToQP30Ye', '(0917)000-0001', 'Active', '', '1980-02-07', 37, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Pasay City', 'N/A\r\n', 'sample', 'sample', 'sample', 'mike', 'cousin', 'Lyold', 'sample', 'Elizabeth', 'sample', '2018-01-18 09:52:14', NULL),
 (2, 2, 1, 'Dallas', 'Israel', 'Quinones', 'mangkaknorr@outlook.com', '$2y$10$RE3xMvuTunnyVS1OraGVKeLEcm9ePtkhmphnvhh1J9J.tkusjVxx6', '(0917)000-0002', 'Active', '', '1978-07-13', 39, 'Masbate', 'Female', 'Married', 'Filipino', 'Catholic', 'Metro Manila', 'Masbate', 'sample', 'sample', 'sample', 'anton', 'uncle', 'john', 'farmer', 'lyza', 'store owner', '2018-01-18 09:58:07', NULL),
 (3, 3, 1, 'Hernandez', 'Shea', 'Acebedo', 'cheatermirienda@outlook.com', '$2y$10$dIEA7hfykoclxuC4gyoKW.AH8kRF3DRlfFyYe613lVX80LsDov9ba', '(0017)000-0003', 'Active', '', '1982-11-12', 35, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Catholic', 'Paranaque', 'N/A', 'sample', 'sample', 'sample', 'Anna', 'Nanny', 'Lucas', 'mechanics', 'ryza', 'call center', '2018-01-18 10:02:33', NULL),
@@ -505,7 +487,7 @@ CREATE TABLE `usertype` (
 -- Dumping data for table `usertype`
 --
 
-INSERT IGNORE INTO `usertype` (`userTypeID`, `userType`) VALUES
+INSERT INTO `usertype` (`userTypeID`, `userType`) VALUES
 (1, 'Admin'),
 (2, 'Faculty'),
 (3, 'Student'),
@@ -529,7 +511,7 @@ CREATE TABLE `venues` (
 -- Dumping data for table `venues`
 --
 
-INSERT IGNORE INTO `venues` (`venueID`, `venueCode`, `venueName`, `venueType`, `status`) VALUES
+INSERT INTO `venues` (`venueID`, `venueCode`, `venueName`, `venueType`, `status`) VALUES
 (1, 'D405', 'Duerr 405', 'classroom', 'Active');
 
 --
@@ -641,97 +623,81 @@ ALTER TABLE `venues`
 --
 ALTER TABLE `announcements`
   MODIFY `announceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `applicant`
 --
 ALTER TABLE `applicant`
   MODIFY `apid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
 --
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
   MODIFY `assignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `auditlogs`
 --
 ALTER TABLE `auditlogs`
   MODIFY `auditID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `blocks`
 --
 ALTER TABLE `blocks`
   MODIFY `blockID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
   MODIFY `classID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `classlist`
 --
 ALTER TABLE `classlist`
   MODIFY `classListID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `download`
 --
 ALTER TABLE `download`
   MODIFY `dlID` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
   MODIFY `lessonID` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
   MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
   MODIFY `sujectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-
 --
 -- AUTO_INCREMENT for table `timeslots`
 --
 ALTER TABLE `timeslots`
   MODIFY `timeSlotID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
 --
 -- AUTO_INCREMENT for table `usertype`
 --
 ALTER TABLE `usertype`
   MODIFY `userTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `venues`
 --
 ALTER TABLE `venues`
-  MODIFY `venueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
+  MODIFY `venueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
