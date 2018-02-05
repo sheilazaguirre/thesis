@@ -30,7 +30,7 @@ class User_model extends CI_Model
     function get_all_faculty()
     {
         $this->db->join('usertype', 'userTypeID');
-        $this->db->order_by('userID', 'desc');
+        $this->db->order_by('userLN', 'asc');
         $this->db->where('status', 'Active');
         $this->db->where('usertype.userTypeID', '2');
         return $this->db->get('users')->result_array();
@@ -39,7 +39,7 @@ class User_model extends CI_Model
     function get_all_student()
     {
         $this->db->join('usertype', 'userTypeID');
-        $this->db->order_by('userID', 'desc');
+        $this->db->order_by('userLN', 'asc');
         $this->db->where('status', 'Active');
         $this->db->where('usertype.userTypeID', '3');
         return $this->db->get('users')->result_array();

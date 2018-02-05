@@ -61,12 +61,12 @@ class Subject extends CI_Controller{
     /*
      * Editing a subject
      */
-    function edit($sujectID)
+    function edit($subjectID)
     {   
         // check if the subject exists before trying to edit it
-        $data['subject'] = $this->Subject_model->get_subject($sujectID);
+        $data['subject'] = $this->Subject_model->get_subject($subjectID);
         
-        if(isset($data['subject']['sujectID']))
+        if(isset($data['subject']['subjectID']))
         {
             $this->load->library('form_validation');
 
@@ -84,7 +84,7 @@ class Subject extends CI_Controller{
 					'units' => $this->input->post('units'),
                 );
 
-                $this->Subject_model->update_subject($sujectID,$params);            
+                $this->Subject_model->update_subject($subjectID,$params);            
                 redirect('subject/index');
             }
             else
@@ -100,16 +100,16 @@ class Subject extends CI_Controller{
     /*
      * Deleting subject
      */
-    function remove($sujectID)
+    function remove($subjectID)
     {
-        $subject = $this->Subject_model->get_subject($sujectID);
+        $subject = $this->Subject_model->get_subject($subjectID);
 
         // check if the subject exists before trying to delete it
-        if(isset($subject['sujectID']))
+        if(isset($subject['subjectID']))
         {
             $this->db->set('status', 'Archive');
-            $this->Subject_model->delete_subject($sujectID);
-            redirect('subjects/index');
+            $this->Subject_model->delete_subject($subjectID);
+            redirect('subject/index');
         }
         else
             show_error('The subject you are trying to delete does not exist.');

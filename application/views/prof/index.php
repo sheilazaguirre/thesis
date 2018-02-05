@@ -2,9 +2,9 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List of Faculty</h3>
+                <h3 class="box-title">List of Prof</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('faculty/add'); ?>" class="btn btn-success btn-sm">Add Faculty</a> 
+                    <a href="<?php echo site_url('prof/add'); ?>" class="btn btn-success btn-sm">Add Prof</a> 
                 </div>
             </div>
             <div class="box-body">
@@ -20,14 +20,14 @@
                 </thead>
 
                     <tbody>
-                    <?php foreach($faculty as $f){ ?>
+                    <?php foreach($prof as $p){ ?>
                         <tr>
-                            <td><?php echo $f['facultyID']; ?></td>
-                            <td><?php echo $f['userFN']; ?> <?php echo $f['userLN']; ?></td>
-                            <td><?php echo $f['subjectCode']; ?></td>
-                            <td><?php echo $f['remarks']; ?></td>
+                            <td><?php echo $p['profID']; ?></td>
+                            <td><?php echo $p['userFN']; ?> <?php echo $p['userLN']; ?></td>
+                            <td><?php echo $p['subjectCode']; ?></td>
+                            <td><?php echo $p['remarks']; ?></td>
                             <td>
-                                <a href="<?php echo site_url('faculty/remove/'.$f['facultyID']); ?>" class="btn btn-danger btn-xs" onclick="confirm('Delete the Facuty?')"><span class="fa fa-trash"></span> Remove</a>
+                                <a href="<?php echo site_url('prof/remove/'.$p['profID']); ?>" class="btn btn-danger btn-xs" onclick="confirm('Delete this?')"><span class="fa fa-trash"></span> Remove</a>
                             </td>
                         </tr>
                     <?php } ?>

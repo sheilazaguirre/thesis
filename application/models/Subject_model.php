@@ -9,9 +9,9 @@ class Subject_model extends CI_Model
     }
     
     /*
-     * Get subject by sujectID
+     * Get subject by subjectID
      */
-    function get_subject($sujectID)
+    function get_subject($subjectID)
     {
         return $this->db->get_where('subjects',array('subjectID'=>$subjectID))->row_array();
     }
@@ -30,7 +30,7 @@ class Subject_model extends CI_Model
      */
     function get_all_subjects($params = array())
     {
-        $this->db->order_by('subjectID', 'asc');
+        $this->db->order_by('subjectCode', 'asc');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);

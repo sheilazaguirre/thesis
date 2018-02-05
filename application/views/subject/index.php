@@ -22,15 +22,15 @@
                 </thead>
                     <?php foreach($subjects as $s){ ?>
                     <tr>
-						<td><?php echo $s['sujectID']; ?></td>
+						<td><?php echo $s['subjectID']; ?></td>
 						<td><?php echo $s['subjectType']; ?></td>
 						<td><?php echo $s['subjectCode']; ?></td>
 						<td><?php echo $s['subjectName']; ?></td>
 						<td><?php echo $s['units']; ?></td>
 						<td><?php echo $s['status']; ?></td>
 						<td>
-                            <a href="<?php echo site_url('subject/edit/'.$s['sujectID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a href="<?php echo site_url('subject/remove/'.$s['sujectID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?php echo site_url('subject/edit/'.$s['subjectID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
+                            <a href="<?php echo site_url('subject/remove/'.$s['subjectID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
                         </td>
                     </tr>
                     <?php } ?>

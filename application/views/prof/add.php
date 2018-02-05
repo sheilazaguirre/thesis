@@ -2,27 +2,11 @@
     <div class="col-md-6">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Add Faculty</h3>
+              	<h3 class="box-title"></h3>
             </div>
-            <?php echo form_open('faculty/add'); ?>
+            <?php echo form_open('prof/add'); ?>
           	<div class="box-body">
           		<div class="row clearfix">
-					<div class="col-md-12">
-						<label for="userID" class="control-label">Faculty</label>
-						<div class="form-group">
-							<select name="userID" class="form-control">
-								<option value="">Select a User</option>
-								<?php 
-								foreach($all_users as $user)
-								{
-									$selected = ($user['userID'] == $this->input->post('userID')) ? ' selected="selected"' : "";
-
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userLN'].', '.$user['userFN'].'</option>';
-								} 
-								?>
-							</select>
-						</div>
-					</div>
 					<div class="col-md-12">
 						<label for="subjectID" class="control-label"><span class="text-danger">*</span>Subject</label>
 						<div class="form-group">

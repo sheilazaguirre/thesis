@@ -38,7 +38,8 @@ class Faculty extends CI_Controller{
         {   
             $params = array(
 				'userID' => $this->input->post('userID'),
-				'subjectID' => $this->input->post('subjectID'),
+                'subjectID' => $this->input->post('subjectID'),
+                'remarks' => $this->input->post('remarks'),
             );
             $this->db->set('dateAdded', 'NOW()', FALSE);
             $this->db->set('status', 'Active');
