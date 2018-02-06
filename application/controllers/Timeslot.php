@@ -95,7 +95,7 @@ class Timeslot extends CI_Controller{
         // check if the timeslot exists before trying to delete it
         if(isset($timeslot['timeSlotID']))
         {
-            $this->db->set('status', 'Archive');
+            $this->db->set('status', 'Archived');
             $this->Timeslot_model->delete_timeslot($timeSlotID);
             redirect('timeslot/index');
         }

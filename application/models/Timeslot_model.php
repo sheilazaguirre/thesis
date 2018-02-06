@@ -22,6 +22,7 @@ class Timeslot_model extends CI_Model
     function get_all_timeslots()
     {
         $this->db->order_by('timeSlotID', 'asc');
+        $this->db->where('status !=', 'Archived');
         return $this->db->get('timeslots')->result_array();
     }
         

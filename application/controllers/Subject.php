@@ -107,7 +107,7 @@ class Subject extends CI_Controller{
         // check if the subject exists before trying to delete it
         if(isset($subject['subjectID']))
         {
-            $this->db->set('status', 'Archive');
+            $this->db->set('status', 'Archived');
             $this->Subject_model->delete_subject($subjectID);
             redirect('subject/index');
         }

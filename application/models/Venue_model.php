@@ -31,6 +31,7 @@ class Venue_model extends CI_Model
     function get_all_venues($params = array())
     {
         $this->db->order_by('venueID', 'asc');
+        $this->db->where('status !=', 'Archived');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);
