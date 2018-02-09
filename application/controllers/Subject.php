@@ -35,24 +35,28 @@ class Subject extends CI_Controller{
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('subjectType','Subject Type','required|max_length[50]');
-		$this->form_validation->set_rules('subjectCode','Subject Code','required|max_length[7]');
+		$this->form_validation->set_rules('subjectCode','Subject Code','required|max_length[15]');
 		$this->form_validation->set_rules('subjectName','Subject Name','required|max_length[100]');
 		$this->form_validation->set_rules('units','Units','required|integer');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
-				'subjectType' => $this->input->post('subjectType'),
+                'subjectType' => $this->input->post('subjectType'),
+                'courseID' => $this->input->post('courseID'),
 				'subjectCode' => $this->input->post('subjectCode'),
 				'subjectName' => $this->input->post('subjectName'),
-				'units' => $this->input->post('units'),
+                'units' => $this->input->post('units'),
+                'status' => 'Active',
             );
-            $this->db->set('status', 'Active');
             $subject_id = $this->Subject_model->add_subject($params);
             redirect('subject/index');
         }
         else
-        {            
+        {   
+            $this->load->model('Course_model');
+            $data['all_courses'] = $this->Course_model->get_all_courses();
+                     
             $data['_view'] = 'subject/add';
             $this->load->view('layouts/main',$data);
         }
@@ -70,15 +74,16 @@ class Subject extends CI_Controller{
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('subjectType','SubjectType','required|max_length[50]');
-			$this->form_validation->set_rules('subjectCode','SubjectCode','required|max_length[7]');
+            $this->form_validation->set_rules('subjectType','SubjectType','required|max_length[50]');
+            $this->form_validation->set_rules('subjectCode','SubjectCode','required|max_length[15]');
 			$this->form_validation->set_rules('subjectName','SubjectName','required|max_length[100]');
 			$this->form_validation->set_rules('units','Units','required|integer');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
-					'subjectType' => $this->input->post('subjectType'),
+                    'subjectType' => $this->input->post('subjectType'),
+                    'courseID' => $this->input->post('courseID'),
 					'subjectCode' => $this->input->post('subjectCode'),
 					'subjectName' => $this->input->post('subjectName'),
 					'units' => $this->input->post('units'),

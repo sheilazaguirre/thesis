@@ -22,7 +22,7 @@ class User_model extends CI_Model
     function get_all_users()
     {
         $this->db->join('usertype', 'userTypeID');
-        $this->db->order_by('userID', 'desc');
+        $this->db->order_by('userID', 'asc');
         $this->db->where('status', 'Active');
         return $this->db->get('users')->result_array();
     }

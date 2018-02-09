@@ -2,7 +2,7 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Add Faculty</h3>
+              	<h3 class="box-title">Add User</h3>
             </div>
             <?php echo form_open('user/add'); ?>
           	<div class="box-body">

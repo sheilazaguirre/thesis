@@ -13,6 +13,7 @@
                     <tr>
 						<th>ID#</th>
 						<th>Subject Type</th>
+                        <th>Course</th>
 						<th>Subject Code</th>
 						<th>Subject Name</th>
 						<th>Units</th>
@@ -24,6 +25,7 @@
                     <tr>
 						<td><?php echo $s['subjectID']; ?></td>
 						<td><?php echo $s['subjectType']; ?></td>
+                        <td><?php echo $s['courseCode']; ?></td>
 						<td><?php echo $s['subjectCode']; ?></td>
 						<td><?php echo $s['subjectName']; ?></td>
 						<td><?php echo $s['units']; ?></td>

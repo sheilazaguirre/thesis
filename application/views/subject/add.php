@@ -17,6 +17,7 @@
 									'Lecture'=>'Lecture',
 									'Laboratory'=>'Laboratory',
 									'P.E.'=>'P.E.',
+									'NSTP'=>'NSTP',
 								);
 
 								foreach($subjectType_values as $value => $display_text)
@@ -28,6 +29,23 @@
 								?>
 							</select>
 							<span class="text-danger"><?php echo form_error('subjectType');?></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="courseID" class="control-label"><span class="text-danger">*</span>Course</label>
+						<div class="form-group">
+							<select name="courseID" class="form-control">
+								<option value="">Select a Course</option>
+									<?php 
+									foreach($all_courses as $course)
+									{
+										$selected = ($course['courseID'] == $this->input->post('courseID')) ? ' selected="selected"' : "";
+						
+										echo '<option value="'.$course['courseID'].'" '.$selected.'>'.$course['courseName'].'</option>';
+									} 
+									?>
+							</select>
+							<span class="text-danger"><?php echo form_error('courseID');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">

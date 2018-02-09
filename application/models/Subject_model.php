@@ -30,8 +30,9 @@ class Subject_model extends CI_Model
      */
     function get_all_subjects($params = array())
     {
+        $this->db->join('course', 'courseID');
         $this->db->order_by('subjectCode', 'asc');
-        $this->db->where('status !=', 'Archived');
+        $this->db->where('subjects.status !=', 'Archived');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);

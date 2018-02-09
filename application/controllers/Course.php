@@ -36,7 +36,6 @@ class Course extends CI_Controller{
 		$this->form_validation->set_rules('courseCode','CourseCode','required|max_length[10]');
 		$this->form_validation->set_rules('courseName','CourseName','required|max_length[70]');
 		$this->form_validation->set_rules('remarks','Remarks','required|max_length[200]');
-        $this->form_validation->set_rules('dateAdded','DateAdded');
         $this->form_validation->set_rules('dateModified','DateModified');
 		
 		if($this->form_validation->run())     
@@ -45,11 +44,10 @@ class Course extends CI_Controller{
 				'courseCode' => $this->input->post('courseCode'),
 				'courseName' => $this->input->post('courseName'),
 				'remarks' => $this->input->post('remarks'),
-				'dateAdded' => date('Y-m-d H:i:s'),
                 'dateModified' => null,
                 'status' => 'Active',
             );
-            
+            $this->db->set('dateAdded', 'NOW()', FALSE);
             $course_id = $this->Course_model->add_course($params);
             redirect('course/index');
         }
@@ -75,7 +73,6 @@ class Course extends CI_Controller{
 			$this->form_validation->set_rules('courseCode','CourseCode','required|max_length[10]');
 			$this->form_validation->set_rules('courseName','CourseName','required|max_length[70]');
 			$this->form_validation->set_rules('remarks','Remarks','required|max_length[200]');
-			$this->form_validation->set_rules('dateModified','DateModified','required');
 		
 			if($this->form_validation->run())     
             {   
@@ -83,9 +80,8 @@ class Course extends CI_Controller{
 					'courseCode' => $this->input->post('courseCode'),
 					'courseName' => $this->input->post('courseName'),
 					'remarks' => $this->input->post('remarks'),
-					'dateModified' => date('Y-m-d H:i:s'),
                 );
-
+                $this->db->set('dateModified', 'NOW()', FALSE);
                 $this->Course_model->update_course($courseID,$params);            
                 redirect('course/index');
             }

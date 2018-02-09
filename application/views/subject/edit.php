@@ -4,7 +4,7 @@
             <div class="box-header with-border">
               	<h3 class="box-title">Subject Edit</h3>
             </div>
-			<?php echo form_open('subject/edit/'.$subject['sujectID']); ?>
+			<?php echo form_open('subject/edit/'.$subject['subjectID']); ?>
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
@@ -28,6 +28,23 @@
 								?>
 							</select>
 							<span class="text-danger"><?php echo form_error('subjectType');?></span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="courseID" class="control-label"><span class="text-danger">*</span>Course</label>
+						<div class="form-group">
+							<select name="courseID" class="form-control">
+								<option value="">Select a Course</option>
+								<?php 
+								foreach($all_courses as $course)
+								{
+									$selected = ($course['courseID'] == $this->input->post('courseID')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$course['courseID'].'" '.$selected.'>'.$course['courseCode'].'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('courseID');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">

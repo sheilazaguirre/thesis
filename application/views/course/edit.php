@@ -28,13 +28,6 @@
                         <span class="text-danger"><?php echo form_error('remarks');?></span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="dateModified" class="control-label"><span class="text-danger">*</span>DateModified</label>
-                    <div class="form-group">
-                        <input type="text" name="dateModified" value="<?php echo ($this->input->post('dateModified') ? $this->input->post('dateModified') : $course['dateModified']); ?>" class="has-datetimepicker form-control" id="dateModified" />
-                        <span class="text-danger"><?php echo form_error('dateModified');?></span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="box-footer">

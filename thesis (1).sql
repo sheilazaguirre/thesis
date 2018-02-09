@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2018 at 08:19 AM
+-- Generation Time: Feb 09, 2018 at 05:09 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -228,6 +228,34 @@ INSERT INTO `classlist` (`classListID`, `classID`, `studentID`, `remarks`, `date
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `courseID` int(11) NOT NULL,
+  `courseCode` varchar(10) NOT NULL,
+  `courseName` varchar(70) NOT NULL,
+  `remarks` varchar(200) NOT NULL,
+  `dateAdded` datetime NOT NULL,
+  `dateModified` datetime DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`courseID`, `courseCode`, `courseName`, `remarks`, `dateAdded`, `dateModified`, `status`) VALUES
+(1, 'BS-CS', 'Bachelor of Computer Science', 'Major in Computer Science', '2018-02-08 23:38:25', '2018-02-08 23:38:50', 'Active'),
+(2, 'BS-SEM', 'Bachelor of Secondary Education Major in Mathematics', 'Major in Mathematics', '2018-02-08 23:39:54', '2018-02-08 23:42:26', 'Active'),
+(3, 'BS-EE', 'Bachelor of Elementary Education', 'Elementary Education', '2018-02-08 23:41:26', NULL, 'Active'),
+(4, 'BS-SEF', 'Bachelor of Secondary Education Major in Filipino', 'Major in Filipino', '2018-02-08 23:42:14', NULL, 'Active'),
+(5, 'BS-BA', 'Bachelor of Science in Business Administration', 'Major in Business Administration', '2018-02-08 23:43:15', NULL, 'Active'),
+(6, 'BS-SESH', 'Bachelor of Secondary Education Major in Science & Health', 'Major in Science & Health', '2018-02-08 23:44:02', NULL, 'Active');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `download`
 --
 
@@ -249,12 +277,20 @@ CREATE TABLE `download` (
 CREATE TABLE `faculty` (
   `facultyID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `sujectID` int(11) NOT NULL,
+  `subjectID` int(11) NOT NULL,
   `remarks` varchar(100) DEFAULT NULL,
   `dateAdded` datetime NOT NULL,
   `dateModified` datetime NOT NULL,
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`facultyID`, `userID`, `subjectID`, `remarks`, `dateAdded`, `dateModified`, `status`) VALUES
+(1, 14, 5, 'Major in Psychology', '2018-02-09 01:59:08', '0000-00-00 00:00:00', 'Active'),
+(2, 11, 2, 'Filipino Only', '2018-02-09 01:59:28', '0000-00-00 00:00:00', 'Active');
 
 -- --------------------------------------------------------
 
@@ -272,6 +308,20 @@ CREATE TABLE `lessons` (
   `dateModified` datetime NOT NULL,
   `dateExpiry` datetime NOT NULL,
   `status` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prof`
+--
+
+CREATE TABLE `prof` (
+  `profID` int(11) NOT NULL,
+  `facultyID` int(11) NOT NULL,
+  `subjectID` int(11) NOT NULL,
+  `remarks` varchar(200) NOT NULL,
+  `status` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -304,8 +354,9 @@ INSERT INTO `students` (`studentID`, `userID`, `blockID`, `dateAdded`, `dateModi
 --
 
 CREATE TABLE `subjects` (
-  `sujectID` int(11) NOT NULL,
-  `subjectCode` varchar(7) NOT NULL,
+  `subjectID` int(11) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  `subjectCode` varchar(15) NOT NULL,
   `subjectName` varchar(100) NOT NULL,
   `subjectType` varchar(50) NOT NULL,
   `units` int(11) NOT NULL,
@@ -316,57 +367,15 @@ CREATE TABLE `subjects` (
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`sujectID`, `subjectCode`, `subjectName`, `subjectType`, `units`, `status`) VALUES
-(1, 'Eng1', 'English Communication 1', 'Lecture', 3, 'Active'),
-(2, 'Fil1', 'Sining ng Komunikasyon', 'Lecture', 3, 'Active'),
-(3, 'SocSci1', 'Philippine History', 'Lecture', 3, 'Active'),
-(4, 'Math1', 'College Algebra', 'Lecture', 3, 'Active'),
-(5, 'Psycho1', 'General Psychology', 'Lecture', 3, 'Active'),
-(6, 'ComSciA', 'Orientation in Information Technology', 'Lecture', 3, 'Active'),
-(7, 'ComSci1', 'Computer Fundamentals', 'Lecture', 3, 'Active'),
-(8, 'PE1', 'Self Testing Activities', 'P.E.', 2, 'Active'),
-(9, 'Eng2', 'English Communication 2', 'Lecture', 3, 'Active'),
-(10, 'Fil2', 'Pagbasa at Pagsulat sa ibat-ibang Disciplina', 'Lecture', 3, 'Active'),
-(11, 'ComSciB', 'Code of Ethics for Filipino IT Professionals', 'Lecture', 3, 'Active'),
-(12, 'ComSci2', 'Fund. of Prob Solving & Quality Process', 'Lecture', 3, 'Active'),
-(13, 'SocSci2', 'Basic Economics w/ TAR', 'Lecture', 3, 'Active'),
-(14, 'SocSci5', 'Life, Works & Writings of Rizal', 'Lecture', 3, 'Active'),
-(15, 'Math3', 'Trigonometry/Analytical Geometry', 'Lecture', 3, 'Active'),
-(16, 'PE2', 'Fundamentals of Rhythmic Activities', 'P.E.', 2, 'Active'),
-(17, 'Eng4', 'Modern Communication 2', 'Lecture', 3, 'Active'),
-(18, 'Philo1', 'Philosophy of Man', 'Lecture', 3, 'Active'),
-(19, 'Math5', 'Discrete Math', 'Lecture', 3, 'Active'),
-(20, 'SocSci4', 'Politics & Governance w/ Phil. Const.', 'Lecture', 3, 'Active'),
-(21, 'ComSci3', 'Fundamentals of Programming', 'Lecture', 3, 'Active'),
-(22, 'ComSci4', 'Quality Consciousness Habit & Processes', 'Lecture', 3, 'Active'),
-(23, 'PE3', 'Group Names', 'P.E.', 2, 'Active'),
-(24, 'Eng5', 'Modern Communication 3', 'Lecture', 3, 'Active'),
-(25, 'Educ4', 'Values Education/Professional Ethics', 'Lecture', 3, 'Active'),
-(26, 'ComSci5', 'Logic, Designs & Digital Computer Circuits', 'Lecture', 3, 'Active'),
-(27, 'ComSci6', 'Data Structure', 'Lecture', 3, 'Active'),
-(28, 'PE4', 'Social Recreation', 'P.E.', 3, 'Active'),
-(29, 'CWTS101', 'Civic Welfare 1', 'Lecture', 3, 'Active'),
-(30, 'CWTS102', 'Civic Welfare 2', 'Lecture', 3, 'Active'),
-(31, 'NatSci4', 'Physics 1', 'Lecture', 3, 'Active'),
-(32, 'SocSci6', 'Society & Culture w/ Family Planning', 'Lecture', 3, 'Active'),
-(33, 'Math2', 'Statistics/Probability', 'Lecture', 3, 'Active'),
-(34, 'PDPR', 'Personality Development & Public Relation', 'Lecture', 3, 'Active'),
-(35, 'Lit1', 'Literatures of the Philippines', 'Lecture', 3, 'Active'),
-(36, 'Math6', 'Analysis 1 (Problem Solving w/ Quantity Process)', 'Lecture', 3, 'Active'),
-(37, 'NatSci5', 'Physics 2', 'Lecture', 3, 'Active'),
-(38, 'ComSci7', 'Principles of Programming Language', 'Lecture', 3, 'Active'),
-(39, 'ComSci8', 'Principles of File Organization', 'Lecture', 3, 'Active'),
-(40, 'ComSci9', 'Intro to Computer System Organization', 'Lecture', 3, 'Active'),
-(41, 'Mgt1', 'Principles of Management', 'Lecture', 3, 'Active'),
-(42, 'Lit2', 'Literature of the World', 'Lecture', 3, 'Active'),
-(43, 'Math7', 'Abstract Algebra', 'Lecture', 3, 'Active'),
-(44, 'Fil3', 'Retorika', 'Lecture', 3, 'Active'),
-(45, 'SocSci7', 'Introduction to Sociology', 'Lecture', 3, 'Active'),
-(46, 'Math8', 'Discrete Math 2', 'Lecture', 3, 'Active'),
-(47, 'Educ1', 'Principles and Methods of Teaching', 'Lecture', 3, 'Active'),
-(48, 'ComSciC', 'Computer Graphics', 'Lecture', 3, 'Active'),
-(49, 'ComSciD', 'Object Oriented Programming', 'Lecture', 3, 'Active'),
-(50, 'ComSciE', 'Introduction to Software Engineering', 'Lecture', 3, 'Active');
+INSERT INTO `subjects` (`subjectID`, `courseID`, `subjectCode`, `subjectName`, `subjectType`, `units`, `status`) VALUES
+(1, 5, 'Eng 1', 'English Communication 1', 'Lecture', 3, 'Active'),
+(2, 5, 'Fil 1', 'Sining ng Komunikasyon', 'Lecture', 3, 'Active'),
+(3, 5, 'Soc Sci 1', 'Philippine History', 'Lecture', 3, 'Active'),
+(4, 5, 'Math 1', 'College Algebra', 'Lecture', 3, 'Active'),
+(5, 5, 'Psycho 1', 'General Psychology', 'Lecture', 3, 'Active'),
+(6, 5, 'Mgt 1', 'Principles of Management', 'Lecture', 3, 'Active'),
+(7, 5, 'CWTS 101', 'Civic Welfare 1', 'Lecture', 3, 'Active'),
+(8, 5, 'PE 101', 'Self Testing Activities', 'P.E.', 2, 'Active');
 
 -- --------------------------------------------------------
 
@@ -387,7 +396,7 @@ CREATE TABLE `timeslots` (
 --
 
 INSERT INTO `timeslots` (`timeSlotID`, `dayOfWeek`, `startTime`, `endTime`, `status`) VALUES
-(1, 'mwf', '08:00', '09:30', 'Active'),
+(1, 'mwf', '08:00', '09:30', 'Archived'),
 (2, 'MWF', '9:00', '10:30', 'Active');
 
 -- --------------------------------------------------------
@@ -512,7 +521,8 @@ CREATE TABLE `venues` (
 --
 
 INSERT INTO `venues` (`venueID`, `venueCode`, `venueName`, `venueType`, `status`) VALUES
-(1, 'D405', 'Duerr 405', 'classroom', 'Active');
+(1, 'D405', 'Duerr 405', 'classroom', 'Active'),
+(2, 'test', 'test', 'Laboratory', 'Archived');
 
 --
 -- Indexes for dumped tables
@@ -561,6 +571,12 @@ ALTER TABLE `classlist`
   ADD PRIMARY KEY (`classListID`);
 
 --
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`courseID`);
+
+--
 -- Indexes for table `download`
 --
 ALTER TABLE `download`
@@ -579,6 +595,12 @@ ALTER TABLE `lessons`
   ADD PRIMARY KEY (`lessonID`);
 
 --
+-- Indexes for table `prof`
+--
+ALTER TABLE `prof`
+  ADD PRIMARY KEY (`profID`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -588,7 +610,7 @@ ALTER TABLE `students`
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
-  ADD PRIMARY KEY (`sujectID`);
+  ADD PRIMARY KEY (`subjectID`);
 
 --
 -- Indexes for table `timeslots`
@@ -654,6 +676,11 @@ ALTER TABLE `classes`
 ALTER TABLE `classlist`
   MODIFY `classListID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `download`
 --
 ALTER TABLE `download`
@@ -662,12 +689,17 @@ ALTER TABLE `download`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
   MODIFY `lessonID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `prof`
+--
+ALTER TABLE `prof`
+  MODIFY `profID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `students`
 --
@@ -677,7 +709,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `sujectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `subjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `timeslots`
 --
@@ -697,7 +729,7 @@ ALTER TABLE `usertype`
 -- AUTO_INCREMENT for table `venues`
 --
 ALTER TABLE `venues`
-  MODIFY `venueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
+  MODIFY `venueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

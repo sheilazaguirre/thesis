@@ -72,7 +72,7 @@
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="login" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -191,6 +191,19 @@
                                 </li>
 								<li>
                                     <a href="<?php echo site_url('classlist/index');?>"><i class="fa fa-list-ul"></i> View Classlist</a>
+                                </li>
+							</ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Course</span>
+                            </a>
+                            <ul class="treeview-menu">
+								<li class="active">
+                                    <a href="<?php echo site_url('course/add');?>"><i class="fa fa-plus"></i> Add Course</a>
+                                </li>
+								<li>
+                                    <a href="<?php echo site_url('course/index');?>"><i class="fa fa-list-ul"></i> View Course</a>
                                 </li>
 							</ul>
                         </li>
