@@ -16,7 +16,8 @@
 								$subjectType_values = array(
                                     'Lecture'=>'Lecture',
                                     'Laboratory'=>'Laboratory',
-                                    'P.E.'=>'P.E.',
+									'P.E.'=>'P.E.',
+									'NSTP'=>'NSTP',
 								);
 
 								foreach($subjectType_values as $value => $display_text)

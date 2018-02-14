@@ -1,12 +1,3 @@
-<?php
-	include 'config.php';
-	$query = "SELECT cl.classlistID, b.blockCode, CONCAT(u.userLN,', ', u.userFN) as userName, cl.midtermGrade, cl.finalGrade FROM classList cl
-						INNER JOIN students s ON cl.studentID = s.studentID
-						INNER JOIN blocks b ON s.blockID = b.blockID
-						INNER JOIN users u ON s.userID = u.userID";
-
-	$result = $con->query($query) or die(mysqli_error($con));
-?>
 <!DOCTYPE html>
 <html>
 
@@ -18,16 +9,15 @@
 
 	<title>Faculty</title>
 
-		<link rel="stylesheet" href="assets/demo.css">
+		<!-- <link rel="stylesheet" href="assets/demo.css"> -->
 		<link rel="stylesheet" href="css/header-user-student.css">
 		<link rel="stylesheet" href="css/footer-student.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  		<link rel="stylesheet" href="assets/xstyle.css">
+  		<!-- <link rel="stylesheet" href="assets/xstyle.css"> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-				rel="stylesheet" />
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
 
 
 </head>
@@ -69,75 +59,735 @@
 		<div id="wrap">
 			<div class="container">
             <h3>Grades Encoding</h3>
-				<table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+						<br/>
+
+							<div class="container">
+								<div class="col-md-6">
+									<h5>Faculty: Salvador, Ronaldo</h5>
+									<h5>Subject: Fil 1</h5>
+									<h5>Section: TI001</h5>
+									<h5>Year: 1st Year</h5>
+								</div>
+								<div class="col-md-6">
+									<h5>SY: 2017-2018</h5>
+									<h5>Venue: D405</h5>
+									<h5>Schedule: MW 11:20 - 12:50</h5>
+								</div>
+							</div>
+						<h3 align="center"><b>Prelims</b></h3>
+						<hr/>
+				<table id="name" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th bgcolor="#a9404d">Classlist ID</th>
-							<th bgcolor="#a9404d">Section</th>
+							<th bgcolor="#a9404d">Student ID</th>
 							<th bgcolor="#a9404d">Student Name</th>
-							<th bgcolor="#a9404d">Midterm Grade</th>
-							<th bgcolor="#a9404d">Final Grade</th>
-							<th bgcolor="#a9404d">Options</th>
+							<th bgcolor="#a9404d">Grade</th>
+							<th bgcolor="#a9404d">Remarks</th>
 							
 						</tr>
 					</thead>
 					<tbody>
-						<?php
-							while ($row = mysqli_fetch_array($result))
-							{
-								$no = $row['classlistID'];
-								$section = $row['blockCode'];
-								$sn = $row['userName'];
-								$mg = $row['midtermGrade'];
-								$fg = $row['finalGrade'];
+						<tr class="student1">
+							<td>11810001</td>
+							<td>Blake, Ian V.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student2">
+							<td>11810002</td>
+							<td>Sanchez, Victoria L.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student3">
+							<td>11810003</td>
+							<td>Go, Troy T.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student4">
+							<td>11810004</td>
+							<td>Ong, Beper C.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student5">
+							<td>11810005</td>
+							<td>Zaguirre, Sheila P.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student6">
+							<td>11810006</td>
+							<td>Pascual, Shaun G.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student7">
+							<td>11810007</td>
+							<td>Villanueva, Miko G.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea rows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student8">
+							<td>11810008</td>
+							<td>Blake, Ian V.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student9">
+							<td>11810009</td>
+							<td>James, Lebron B.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student10">
+							<td>11810010</td>
+							<td>Santos, Julienne L.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student11">
+							<td>11810011</td>
+							<td>Comia, Ralph G.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student12">
+							<td>11810012</td>
+							<td>Valmeo, Biance T.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student13">
+							<td>11810013</td>
+							<td>Talimban, Bea S.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student14">
+							<td>11810014</td>
+							<td>Estera, Gian B.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student15">
+							<td>11810015</td>
+							<td>Tuazon, Paul M.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student16">
+							<td>11810016</td>
+							<td>Hernando, Alexa S.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student17">
+							<td>11810017</td>
+							<td>Remulla, JIonna O.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student18">
+							<td>11810018</td>
+							<td>Su, Samantha S.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student19">
+							<td>11810019</td>
+							<td>Magsaysay, Joseph S.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student20">
+							<td>11810020</td>
+							<td>Filipinas, Luzviminda A.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student21">
+							<td>11810021</td>
+							<td>Bryant, Kobe L.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student22">
+							<td>11810022</td>
+							<td>Irving, Kyrie C.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student23">
+							<td>11810023</td>
+							<td>Durant, Kevin T.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student24">
+							<td>11810024</td>
+							<td>Westbrook, Rusell T.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student25">
+							<td>11810025</td>
+							<td>Curry, Stephen W.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student26">
+							<td>11810026</td>
+							<td>Thompson, Klay W.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student27">
+							<td>11810027</td>
+							<td>Lucid, Shannon, W.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student28">
+							<td>11810028</td>
+							<td>Pascal, Blaise K.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student29">
+							<td>11810029</td>
+							<td>Elion, Gertrude B.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
+						<tr class="student30">
+							<td>11810030</td>
+							<td>Barton, Jacqueline K.</td>
+							<td>
+								<select required>
+									<option value="">Select Grade</option>
+									<option value="1">1.0</option>
+									<option value="1.25">1.25</option>
+									<option value="1.50">1.50</option>
+									<option value="1.75">1.75</option>
+									<option value="2">2.0</option>
+									<option value="2.25">2.25</option>
+									<option value="2.50">2.50</option>
+									<option value="2.75">2.75</option>
+									<option value="3">3</option>
+									<option value="4">4.0</option>
+									<option value="w">W</option>
+									<option value="x">X</option>
+									<option value="inc">INC</option>
+								</select></td>
+							<td><textarea Srows="2" id="remarks"></textarea></td>
+							
+						</tr>
 
-								echo 
-									"<tr>
-										<td>" .$no . "</td>
-										<td>" .$section . "</td>
-										<td>" .$sn . "</td>
-										<td> <select name='midterm' id='midterm'>
-											<option>" .$mg . "</option>
-											<option value='1'>1.0</option>
-											<option value='1.25'>1.25</option>
-											<option value='1.50'>1.50</option>
-											<option value='1.75'>1.75</option>
-											<option value='2'>2.0</option>
-											<option value='2.25'>2.25</option>
-											<option value='2.50'>2.50</option>
-											<option value='2.75'>2.75</option>
-											<option value='3'>3.0</option>
-											<option value='4'>4.0</option>
-										</select></td>
-									<td> <select name='final' id='final'>
-										<option>" .$fg . "</option>
-										<option value='1'>1.0</option>
-										<option value='1.25'>1.25</option>
-										<option value='1.50'>1.50</option>
-										<option value='1.75'>1.75</option>
-										<option value='2'>2.0</option>
-										<option value='2.25'>2.25</option>
-										<option value='2.50'>2.50</option>
-										<option value='2.75'>2.75</option>
-										<option value='3'>3.0</option>
-										<option value='4'>4.0</option>
-									</select></td>
-										<td>
-										<a href='facultyheaderfooter-gradesEdit.php?no=" . $no . "' type='button' class='btn btn-info'>
-										<i class='fa fa-edit'>
-										</i>
-										</a>
-										</td>
-									</tr>";
-							}
-						?>
 					</tbody>
 					
 				</table>
-				 <div class="form-group">
-              <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-danger btn-lg">Back</button>
-              </div>
+				
+				<div class="form-group">
+          <div class="col-md-12 text-right">
+						<button type="sumbit" class="btn btn-success btn-lg">Save</button>
+						<button type="sumbit" class="btn btn-info btn-lg">Submit</button>
+            <button type="submit" class="btn btn-danger btn-lg">Back</button>
+          </div>
 			</div>
 		</div>
 
@@ -148,51 +798,34 @@
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
 
-	$(document).ready(function(){
+// <script>
 
-		var userMenu = $('.header-user-dropdown .header-user-menu');
+// 	$(document).ready(function(){
 
-		userMenu.on('touchend', function(e){
+// 		var userMenu = $('.header-user-dropdown .header-user-menu');
 
-			userMenu.addClass('show');
+// 		userMenu.on('touchend', function(e){
 
-			e.preventDefault();
-			e.stopPropagation();
+// 			userMenu.addClass('show');
 
-		});
+// 			e.preventDefault();
+// 			e.stopPropagation();
 
-		// This code makes the user dropdown work on mobile devices
+// 		});
 
-		$(document).on('touchend', function(e){
+// 		// This code makes the user dropdown work on mobile devices
 
-			// If the page is touched anywhere outside the user menu, close it
-			userMenu.removeClass('show');
+// 		$(document).on('touchend', function(e){
 
-		});
+// 			// If the page is touched anywhere outside the user menu, close it
+// 			userMenu.removeClass('show');
 
-	});
+// 		});
 
-	$(document).ready(function() {
+// 	});
 
-        var userID;
-
-        $("#userID").change(function() {
-            userID = $(this).val();
-            $.get('<?php echo site_url();?>student/findcourse/' + userID, function(data) {
-                console.log(data);
-                $('#course').html(data);
-                $('#loader').slideUp(200, function() {
-                    $(this).remove();
-                });
-            });
-        });
-
-    });
-</script>
-
-</script>
+// </script>
 <footer class="footer-distributed">
 
       <div class="footer-left">

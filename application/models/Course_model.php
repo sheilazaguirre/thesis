@@ -33,7 +33,7 @@ class Course_model extends CI_Model
      */
     function get_all_courses($params = array())
     {
-        $this->db->order_by('courseID', 'asc');
+        $this->db->order_by('courseName', 'asc');
         $this->db->where('status !=', 'Archived');
         if(isset($params) && !empty($params))
         {

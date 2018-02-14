@@ -29,6 +29,11 @@ class Prof extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
+    function grades()
+    {
+        $this->load->view('prof/grades');
+    }
+    
     /*
      * Adding a new prof
      */
@@ -55,7 +60,6 @@ class Prof extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }  
-
 
     /*
      * Deleting prof

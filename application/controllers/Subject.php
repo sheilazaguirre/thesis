@@ -94,6 +94,9 @@ class Subject extends CI_Controller{
             }
             else
             {
+                $this->load->model('Course_model');
+                $data['all_courses'] = $this->Course_model->get_all_courses();
+
                 $data['_view'] = 'subject/edit';
                 $this->load->view('layouts/main',$data);
             }

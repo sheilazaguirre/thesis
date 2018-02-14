@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2018 at 05:09 AM
+-- Generation Time: Feb 14, 2018 at 08:12 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -213,7 +213,7 @@ CREATE TABLE `classlist` (
   `classListID` int(11) NOT NULL,
   `classID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
-  `remarks` int(11) NOT NULL,
+  `remarks` varchar(200) NOT NULL,
   `dateAdded` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -222,8 +222,56 @@ CREATE TABLE `classlist` (
 --
 
 INSERT INTO `classlist` (`classListID`, `classID`, `studentID`, `remarks`, `dateAdded`) VALUES
-(1, 0, 0, 0, 0),
-(2, 0, 0, 0, 0);
+(1, 1, 11810001, '', 20180214),
+(2, 1, 11810035, '', 20180214),
+(3, 1, 11810021, '', 20180214),
+(4, 1, 11810002, '', 20180214),
+(5, 1, 11810010, '', 20180214),
+(6, 1, 11810030, '', 20180214),
+(7, 1, 11810006, '', 20180214),
+(8, 1, 11810024, '', 20180214),
+(9, 1, 11810019, '', 20180214),
+(10, 1, 11810040, '', 20180214),
+(11, 1, 11810008, '', 20180214),
+(12, 1, 11810017, '', 20180214),
+(13, 1, 11810022, '', 20180214),
+(14, 1, 11810042, '', 20180214),
+(15, 1, 11810029, '', 20180214),
+(16, 1, 11810041, '', 20180214),
+(17, 1, 11810026, '', 20180214),
+(18, 1, 11810038, '', 20180214),
+(19, 1, 11810012, '', 20180214),
+(20, 1, 11810016, '', 20180214),
+(21, 1, 11810045, '', 20180214),
+(22, 1, 11810033, '', 20180214),
+(23, 1, 11810015, '', 20180214),
+(24, 1, 11810039, '', 20180214),
+(25, 1, 11810011, '', 20180214),
+(26, 2, 11810003, '', 20180214),
+(27, 2, 11810004, '', 20180214),
+(28, 2, 11810005, '', 20180214),
+(29, 2, 11810007, '', 20180214),
+(30, 2, 11810009, '', 20180214),
+(31, 2, 11810013, '', 20180214),
+(32, 2, 11810014, '', 20180214),
+(33, 2, 11810018, '', 20180214),
+(34, 2, 11810020, '', 20180214),
+(35, 2, 11810023, '', 20180214),
+(36, 2, 11810025, '', 20180214),
+(37, 2, 11810027, '', 20180214),
+(38, 2, 11810028, '', 20180214),
+(39, 2, 11810031, '', 20180214),
+(40, 2, 11810032, '', 20180214),
+(41, 2, 11810034, '', 20180214),
+(42, 2, 11810036, '', 20180214),
+(43, 2, 11810037, '', 20180214),
+(44, 2, 11810043, '', 20180214),
+(45, 2, 11810044, '', 20180214),
+(46, 2, 11810046, '', 20180214),
+(47, 2, 11810047, '', 20180214),
+(48, 2, 11810048, '', 20180214),
+(49, 2, 11810049, '', 20180214),
+(50, 2, 11810050, '', 20180214);
 
 -- --------------------------------------------------------
 
@@ -291,6 +339,24 @@ CREATE TABLE `faculty` (
 INSERT INTO `faculty` (`facultyID`, `userID`, `subjectID`, `remarks`, `dateAdded`, `dateModified`, `status`) VALUES
 (1, 14, 5, 'Major in Psychology', '2018-02-09 01:59:08', '0000-00-00 00:00:00', 'Active'),
 (2, 11, 2, 'Filipino Only', '2018-02-09 01:59:28', '0000-00-00 00:00:00', 'Active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `gradeID` int(11) NOT NULL,
+  `classID` int(11) NOT NULL,
+  `studentID` int(11) NOT NULL,
+  `grade` varchar(3) NOT NULL,
+  `remarks` varchar(300) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `dateAdded` datetime NOT NULL,
+  `lastSaved` datetime NOT NULL,
+  `dateSubmitted` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -373,9 +439,186 @@ INSERT INTO `subjects` (`subjectID`, `courseID`, `subjectCode`, `subjectName`, `
 (3, 5, 'Soc Sci 1', 'Philippine History', 'Lecture', 3, 'Active'),
 (4, 5, 'Math 1', 'College Algebra', 'Lecture', 3, 'Active'),
 (5, 5, 'Psycho 1', 'General Psychology', 'Lecture', 3, 'Active'),
-(6, 5, 'Mgt 1', 'Principles of Management', 'Lecture', 3, 'Active'),
-(7, 5, 'CWTS 101', 'Civic Welfare 1', 'Lecture', 3, 'Active'),
-(8, 5, 'PE 101', 'Self Testing Activities', 'P.E.', 2, 'Active');
+(6, 5, 'Nat Sci 1', 'Earth Science', 'Lecture', 3, 'Active'),
+(7, 5, 'Mgt 1', 'Principles of Management', 'Lecture', 3, 'Active'),
+(8, 5, 'CWTS 101', 'Civic Welfare 1', 'NSTP', 3, 'Active'),
+(9, 5, 'PE 101', 'Self Testing Activities', 'P.E.', 2, 'Active'),
+(10, 5, 'Eng 2', 'English Communication 2', 'Lecture', 3, 'Active'),
+(11, 5, 'Fil 2', 'Pagbasa at Pagsulat sa Ibat-ibang Disiplina', 'Lecture', 3, 'Active'),
+(12, 5, 'Nat Sci 1', 'Biological Science', 'Lecture', 3, 'Active'),
+(13, 5, 'Mgt 2', 'Business Organization & Management', 'Lecture', 3, 'Active'),
+(14, 5, 'Math 2', 'Statistics/Probability', 'Lecture', 3, 'Active'),
+(15, 5, 'Soc Sci 2', 'Basic Economics w/ TAR', 'Lecture', 3, 'Active'),
+(16, 5, 'Soc Sci 3', 'Contemporary World Geography', 'Lecture', 3, 'Active'),
+(17, 5, 'CWTS 102', 'Civic Welfare 2', 'NSTP', 3, 'Active'),
+(18, 5, 'PE 102', 'Fundamentals of Rhythmic Activities', 'P.E.', 2, 'Active'),
+(19, 5, 'Eng 3', 'Modern Communication (Writing & Oral Comm.)', 'Lecture', 3, 'Active'),
+(20, 5, 'Fil 3', 'Retorika', 'Lecture', 3, 'Active'),
+(21, 5, 'Math 4', 'Business Mathematics', 'Lecture', 3, 'Active'),
+(22, 5, 'Fin 1', 'Financial Management/Basic Business', 'Lecture', 3, 'Active'),
+(23, 5, 'Soc Sci 4', 'Politics & Governance w/ Phil Constitution', 'Lecture', 3, 'Active'),
+(24, 5, 'Mgt 4', 'Office Management & Automation', 'Lecture', 3, 'Active'),
+(25, 5, 'Mgt 3', 'Public Administration', 'Lecture', 3, 'Active'),
+(26, 5, 'PE 3', 'Group Games', 'P.E.', 2, 'Active'),
+(27, 5, 'Eng 4', 'Modern Communication 2', 'Lecture', 3, 'Active'),
+(28, 5, 'Bus Law 1', 'Obligation & Contract', 'Lecture', 3, 'Active'),
+(29, 5, 'Mrktg 1', 'Principles of Marketing', 'Lecture', 3, 'Active'),
+(30, 5, 'Soc Sci 5', 'Life, Work & of Rizal', 'Lecture', 3, 'Active'),
+(31, 5, 'Soc Sci 6', 'Society & Culture w/ Family Planning', 'Lecture', 3, 'Active'),
+(32, 5, 'Philo 1', 'Philosophy of Man', 'Lecture', 3, 'Active'),
+(33, 5, 'Mgt 5', 'Wage & Salary Administration', 'Lecture', 3, 'Active'),
+(34, 5, 'PE 4', 'Social Recreation', 'P.E.', 2, 'Active'),
+(35, 5, 'Lit 1', 'Literatures of the Philippines', 'Lecture', 3, 'Active'),
+(36, 5, 'Nat Sci 3', 'Ecology', 'Lecture', 3, 'Active'),
+(37, 5, 'Bus Law 2', 'Laws on Business Organization', 'Lecture', 3, 'Active'),
+(38, 5, 'Mgt 6', 'Labor & Management Relations', 'Lecture', 3, 'Active'),
+(39, 5, 'Mgt 7', 'Materials Management', 'Lecture', 3, 'Active'),
+(40, 5, 'Soc Sci 8', 'Introduction to Microeconomics', 'Lecture', 3, 'Active'),
+(41, 5, 'Mgt 14', '(HRM1) Introduction to Hotel & Restaurant Management', 'Lecture', 3, 'Active'),
+(42, 5, 'Lit 2', 'Literature of the World', 'Lecture', 3, 'Active'),
+(43, 5, 'Fin 2', 'Business Finance', 'Lecture', 3, 'Active'),
+(44, 5, 'Fin 2', 'Business Finance', 'Lecture', 3, 'Active'),
+(45, 5, 'Art Educ', 'Art Appreciation/Art Education', 'Lecture', 3, 'Active'),
+(46, 5, 'Educ 4', 'Values Education/Professional Ethics', 'Lecture', 3, 'Active'),
+(47, 5, 'Mgt 9', 'Supervisory & Executive Development', 'Lecture', 3, 'Active'),
+(48, 5, 'Mgt 10', 'Manufacturing Management', 'Lecture', 3, 'Active'),
+(49, 5, 'Mgt 11', 'Planning Policy Formulation', 'Lecture', 3, 'Active'),
+(50, 5, 'Comp Sci 1', 'Computer Literacy', 'Lecture', 3, 'Active'),
+(51, 5, 'Psycho 11', 'Industrial Psychology', 'Lecture', 3, 'Active'),
+(52, 5, 'Mgt 12', 'Management in Small Business', 'Lecture', 3, 'Active'),
+(53, 5, 'Mgt 13', 'Risk Management', 'Lecture', 3, 'Active'),
+(54, 5, 'Acctg 1', 'Fundamentals of Accounting', 'Lecture', 3, 'Active'),
+(55, 5, 'Acctg 2', 'Fundamentals of Accounting', 'Lecture', 3, 'Active'),
+(56, 5, 'PDPR', 'Personality Development & Public Relations', 'Lecture', 3, 'Active'),
+(57, 5, 'Tax 2', 'Income Tax Law', 'Lecture', 3, 'Active'),
+(58, 5, 'Comp Sci 2', 'Fundamentals of Problem Solving & Programming', 'Laboratory', 3, 'Active'),
+(59, 5, 'Mgt 15', 'Import & Export Management', 'Lecture', 3, 'Active'),
+(60, 5, 'Acctg 3', 'Partnership & Corporation', 'Lecture', 6, 'Active'),
+(61, 5, 'Mgt 16', 'Management Practicum', 'Lecture', 3, 'Active'),
+(62, 2, 'Eng 101', 'English Communication 1', 'Lecture', 3, 'Active'),
+(63, 2, 'Fil 101', 'Sining ng Komunikasyon', 'Lecture', 3, 'Active'),
+(64, 2, 'Hist 101', 'Philippine History', 'Lecture', 3, 'Active'),
+(65, 2, 'Psycho 101', 'General Psychology', 'Lecture', 3, 'Active'),
+(66, 2, 'Nat Sci 101', 'Earth Science', 'Lecture', 3, 'Active'),
+(67, 2, 'Hum 101', 'Art Appreciation', 'Lecture', 3, 'Active'),
+(68, 2, 'Math 101', 'College Algebra', 'Lecture', 3, 'Active'),
+(69, 2, 'CWTS 101', 'Civic Welfare 1', 'NSTP', 3, 'Active'),
+(70, 2, 'PE 101', 'Self Testing Activities', 'P.E.', 2, 'Active'),
+(71, 2, 'Eng 102', 'English Communication 2', 'Lecture', 3, 'Active'),
+(72, 2, 'Fil 102', 'Pagbasa at Pagsulat sa Ibat-ibang Disiplina', 'Lecture', 3, 'Active'),
+(73, 2, 'Nat Sci 102', 'Biological Science', 'Lecture', 3, 'Active'),
+(74, 2, 'PS 101', 'Politics & Governance w/ Phil Constitution', 'Lecture', 3, 'Active'),
+(75, 2, 'SS 101', 'Life, Work & Writing  of Rizal', 'Lecture', 3, 'Active'),
+(76, 2, 'Math 102', 'Basic Mathematics', 'Lecture', 3, 'Active'),
+(77, 2, 'ICT 101', 'Intro to Information Technology', 'Lecture', 3, 'Active'),
+(78, 2, 'CWTS 102', 'Civic Welfare 2', 'Lecture', 3, 'Active'),
+(79, 2, 'PE 102', 'Fundamentals of Rhythmic Activities', 'P.E.', 2, 'Active'),
+(80, 2, 'Eng 103', 'Modern Communication (Writing & Oral Comm.)', 'Lecture', 3, 'Active'),
+(81, 2, 'Music 101', 'Fund. of Music', 'Lecture', 3, 'Active'),
+(82, 2, 'CL 101', 'Children\'s Literature', 'Lecture', 3, 'Active'),
+(83, 2, 'Educ 101', 'Child & Adolescent Development', 'Lecture', 3, 'Active'),
+(84, 2, 'Educ 102', 'Educational Technology 1', 'Lecture', 3, 'Active'),
+(85, 2, 'ICT 102', 'Computer Application', 'Laboratory', 3, 'Active'),
+(86, 2, 'Math 103', 'Advance Algebra', 'Lecture', 3, 'Active'),
+(87, 2, 'Math 104', 'Advance Statistics', 'Lecture', 3, 'Active'),
+(88, 2, 'PE 103', 'Group Games', 'P.E.', 2, 'Active'),
+(89, 2, 'Educ 103', 'Educational Technology 2', 'Lecture', 3, 'Active'),
+(90, 2, 'Educ 104', 'Principles of Teaching', 'Lecture', 3, 'Active'),
+(91, 2, 'Educ 105', 'Facilitating Learning', 'Lecture', 3, 'Active'),
+(92, 2, 'Educ 106', 'The Social Dimensions of Education', 'Lecture', 3, 'Active'),
+(93, 2, 'Lit 1', 'Philippine Literature', 'Lecture', 3, 'Active'),
+(94, 2, 'DR 101', 'Developmental Reading 1', 'Lecture', 3, 'Active'),
+(95, 2, 'Math 105', 'Trigonometry', 'Lecture', 3, 'Active'),
+(96, 2, 'Math 106', 'Plane Geometry', 'Lecture', 3, 'Active'),
+(97, 2, 'PE 104', 'Social Recreation', 'P.E.', 2, 'Active'),
+(98, 2, 'Educ 107', 'The Teaching Profession', 'Lecture', 3, 'Active'),
+(99, 2, 'Educ 108', 'Principles of Teaching 2', 'Lecture', 3, 'Active'),
+(100, 2, 'Educ 109', 'Assessment of Student Learning 1', 'Lecture', 2, 'Active'),
+(101, 2, 'Educ 110', 'Field Studies 1 & 2', 'Lecture', 3, 'Active'),
+(102, 2, 'Educ 201', 'Logical & Critical Thinking', 'Lecture', 3, 'Active'),
+(103, 2, 'Math 107', 'Solid Geometry', 'Lecture', 3, 'Active'),
+(104, 2, 'Math 108', 'Probability', 'Lecture', 3, 'Active'),
+(105, 2, 'Math 109', 'Analytic Geometry', 'Lecture', 3, 'Active'),
+(106, 2, 'Math 110', 'Linear Algebra', 'Lecture', 3, 'Active'),
+(107, 2, 'SS 102', 'Principles of Economics w/ TAR', 'Lecture', 3, 'Active'),
+(108, 2, 'Educ 111', 'Assessment of Student Learning 2', 'Lecture', 3, 'Active'),
+(109, 2, 'Educ 112', 'Field Studies 3 & 4', 'Lecture', 2, 'Active'),
+(110, 2, 'Educ 113', 'Intro to Curriculum Development', 'Lecture', 3, 'Active'),
+(111, 2, 'Educ 202', 'Educational Psychology', 'Lecture', 3, 'Active'),
+(112, 2, 'Math 111', 'Number Theory', 'Lecture', 3, 'Active'),
+(113, 2, 'Math 112', 'Modern Geometry', 'Lecture', 3, 'Active'),
+(114, 2, 'Math 113', 'Calculus 1', 'Lecture', 3, 'Active'),
+(115, 2, 'Math 114', 'Abstract Algebra', 'Lecture', 3, 'Active'),
+(116, 2, 'Lit 102', 'Literature of the World', 'Lecture', 3, 'Active'),
+(117, 2, 'Math 115', 'Action Research in Math', 'Lecture', 3, 'Active'),
+(118, 2, 'Math 116', 'Calculus 2', 'Lecture', 3, 'Active'),
+(119, 2, 'Math 117', 'History of Math', 'Lecture', 3, 'Active'),
+(120, 2, 'Educ 203', 'Non-Formal Education', 'Lecture', 3, 'Active'),
+(121, 2, 'Educ 114', 'Field Studies 5 & 6', 'Lecture', 2, 'Active'),
+(122, 2, 'Educ 115', 'Special Tropics 1, 2 & 3', 'Lecture', 3, 'Active'),
+(123, 2, 'Educ 116', 'Practicum', 'Lecture', 6, 'Active'),
+(124, 1, 'Eng 1', 'English Communication 1', 'Lecture', 3, 'Active'),
+(125, 1, 'Fil 1', 'Sining ng Komunikasyon', 'Lecture', 3, 'Active'),
+(126, 1, 'Soc Sci 1', 'Philippine History', 'Lecture', 3, 'Active'),
+(127, 1, 'Math 1', 'College Algebra', 'Lecture', 3, 'Active'),
+(128, 1, 'Psycho 1', 'General Psychology', 'Lecture', 3, 'Active'),
+(129, 1, 'Comp Sci A', 'Orientation in Information Technology', 'Laboratory', 3, 'Active'),
+(130, 1, 'Comp Sci 1', 'Computer Fundamentals', 'Laboratory', 3, 'Active'),
+(131, 1, 'CWTS 101', 'Civic Welfare 1', 'NSTP', 3, 'Active'),
+(132, 1, 'PE 1', 'Self Testing Activities', 'P.E.', 2, 'Active'),
+(133, 1, 'Eng 2', 'English Communication 2', 'Lecture', 3, 'Active'),
+(134, 1, 'Fil 2', 'Pagbasa at Pagsulat sa Ibat-ibang Disiplina', 'Lecture', 3, 'Active'),
+(135, 1, 'Math 3', 'Trigonometry/Analytical Geometry', 'Lecture', 3, 'Active'),
+(136, 1, 'Soc Sci 2', 'Basic Economics w/ TAR', 'Lecture', 3, 'Active'),
+(137, 1, 'Comp Sci B', 'Code of Ethics for Filipino IT Professionals', 'Laboratory', 3, 'Active'),
+(138, 1, 'Comp Sci 2', 'Fund. of Problem Solving & Quality Process', 'Laboratory', 3, 'Active'),
+(139, 1, 'Soc Sci 5', 'Life, Work & Writing  of Rizal', 'Lecture', 3, 'Active'),
+(140, 1, 'CWTS 102', 'Civic Welfare 2', 'NSTP', 3, 'Active'),
+(141, 1, 'PE 2', 'Fundamentals of Rhythmic Activities', 'P.E.', 2, 'Active'),
+(142, 1, 'Eng 4', 'Modern Communication 2', 'Lecture', 3, 'Active'),
+(143, 1, 'Philo 1', 'Philosophy of Man', 'Lecture', 3, 'Active'),
+(144, 1, 'Math 5', 'Discrete Math 1', 'Lecture', 3, 'Active'),
+(145, 1, 'Soc Sci 4', 'Politics & Governance w/ Phil Constitution', 'Lecture', 3, 'Active'),
+(146, 1, 'Nat Sci 4', 'Physics 1', 'Lecture', 3, 'Active'),
+(147, 1, 'Comp Sci 3', 'Fundamentals of Programming', 'Laboratory', 3, 'Active'),
+(148, 1, 'Comp Sci 4', 'Quality Consciousness Habit & Processes', 'Laboratory', 3, 'Active'),
+(149, 1, 'PE 3', 'Group Games', 'P.E.', 2, 'Active'),
+(150, 1, 'Eng 5', 'Modern Communication 3', 'Lecture', 3, 'Active'),
+(151, 1, 'Soc Sci 6', 'Society & Culture w/ Family Planning', 'Lecture', 3, 'Active'),
+(152, 1, 'Math 2', 'Statistics/Probability', 'Lecture', 3, 'Active'),
+(153, 1, 'Educ 4', 'Values Education/Professional Ethics', 'Lecture', 3, 'Active'),
+(154, 1, 'Comp Sci 5', 'Logic, Designs & Digital Computer Circuits', 'Laboratory', 3, 'Active'),
+(155, 1, 'Comp Sci 6', 'Data Structure', 'Laboratory', 3, 'Active'),
+(156, 1, 'PDPR', 'Personality Development & Public Relations', 'Lecture', 3, 'Active'),
+(157, 1, 'PE 4', 'Social Recreation', 'P.E.', 2, 'Active'),
+(158, 1, 'Lit 1', 'Literatures of the Philippines', 'Lecture', 3, 'Active'),
+(159, 1, 'Math 6', 'Analysis 1 (Problem Solving w/ Quantity Process)', 'Lecture', 3, 'Active'),
+(160, 1, 'Nat Sci 5', 'Physics 2', 'Lecture', 3, 'Active'),
+(161, 1, 'Comp Sci 7', 'Principles of Programming Language', 'Laboratory', 3, 'Active'),
+(162, 1, 'Comp Sci 8', 'Principles of File Organization', 'Laboratory', 3, 'Active'),
+(163, 1, 'Comp Sci 9', 'Intro to Computer System Organization', 'Laboratory', 3, 'Active'),
+(164, 1, 'Mgt 1', 'Principles of Management', 'Lecture', 3, 'Active'),
+(165, 1, 'Lit 2', 'Literature of the World', 'Lecture', 3, 'Active'),
+(166, 1, 'Math 7', 'Abstract Algebra', 'Lecture', 3, 'Active'),
+(167, 1, 'Fil 3', 'Retorika', 'Lecture', 3, 'Active'),
+(168, 1, 'Soc Sci 7', 'Introduction to Sociology', 'Lecture', 3, 'Active'),
+(169, 1, 'Comp Sci 10', 'Operating System', 'Laboratory', 3, 'Active'),
+(170, 1, 'Comp Sci 11', 'Electrimagmetism and Electricity', 'Laboratory', 3, 'Active'),
+(171, 1, 'Comp Sci 12', 'Principles of Data Base Management Systems', 'Laboratory', 3, 'Active'),
+(172, 1, 'Math 8', 'Discrete Math 2', 'Lecture', 3, 'Active'),
+(173, 1, 'Art Educ', 'Art Appreciation/Art Education', 'Lecture', 3, 'Active'),
+(174, 1, 'Comp Sci 13', 'Design Analysis of Algorithms', 'Laboratory', 3, 'Active'),
+(175, 1, 'Comp Sci 14', 'Assembly Language of C Language or Pascal', 'Laboratory', 3, 'Active'),
+(176, 1, 'Comp Sci C', 'Computer Graphics', 'Laboratory', 3, 'Active'),
+(177, 1, 'Educ 1', 'Principles and Methods of Teaching', 'Lecture', 3, 'Active'),
+(178, 1, 'Comp Sci D', 'Object Oriented Programming', 'Laboratory', 3, 'Active'),
+(179, 1, 'Math 9', 'Calculus(Differentiation & Integration, Vector & Solid Analytic Geometry)', 'Lecture', 3, 'Active'),
+(180, 1, 'Comp Sci 15', 'Technical Writing & Presentation Skills in IT', 'Laboratory', 3, 'Active'),
+(181, 1, 'Comp Sci 16', 'Computer Design', 'Laboratory', 3, 'Active'),
+(182, 1, 'Comp Sci 17', 'Theory Computation', 'Laboratory', 3, 'Active'),
+(183, 1, 'Comp Sci 18', 'Automata Theory', 'Laboratory', 3, 'Active'),
+(184, 1, 'Comp Sci 19', 'Principles of Data Communication & Networking', 'Laboratory', 3, 'Active'),
+(185, 1, 'Comp Sci E', 'Introduction to Software Engineering', 'Laboratory', 3, 'Active');
 
 -- --------------------------------------------------------
 
@@ -460,26 +703,56 @@ INSERT INTO `users` (`userID`, `userIDNo`, `userTypeID`, `userLN`, `userFN`, `us
 (14, 20181008, 2, 'Arcega', 'Emesta', 'Camat', 'iskarlatangbruha@gmail.com', '$2y$10$WcHGEiOUvVDgsjE2g0ELC.RxCTRhX5DbLzkBOoff.XS7vrKnZdHEi', '(0917)000-0014', 'Active', '', '1990-08-30', 27, 'Metro Manila', 'Female', 'Single', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Belicia', 'Mother', 'Marcos', 'mechanics', 'Maria', 'Analyst', '2018-01-18 14:33:08', NULL),
 (15, 20181009, 2, 'Fernandez', 'Ryan', 'Lacson', 'vicksuetoe321@gmail.com', '$2y$10$OQpGMBnyvgRI2zKUxoN9aOIMa8IbUTBW/NT1Oaa4llGmAmLjA.rfm', '(0917)000-0015', 'Active', '', '1981-11-28', 36, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Henry', 'Father', 'Henry', 'Optalmologist', 'Jane', 'Nurse', '2018-01-18 14:38:07', NULL),
 (16, 20181010, 2, 'Pavia', 'Marilyn', 'Daplas', 'ianmanoy24@yahoo.com', '$2y$10$aNIcpgKMpnfRorG6luaQW.PxLlqVGM79eaMs7WF3Jr.zHO8hbCUhq', '(0917)000-0016', 'Active', '', '1988-08-01', 29, 'Cebu', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'Cebu', 'sample', 'sample', 'sample', 'Athena', 'Sister', 'Alfredo', 'Farmer', 'Sandra', 'store owner', '2018-01-18 14:50:55', NULL),
-(17, 11810001, 3, 'Blake', 'Ian', 'Veneracion', 'ianmanoy24@yahoo.com', '$2y$10$A96ICsumikc8O8DOO/3.cO3Fp8G.hAckH3V/kXgZdNJ.t6UWl30.K', '(0926)010-1010', 'Active', '', '1998-07-12', 19, 'St Luke\'s Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Binondo Manila', '', 'Mamburao Central School', 'Sample', 'Sample', '', '', 'Kiko Magalona', 'Rapper', 'Michaela Baldos', 'Housewife', '2018-01-19 09:37:59', NULL),
-(18, 11810002, 3, 'Sanchez', 'Victoria', 'Lopez', 'victorsanchz416@yahoo.com', '$2y$10$LW78zDXeaJsqenPtmUa4xuW6hfR2ckCWO5bPbEMA7PtkOhrWnh7gW', '(0995)012-5354', 'Active', '', '1995-06-13', 22, 'UST Hospital', 'Female', 'Single', 'Filipino', 'Christian', 'Sta. Cruz Manila', '', 'Sample', 'Sample', 'Sample', '', '', 'Mike Enriquez', 'Reporter', 'Jessica Soho', 'Reporter', '2018-01-19 09:42:18', NULL),
-(19, 11810003, 3, 'Go', 'Troy', 'Tan', 'troymanoi69@yahoo.com', '$2y$10$oDwYkLlVlgzxnc9/RFbIq.9vvykDr7JBsXXroq2TotmfpJiJh4MW2', '(0995)613-5421', 'Active', '', '0197-05-28', 127, 'Philippine General Hospital', 'Male', 'Single', 'Chinese', 'Buddhism', 'Bonifacio Global City Taguig, Manila', '', 'Sample Data', 'Sample Data', 'Sample Data', '', '', 'Henry Sy', 'Chinese Mogul', 'Korina Sanchez', 'Reporter', '2018-01-19 09:44:58', NULL),
-(20, 11810004, 3, 'Ong', 'Beper', 'Clenista', 'beper.ong@benilde.edu.ph', '$2y$10$AOebJRgvwb/e5MqJLrxvr.3oSrsANpSesDw2lMnABMR3flmHRgeCe', '(0926)047-2440', 'Active', '', '1995-02-27', 22, 'Mamburao Occidental Mindoro provincial hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila\r\n', '', 'Mamburao Central School', 'Occidental Mindoro National Highschool', 'Occidental Mindoro National Highschool', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Businesswoman', '2018-01-19 09:46:50', NULL),
-(21, 11810005, 3, 'Zaguirre', 'Sheila Mae', 'Polhen', 'sheila.zaguirre@benilde.edu.ph', '$2y$10$3q1rzgxiZsGM.Dlb./VS0uTF/gW9Y34zcZ1QOHZUEuLvLP1pOColS', '(0915)905-0303', 'Active', '', '1997-11-13', 20, 'San Juan de Dios general Hospital', 'Female', 'Single', 'Chinese', 'Catholic', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'DLS-CSB', '', '', 'James Zaguirre', 'Businessman', 'Lilibeth Zaguirre', 'Store owner', '2018-01-19 09:49:43', NULL),
-(22, 11810006, 3, 'Pascual', 'Shaun Xavier', 'Gideon', 'shaunxavierpascual@gmail.com', '$2y$10$v3R8.ftBWyl1GZlaQHUpCONYBjQ8yh0xWWlGHJNJFkaW8v.H/ySQO', '(0915)151-5151', 'Active', '', '1996-10-13', 21, 'Chinese General Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Navotas City', '', 'GAPC', 'GAPC', 'Sample', '', '', 'Michael Jordan', 'Basketball Legend', 'Oprah Winfrey', 'Smile giver', '2018-01-19 09:52:18', NULL),
-(23, 11810007, 3, 'Villanueva', 'Miko', 'Ganda', 'mikovillanueva96@gmail.com', '$2y$10$ERrEDdJev7Q2OLmsDqTkVuLRyMz8q6dXFJpY0Y8IbYXCxDbBNQbJK', '(0915)161-1300', 'Active', '', '1996-02-15', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Gideon Academy', 'Sample', 'DLS-CSB', '', '', 'Manny Pacquiao', 'Boxer', 'Kris Aquino', 'Host', '2018-01-19 09:54:31', NULL),
-(24, 11810008, 3, 'Ozawa', 'Maria', 'Sample', 'marialim675@yahoo.com', '$2y$10$UnySz/41TYogJPXsG05sQuZC.8/VkLLveaaHItuzy4nPuariKoqZm', '(0915)222-2151', 'Active', '', '1997-05-14', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Comia', 'None', 'Julienna Santos', 'Developer', '2018-01-19 09:56:24', NULL),
-(25, 11810009, 3, 'James', 'Lebron', 'Brown', 'jameslebron41@outlook.com', '$2y$10$OlTdbbG40dmFhe5hMOoTveAiN.WRHOy9argdgOeAQs78LxVT9U.Xi', '(0999)158-7563', 'Active', '', '1997-02-15', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'James Senior', 'Basketball player', 'Lilybeth Comia', 'Store owner', '2018-01-19 09:59:21', NULL),
-(26, 11810010, 3, 'Santos', 'Julienne', 'Limpin', 'johnmor556@yahoo.com', '$2y$10$a4Xqre5v6nmF07vzPcOGpe.nq9KuU.BwoDY14.ssfPsV0NrgfSFpC', '(0915)678-4954', 'Active', '', '1995-01-26', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Julio Santos', 'Seaman', 'Jane Santos', 'Housewife', '2018-01-19 10:02:52', NULL),
-(27, 11810011, 3, 'Comia', 'Ralph', 'Gavan', 'mikejordan64@outlook.com', '$2y$10$4HnNMw2U6048sWfWQrvLMu1Fn95uKk582eHmQSf51Y775e8j/dLkO', '(0915)624-8103', 'Active', '', '1996-01-08', 22, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Manny Comia', 'OFW', 'Mandy Comia', 'OFW', '2018-01-19 10:05:53', NULL),
-(28, 11810012, 3, 'Valmeo', 'Bianca', 'Teng', 'irvingkyrie32@outlook.com', '$2y$10$HPZ.rRspRa/PDzQ80Xz/C.TPefPlvdJFdIZMa8ksI1.fl/FhEWAU6', '(0916)842-6849', 'Active', '', '1995-02-15', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Blake Valmeo', 'Cashier', 'Joan Valmeo', 'Architech', '2018-01-19 10:07:44', NULL),
-(29, 11810013, 3, 'Talimban', 'Bea', 'Supot', 'stephcarry1@outlook.com', '$2y$10$PbFFtPqAtk0X1j/BgyXz3u2MnJo7BDHNntUzc7qba26ClyEThp1Le', '(0915)846-9555', 'Active', '', '1996-03-16', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'John Talimban', 'Engineer', 'Joan Talimban', 'Teacher', '2018-01-19 10:11:11', NULL),
-(30, 11810014, 3, 'Estera', 'Gian', 'Baldoza', 'junanaksjanah@yahoo.com', '$2y$10$3cJLyEdCXZDOnwOJuHGUD.tBdZFxUTzHfv2B830YGIep9jZKLmjHK', '(0915)984-6222', 'Active', '', '1996-12-15', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Jonathan Estera', 'Oil producer', 'Caroline Estera', 'Cashier', '2018-01-19 10:13:48', NULL),
-(31, 11810015, 3, 'Tuazon', 'Paul', 'Mercedez', 'angelovillanueva1@outlook.com', '$2y$10$UmB2LYfWMuY9.qnB2wg.oevaA8.yyzYc99CpXFeObWDyaacL.iZ7W', '(0915)684-9994', 'Active', '', '1997-02-28', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Michael Tuazon', 'Construction worker', 'Maja Tuazon', 'Social media ambassador', '2018-01-19 10:17:04', NULL),
-(32, 11810016, 3, 'Hernando', 'Alexa', 'Sy', 'mangkaknorr@gmail.com', '$2y$10$gzNvN9OQr7DzZNotwoZxOO32hnr/BDyNe/NX5kX9L6ZXLZ3EEFAGi', '(0915)874-8933', 'Active', '', '1999-09-25', 18, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Felix Hernando', 'Engineer', 'Theresa Hernando', 'Housewife', '2018-01-19 10:31:00', NULL),
-(33, 11810017, 3, 'Remulla', 'Jionna', 'Ong', 'mangka.knorr@yahoo.com', '$2y$10$eceIAyosl9vcQ5s7iBrhD.47bobNy/.2hikPaPi5I1OizprO8v8z6', '(0916)849-6288', 'Active', '', '1996-02-16', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Nikko Remulla', 'Policeman', 'Tintin Remulla', 'Nurse', '2018-01-19 10:49:41', NULL),
-(34, 11810018, 3, 'Su', 'Samantha', 'Supsop', 'cheatermirienda@gmail.com', '$2y$10$t9Va92BKP24mBbDr18kTQuSd0c24tRifPSBKAu4CU3BCuoAogc0ge', '(0956)842-9233', 'Active', '', '1997-05-15', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ramon Su', 'Store Owner', 'Sheila Su', 'Petshop Owner', '2018-01-19 10:52:16', NULL),
-(35, 11810019, 3, 'Magsaysay', 'Joseph', 'Sy', 'cheatermirienda@yahoo.com', '$2y$10$LdrNY8mysOPwxTm1f9b7m.lKUtDPplkcMgxI87HkMRCmvNoJHsYDa', '(0915)974-6222', 'Active', '', '1996-02-29', 21, 'Sample', 'Male', 'Single', 'Chinese', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Magsaysay', 'Gardener', 'Felicia Magsaysay', 'Dentist', '2018-01-19 10:54:33', NULL),
-(36, 11810020, 3, 'Filipinas', 'Luzviminda', 'Asia', 'hiddenkho3039@gmail.com', '$2y$10$.2SgrXOAfNEU7uCwxBWpaO37O.64pTdmbv.pDlrJ101Lc6l8hNF3S', '(0916)849-9211', 'Active', '', '1997-10-17', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Henrico Filipinas', 'Governor', 'Lucia Filipinas', 'Assistant Brand Manager', '2018-01-19 10:58:01', NULL);
+(17, 11810001, 3, 'Blake', 'Ian', 'Veneracion', 'ianmanoy24@yahoo.com', '$2y$10$A96ICsumikc8O8DOO/3.cO3Fp8G.hAckH3V/kXgZdNJ.t6UWl30.K', '(0926)010-1010', 'Active', '5', '1998-07-12', 19, 'St Luke\'s Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Binondo Manila', '', 'Mamburao Central School', 'Sample', 'Sample', '', '', 'Kiko Magalona', 'Rapper', 'Michaela Baldos', 'Housewife', '2018-01-19 09:37:59', NULL),
+(18, 11810002, 3, 'Sanchez', 'Victoria', 'Lopez', 'victorsanchz416@yahoo.com', '$2y$10$LW78zDXeaJsqenPtmUa4xuW6hfR2ckCWO5bPbEMA7PtkOhrWnh7gW', '(0995)012-5354', 'Active', '2', '1995-06-13', 22, 'UST Hospital', 'Female', 'Single', 'Filipino', 'Christian', 'Sta. Cruz Manila', '', 'Sample', 'Sample', 'Sample', '', '', 'Mike Enriquez', 'Reporter', 'Jessica Soho', 'Reporter', '2018-01-19 09:42:18', NULL),
+(19, 11810003, 3, 'Go', 'Troy', 'Tan', 'troymanoi69@yahoo.com', '$2y$10$oDwYkLlVlgzxnc9/RFbIq.9vvykDr7JBsXXroq2TotmfpJiJh4MW2', '(0995)613-5421', 'Active', '3', '0197-05-28', 127, 'Philippine General Hospital', 'Male', 'Single', 'Chinese', 'Buddhism', 'Bonifacio Global City Taguig, Manila', '', 'Sample Data', 'Sample Data', 'Sample Data', '', '', 'Henry Sy', 'Chinese Mogul', 'Korina Sanchez', 'Reporter', '2018-01-19 09:44:58', NULL),
+(20, 11810004, 3, 'Ong', 'Beper', 'Clenista', 'beper.ong@benilde.edu.ph', '$2y$10$AOebJRgvwb/e5MqJLrxvr.3oSrsANpSesDw2lMnABMR3flmHRgeCe', '(0926)047-2440', 'Active', '5', '1995-02-27', 22, 'Mamburao Occidental Mindoro provincial hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila\r\n', '', 'Mamburao Central School', 'Occidental Mindoro National Highschool', 'Occidental Mindoro National Highschool', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Businesswoman', '2018-01-19 09:46:50', NULL),
+(21, 11810005, 3, 'Zaguirre', 'Sheila Mae', 'Polhen', 'sheila.zaguirre@benilde.edu.ph', '$2y$10$3q1rzgxiZsGM.Dlb./VS0uTF/gW9Y34zcZ1QOHZUEuLvLP1pOColS', '(0915)905-0303', 'Active', '4', '1997-11-13', 20, 'San Juan de Dios general Hospital', 'Female', 'Single', 'Chinese', 'Catholic', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'DLS-CSB', '', '', 'James Zaguirre', 'Businessman', 'Lilibeth Zaguirre', 'Store owner', '2018-01-19 09:49:43', NULL),
+(22, 11810006, 3, 'Pascual', 'Shaun Xavier', 'Gideon', 'shaunxavierpascual@gmail.com', '$2y$10$v3R8.ftBWyl1GZlaQHUpCONYBjQ8yh0xWWlGHJNJFkaW8v.H/ySQO', '(0915)151-5151', 'Active', '6', '1996-10-13', 21, 'Chinese General Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Navotas City', '', 'GAPC', 'GAPC', 'Sample', '', '', 'Michael Jordan', 'Basketball Legend', 'Oprah Winfrey', 'Smile giver', '2018-01-19 09:52:18', NULL),
+(23, 11810007, 3, 'Villanueva', 'Miko', 'Ganda', 'mikovillanueva96@gmail.com', '$2y$10$ERrEDdJev7Q2OLmsDqTkVuLRyMz8q6dXFJpY0Y8IbYXCxDbBNQbJK', '(0915)161-1300', 'Active', '1', '1996-02-15', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Gideon Academy', 'Sample', 'DLS-CSB', '', '', 'Manny Pacquiao', 'Boxer', 'Kris Aquino', 'Host', '2018-01-19 09:54:31', NULL),
+(24, 11810008, 3, 'Ozawa', 'Maria', 'Sample', 'marialim675@yahoo.com', '$2y$10$UnySz/41TYogJPXsG05sQuZC.8/VkLLveaaHItuzy4nPuariKoqZm', '(0915)222-2151', 'Active', '3', '1997-05-14', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Comia', 'None', 'Julienna Santos', 'Developer', '2018-01-19 09:56:24', NULL),
+(25, 11810009, 3, 'James', 'Lebron', 'Brown', 'jameslebron41@outlook.com', '$2y$10$OlTdbbG40dmFhe5hMOoTveAiN.WRHOy9argdgOeAQs78LxVT9U.Xi', '(0999)158-7563', 'Active', '4', '1997-02-15', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'James Senior', 'Basketball player', 'Lilybeth Comia', 'Store owner', '2018-01-19 09:59:21', NULL),
+(26, 11810010, 3, 'Santos', 'Julienne', 'Limpin', 'johnmor556@yahoo.com', '$2y$10$a4Xqre5v6nmF07vzPcOGpe.nq9KuU.BwoDY14.ssfPsV0NrgfSFpC', '(0915)678-4954', 'Active', '2', '1995-01-26', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Julio Santos', 'Seaman', 'Jane Santos', 'Housewife', '2018-01-19 10:02:52', NULL),
+(27, 11810011, 3, 'Comia', 'Ralph', 'Gavan', 'mikejordan64@outlook.com', '$2y$10$4HnNMw2U6048sWfWQrvLMu1Fn95uKk582eHmQSf51Y775e8j/dLkO', '(0915)624-8103', 'Active', '2', '1996-01-08', 22, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Manny Comia', 'OFW', 'Mandy Comia', 'OFW', '2018-01-19 10:05:53', NULL),
+(28, 11810012, 3, 'Valmeo', 'Bianca', 'Teng', 'irvingkyrie32@outlook.com', '$2y$10$HPZ.rRspRa/PDzQ80Xz/C.TPefPlvdJFdIZMa8ksI1.fl/FhEWAU6', '(0916)842-6849', 'Active', '6', '1995-02-15', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Blake Valmeo', 'Cashier', 'Joan Valmeo', 'Architech', '2018-01-19 10:07:44', NULL),
+(29, 11810013, 3, 'Talimban', 'Bea', 'Supot', 'stephcarry1@outlook.com', '$2y$10$PbFFtPqAtk0X1j/BgyXz3u2MnJo7BDHNntUzc7qba26ClyEThp1Le', '(0915)846-9555', 'Active', '1', '1996-03-16', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'John Talimban', 'Engineer', 'Joan Talimban', 'Teacher', '2018-01-19 10:11:11', NULL),
+(30, 11810014, 3, 'Estera', 'Gian', 'Baldoza', 'junanaksjanah@yahoo.com', '$2y$10$3cJLyEdCXZDOnwOJuHGUD.tBdZFxUTzHfv2B830YGIep9jZKLmjHK', '(0915)984-6222', 'Active', '3', '1996-12-15', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Jonathan Estera', 'Oil producer', 'Caroline Estera', 'Cashier', '2018-01-19 10:13:48', NULL),
+(31, 11810015, 3, 'Tuazon', 'Paul', 'Mercedez', 'angelovillanueva1@outlook.com', '$2y$10$UmB2LYfWMuY9.qnB2wg.oevaA8.yyzYc99CpXFeObWDyaacL.iZ7W', '(0915)684-9994', 'Active', '3', '1997-02-28', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Michael Tuazon', 'Construction worker', 'Maja Tuazon', 'Social media ambassador', '2018-01-19 10:17:04', NULL),
+(32, 11810016, 3, 'Hernando', 'Alexa', 'Sy', 'mangkaknorr@gmail.com', '$2y$10$gzNvN9OQr7DzZNotwoZxOO32hnr/BDyNe/NX5kX9L6ZXLZ3EEFAGi', '(0915)874-8933', 'Active', '4', '1999-09-25', 18, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Felix Hernando', 'Engineer', 'Theresa Hernando', 'Housewife', '2018-01-19 10:31:00', NULL),
+(33, 11810017, 3, 'Remulla', 'Jionna', 'Ong', 'mangka.knorr@yahoo.com', '$2y$10$eceIAyosl9vcQ5s7iBrhD.47bobNy/.2hikPaPi5I1OizprO8v8z6', '(0916)849-6288', 'Active', '6', '1996-02-16', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Nikko Remulla', 'Policeman', 'Tintin Remulla', 'Nurse', '2018-01-19 10:49:41', NULL),
+(34, 11810018, 3, 'Su', 'Samantha', 'Supsop', 'cheatermirienda@gmail.com', '$2y$10$t9Va92BKP24mBbDr18kTQuSd0c24tRifPSBKAu4CU3BCuoAogc0ge', '(0956)842-9233', 'Active', '2', '1997-05-15', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ramon Su', 'Store Owner', 'Sheila Su', 'Petshop Owner', '2018-01-19 10:52:16', NULL),
+(35, 11810019, 3, 'Magsaysay', 'Joseph', 'Sy', 'cheatermirienda@yahoo.com', '$2y$10$LdrNY8mysOPwxTm1f9b7m.lKUtDPplkcMgxI87HkMRCmvNoJHsYDa', '(0915)974-6222', 'Active', '5', '1996-02-29', 21, 'Sample', 'Male', 'Single', 'Chinese', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Magsaysay', 'Gardener', 'Felicia Magsaysay', 'Dentist', '2018-01-19 10:54:33', NULL),
+(36, 11810020, 3, 'Filipinas', 'Luzviminda', 'Asia', 'hiddenkho3039@gmail.com', '$2y$10$.2SgrXOAfNEU7uCwxBWpaO37O.64pTdmbv.pDlrJ101Lc6l8hNF3S', '(0916)849-9211', 'Active', '1', '1997-10-17', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Henrico Filipinas', 'Governor', 'Lucia Filipinas', 'Assistant Brand Manager', '2018-01-19 10:58:01', NULL),
+(37, 11810021, 3, 'Ang', 'Aaron', 'Bacong', 'aaron12@gmail.com', '$2y$10$f2b1Wq6gX9TjQuVPPDC9nuO5PmZ2qA/kpRu1jbbgjd/pCUEMqU1Ke', '(0916)343-7847', 'Active', '', '1997-12-15', 20, 'Pasay City', 'Male', 'Single', 'Filipino', 'Christian', 'Pasay City', 'sample', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Albert Ang', 'Architect', 'Julia Ang', 'Physicist', '2018-02-13 14:58:15', NULL),
+(38, 11810022, 3, 'Mulingtapang', 'Kristen', 'Ang', 'ten_ten@gmail.com', '$2y$10$VzE5JcM5IL.EpzP6FTx3wuXfzMW.Y4y5WseLzhjC7796c7WZTTgQ2', '(0905)275-9238', 'Active', '', '1997-12-25', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', 'Bacolod', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Mark Mulingtapang', 'Photographer', 'Gail Mulingtapang', 'Writer', '2018-02-13 15:01:28', NULL),
+(39, 11810023, 3, 'Chan', 'Jamie', 'So', 'jamieann97@gmail.com', '$2y$10$.0ujVyx5.ItBv8WRp8RYhOtb7eYElG8MFm.o8BdyK0s1UTZYItAUS', '(0922)385-9246', 'Active', '', '1997-04-10', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'John Chan', 'IT Manager', 'Jane Chan', 'Denist', '2018-02-13 15:04:54', NULL),
+(40, 11810024, 3, 'Yu', 'Lance', 'Timkang', 'lance19@gmail.com', '$2y$10$B41QBo0hRvVxJZRVzkOwf.gPKO1ocY9CWl8tCvzaa7Etcly4uzLWC', '(0922)885-9404', 'Active', '', '1997-05-19', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Henry Yu', 'Economist', 'Lanny Yu', 'Receptionist', '2018-02-13 15:07:21', NULL),
+(41, 11810025, 3, 'Jao', 'Princess', 'Baynosa', 'princessj06@gmail.com', '$2y$10$iZKEZ8IbRUtAAHN4N6dvpOlxXHnTo8rbFxyQqwdo/UFm1Toy8LXmK', '(0917)923-0811', 'Active', '', '1996-12-06', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Bryan Jao', 'Auto Mechanic', 'Daisy Jao', 'Physician', '2018-02-13 15:10:34', NULL),
+(42, 11810026, 3, 'Sy', 'Ryan', 'Rivera', 'rysy13@gmail.com', '$2y$10$EFR9jFFPvC/s02W.4o3umepMB/purDEV3QIGxTR571HRtN1KvGQe.', '(0915)248-0509', 'Active', '', '1997-10-13', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Daniel Sy', 'Doctor', 'Felia Sy', 'Store Owner', '2018-02-13 15:15:20', NULL),
+(43, 11810027, 3, 'Santillan', 'Jayson', 'Huang', 'jayson082497@gmail.com', '$2y$10$fsbH/dkGdBFPtjV0iRKv3up/F1kgOx3.AJBZBkQYfyLejR5gqa942', '(0927)273-5850', 'Active', '', '1996-08-24', 21, 'Manila City', 'Male', 'Single', 'Chinese', 'Buddhism', 'Manila City ', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Willy Santillan', 'CEO', 'Bela Santillan', 'HouseWife', '2018-02-13 15:20:36', NULL),
+(44, 11810028, 3, 'Matias', 'John', 'Matel', 'jolo_mat@gmail.com', '$2y$10$yUuZBAjN8n1ZQo21v0x2GOASYvHjo5FKJehaihKP4YTDc5nr/LMCW', '(0915)403-9570', 'Active', '', '1997-10-12', 20, 'Pasay City', 'Male', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Fernando Matias', 'Pilot', 'Sally Matias', 'Marketing Manager', '2018-02-13 15:24:21', NULL),
+(45, 11810029, 3, 'Ong', 'Czakrina', 'Dominique', 'czakydo97@gmail.com', '$2y$10$NpCKHdICWvfjwuW.ErGeSu8LhcKn6UMKksE2pF1NrcoB85hKalFVq', '(0927)398-1749', 'Active', '', '1997-09-13', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Thomas Ong', 'Accountant', 'Olivia Ong', 'School Counselor', '2018-02-13 15:27:41', NULL),
+(46, 11810030, 3, 'Moya', 'Lawrens', 'Uy', 'rensmoyaaa@gmail.com', '$2y$10$/loJcXQTHfh.atA621okj.fcDFK5cdL4mrqHM/q5G.r4bGn/9XK0y', '(0935)194-3100', 'Active', '', '1997-04-12', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Peter Moya', 'Real Estate Agent', 'Regine Moya', 'High School Teacher', '2018-02-13 15:30:58', NULL),
+(47, 11810031, 3, 'Lim', 'Ezekiel', 'So', 'kyleesl98@gmail.com', '$2y$10$F7XMb844o39L0y/.bBspruP66XvMbBJ860Ok5fyIzZCgpKkAdnrX2', '(0917)398-4799', 'Active', '', '1998-01-06', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Terence Lim', 'Pastor', 'Kathy Lim', 'Pastor', '2018-02-13 15:33:05', NULL),
+(48, 11810032, 3, 'Poa', 'Mary', 'Lo', 'meh0997@gmail.com', '$2y$10$Rdt8r3BsR/7xc198Q8/tn.ZFmMZhyFJ9TNUT9xZsJVh.tmOJkUURS', '(0927)961-3222', 'Active', '', '1997-09-05', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Wilson Poa', 'Photographer', 'Isabell Poa', 'Event Planner', '2018-02-13 15:38:24', NULL),
+(49, 11810033, 3, 'Dela Pena', 'Karen', 'Ling', 'kkdp0919@gmail.com', '$2y$10$xhziAHVloo3jCAaBq/pRiOZyUJWgYfgfpzsnhw2WoezIVMFwF1ZeS', '(0906)719-8430', 'Active', '', '1997-09-19', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Peter Dela Pena', 'Business Owner', 'Aly Dela Pena', 'HouseWife', '2018-02-13 15:41:30', NULL),
+(50, 11810034, 3, 'Ching', 'Shaira', 'Sy', 'shaira25@gmail.com', '$2y$10$1C5pHN6e.qw8EzXjTuXNve73yjmiSPbLJcnZfLDsIv0fclIB3zYL2', '(0922)948-1908', 'Active', '', '1997-01-25', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Mike Ching', 'Financial Analyst', 'Natalie Ching', 'Designer', '2018-02-13 15:44:41', NULL),
+(51, 11810035, 3, 'Bating', 'Christine', 'Miranda', 'cjoyb14@gmail.com', '$2y$10$MszirVteRJR6c0UbykeFte6uQRgxNvPrGijfwOsPOx0X8Ve1/uJeu', '(0915)948-5039', 'Active', '', '1997-06-14', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Herald Banting', 'Lawyer', 'Christina Banting', 'Secretary', '2018-02-13 15:47:41', NULL),
+(52, 11810036, 3, 'So', 'Ella', 'Marie', 'elsie17@gmail.com', '$2y$10$mYOqVT.AON2TKcVUkIOHcuBKMjkJWVTE6EFNUXKklI9zZICEHCYWK', '(0927)606-6417', 'Active', '', '1997-03-17', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Ronald So', 'Business Owner', 'Mary So', 'HouseWife', '2018-02-13 15:50:46', NULL),
+(53, 11810037, 3, 'Wong Hin', 'Justine', 'Que', 'justinewh03@gmail.com', '$2y$10$x3WNyrK2IecWqC4a5ppa/OgJ1v6jkG6iAYyqKZ/tVcQomn1UY.t12', '(0905)340-3079', 'Active', '', '1997-03-03', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', 'Ilo-ilo City', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Jefferson Wong Hin', 'Store Owner', 'Dabbie Wong Hin', 'Doctor', '2018-02-13 15:53:41', NULL),
+(54, 11810038, 3, 'Hernandez', 'Andy', 'Ramos', 'andyhernandez@gmail.com', '$2y$10$reFmku/SAB5cBBPdIHlwCu.rSGPXZq1OI31fw/.Sz8eHb1.gjeByG', '(0927)239-5081', 'Active', '', '1996-07-31', 21, 'Bacolod City', 'Male', 'Single', 'Chinese', 'Christian', 'Manila City', 'Bacolod City', 'Makati Hope Christian School', 'Makati Hope Christian School', 'Sample', '', '', 'Johnny Hernandez', 'Chef', 'Janelle Hernandez', 'Teacher', '2018-02-13 15:58:35', NULL),
+(55, 11810039, 3, 'Perez', 'Jordan', 'Brooke', 'brookeJordan@gmail.com', '$2y$10$Jl7o9JjjhpNgmceA05XjBuchxIhKZl0.SDRjpC0TUtO0lHVeSkRo.', '(0917)239-8509', 'Active', '', '1996-09-27', 21, 'Manila City', 'Male', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Daniel Perez', 'Musician', 'Faye Perez', 'Event Organizer', '2018-02-13 16:02:58', NULL),
+(56, 11810040, 3, 'Martin', 'Carl', 'Ong', 'martinCO@gmail.com', '$2y$10$W1MWOsKu6T2rNBXRF49AAOfw5YHUcm7leKBnkN0Bg4pOS9QMaMmBS', '(0922)293-5093', 'Active', '', '1997-08-01', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Christian Martin', 'Business Owner', 'Britanny Martin', 'Editor', '2018-02-13 16:05:30', NULL),
+(57, 11810041, 3, 'Castro', 'Alice', 'Ellis', 'alicewonderland@gmail.com', '$2y$10$66JkrfHZSMtT2GsBQlOOs.J/smSUVd3YFsTGhrRD0oth8v9VzZhAW', '(0915)283-4599', 'Active', '', '1996-04-13', 21, 'Quezon City', 'Female', 'Single', 'Filipino', 'Catholic', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Larry Castro', 'Data Analyst', 'Penny Castro ', 'Executive Assistant', '2018-02-13 16:07:51', NULL),
+(58, 11810042, 3, 'Chavez', 'Freddie', 'Nelson', 'ChavezFN@yahoo.com', '$2y$10$.UbMeGoP/bM2ZCQ1XxZO8OrHlsFJ9PzgX1mLFrXky1umFvouQhDhC', '(0922)587-9242', 'Active', '', '1998-05-30', 19, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Jeff Chavez', 'Basketball Player', 'Marie Chavez', 'Statistician', '2018-02-13 16:10:07', NULL),
+(59, 11810043, 3, 'Ingram', 'Carlton', 'Scott', 'carltoningram@yahoo.com', '$2y$10$NFW1VnysydsKsLwtz1jUc.lj7dUM/7iPz.FHVzZ5z6pRx3.Q4nW1O', '(0917)387-9583', 'Active', '', '1997-10-31', 20, 'Paranaque City', 'Male', 'Single', 'Filipino', 'Catholic', 'Paranaque City', '', 'Sample', 'Sample', 'Sample', '', '', 'Arnold Ingram', 'Insurance Agent', 'Patricia Ingram', 'Journalist', '2018-02-13 16:14:27', NULL),
+(60, 11810044, 3, 'Peterson', 'Antonio', 'Bridges', 'petersonanton@yahoo.com', '$2y$10$6ri/0xkqJGm4ir6gtewfz.HJriX/3plB1yB3p8cnMIuM73jvudhWO', '(0936)940-9602', 'Active', '', '1997-02-04', 21, 'Quezon City', 'Male', 'Single', 'Filipino', 'Christian', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Kirk Peterson', 'Public Relations Specialist', 'Whitney Peterson', 'Journalist', '2018-02-13 16:18:46', NULL),
+(61, 11810045, 3, 'Salazar', 'Regina', 'Valdez', 'reginasalazarv@yahoo.com', '$2y$10$x1i5TwkkUZN3NJAniOcr.uUDzLctmq6IfSu.haxqmm4V2hA5rmLBe', '(0917)394-5020', 'Active', '', '1996-04-10', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Fred Salazar', 'HR Specialist', 'Dani Salazar', 'Secretary', '2018-02-13 16:22:02', NULL),
+(62, 11810046, 3, 'Gonzales', 'Marck', 'Anderson', 'gonzales15marck@yahoo.com', '$2y$10$bYchEhh2ZgIfhGXx9lV4jOTnvUQULCcC1Op903q2vj42121JJJtDO', '(0915)235-0294', 'Active', '', '1997-03-31', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Clark Gonzales', 'Mechanical Engineer', 'Rachel Gonzales', 'Mathematician', '2018-02-13 16:25:59', NULL),
+(63, 11810047, 3, 'Mendoza', 'Jeanine', 'Clark', 'mendozaj14@yahoo.com', '$2y$10$bLQKaqoiP92mrfBQUJT8q.l6m6i8k.LbGNm1CIfYIZoDAcU0DdbjG', '(0015)948-9879', 'Active', '', '1997-05-14', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Paul Mendoza', 'Director', 'Elizabeth Mendoza', 'Editor', '2018-02-14 03:43:13', NULL),
+(64, 11810048, 3, 'Santos', 'Bill', 'West', 'billwestsantos@yahoo.com', '$2y$10$Y4W.tW.2NR.5LG4.Jos1mOOO6U0zljnTn5tnHPf9sMlZUGO9KboPS', '(0917)387-4913', 'Active', '', '1996-10-10', 21, 'Pasay City', 'Male', 'Single', 'Filipino', 'Catholic', 'Pasay City', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Santos', 'Web Developer', 'Myra Santos', 'Veterinarian', '2018-02-14 03:47:53', NULL),
+(65, 11810049, 3, 'Torres', 'Harry', 'Garcia', 'torresharry18@yahoo.com', '$2y$10$JJ1E2VhqObyWrrIRA1yGlewrE5.uclrkLVLp.AKGSQUaOQmS0ntcO', '(0922)735-9878', 'Active', '', '1996-09-22', 21, 'Quezon City', 'Male', 'Single', 'Filipino', 'Catholic', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Victor Torres', 'Painter', 'Vicky Torres', 'Art Director', '2018-02-14 03:50:48', NULL),
+(66, 11810050, 3, 'Morales', 'Mitchell', 'Vasques', 'mmoralesv@yahoo.com', '$2y$10$eG3xpD3yoxgEi4eiBQ15wuPyfW6sn8IRPVodlHP4rrOVKCMHXliy.', '(0918)375-8475', 'Active', '', '1997-05-11', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Henry Morales', 'Business Owner', 'Tiffany Morales', 'Marketing Manager', '2018-02-14 03:53:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -589,6 +862,12 @@ ALTER TABLE `faculty`
   ADD PRIMARY KEY (`facultyID`);
 
 --
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`gradeID`);
+
+--
 -- Indexes for table `lessons`
 --
 ALTER TABLE `lessons`
@@ -674,7 +953,7 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `classlist`
 --
 ALTER TABLE `classlist`
-  MODIFY `classListID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `classListID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `course`
 --
@@ -690,6 +969,11 @@ ALTER TABLE `download`
 --
 ALTER TABLE `faculty`
   MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `gradeID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lessons`
 --
@@ -709,7 +993,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `subjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 --
 -- AUTO_INCREMENT for table `timeslots`
 --
@@ -719,7 +1003,7 @@ ALTER TABLE `timeslots`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `usertype`
 --
