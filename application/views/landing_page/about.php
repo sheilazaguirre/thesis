@@ -3,7 +3,7 @@
 	<head>
 		<!-- Basic -->
 		<meta charset="utf-8">
-		<title>YOURStore - Responsive HTML5 Template</title>
+		<title>Governor Andres Pascual College - Information Systems</title>
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="YOURStore - Responsive HTML5 Template">
 		<meta name="author" content="etheme.com">
@@ -11,19 +11,22 @@
 		<!-- Mobile Specific Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- External Plugins CSS -->
-		<link rel="stylesheet" href="external/slick/slick.css">
-		<link rel="stylesheet" href="external/slick/slick-theme.css">
-		<link rel="stylesheet" href="external/magnific-popup/magnific-popup.css">
-		<link rel="stylesheet" href="external/bootstrap-select/bootstrap-select.css">	
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-external/slick/slick.css');?>">
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-external/slick/slick-theme.css');?>">
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-external/magnific-popup/magnific-popup.css');?>">
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-external/bootstrap-select/bootstrap-select.css');?>">
+		<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+		<link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/my-external/rs-plugin/css/settings.css');?>" media="screen" />
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-css/style.css');?>">
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-css/xstyle.css');?>">
 		<!-- Icon Fonts  -->
-		<link rel="stylesheet" href="font/style.css">
-		<!-- Head Libs -->
+		<link rel="stylesheet" href="<?php echo site_url('resources/my-font/style.css');?>">
+		<!-- Head Libs -->	
 		<!-- Modernizr -->
-		<script src="external/modernizr/modernizr.js"></script>
+		<script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js');?>"></script>
 	</head>
-	<body class="index">
+	<body class="index">				  
 		<div id="loader-wrapper">
 			<div id="loader">
 				<div class="dot"></div>
@@ -52,7 +55,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="about.html"><span class="act-underline">ABOUT US</span></a>
+							<a href="about"><span class="act-underline">ABOUT US</span></a>
 						</span>						
 					</li>
 					<li>
@@ -69,10 +72,10 @@
 					</li>					
 					<li>
 						<span class="name"><span class="expander">-</span>
-							<a href="about.html"><span class="act-underline">PAGES</span></a>
+							<a href="about"><span class="act-underline">PAGES</span></a>
 						</span>						
 						<ul class="multicolumn">
-							<li><a href="about.html">About</a></li>
+							<li><a href="about">About</a></li>
 							<li><a href="services.html">Services</a></li>								
 							<li><a href="contact.html">Contact</a></li>
 							<li><a href="under-construction.html">Under Construction</a></li>
@@ -97,7 +100,7 @@
 					<div class="row">
 						<div class="col-sm-4 col-md-4 col-lg-6 col-xl-7">
 							<!-- logo start --> 
-							<a href="index.html"><img class="logo replace-2x img-responsive" src="images/header-logo.png" alt=""/> </a> 
+							<a href="index.html"><img class="logo replace-2x img-responsive" src='<?php echo site_url('resources/my-images/header-logo.png')?>'  alt=""/> </a> 
 							<!-- logo end --> 
 						</div>
 						<div class="col-sm-8 col-md-8 col-lg-6 col-xl-5 text-right">
@@ -141,7 +144,7 @@
 											</li>											
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="about.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ABOUT US</span></a>
+												<a href="about" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ABOUT US</span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
@@ -153,10 +156,10 @@
 											</li>
 											<li class="dropdown dropdown-mega-menu dropdown-two-col">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="about.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">PAGES</span></a>
+												<a href="about" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">PAGES</span></a>
 												<ul class="dropdown-menu multicolumn two-col" role="menu">
 													<li class="dl-back"><a href="#"><span class="icon icon-chevron_left"></span>back</a></li>													
-													<li><a href="about.html">About</a></li>
+													<li><a href="about">About</a></li>
 													<li><a href="services.html">Services</a></li>								
 													<li><a href="contact.html">Contact</a></li>
 													<li><a href="under-construction.html">Under Construction</a></li>
@@ -188,8 +191,7 @@
 					</div>
 				</div>
 			</header>
-		</div>
-		<!-- End HEADER section -->
+		</div>		<!-- End HEADER section -->
 		<!-- breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
@@ -310,22 +312,22 @@
 
 
 		<!-- jQuery 1.10.1--> 
-		<script src="external/jquery/jquery-2.1.4.min.js"></script> 
+		<script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
 		<!-- Bootstrap 3--> 
-		<script src="external/bootstrap/bootstrap.min.js"></script> 
+		<script src="<?php echo site_url('resources/my-external/bootstrap/bootstrap.min.js')?>"></script> 
 		<!-- Specific Page External Plugins --> 
-		<script src="external/slick/slick.min.js"></script>
-		<script src="external/bootstrap-select/bootstrap-select.min.js"></script>  
-		<script src="external/countdown/jquery.plugin.min.js"></script> 
-		<script src="external/countdown/jquery.countdown.min.js"></script>  		
-		<script src="external/instafeed/instafeed.min.js"></script>  		
-		<script src="external/magnific-popup/jquery.magnific-popup.min.js"></script>  		
-		<script src="external/isotope/isotope.pkgd.min.js"></script> 
-		<script src="external/imagesloaded/imagesloaded.pkgd.min.js"></script>
-		<script src="external/colorbox/jquery.colorbox-min.js"></script>
-		<script src="external/parallax/jquery.parallax-1.1.3.js"></script>		
+		<script src="<?php echo site_url('resources/my-external/slick/slick.min.js')?>"></script>
+		<script src="<?php echo site_url('resources/my-external/bootstrap-select/bootstrap-select.min.js')?>"></script>  
+		<script src="<?php echo site_url('resources/my-external/countdown/jquery.plugin.min.js')?>"></script> 
+		<script src="<?php echo site_url('resources/my-external/countdown/jquery.countdown.min.js')?>"></script>  		
+		<script src="<?php echo site_url('resources/my-external/instafeed/instafeed.min.js')?>"></script>  		
+		<script src="<?php echo site_url('resources/my-external/magnific-popup/jquery.magnific-popup.min.js')?>"></script>  		
+		<script src="<?php echo site_url('resources/my-external/isotope/isotope.pkgd.min.js')?>"></script> 
+		<script src="<?php echo site_url('resources/my-external/imagesloaded/imagesloaded.pkgd.min.js')?>"></script>
+		<script src="<?php echo site_url('resources/my-external/colorbox/jquery.colorbox-min.js')?>"></script>
+		<script src="<?php echo site_url('resources/my-external/parallax/jquery.parallax-1.1.3.js')?>"></script>		
 		<!-- Custom --> 
-		<script src="js/custom.js"></script>			
+		<script src="<?php echo site_url('resources/my-js/custom.js')?>"></script>			
 		
 	</body>
 </html>
