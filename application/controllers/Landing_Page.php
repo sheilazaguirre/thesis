@@ -36,7 +36,12 @@ class Landing_Page extends CI_Controller{
 
     function admission()
     {
-        $this->load->view('landing_page/services.html');
+        $this->load->view('landing_page/services');
+    }
+
+    function error_404()
+    {
+        $this->load->view('landing_page/page-404');
     }
 
 

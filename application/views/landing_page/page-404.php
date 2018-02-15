@@ -192,145 +192,35 @@
 				</div>
 			</header>
 		</div>
+
 		<!-- End HEADER section -->
-		<!-- Slider section --> 
-	<div class="col-lg-6">
-		<div class="content offset-top-0" id="slider">
-			<!--
-				#################################
-				- THEMEPUNCH BANNER -
-				#################################
-				--> 
-			<!-- START REVOLUTION SLIDER 3.1 rev5 fullwidth mode -->
-			<h2 class="hidden">Slider Section</h2>
-			<div class="tp-banner-conthainer">
-				<div class="tp-banner">
-					<ul>
-							
-						<!-- SLIDE -1 -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/slide-1.jpg')?>"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" > 
-							<!-- LAYERS --> 
-							<!-- TEXT -->
-							<div class="tp-caption lfl stb" 
-								data-x="205"              
-								data-y="center"    
-								data-voffset="60" 
-								data-speed="600" 
-								data-start="900" 
-								data-easing="Power4.easeOut" 
-								data-endeasing="Power4.easeIn" 
-								style="z-index: 2;">
-								<div class="tp-caption1--wd-1">S.Y 17-18 Term 1</div>
-								<div class="tp-caption1--wd-2">Announcements</div>
-								<a href="listing" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
-							</div>
-						</li>
-						<!-- /SLIDE -1 -->
-						<!-- SLIDE 2  -->            
-						<!-- /SLIDE 2  -->						
-						<!-- SLIDE - 3 -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-										<img src="<?php echo site_url('resources/my-images/slides/04/intro_img_03.jpg')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-									<!-- LAYER NR. 1 -->
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="1000"
-										data-start="1100"
-										data-easing="Power4.easeOut"
-										data-endspeed="1500"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="false"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9"
-										data-forcerewind="on"
-										style="z-index: 2">
-
-
-										<video class="video-js vjs-default-skin" preload="none" 
-											poster='<?php echo site_url('resources/my-images/slides/video/video_img.jpg')?>' data-setup="{}">
-											<source src='<?php echo site_url('resources/my-images/slides/video/explore.mp4')?>' type='video/mp4' />
-											<source src='<?php echo site_url('resources/my-images/slides/video/explore.webm')?>' type='video/webm' />
-											<source src='<?php echo site_url('resources/my-images/slides/video/explore.ogv')?>' type='video/ogg'  />
-										</video>
-
-									</div>
-									<!-- TEXT -->
-								<div class="tp-caption lfb stb" 
-								data-x="center"              
-								data-y="center"    
-								data-voffset="0"
-								data-hoffset="0" 
-								data-speed="600" 
-								data-start="900" 
-								data-easing="Power4.easeOut" 
-								data-endeasing="Power4.easeIn" 
-								style="z-index: 2;">
-								<div class="tp-caption3--wd-2">NEW</div>
-								<div class="tp-caption3--wd-3 color-white">ONLINE</div>
-								<div class="tp-caption3--wd-3 color-white">APPLICATION</div>
-								<div class="text-center"><a href="listing" class="link-button button--border-thick" data-text="Shop now!">APPLY NOW</a></div>
-							</div>	
-						
-						</li>
-						<!-- /SLIDE - 3 -->	
-					</ul>
-				</div>
+		<!-- breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<ol class="breadcrumb breadcrumb--ys pull-left">
+					<li class="home-link"><a href="index.html" class="icon icon-home"></a></li>										
+					<li class="active">Error 404</li>
+				</ol>
 			</div>
 		</div>
-	</div>
-
-		<!-- END REVOLUTION SLIDER --> 
+		<!-- /breadcrumbs --> 
 		<!-- CONTENT section -->
-	<div class="col-lg-6">
-		<div class="wrapper">
-			</br>
-			<h1 class="text-center">Sign in to your account</h1>
-			</br>
-				<form method="POST" class="form-horizontal">
-					<div class="form-group">
-						<div>
-							<input name="un" type="text" placeholder="USERNAME" 
-								class="textbox" required />
-						</div>
-					</div>
-					<div class="form-group">
-						<div>
-							<input name="pw" type="password" placeholder="PASSWORD" 
-								class="textbox" required />
-						</div>
-					</div>
-					<div class="form-group">
-						<div>
-							<button name="signin"
-								class="button">
-								Sign in
-							</button>
-						</div>
-						<div>
-							<a href="forgotpass" name="signin"
-								>
-								Forgot Password?
-							</a>
-						</div>
-					</div>
-				</form>
+		<div id="pageContent">
+			<div class="container">				
+				<!-- /title -->		
+				<div class="text-center"> 
+		          <img src="<?php echo site_url('resources/my-images/gapc-404.png')?>" alt="empty cart icon" class="img-responsive-inline" />
+		          <div class="divider divider--lg"></div>		         
+		          <div class="text-with-button">
+		          	<span>You might want to check that URL again or head over to our </span><a class="btn btn--ys" href="index.html"><span class="icon icon-home"></span>homepage</a>
+		          </div>
+		         		          
+		        </div>					
 			</div>
 		</div>
-	</div>
-
-
-			<hr>
-
-
-		<!-- End CONTENT section -->
+		<!-- End CONTENT section --> 
 		<!-- FOOTER section -->
-		<footer>
+<footer>
 			<!-- footer-data -->
 			<div class="container inset-bottom-60">
 				<div class="row" >

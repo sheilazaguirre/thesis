@@ -49,7 +49,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="index.html"><span class="act-underline">HOME</span></a>
+							<a href="index"><span class="act-underline">HOME</span></a>
 						</span>
 					</li>					
 					<li>
@@ -61,13 +61,13 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="services.html"><span class="act-underline"><span class="act-underline">ADMISSION</span></span></a>
+							<a href="admission"><span class="act-underline"><span class="act-underline">ADMISSION</span></span></a>
 						</span>
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="contact.html"><span class="act-underline">CONTACT US</span></a>
+							<a href="contact"><span class="act-underline">CONTACT US</span></a>
 						</span>
 					</li>					
 					<li>
@@ -76,17 +76,17 @@
 						</span>						
 						<ul class="multicolumn">
 							<li><a href="about">About</a></li>
-							<li><a href="services.html">Services</a></li>								
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="under-construction.html">Under Construction</a></li>
-							<li><a href="site-map.html">Site Map</a></li>								
-							<li><a href="page-404.html">Page 404</a></li>											
+							<li><a href="admission">Services</a></li>								
+							<li><a href="contact">Contact</a></li>
+							<li><a href="under-construction">Under Construction</a></li>
+							<li><a href="site-map">Site Map</a></li>								
+							<li><a href="error_404">Page 404</a></li>											
 						</ul>
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="listing.html"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+							<a href="listing"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 						</span>
 					</li>		
 				</ul>
@@ -100,7 +100,7 @@
 					<div class="row">
 						<div class="col-sm-4 col-md-4 col-lg-6 col-xl-7">
 							<!-- logo start --> 
-							<a href="index.html"><img class="logo replace-2x img-responsive" src='<?php echo site_url('resources/my-images/header-logo.png')?>'  alt=""/> </a> 
+							<a href="index"><img class="logo replace-2x img-responsive" src='<?php echo site_url('resources/my-images/header-logo.png')?>'  alt=""/> </a> 
 							<!-- logo end --> 
 						</div>
 						<div class="col-sm-8 col-md-8 col-lg-6 col-xl-5 text-right">
@@ -140,7 +140,7 @@
 										<ul class="nav navbar-nav">
 											<li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>										
 											<li class="dropdown dropdown-mega-menu">											
-												<a href="index.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">HOME</span></a>
+												<a href="index" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">HOME</span></a>
 											</li>											
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
@@ -148,11 +148,11 @@
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="services.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ADMISSION</span></a>
+												<a href="admission" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ADMISSION</span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="contact.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">CONTACT US</span></a>
+												<a href="contact" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">CONTACT US</span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu dropdown-two-col">
 												<span class="dropdown-toggle extra-arrow"></span>
@@ -160,16 +160,16 @@
 												<ul class="dropdown-menu multicolumn two-col" role="menu">
 													<li class="dl-back"><a href="#"><span class="icon icon-chevron_left"></span>back</a></li>													
 													<li><a href="about">About</a></li>
-													<li><a href="services.html">Services</a></li>								
-													<li><a href="contact.html">Contact</a></li>
-													<li><a href="under-construction.html">Under Construction</a></li>
-													<li><a href="site-map.html">Site Map</a></li>								
-													<li><a href="page-404.html">Page 404</a></li>		
+													<li><a href="admission">Services</a></li>								
+													<li><a href="contact">Contact</a></li>
+													<li><a href="under-construction">Under Construction</a></li>
+													<li><a href="site-map">Site Map</a></li>								
+													<li><a href="error_404">Page 404</a></li>		
 												</ul>
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="listing.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+												<a href="listing" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 											</li>
 											</li>
 										</ul>
@@ -191,7 +191,8 @@
 					</div>
 				</div>
 			</header>
-		</div>		<!-- End HEADER section -->
+		</div>
+		<!-- End HEADER section -->
 		<!-- breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">

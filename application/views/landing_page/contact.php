@@ -191,143 +191,51 @@
 					</div>
 				</div>
 			</header>
-		</div>
+		</div>>
 		<!-- End HEADER section -->
-		<!-- Slider section --> 
-	<div class="col-lg-6">
-		<div class="content offset-top-0" id="slider">
-			<!--
-				#################################
-				- THEMEPUNCH BANNER -
-				#################################
-				--> 
-			<!-- START REVOLUTION SLIDER 3.1 rev5 fullwidth mode -->
-			<h2 class="hidden">Slider Section</h2>
-			<div class="tp-banner-conthainer">
-				<div class="tp-banner">
-					<ul>
-							
-						<!-- SLIDE -1 -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/slide-1.jpg')?>"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" > 
-							<!-- LAYERS --> 
-							<!-- TEXT -->
-							<div class="tp-caption lfl stb" 
-								data-x="205"              
-								data-y="center"    
-								data-voffset="60" 
-								data-speed="600" 
-								data-start="900" 
-								data-easing="Power4.easeOut" 
-								data-endeasing="Power4.easeIn" 
-								style="z-index: 2;">
-								<div class="tp-caption1--wd-1">S.Y 17-18 Term 1</div>
-								<div class="tp-caption1--wd-2">Announcements</div>
-								<a href="listing" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
-							</div>
-						</li>
-						<!-- /SLIDE -1 -->
-						<!-- SLIDE 2  -->            
-						<!-- /SLIDE 2  -->						
-						<!-- SLIDE - 3 -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-										<img src="<?php echo site_url('resources/my-images/slides/04/intro_img_03.jpg')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-									<!-- LAYER NR. 1 -->
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="1000"
-										data-start="1100"
-										data-easing="Power4.easeOut"
-										data-endspeed="1500"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="false"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9"
-										data-forcerewind="on"
-										style="z-index: 2">
-
-
-										<video class="video-js vjs-default-skin" preload="none" 
-											poster='<?php echo site_url('resources/my-images/slides/video/video_img.jpg')?>' data-setup="{}">
-											<source src='<?php echo site_url('resources/my-images/slides/video/explore.mp4')?>' type='video/mp4' />
-											<source src='<?php echo site_url('resources/my-images/slides/video/explore.webm')?>' type='video/webm' />
-											<source src='<?php echo site_url('resources/my-images/slides/video/explore.ogv')?>' type='video/ogg'  />
-										</video>
-
-									</div>
-									<!-- TEXT -->
-								<div class="tp-caption lfb stb" 
-								data-x="center"              
-								data-y="center"    
-								data-voffset="0"
-								data-hoffset="0" 
-								data-speed="600" 
-								data-start="900" 
-								data-easing="Power4.easeOut" 
-								data-endeasing="Power4.easeIn" 
-								style="z-index: 2;">
-								<div class="tp-caption3--wd-2">NEW</div>
-								<div class="tp-caption3--wd-3 color-white">ONLINE</div>
-								<div class="tp-caption3--wd-3 color-white">APPLICATION</div>
-								<div class="text-center"><a href="listing" class="link-button button--border-thick" data-text="Shop now!">APPLY NOW</a></div>
-							</div>	
-						
-						</li>
-						<!-- /SLIDE - 3 -->	
-					</ul>
-				</div>
+		<!-- breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<ol class="breadcrumb breadcrumb--ys pull-left">
+					<li class="home-link"><a href="index.html" class="icon icon-home"></a></li>
+					<li class="active">Contact</li>
+				</ol>
 			</div>
 		</div>
-	</div>
-
-		<!-- END REVOLUTION SLIDER --> 
+		<!-- /breadcrumbs -->
 		<!-- CONTENT section -->
-	<div class="col-lg-6">
-		<div class="wrapper">
-			</br>
-			<h1 class="text-center">Sign in to your account</h1>
-			</br>
-				<form method="POST" class="form-horizontal">
-					<div class="form-group">
-						<div>
-							<input name="un" type="text" placeholder="USERNAME" 
-								class="textbox" required />
-						</div>
+
+		<div id="pageContent">
+			<!-- map -->
+			<!-- /map -->
+			<section class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<h2 class="text-uppercase title-bottom">CONTACTs</h2>
+						<ul class="list-icon">
+							<li>
+								<span class="icon icon-home"></span>
+								<strong>Address :</strong> 1045 M. Naval St, City of Navotas, 1485 Metro Manila
+							</li>
+							<li>
+								<span class="icon icon-call"></span>
+								<strong>Phone:</strong> (02) 282 9035
+							</li>
+							<li>
+								<span class="icon icon-schedule"></span>
+								<strong>Hours:</strong> 6 Days a week from  7:00 am to 6:00 pm
+							</li>
+							<li>
+								<span class="icon icon-mail"></span>
+								<strong>E-mail:</strong> <a class="color" href="mailto:info@mydomain.com">support.gapc@gmail.com</a>
+							</li>
+						</ul>
+						<div class="divider divider--sm"></div>
 					</div>
-					<div class="form-group">
-						<div>
-							<input name="pw" type="password" placeholder="PASSWORD" 
-								class="textbox" required />
-						</div>
-					</div>
-					<div class="form-group">
-						<div>
-							<button name="signin"
-								class="button">
-								Sign in
-							</button>
-						</div>
-						<div>
-							<a href="forgotpass" name="signin"
-								>
-								Forgot Password?
-							</a>
-						</div>
-					</div>
-				</form>
-			</div>
+				</div>
+			</section>
 		</div>
-	</div>
-
-
-			<hr>
-
-
+		<hr>
 		<!-- End CONTENT section -->
 		<!-- FOOTER section -->
 		<footer>
