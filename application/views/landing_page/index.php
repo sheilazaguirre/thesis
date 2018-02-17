@@ -86,7 +86,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="listing"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+							<a href="<?php echo site_url('applicant/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 						</span>
 					</li>		
 				</ul>
@@ -169,7 +169,7 @@
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="listing" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+												<a href="<?php echo site_url('applicant/application')?>"" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 											</li>
 											</li>
 										</ul>
@@ -224,7 +224,7 @@
 								style="z-index: 2;">
 								<div class="tp-caption1--wd-1">S.Y 17-18 Term 1</div>
 								<div class="tp-caption1--wd-2">Announcements</div>
-								<a href="listing" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
+								<a href="<?php echo site_url('applicant/application')?>" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
 							</div>
 						</li>
 						<!-- /SLIDE -1 -->

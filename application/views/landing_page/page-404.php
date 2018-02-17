@@ -198,7 +198,7 @@
 		<div class="breadcrumbs">
 			<div class="container">
 				<ol class="breadcrumb breadcrumb--ys pull-left">
-					<li class="home-link"><a href="index.html" class="icon icon-home"></a></li>										
+					<li class="home-link"><a href="index" class="icon icon-home"></a></li>										
 					<li class="active">Error 404</li>
 				</ol>
 			</div>
@@ -212,7 +212,7 @@
 		          <img src="<?php echo site_url('resources/my-images/gapc-404.png')?>" alt="empty cart icon" class="img-responsive-inline" />
 		          <div class="divider divider--lg"></div>		         
 		          <div class="text-with-button">
-		          	<span>You might want to check that URL again or head over to our </span><a class="btn btn--ys" href="index.html"><span class="icon icon-home"></span>homepage</a>
+		          	<span>You might want to check that URL again or head over to our </span><a class="btn btn--ys" href="index"><span class="icon icon-home"></span>homepage</a>
 		          </div>
 		         		          
 		        </div>					
