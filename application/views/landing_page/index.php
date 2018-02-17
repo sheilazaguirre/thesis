@@ -7,7 +7,7 @@
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="YOURStore - Responsive HTML5 Template">
 		<meta name="author" content="etheme.com">
-		<link rel="shortcut icon" href="gapc-favicon.ico">
+		<link rel="shortcut icon" href="<?php echo site_url('resources/my-images/gapc-favicon.ico')?>">
 		<!-- Mobile Specific Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- External Plugins CSS -->
