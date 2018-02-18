@@ -6,6 +6,10 @@ class Prof extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Prof_model');
+        $this->load->helper('form');
+        $this->load->helper('url');
+        
+        
     } 
 
     /*
@@ -31,7 +35,36 @@ class Prof extends CI_Controller{
 
     function grades()
     {
-        $this->load->view('prof/grades');
+        if(isset($_POST) && count($_POST) > 0)     
+        {   
+            foreach ($this->input->post('studentID')) {
+                
+                $params = array(
+                    'studentID' => $this->input->post('sid['.$this->input->post('studentID').']'),
+                    'classID' => $this->input->post('classid'),
+                    'grade' => $this->input->post('grade['.$this->input->post('studentID').']'),
+                    'remarks' => $this->input->post('remarks['.$this->input->post('studentID').']'),
+                    'status' => "Saved",
+            }
+                ); 
+            
+            
+
+            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+            
+            if(count($grades) == 0){
+                $addgrades = $this->Prof_model->add_grades($params);
+            }
+            else{
+                $editgrades = $this->Prof_model->updategrades($params);
+            }
+            redirect('prof/index');
+        }
+        else{
+            $data['classlist'] = $this->Prof_model->get_classlist();
+            $this->load->view('prof/grades', $data);
+        }
+
     }
     
     /*
@@ -79,5 +112,7 @@ class Prof extends CI_Controller{
         else
             show_error('The prof you are trying to delete does not exist.');
     }
+
+
     
 }
