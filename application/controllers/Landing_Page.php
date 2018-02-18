@@ -39,6 +39,22 @@ class Landing_Page extends CI_Controller{
         $this->load->view('landing_page/services');
     }
 
+    function admin()
+    {
+        $this->load->view('landing_page/admin');
+    }
+
+    function faculty()
+    {
+        $this->load->view('landing_page/faculty');
+    }
+
+    function registrar()
+    {
+        $this->load->view('landing_page/registrar');
+    }
+
+
     function error_404()
     {
         $this->load->view('landing_page/page-404');
