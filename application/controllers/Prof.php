@@ -37,7 +37,7 @@ class Prof extends CI_Controller{
     {
         if(isset($_POST) && count($_POST) > 0)     
         {   
-            foreach ($this->input->post('studentID')) {
+            
                 
                 $params = array(
                     'studentID' => $this->input->post('sid['.$this->input->post('studentID').']'),
@@ -45,7 +45,7 @@ class Prof extends CI_Controller{
                     'grade' => $this->input->post('grade['.$this->input->post('studentID').']'),
                     'remarks' => $this->input->post('remarks['.$this->input->post('studentID').']'),
                     'status' => "Saved",
-            }
+            
                 ); 
             
             

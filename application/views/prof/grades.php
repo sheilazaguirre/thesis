@@ -119,7 +119,10 @@
 										<option value="w">W</option>
 										<option value="x">X</option>
 										<option value="inc">INC</option>
-									</select>
+									</select> <br/>
+									<input type="checkbox" name="score" class="check" value="w"> W - Withdraw <br/>
+									<input type="checkbox" name="score" class="check" value="x"> X - Absent in Final Exam <br/>
+									<input type="checkbox" name="score" class="check" value="inc"> INC - Incomplete <br/>
 								</td>
 								<td>
 									<textarea rows="2" name="remarks[<?=$c['studentID']?>]"></textarea>
@@ -133,7 +136,7 @@
 
 					<div class="form-group">
 						<div class="col-md-12 text-right">
-							<button type="submit" class="btn btn-success">
+							<button type="submit" class="btn btn-success" onclick='return confirm("Save?");'>
 								<i class="fa fa-check"></i> Save
 							</button>
 						</div>
@@ -143,7 +146,13 @@
 			</div>
 
 
-
+			<script>
+				$(document).ready(function(){
+					$('.check').click(function() {
+						$('.check').not(this).prop('checked', false);
+					});
+				});
+			</script>
 
 			<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
