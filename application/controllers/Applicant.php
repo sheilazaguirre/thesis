@@ -49,8 +49,6 @@ class Applicant extends CI_Controller{
 		$this->form_validation->set_rules('fatherocc','Father occupation','required|max_length[50]');
 		$this->form_validation->set_rules('mothername','Mother name','required|max_length[50]');
 		$this->form_validation->set_rules('motherocc','Mother occupation','required|max_length[50]');
-        $this->form_validation->set_rules('datesubmitted','Datesubmitted');
-        $this->form_validation->set_rules('datemodified','Datemodified');
 		$this->form_validation->set_rules('studentstat','Student status','required|max_length[20]');
 
 		if($this->form_validation->run())

@@ -1,5 +1,4 @@
 <?php
-
  
 class Theclass_model extends CI_Model
 {
@@ -24,6 +23,7 @@ class Theclass_model extends CI_Model
         $this->db->order_by('classID', 'asc');
         return $this->db->get('classes')->result_array();
     }
+
         
     /*
      * function to add new theclass
@@ -51,4 +51,15 @@ class Theclass_model extends CI_Model
         $this->db->where('classID',$classID);
         return $this->db->update('classes',$params);
     }
+    public function get_autocomplete($search_data)
+    {
+            $this->db->select('u.userIDNo, CONCAT(u.userLN, ", ", u.userFN) AS userName');
+            $this->db->where('userTypeID', 3);
+            $this->db->or_like('userIDNo', $search_data);
+            $this->db->or_like('userLN', $search_data);
+            $this->db->or_like('userFN', $search_data);
+            return $this->db->get('users u', 10)->result();
+    }
+
+   
 }

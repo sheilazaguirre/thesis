@@ -1,13 +1,12 @@
 <?php
-
  
 class Theclass extends CI_Controller{
     function __construct()
     {
         parent::__construct();
         $this->load->model('Theclass_model');
+        $this->load->model('Classlist_model');
     } 
-
     /*
      * Listing of theclasses
      */
@@ -18,14 +17,12 @@ class Theclass extends CI_Controller{
         $data['_view'] = 'theclass/index';
         $this->load->view('layouts/main',$data);
     }
-
     /*
      * Adding a new theclass
      */
     function add()
     {   
         $this->load->library('form_validation');
-
 		$this->form_validation->set_rules('subjectID','SubjectID','required|integer');
 		$this->form_validation->set_rules('facultyID','FacultyID','required|integer');
 		$this->form_validation->set_rules('timeSlotID','TimeSlotID','required|integer');
@@ -51,13 +48,10 @@ class Theclass extends CI_Controller{
         {
 			$this->load->model('Subject_model');
 			$data['all_subjects'] = $this->Subject_model->get_all_subjects();
-
 			$this->load->model('User_model');
 			$data['all_users'] = $this->User_model->get_all_users();
-
 			$this->load->model('Timeslot_model');
 			$data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
-
 			$this->load->model('Venue_model');
 			$data['all_venues'] = $this->Venue_model->get_all_venues();
             
@@ -65,7 +59,6 @@ class Theclass extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }  
-
     /*
      * Editing a theclass
      */
@@ -77,7 +70,6 @@ class Theclass extends CI_Controller{
         if(isset($data['theclass']['classID']))
         {
             $this->load->library('form_validation');
-
 			$this->form_validation->set_rules('subjectID','SubjectID','required|integer');
 			$this->form_validation->set_rules('facultyID','FacultyID','required|integer');
 			$this->form_validation->set_rules('timeSlotID','TimeSlotID','required|integer');
@@ -95,7 +87,6 @@ class Theclass extends CI_Controller{
 					'academicYear' => $this->input->post('academicYear'),
 					'semester' => $this->input->post('semester'),
                 );
-
                 $this->Theclass_model->update_theclass($classID,$params);            
                 redirect('theclass/index');
             }
@@ -103,16 +94,12 @@ class Theclass extends CI_Controller{
             {
 				$this->load->model('Subject_model');
 				$data['all_subjects'] = $this->Subject_model->get_all_subjects();
-
 				$this->load->model('User_model');
 				$data['all_users'] = $this->User_model->get_all_users();
-
 				$this->load->model('Timeslot_model');
 				$data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
-
 				$this->load->model('Venue_model');
 				$data['all_venues'] = $this->Venue_model->get_all_venues();
-
                 $data['_view'] = 'theclass/edit';
                 $this->load->view('layouts/main',$data);
             }
@@ -120,14 +107,12 @@ class Theclass extends CI_Controller{
         else
             show_error('The theclass you are trying to edit does not exist.');
     } 
-
     /*
      * Deleting theclass
      */
     function remove($classID)
     {
         $theclass = $this->Theclass_model->get_theclass($classID);
-
         // check if the theclass exists before trying to delete it
         if(isset($theclass['classID']))
         {
@@ -138,5 +123,63 @@ class Theclass extends CI_Controller{
         else
             show_error('The theclass you are trying to delete does not exist.');
     }
-    
+    public function autocomplete()
+    {
+            // load model
+            $search_data = $this->input->post('search_data');
+            $result = $this->Theclass_model->get_autocomplete($search_data);
+            if (!empty($result))
+            {
+                $studentparams = [];
+                foreach ($result as $row):
+                    echo "<ul style='list-style: none'><li><a onclick='inputData(".$row->userIDNo.");'>" . $row->userIDNo .'  |  '. $row->userName . "</a></li></ul>";
+                endforeach;
+            }
+            else
+            {
+                echo "<ul style='list-style: none'><li>No records found ... </em> </li>";
+            }
+    }
+
+    public function insert()
+    {
+        $this->load->library('form_validation');
+        
+            
+            $result = $this->Theclass_model->get_autocomplete($search_data);
+            $studentparams = [];
+            
+                if($this->form_validation->run())     
+                {   
+                    $params = array(
+                        'classID' => '0',
+                        'studentID' => $this->input->post('studentID'),
+                        'remarks' => '',
+                        'dateAdded' => date('Y-m-d H:i:s'),
+                    );
+                    
+                    $classlist_id = $this->Classlist_model->add_classlist($params);
+                    redirect('classlist/index');
+                }
+                else
+                {
+                    $this->load->model('Class_model');
+                    $data['all_classes'] = $this->Class_model->get_all_classes();
+        
+                    $this->load->model('Student_model');
+                    $data['all_students'] = $this->Student_model->get_all_students();
+                    
+                    $data['_view'] = 'classlist/add';
+                    $this->load->view('layouts/main',$data);
+                }
+    }
+
+    public function getclass()
+    {
+        
+        $data['tableresult'] = $this->Classlist_model->getclass();
+
+        $data['_view'] = 'theclass/add';
+        $this->load->view('layouts/main',$data);
+    }
 }

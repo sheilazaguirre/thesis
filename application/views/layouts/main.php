@@ -24,6 +24,11 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+        <link rel="stylesheet" href="<?php echo site_url('resources/js/ajaxlivesearch.min.js');?>">
+        <link rel="stylesheet" href="<?php echo site_url('css/ajaxlivesearch.min.css');?>">
+
+    
+
 
 
     </head>
@@ -376,6 +381,13 @@
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.js');?>"></script>
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.extensions.js');?>"></script>
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
+
+        
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="<?php echo site_url('resources/js/jquery-1.11.1.min.js');?>"></script>
+
+        <!-- Live Search Script -->
+        <script type="text/javascript" src="<?php echo site_url('resources/js/ajaxlivesearch.min.js');?>"></script>
 
 
 
