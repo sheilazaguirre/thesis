@@ -27,6 +27,7 @@
 
 
 
+
     </head>
 
     <body>
@@ -51,7 +52,7 @@
                         <label for="course" class="control-label"><span class="text-danger">*</span>Course</label>
                         <div class="form-group">
                             <select name="course" class="form-control">
-                                <option value="">select</option>
+                                <option value="">Select</option>
                                 <?php
                                 $course_values = array(
                                     'Bachelor of Science in Computer Science'=>'Bachelor of Science in Computer Science',
@@ -77,7 +78,7 @@
                         <label for="studentstat" class="control-label"><span class="text-danger">*</span>Student Status</label>
                         <div class="form-group">
                             <select name="studentstat" class="form-control">
-                                <option value="">select</option>
+                                <option value="">Select</option>
                                 <?php
                                 $studentstat_values = array(
                                     'Approved'=>'Approved',
@@ -171,7 +172,7 @@
                         <label for="nationality" class="control-label"><span class="text-danger">*</span>Nationality</label>
                         <div class="form-group">
                             <select name="nationality" class="form-control">
-                                <option value="">select</option>
+                                <option value="">Select</option>
                                 <?php
                                 $nationality_values= array(
                                     'Filipino'=>'Filipino',
@@ -293,7 +294,7 @@
     </div>
 </div>
 
-    <script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
+        <script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="<?php echo site_url('resources/js/bootstrap.min.js');?>"></script>
         <!-- FastClick -->
@@ -310,6 +311,7 @@
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.js');?>"></script>
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.extensions.js');?>"></script>
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
+      
 
     </body>
 
