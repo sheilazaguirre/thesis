@@ -64,10 +64,14 @@ class Prof extends CI_Controller{
             redirect('prof/index');
         }
         else{
-            if($data['grades'] = $this->Prof_model->get_all_grades($this->input->post("classID"))){
-                
-            };            
+            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+            if($grades){
+                for($i = 0; $i<count($grades); $i++){
+                    $data['classlist']['grade'][$i] = $grades[$i]['grade'];
+                }
+            }          
             $data['classlist'] = $this->Prof_model->get_classlist();
+            // var_dump($data['classlist']);
             $this->load->view('prof/grades', $data);
         }
 

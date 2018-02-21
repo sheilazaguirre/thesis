@@ -108,7 +108,10 @@
 								
 								<td>
 									<select name="grade[<?=$c['classlistID']?>]">
-										<option value="<?=$c["grade[<?=$c['classlistID']?>]"]?>"
+										<?php
+											if($c["grade"])
+											echo '<option value='.$c["grade"].' selected>'.$c["grade"].'</option>';
+										?>
 										<option value="">Select Grade</option>
 										<option value="1">1.0</option>
 										<option value="1.25">1.25</option>
