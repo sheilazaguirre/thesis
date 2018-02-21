@@ -34,33 +34,39 @@ class Prof extends CI_Controller{
     }
 
     function grades()
-    {
+    {        
+        // var_dump($_POST);
         if(isset($_POST) && count($_POST) > 0)     
         {   
-            
-                
-                $params = array(
-                    'studentID' => $this->input->post('sid['.$this->input->post('studentID').']'),
+            $params = [];
+            foreach ($this->input->post('clID') as $clID) {
+                $params[$clID] = array(
+                    'studentID' => $this->input->post('sid['.$clID.']'),
                     'classID' => $this->input->post('classid'),
-                    'grade' => $this->input->post('grade['.$this->input->post('studentID').']'),
-                    'remarks' => $this->input->post('remarks['.$this->input->post('studentID').']'),
+                    'grade' => $this->input->post('grade['.$clID.']') || "",
+                    'remarks' => $this->input->post('remarks['.$clID.']') || "",
                     'status' => "Saved",
+                );
+            }
             
-                ); 
-            
-            
-
             $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
-            
             if(count($grades) == 0){
-                $addgrades = $this->Prof_model->add_grades($params);
+                foreach($params as $p){
+                    $addgrades = $this->Prof_model->add_grades($p);
+                }
             }
-            else{
-                $editgrades = $this->Prof_model->updategrades($params);
+            else{                
+                foreach($params as $p){                
+                    $editgrades = $this->Prof_model->updategrades($p);
+                }
             }
+
             redirect('prof/index');
         }
         else{
+            if($data['grades'] = $this->Prof_model->get_all_grades($this->input->post("classID"))){
+                
+            };            
             $data['classlist'] = $this->Prof_model->get_classlist();
             $this->load->view('prof/grades', $data);
         }

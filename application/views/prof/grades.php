@@ -93,18 +93,22 @@
 							</tr>
 						</thead>
 						<tbody>
+						
 							<?php foreach($classlist as $c){ ?>
 							<tr>
 								<td>
-									<p name="sid[<?=$c['studentID']?>]"><?php echo $c['studentID']; ?></p>
+									<p><?php echo $c['studentID']; ?></p>
 								</td>
 								<td>
 									<?php echo $c['userName']; ?>
 								</td>
+								<input type="hidden" name="clID[<?php echo $c['classlistID']?>]" value="<?php echo $c['classlistID']?>"/>
 								<input type="hidden" name="classid" value="<?php echo $c['classID']?>"/>
+								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
 								
 								<td>
-									<select name="grade[<?=$c['studentID']?>]">
+									<select name="grade[<?=$c['classlistID']?>]">
+										<option value="<?=$c["grade[<?=$c['classlistID']?>]"]?>"
 										<option value="">Select Grade</option>
 										<option value="1">1.0</option>
 										<option value="1.25">1.25</option>
@@ -116,16 +120,14 @@
 										<option value="2.75">2.75</option>
 										<option value="3">3</option>
 										<option value="4">4.0</option>
-										<option value="w">W</option>
-										<option value="x">X</option>
-										<option value="inc">INC</option>
-									</select> <br/>
-									<input type="checkbox" name="score" class="check" value="w"> W - Withdraw <br/>
-									<input type="checkbox" name="score" class="check" value="x"> X - Absent in Final Exam <br/>
-									<input type="checkbox" name="score" class="check" value="inc"> INC - Incomplete <br/>
+										<option value="W">W</option>
+										<option value="X">X</option>
+										<option value="inc">Incomplete</option>
+									</select>
+									<br/>
 								</td>
 								<td>
-									<textarea rows="2" name="remarks[<?=$c['studentID']?>]"></textarea>
+									<textarea rows="2" name="remarks[<?=$c['classlistID']?>]"></textarea>
 								</td>
 
 							</tr>
@@ -133,6 +135,32 @@
 						</tbody>
 
 					</table>
+
+					<div class="form-group">
+						<div class="col-md-2 left">
+							<p><b>Legend:</b><br/>
+							1.0 - <br/>
+							1.25 - <br/>
+							1.50 - <br/>
+							1.75 - <br/>
+							2.0 - <br/>
+							2.25 - <br/>
+							2.50 - <br/>
+							</p>
+						</div>
+						<div class="col-md-3 right">
+							<p><b>Legend:</b><br/>
+							2.75 - <br/>
+							3.0 - <br/>
+							4.0 - For Midterm Only<br/>
+							5.0 - For Finals Only<br/>
+							W - Withdraw <br/>
+							X - Absent from the Final Exam <br/>
+							INC - Incomplete <br/>
+							</p>
+						</div>
+					</div>
+					
 
 					<div class="form-group">
 						<div class="col-md-12 text-right">
