@@ -3,7 +3,7 @@
 	<head>
 		<!-- Basic -->
 		<meta charset="utf-8">
-		<title>YOURStore - Responsive HTML5 Template</title>
+		<title>Governor Andres Pascual College - Information Systems</title>
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="YOURStore - Responsive HTML5 Template">
 		<meta name="author" content="etheme.com">

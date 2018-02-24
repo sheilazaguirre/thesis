@@ -86,7 +86,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="listing"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+							<a href="<?php echo site_url('applicant/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 						</span>
 					</li>		
 				</ul>
@@ -169,7 +169,7 @@
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="listing" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+												<a href="<?php echo site_url('applicant/application')?>" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 											</li>
 											</li>
 										</ul>
@@ -263,45 +263,45 @@
 					<!-- /title -->
 					<div class="row">
 						<div class="col-md-3 col-sm-6 col-xs-6">
-							<a class="link-img-hover1" href="#"><img src="<?php echo site_url('resources/my-images/elementary-education.jpg')?>" class="img-responsive" alt=""></a>							
+							<a class="link-img-hover1" href="elemed" target="_blank"><img src="<?php echo site_url('resources/my-images/elementary-education.jpg')?>" class="img-responsive" alt=""></a>							
 							<div class="divider divider--md1"></div>
 							<p>
 								<a class="hover-effect-01" href="#">
 									<span class="font22 text-uppercase color-custom">Bachelor of Elementary Education</span>
 								</a>
 							</p>
-							<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+							<p>Click picture to see details.</p>
 						</div>
 						<div class="col-md-3 col-sm-6 col-xs-6">
-							<a class="link-img-hover1" href="#"><img src="<?php echo site_url('resources/my-images/secondary-education.jpg')?>" class="img-responsive" alt=""></a>
+							<a class="link-img-hover1" href="seced"><img src="<?php echo site_url('resources/my-images/secondary-education.jpg')?>" class="img-responsive" alt=""></a>
 							<div class="divider divider--md1"></div>
 							<p>
 								<a class="hover-effect-01" href="#">
 									<span class="font22 text-uppercase color-custom">Bachelor of Secondary Education</span>
 								</a>
 							</p>
-							<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+							<p></p>
 						</div>
 						<div class="divider divider--lg visible-sm visible-xs"></div>
 						<div class="col-md-3 col-sm-6 col-xs-6">
-							<a class="link-img-hover1" href="#"><img src="<?php echo site_url('resources/my-images/business-administration.jpg')?>" class="img-responsive" alt=""></a>
+							<a class="link-img-hover1" href="bisad" target="_blank"><img src="<?php echo site_url('resources/my-images/business-administration.jpg')?>" class="img-responsive" alt=""></a>
 							<div class="divider divider--md1"></div>
 							<p>
 								<a class="hover-effect-01" href="#">
 									<span class="font22 text-uppercase color-custom">Bachelor of Science in Business</span>
 								</a>
 							</p>
-							<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+							<p> </p>
 						</div>
 						<div class="col-md-3 col-sm-6 col-xs-6">
-							<a class="link-img-hover1" href="#"><img src="<?php echo site_url('resources/my-images/computer-science.jpg')?>" class="img-responsive" alt=""></a>
+							<a class="link-img-hover1" href="comsci" target="_blank"><img src="<?php echo site_url('resources/my-images/computer-science.jpg')?>" class="img-responsive" alt=""></a>
 							<div class="divider divider--md1"></div>
 							<p>
 								<a class="hover-effect-01" href="#">
 									<span class="font22 text-uppercase color-custom">Bachelor of Science in Computer Science</span>
 								</a>
 							</p>
-							<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+							<p> </p>
 						</div>
 					</div>
 				</div>
