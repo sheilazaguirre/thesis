@@ -82,6 +82,7 @@
 						<b>Prelims</b>
 					</h3>
 					<hr/>
+					<?php $this->session->flashdata('message_name'); ?>
 					<table id="name" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
 						<thead>
 							<tr>
@@ -107,30 +108,28 @@
 								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
 								
 								<td>
-									<select name="grade[<?=$c['classlistID']?>]">
-										<?php
-											if($c["grade"])
-											echo '<option value='.$c["grade"].' selected>'.$c["grade"].'</option>';
-										?>
+									<select name="grade[<?=$c['classlistID']?>]" required>
 										<option value="">Select Grade</option>
-										<option value="1">1.0</option>
-										<option value="1.25">1.25</option>
-										<option value="1.50">1.50</option>
-										<option value="1.75">1.75</option>
-										<option value="2">2.0</option>
-										<option value="2.25">2.25</option>
-										<option value="2.50">2.50</option>
-										<option value="2.75">2.75</option>
-										<option value="3">3</option>
-										<option value="4">4.0</option>
-										<option value="W">W</option>
-										<option value="X">X</option>
-										<option value="inc">Incomplete</option>
+										<option value="1" <?php echo $c["grade"] == "1" ? "selected" : "" ?>>1.00</option>
+										<option value="1.25" <?php echo $c["grade"] == "1.25" ? "selected" : "" ?>>1.25</option>
+										<option value="1.50" <?php echo $c["grade"] == "1.50" ? "selected" : "" ?>>1.50</option>
+										<option value="1.75" <?php echo $c["grade"] == "1.75" ? "selected" : "" ?>>1.75</option>
+										<option value="2" <?php echo $c["grade"] == "2" ? "selected" : "" ?>>2.00</option>
+										<option value="2.25" <?php echo $c["grade"] == "2.25" ? "selected" : "" ?>>2.25</option>
+										<option value="2.50" <?php echo $c["grade"] == "2.50" ? "selected" : "" ?>>2.50</option>
+										<option value="2.75" <?php echo $c["grade"] == "2.75" ? "selected" : "" ?>>2.75</option>
+										<option value="3" <?php echo $c["grade"] == "3" ? "selected" : "" ?>>3.00</option>
+										<option value="4" <?php echo $c["grade"] == "4" ? "selected" : "" ?>>4.00</option>
+										<option value="W" <?php echo $c["grade"] == "W" ? "selected" : "" ?>>W</option>
+										<option value="X" <?php echo $c["grade"] == "X" ? "selected" : "" ?>>X</option>
+										<option value="inc" <?php echo $c["grade"] == "inc" ? "selected" : "" ?>>INC</option>
 									</select>
 									<br/>
 								</td>
 								<td>
-									<textarea rows="2" name="remarks[<?=$c['classlistID']?>]"></textarea>
+									<textarea rows="2" value="" name="remarks[<?=$c['classlistID']?>]">
+									<?php echo $c['remarks']; ?>
+									</textarea>
 								</td>
 
 							</tr>
@@ -138,7 +137,9 @@
 						</tbody>
 
 					</table>
-
+					<div class="row">
+						
+					</div>
 					<div class="form-group">
 						<div class="col-md-2 left">
 							<p><b>Legend:</b><br/>
@@ -167,8 +168,11 @@
 
 					<div class="form-group">
 						<div class="col-md-12 text-right">
-							<button type="submit" class="btn btn-success" onclick='return confirm("Save?");'>
+							<button type="submit" name="save" class="btn btn-info" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> onclick='return confirm("Save?");'>
 								<i class="fa fa-check"></i> Save
+							</button>
+							<button type="submit" name="submit" class="btn btn-success" onclick='return confirm("Are you sure you want to Submit?");'>
+								<i class="fa fa-check"></i> Submit
 							</button>
 						</div>
 					</div>
@@ -177,13 +181,6 @@
 			</div>
 
 
-			<script>
-				$(document).ready(function(){
-					$('.check').click(function() {
-						$('.check').not(this).prop('checked', false);
-					});
-				});
-			</script>
 
 			<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
