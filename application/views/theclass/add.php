@@ -87,7 +87,7 @@
 			
 			<div class="input-group">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-danger" onclick="studAdd()">Add</button>
+                  <button type="button" class="btn btn-danger" id="btnAdd">Add</button>
                 </div>
                 <!-- /btn-group -->
                 <input class="form-control" name="search_data" id="search_data" type="text" onkeyup="ajaxSearch();">
@@ -115,8 +115,7 @@
 			<td><?php echo $c['studentID']; ?></td>
 			<td><?php echo $c['remarks']; ?></td>
 			<td><?php echo $c['dateAdded']; ?></td>
-			<td>
-				<a href="<?php echo site_url('classlist/edit/'.$c['classListID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
+			<td> 
 				<a href="<?php echo site_url('classlist/remove/'.$c['classListID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
 			</td>
 		</tr>
@@ -164,37 +163,25 @@ function ajaxSearch()
 }
 function inputData(IDNo)
 {
-	$('#search_data').val(IDNo);
+	$('#search_data').val(IDNo);	
 	$('#suggestions').hide();       
 }
-function insert()
-{
-	var input_data = $('#search_data').val();
-	if (input_data.length === 0)
-	{
-		$('#suggestions').hide();
-	}
-	else
-	{
-		var post_data = {
-			'search_data': input_data,
-			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-		};
-		$.ajax({
-			type: "POST",
-			url: "<?php echo base_url(); ?>theclass/autocomplete/",
-			data: post_data,
-			success: function (data) {
-				// return success
-				if (data.length > 0) {
-					$('#suggestions').show();
-					$('#autoSuggestionsList');
-					$('#autoSuggestionsList').html(data);
-				}
-			}
-		});
-	}
-}
+$("#btnAdd").click(function () {
+				var idnum = $('#search_data').val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>theclass/insert/",
+                    data: {idnum: idnum},
+                    dataType: "html",
+                    success: function (response) {
+                        $("#tableresult").load("/theclass/getclass")
+                    },
+					error: function response() {
+						alert("Wala akong nilalagay");
+					}
+						
+                });
+            });
 
 </script>
 <!-- end (JS code) -->

@@ -22,6 +22,9 @@ class Theclass extends CI_Controller{
      */
     function add()
     {   
+        $data['tableresult'] = $this->Classlist_model->getclass();
+        
+        
         $this->load->library('form_validation');
 		$this->form_validation->set_rules('subjectID','SubjectID','required|integer');
 		$this->form_validation->set_rules('facultyID','FacultyID','required|integer');
@@ -143,43 +146,21 @@ class Theclass extends CI_Controller{
 
     public function insert()
     {
-        $this->load->library('form_validation');
-        
-            
-            $result = $this->Theclass_model->get_autocomplete($search_data);
-            $studentparams = [];
-            
-                if($this->form_validation->run())     
-                {   
-                    $params = array(
-                        'classID' => '0',
-                        'studentID' => $this->input->post('studentID'),
-                        'remarks' => '',
-                        'dateAdded' => date('Y-m-d H:i:s'),
-                    );
-                    
-                    $classlist_id = $this->Classlist_model->add_classlist($params);
-                    redirect('classlist/index');
-                }
-                else
-                {
-                    $this->load->model('Class_model');
-                    $data['all_classes'] = $this->Class_model->get_all_classes();
-        
-                    $this->load->model('Student_model');
-                    $data['all_students'] = $this->Student_model->get_all_students();
-                    
-                    $data['_view'] = 'classlist/add';
-                    $this->load->view('layouts/main',$data);
-                }
+        $num = $this->input->post('idnum');
+        $idnumber = (int)$num;
+
+            $params = array(
+                                'classID' => '0',
+                                'studentID' => $idnumber,
+                                'remarks' => 'Enrolled',
+                                'dateAdded' => date('Y-m-d'),
+            );
+
+            $classlist_id = $this->Classlist_model->add_classlist($params);
+
+            if ($classlist_id){
+                return true;
+            } else return false;
     }
 
-    public function getclass()
-    {
-        
-        $data['tableresult'] = $this->Classlist_model->getclass();
-
-        $data['_view'] = 'theclass/add';
-        $this->load->view('layouts/main',$data);
-    }
 }

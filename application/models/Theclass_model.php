@@ -58,8 +58,21 @@ class Theclass_model extends CI_Model
             $this->db->or_like('userIDNo', $search_data);
             $this->db->or_like('userLN', $search_data);
             $this->db->or_like('userFN', $search_data);
-            return $this->db->get('users u', 10)->result();
+            return $this->db->get('users u', 5)->result();
     }
+
+    public function validate($idnumber)
+    {
+        
+    }
+
+    function add_student($params)
+    {
+        $this->db->insert('classlist',$params);
+        return $this->db->insert_id();
+    }
+
+
 
    
 }

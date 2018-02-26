@@ -70,6 +70,7 @@ class Classlist_model extends CI_Model
     function getclass($params = array())
     {
         $this->db->order_by('classListID', 'desc');
+        $this->db->where('classID', 0);
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);
