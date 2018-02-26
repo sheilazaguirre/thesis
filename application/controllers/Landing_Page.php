@@ -59,5 +59,40 @@ class Landing_Page extends CI_Controller{
     {
         $this->load->view('landing_page/page-404');
     }
-    
+
+    function comsci()
+    {
+        $this->load->view('landing_page/Com Sci.html');
+    }
+
+    function bisad()
+    {
+        $this->load->view('landing_page/BS Business Admin.html');
+    }
+
+    function elemed()
+    {
+        $this->load->view('landing_page/Elementary Education.html');
+    }
+
+    function seced()
+    {
+        $this->load->view('landing_page/sec-ed');
+    }
+
+    function seced_filipino()
+    {
+        $this->load->view('landing_page/BA Secondary Ed - Filipino.html');
+    }
+
+    function seced_math()
+    {
+        $this->load->view('landing_page/BA Secondary Ed - Math.html');
+    }
+
+    function seced_science()
+    {
+        $this->load->view('landing_page/BA Secondary Ed - Science.html');
+    }
+
 }

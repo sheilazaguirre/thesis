@@ -224,7 +224,7 @@
 								style="z-index: 2;">
 								<div class="tp-caption1--wd-1">S.Y 17-18 Term 1</div>
 								<div class="tp-caption1--wd-2">Announcements</div>
-								<a href="<?php echo site_url('applicant/application')?>" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
+								<a href="" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
 							</div>
 						</li>
 						<!-- /SLIDE -1 -->
@@ -274,7 +274,7 @@
 								<div class="tp-caption3--wd-2">NEW</div>
 								<div class="tp-caption3--wd-3 color-white">ONLINE</div>
 								<div class="tp-caption3--wd-3 color-white">APPLICATION</div>
-								<div class="text-center"><a href="listing" class="link-button button--border-thick" data-text="Shop now!">APPLY NOW</a></div>
+								<div class="text-center"><a href="<?php echo site_url('applicant/application')?>" class="link-button button--border-thick" data-text="Shop now!">APPLY NOW</a></div>
 							</div>	
 						
 						</li>
