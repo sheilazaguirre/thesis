@@ -25,6 +25,8 @@
 		<!-- Head Libs -->	
 		<!-- Modernizr -->
 		<script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js');?>"></script>
+		<!-- Recaptcha -->
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body class="index">				  
 		<div id="loader-wrapper">
@@ -71,23 +73,15 @@
 						</span>
 					</li>					
 					<li>
-						<span class="name"><span class="expander">-</span>
-							<a href="about"><span class="act-underline">PAGES</span></a>
-						</span>						
-						<ul class="multicolumn">
-							<li><a href="about">About</a></li>
-							<li><a href="admission">Services</a></li>								
-							<li><a href="contact">Contact</a></li>
-							<li><a href="under-construction">Under Construction</a></li>
-							<li><a href="site-map">Site Map</a></li>								
-							<li><a href="error_404">Page 404</a></li>											
-						</ul>
-					</li>
-					<li>
 						<span class="name">
 							<span class="expander">-</span>
 							<a href="<?php echo site_url('applicant/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 						</span>
+					</li>
+					<li>
+						<span class="name"><span class="expander">-</span>
+							<a href="faculty"><span class="act-underline">FACULTY LOGIN</span></a>
+						</span>						
 					</li>		
 				</ul>
 			</nav>
@@ -154,22 +148,13 @@
 												<span class="dropdown-toggle extra-arrow"></span>
 												<a href="contact" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">CONTACT US</span></a>
 											</li>
-											<li class="dropdown dropdown-mega-menu dropdown-two-col">
-												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="about" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">PAGES</span></a>
-												<ul class="dropdown-menu multicolumn two-col" role="menu">
-													<li class="dl-back"><a href="#"><span class="icon icon-chevron_left"></span>back</a></li>													
-													<li><a href="about">About</a></li>
-													<li><a href="admission">Services</a></li>								
-													<li><a href="contact">Contact</a></li>
-													<li><a href="under-construction">Under Construction</a></li>
-													<li><a href="site-map">Site Map</a></li>								
-													<li><a href="error_404">Page 404</a></li>		
-												</ul>
-											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
 												<a href="<?php echo site_url('applicant/application')?>"" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+											</li>
+											<li class="dropdown dropdown-mega-menu dropdown-two-col">
+												<span class="dropdown-toggle extra-arrow"></span>
+												<a href="faculty" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">FACULTY LOGIN</span></a>
 											</li>
 											</li>
 										</ul>
@@ -210,7 +195,7 @@
 						<!-- SLIDE -1 -->
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
 							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/slide-1.jpg')?>"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" > 
+							<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide1"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" > 
 							<!-- LAYERS --> 
 							<!-- TEXT -->
 							<div class="tp-caption lfl stb" 
@@ -232,7 +217,7 @@
 						<!-- /SLIDE 2  -->						
 						<!-- SLIDE - 3 -->
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-										<img src="<?php echo site_url('resources/my-images/slides/04/intro_img_03.jpg')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+										<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
 									<!-- LAYER NR. 1 -->
 									<div class="tp-caption tp-fade fadeout fullscreenvideo"
 										data-x="0"
@@ -313,11 +298,13 @@
 							</button>
 						</div>
 						<div>
-							<a href="forgotpass" name="signin"
-								>
+							<a href="forgotpass" name="forgot">
 								Forgot Password?
 							</a>
 						</div>
+					</div>
+					<div class="form-group">
+						<div class="g-recaptcha" data-sitekey="6LfRmzcUAAAAAGUARi6CAjGlAVfuO0AzGwIS1z3k" align="center"></div>
 					</div>
 				</form>
 			</div>

@@ -25,6 +25,8 @@
 		<!-- Head Libs -->	
 		<!-- Modernizr -->
 		<script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js');?>"></script>
+		<!-- Recaptcha -->
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body class="index">				  
 		<div id="loader-wrapper">
@@ -70,19 +72,6 @@
 							<a href="contact"><span class="act-underline">CONTACT US</span></a>
 						</span>
 					</li>					
-					<li>
-						<span class="name"><span class="expander">-</span>
-							<a href="about"><span class="act-underline">PAGES</span></a>
-						</span>						
-						<ul class="multicolumn">
-							<li><a href="about">About</a></li>
-							<li><a href="admission">Services</a></li>								
-							<li><a href="contact">Contact</a></li>
-							<li><a href="under-construction">Under Construction</a></li>
-							<li><a href="site-map">Site Map</a></li>								
-							<li><a href="error_404">Page 404</a></li>											
-						</ul>
-					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
@@ -154,19 +143,6 @@
 												<span class="dropdown-toggle extra-arrow"></span>
 												<a href="contact" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">CONTACT US</span></a>
 											</li>
-											<li class="dropdown dropdown-mega-menu dropdown-two-col">
-												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="about" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">PAGES</span></a>
-												<ul class="dropdown-menu multicolumn two-col" role="menu">
-													<li class="dl-back"><a href="#"><span class="icon icon-chevron_left"></span>back</a></li>													
-													<li><a href="about">About</a></li>
-													<li><a href="admission">Services</a></li>								
-													<li><a href="contact">Contact</a></li>
-													<li><a href="under-construction">Under Construction</a></li>
-													<li><a href="site-map">Site Map</a></li>								
-													<li><a href="error_404">Page 404</a></li>		
-												</ul>
-											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
 												<a href="<?php echo site_url('applicant/application')?>"" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
@@ -225,6 +201,9 @@
 								Forgot Password?
 							</a>
 						</div>
+					</div>
+					<div class="form-group">
+						<div class="g-recaptcha" data-sitekey="6LfRmzcUAAAAAGUARi6CAjGlAVfuO0AzGwIS1z3k" align="center"></div>
 					</div>
 				</form>
 			</div>

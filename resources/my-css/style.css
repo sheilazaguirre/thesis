@@ -9680,6 +9680,10 @@ header .search-dropdown {
 #pageContent {
   padding-bottom: 75px;
 }
+#studentContent {
+  margin-top: 260px;
+  padding-bottom: 75px;
+}
 @media (max-width: 767px) {
   #pageContent {
     padding-bottom: 0px;

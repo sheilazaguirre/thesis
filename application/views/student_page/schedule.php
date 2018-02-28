@@ -48,25 +48,25 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="index"><span class="act-underline">SCHEDULE</span></a>
+							<a href="schedule"><span class="act-underline">SCHEDULE</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="listing.html"><span class="act-underline">ENCODE GRADES</span></a>
+							<a href="grades"><span class="act-underline">GRADES</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="product.html"><span class="act-underline"><span class="act-underline">MANAGE LESSONS</span></span></a>
+							<a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
 						</span>
 					</li>
 					<li>
-						<span class="name">
+						<span class="assignments">
 							<span class="expander">-</span>
-							<a href="blog-layout-1.html"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
+							<a href="assignments"><span class="act-underline">ASSSIGNMENTS</span></a>
 						</span>
 					</li>						
 				</ul>
@@ -139,19 +139,19 @@
 								<ul class="nav navbar-nav">
 									<li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>										
 									<li class="dropdown dropdown-mega-menu">											
-										<a href="index" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
+										<a href="schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="listing.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="product.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE LESSONS</span></a>
+										<a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="blog-layout-1.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
+										<a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
 									</li>
 								</ul>
 							</div>
@@ -163,91 +163,93 @@
 			</header>
 
 		</div>
-
 		<!-- End HEADER section -->
-		<!-- Slider section --> 
-		<section class="content offset-top-0 intro tp-banner-button1" id="slider">
-			<!--
-				#################################
-				- THEMEPUNCH BANNER -
-				#################################
-				--> 
-			<!-- START REVOLUTION SLIDER 3.1 rev5 fullwidth mode -->
-			<h2 class="hidden">Slider Section</h2>
-			<div class="tp-banner-container">
-				<div class="tp-banner">
-					<ul>
-						<!-- SLIDE -1 -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-										<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-									<!-- LAYER NR. 1 -->
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="1000"
-										data-start="1100"
-										data-easing="Power4.easeOut"
-										data-endspeed="1500"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="false"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9"
-										data-forcerewind="on"
-										style="z-index: 2">
-
-
-										<video class="video-js vjs-default-skin" preload="none" 
-										data-setup="{}">
-										<source src='<?php echo site_url('resources/my-images/slides/video/explore.mp4')?>' type='video/mp4' />
-										<source src='<?php echo site_url('resources/my-images/slides/video/explore.webm')?>' type='video/webm' />
-										<source src='<?php echo site_url('resources/my-images/slides/video/explore.ogv')?>' type='video/ogg'  />
-										</video>
-
-									</div>
-						
-						</li>
-						<!-- /SLIDE -1 -->
-						<!-- SLIDE 2  -->            
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide2"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-							<!-- LAYERS -->												
-						</li>
-						<!-- /SLIDE 2  -->
-						<!-- SLIDE 3  -->
-						<!-- /SLIDE 3  -->		  
-					</ul>
-				</div>
-			</div>
-		</section>
-		<!-- END REVOLUTION SLIDER --> 
+		<!-- breadcrumbs -->
 		
-		<!-- FOOTER section -->
-		<footer  class="layout-2">			
-			<!-- social-icon -->
+		<!-- /breadcrumbs --> 
+		<!-- CONTENT section -->
+		<div id="studentContent">
+			<div class="breadcrumbs">
 			<div class="container">
-				
-				
-			</div>
-			<!-- /social-icon --> 
-			<!-- footer-copyright -->
-			<div class="container footer-copyright">
-				<div class="row">
-					<div class="col-lg-12  text-center"> 
-						<a href="index"><span>GAPC</span> Information Systems</a> &copy; 2018 . All Rights Reserved. 
-					</div>
+					<ol class="breadcrumb breadcrumb--ys pull-left">
+						<li class="home-link"><a href="index" class="icon icon-home"></a></li>
+						<li>S.Y 2016-2017</li>
+						<li class="active">Schedule</li>
+					</ol>
 				</div>
 			</div>
-			<!-- /footer-copyright -->			
-		</footer>
-		<!-- END FOOTER section -->
-		
-	
-		<!--================== /scripts ==================-->
+			<section class="content offset-top-0">
+				<div class="container">
+							<div class="content">
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
+									<li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">1st Semester</a></li>
+									<li><a href="#Tab2" role="tab" data-toggle="tab" class="text-uppercase">2nd Semester</a></li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content tab-content--ys nav-stacked">
+									<div role="tabpanel" class="tab-pane active" id="Tab1">
+										<div class="divider divider--xs"></div>
+										<table class="table table-params" >
+											<thead>
+      											<tr bgcolor="#80091F">
+        											<th class="text-center" style="color: #fff">Course</th>
+        											<th class="text-center" style="color: #fff">Section</th>
+        											<th class="text-center" style="color: #fff">Timeslot</th>
+     											</tr>
+    										</thead>
+											<tbody>
+												<tr>
+													<td class="text-center">PRINMAN</td>
+													<td class="text-center">TI101</td>
+													<td class="text-center">MW 8:00 - 9:30</td>
+												</tr>
+												<tr>
+													<td class="text-center">ISPROJ1</td>
+													<td class="text-center">TI101</td>
+													<td class="text-center">TTH 13:00 - 14:30</td>
+												</tr>
+												<tr>
+													<td class="text-center">JOSERIZ</td>
+													<td class="text-center">TI101</td>
+													<td class="text-center">TTH 14:40 - 16:10</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div role="tabpanel" class="tab-pane" id="Tab2">
+										<div class="divider divider--xs"></div>
+										<table class="table table-params">
+											<thead>
+      											<tr bgcolor="#80091F">
+        											<th class="text-center" style="color: #fff">Course</th>
+        											<th class="text-center" style="color: #fff">Professor</th>
+        											<th class="text-center" style="color: #fff">Final Grade</th>
+     											</tr>
+    										</thead>
+											<tbody>
+												<tr>
+													<td class="text-center">PRINMAR</td>
+													<td class="text-center">TG101</td>
+													<td class="text-center">MW 8:00 - 9:30</td>
+												</tr>
+												<tr>
+													<td class="text-center">ISPROJ2</td>
+													<td class="text-center">TG101</td>
+													<td class="text-center">TTH 14:40 - 16:10</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>			
+			</section>			
+			<!-- related products -->
+			<!-- /related products -->
+		</div>
 
+		<hr>
+		<!-- End CONTENT section --> 
+		<!-- / Modal (quickViewModal) -->
+		<!-- External JS --> 
 		<!-- jQuery 1.10.1--> 
 		<script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
 		<!-- Bootstrap 3--> 

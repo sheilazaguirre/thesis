@@ -48,23 +48,23 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="index.html"><span class="act-underline">SCHEDULE</span></a>
+							<a href="schedule"><span class="act-underline">SCHEDULE</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="listing.html"><span class="act-underline">GRADES</span></a>
+							<a href="grades"><span class="act-underline">GRADES</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="product.html"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
+							<a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
 						</span>
 					</li>
 					<li>
-						<span class="name">
+						<span class="assignments">
 							<span class="expander">-</span>
 							<a href="blog-layout-1.html"><span class="act-underline">ASSSIGNMENTS</span></a>
 						</span>
@@ -112,7 +112,7 @@
 						</div>
 						<!-- / -->
 						<!-- logo start --> 
-						<a href="index.html"><img class="logo replace-2x img-responsive" src="<?php echo site_url('resources/my-images/header-logo.png')?>" alt=""/></a> 
+						<a href="index"><img class="logo replace-2x img-responsive" src="<?php echo site_url('resources/my-images/header-logo.png')?>" alt=""/></a> 
 						<!-- logo end --> 
 					</div>
 				</div>
@@ -139,19 +139,19 @@
 								<ul class="nav navbar-nav">
 									<li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>										
 									<li class="dropdown dropdown-mega-menu">											
-										<a href="index.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
+										<a href="schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="listing.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
+										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="product.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
+										<a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="blog-layout-1.html" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
+										<a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
 									</li>
 								</ul>
 							</div>
@@ -179,7 +179,7 @@
 					<ul>
 						<!-- SLIDE -1 -->
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-										<img src="<?php echo site_url('resources/my-images/slides/04/intro_img_03.jpg')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+										<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
 									<!-- LAYER NR. 1 -->
 									<div class="tp-caption tp-fade fadeout fullscreenvideo"
 										data-x="0"
@@ -213,17 +213,11 @@
 						<!-- SLIDE 2  -->            
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
 							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/04/intro_img_01.jpg')?>"  alt="slide2"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+							<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide2"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
 							<!-- LAYERS -->												
 						</li>
 						<!-- /SLIDE 2  -->
 						<!-- SLIDE 3  -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/04/intro_img_02.jpg')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-							<!-- LAYERS --> 
-							
-						</li>
 						<!-- /SLIDE 3  -->		  
 					</ul>
 				</div>
@@ -243,7 +237,7 @@
 			<div class="container footer-copyright">
 				<div class="row">
 					<div class="col-lg-12  text-center"> 
-						<a href="index.html"><span>GAPC</span> Information Systems</a> &copy; 2018 . All Rights Reserved. 
+						<a href="index"><span>GAPC</span> Information Systems</a> &copy; 2018 . All Rights Reserved. 
 					</div>
 				</div>
 			</div>
