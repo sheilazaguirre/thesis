@@ -35,7 +35,6 @@ class Prof extends CI_Controller{
 
     function grades()
     {        
-        // var_dump($_POST);
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = [];
@@ -43,22 +42,58 @@ class Prof extends CI_Controller{
                 $params[$clID] = array(
                     'studentID' => $this->input->post('sid['.$clID.']'),
                     'classID' => $this->input->post('classid'),
-                    'grade' => $this->input->post('grade['.$clID.']') || "",
-                    'remarks' => $this->input->post('remarks['.$clID.']') || "",
+                    'grade' => $this->input->post('grade['.$clID.']'),
+                    'remarks' => $this->input->post('remarks['.$clID.']'),
                     'status' => "Saved",
+                    'dateAdded' => date('Y-m-d H:i:s'),
+                    'lastSaved' => date('Y-m-d H:i:s'),
                 );
+
             }
             
             $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+            
             if(count($grades) == 0){
                 foreach($params as $p){
                     $addgrades = $this->Prof_model->add_grades($p);
                 }
             }
-            else{                
-                foreach($params as $p){                
-                    $editgrades = $this->Prof_model->updategrades($p);
+            else{   
+                if(isset($_POST['submit']))
+                {
+                    $params = []; 
+                    foreach($this->input->post('clID') as $clID){      
+                        $params[$clID] = array(
+                            'studentID' => $this->input->post('sid['.$clID.']'),
+                            'classID' => $this->input->post('classid'),
+                            'grade' => $this->input->post('grade['.$clID.']'),
+                            'remarks' => $this->input->post('remarks['.$clID.']'),
+                            'status' => "Submitted",
+                            'dateSubmitted' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    foreach($params as $p){
+                    $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
+                    }
                 }
+                else
+                {
+                    $params = []; 
+                    foreach($this->input->post('clID') as $clID){      
+                        $params[$clID] = array(
+                            'studentID' => $this->input->post('sid['.$clID.']'),
+                            'classID' => $this->input->post('classid'),
+                            'grade' => $this->input->post('grade['.$clID.']'),
+                            'remarks' => $this->input->post('remarks['.$clID.']'),
+                            'status' => "Saved",
+                            'lastSaved' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    foreach($params as $p){
+                    $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
+                    }
+                }  
+                
             }
 
             redirect('prof/index');
