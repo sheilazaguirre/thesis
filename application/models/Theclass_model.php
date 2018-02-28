@@ -61,18 +61,18 @@ class Theclass_model extends CI_Model
             return $this->db->get('users u', 5)->result();
     }
 
-    public function validate($idnumber)
-    {
-        
-    }
-
     function add_student($params)
     {
         $this->db->insert('classlist',$params);
         return $this->db->insert_id();
     }
 
-
-
-   
+    function validate($idnumber)
+    {
+        $this->db->select('studentID');
+        $where = array('studentID' => $idnumber, 'classID' => 0);
+        $this->db->where($where);
+        return $this->db->get('classlist')->result();
+    }
+  
 }

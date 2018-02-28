@@ -100,26 +100,20 @@
 			</div>
 		<div class="box-body">
 		<table id="tableresult" name="tableresult" class="table table-striped">
+		<thead>
 		<tr>
 			<th>ClassListID</th>
-			<th>ClassID</th>
 			<th>StudentID</th>
-			<th>Remarks</th>
+			<th>Name</th>
 			<th>DateAdded</th>
 			<th>Actions</th>
 		</tr>
-		<?php foreach($tableresult as $c): ?>
-		<tr>
-			<td><?php echo $c['classListID']; ?></td>
-			<td><?php echo $c['classID']; ?></td>
-			<td><?php echo $c['studentID']; ?></td>
-			<td><?php echo $c['remarks']; ?></td>
-			<td><?php echo $c['dateAdded']; ?></td>
-			<td> 
-				<a href="<?php echo site_url('classlist/remove/'.$c['classListID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
-			</td>
-		</tr>
-			<?php endforeach; ?>
+		</thead>
+		
+		<tbody id="showdata">
+		
+		</tbody>
+		
 	</table>
 			<div class="pull-right">
 				<?php echo $this->pagination->create_links(); ?>                    
@@ -133,6 +127,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- start (JS code) -->
 <script type="text/javascript">
+showAllClasses();
+
 function ajaxSearch()
 {
 	var input_data = $('#search_data').val();
@@ -174,14 +170,44 @@ $("#btnAdd").click(function () {
                     data: {idnum: idnum},
                     dataType: "html",
                     success: function (response) {
-                        $("#tableresult").load("/theclass/getclass")
+                        alert("Student successfully added");
+						showAllClasses();
                     },
 					error: function response() {
-						alert("Wala akong nilalagay");
+						alert("Student already exist in this class");
 					}
 						
                 });
             });
+
+
+function showAllClasses(){
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo base_url() ?>theclass/showAllClasses/',
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					var html = '';
+					var i;
+					for(i=0; i<data.length; i++){
+						html +='<tr>'+
+									'<td>'+data[i].classListID+'</td>'+
+									'<td>'+data[i].studentID+'</td>'+
+									'<td>'+data[i].userName+'</td>'+
+									'<td>'+data[i].dateAdded+'</td>'+
+									'<td>'+
+										'<a href="javascript:;" class="btn btn-danger item-delete" data="'+data[i].id+'">Delete</a>'+
+									'</td>'+
+							    '</tr>';
+					}
+					$('#showdata').html(html);
+				},
+				error: function(){
+					alert('Could not get Data from Database');
+				}
+			});
+		}
 
 </script>
 <!-- end (JS code) -->

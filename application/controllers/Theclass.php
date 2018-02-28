@@ -144,23 +144,31 @@ class Theclass extends CI_Controller{
             }
     }
 
-    public function insert()
+    public function insert($idnumber)
     {
         $num = $this->input->post('idnum');
         $idnumber = (int)$num;
+        $result = $this->Theclass_model->validate($idnumber);
 
+        if ($result->num_rows() > 0) {
             $params = array(
-                                'classID' => '0',
-                                'studentID' => $idnumber,
-                                'remarks' => 'Enrolled',
-                                'dateAdded' => date('Y-m-d'),
-            );
-
-            $classlist_id = $this->Classlist_model->add_classlist($params);
-
-            if ($classlist_id){
-                return true;
-            } else return false;
+                'classID' => '0',
+                'studentID' => $idnumber,
+                'remarks' => 'Enrolled',
+                'dateAdded' => date('Y-m-d'),
+                    );
+             $classlist_id = $this->Theclass_model->add_student($params);
+             return true;
+        }
+        else {
+            return false;
+        }
+        
     }
+
+    public function showAllClasses(){
+		$result = $this->Classlist_model->showAllClasses();
+		echo json_encode($result);
+	}
 
 }
