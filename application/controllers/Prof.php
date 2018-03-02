@@ -12,6 +12,22 @@ class Prof extends CI_Controller{
         
     } 
 
+    function schedule()
+    {
+        $this->load->view('prof/schedule');
+    }
+
+
+    function lessons()
+    {
+        $this->load->view('faculty_page/lessons');
+    }
+
+    function assignments()
+    {
+        $this->load->view('faculty_page/assignments');
+    }
+
     /*
      * Listing of prof
      */
@@ -29,8 +45,7 @@ class Prof extends CI_Controller{
 
         $data['prof'] = $this->Prof_model->get_all_prof($params);
         
-        $data['_view'] = 'prof/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('prof/index');
     }
 
     function grades()

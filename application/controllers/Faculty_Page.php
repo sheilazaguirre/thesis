@@ -31,7 +31,7 @@ class Faculty_Page extends CI_Controller{
 
     function grades()
     {
-        $this->load->view('faculty_page/grades');
+        $this->load->view('prof/grades');
     }
 
     function lessons()
