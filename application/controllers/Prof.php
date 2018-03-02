@@ -111,6 +111,7 @@ class Prof extends CI_Controller{
         }
 
     }
+
     
     /*
      * Adding a new prof

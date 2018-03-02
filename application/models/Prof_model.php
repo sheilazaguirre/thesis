@@ -76,7 +76,6 @@ class Prof_model extends CI_Model
      * Get all grades
      */
     
-    
     function get_all_grades($classID = NULL)
     {
         $this->db->where('classID', 1);
@@ -94,5 +93,6 @@ class Prof_model extends CI_Model
         $this->db->where('studentID',$studentID);
         return $this->db->update('grades',$params);
     }
+
     
 }

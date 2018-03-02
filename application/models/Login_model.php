@@ -8,11 +8,16 @@ class Login_model extends CI_Model
     }
     
     /*
-    * Get user by username and password
+    * Get user by userIDNo and password
     */
-    function get_user($params)
+    function get_user($params = array())
     {
-        return $this->db->get_where('users', array('userIDNo' => $params['userIDNo']))->row_array();
+        return $this->db->get_where('users',array('userIDNo' => $params['userIDNo']))->row_array();
+    }
+
+    function getuser($userIDNo)
+    {
+        return $this->db->get_where('users',array('userIDNo'=>$userIDNo))->row_array();
     }
 
 

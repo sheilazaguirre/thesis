@@ -137,8 +137,123 @@
 						</tbody>
 
 					</table>
-					<div class="row">
-						
+					<div class="form-group">
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='1'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						1.00 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='1.25'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						1.25 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='1.50'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						1.50 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='1.75'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						1.75 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='2'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						2.00 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='2.25'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						2.25 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='2.50'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						2.50 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='2.75'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						2.75 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='3'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						3.00 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='4'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						4.00 - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='X'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						X - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='W'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						W - <?php echo $row->grade;?>
+							<?php }?>
+						|
+						<?php
+							$query = $this->db->query("SELECT COUNT(*) grade FROM grades WHERE grade='INC'");
+							$row = $query->row();
+
+							if(isset($row)){
+						?>
+						INC - <?php echo $row->grade;?>
+							<?php }?>
 					</div>
 					<div class="form-group">
 						<div class="col-md-2 left">
