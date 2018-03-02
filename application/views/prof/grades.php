@@ -108,7 +108,7 @@
 								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
 								
 								<td>
-									<select name="grade[<?=$c['classlistID']?>]" required>
+									<select name="grade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> required>
 										<option value="">Select Grade</option>
 										<option value="1" <?php echo $c["grade"] == "1" ? "selected" : "" ?>>1.00</option>
 										<option value="1.25" <?php echo $c["grade"] == "1.25" ? "selected" : "" ?>>1.25</option>
@@ -127,8 +127,8 @@
 									<br/>
 								</td>
 								<td>
-									<textarea rows="2" value="" name="remarks[<?=$c['classlistID']?>]">
-									<?php echo $c['remarks']; ?>
+									<textarea rows="2" value="" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> name="remarks[<?=$c['classlistID']?>]">
+										<?php echo $c['remarks']; ?>
 									</textarea>
 								</td>
 
@@ -258,24 +258,24 @@
 					<div class="form-group">
 						<div class="col-md-2 left">
 							<p><b>Legend:</b><br/>
-							1.0 - <br/>
-							1.25 - <br/>
-							1.50 - <br/>
-							1.75 - <br/>
-							2.0 - <br/>
-							2.25 - <br/>
-							2.50 - <br/>
+							1.00: 98-100 <br/>
+							1.25: 95-97<br/>
+							1.50: 92-94<br/>
+							1.75: 89-91 <br/>
+							2.00: 86-88<br/>
+							2.25: 83-85<br/>
+							2.50: 80-82<br/>
 							</p>
 						</div>
 						<div class="col-md-3 right">
 							<p><b>Legend:</b><br/>
-							2.75 - <br/>
-							3.0 - <br/>
-							4.0 - For Midterm Only<br/>
-							5.0 - For Finals Only<br/>
-							W - Withdraw <br/>
-							X - Absent from the Final Exam <br/>
-							INC - Incomplete <br/>
+							2.75: 77-79<br/>
+							3.00: 74-76<br/>
+							4.00: For Midterm Only<br/>
+							5.00: For Finals Only<br/>
+							W: Dropped <br/>
+							X: Absent from the Final Exam <br/>
+							INC: Incomplete <br/>
 							</p>
 						</div>
 					</div>
@@ -283,10 +283,12 @@
 
 					<div class="form-group">
 						<div class="col-md-12 text-right">
-							<button type="submit" name="save" class="btn btn-info" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> onclick='return confirm("Save?");'>
+						<?php if($c['status'] != 'Submitted'): ?>
+							<button type="submit" name="save" class="btn btn-info" onclick='return confirm("Save?");'>
 								<i class="fa fa-check"></i> Save
 							</button>
-							<button type="submit" name="submit" class="btn btn-success" onclick='return confirm("Are you sure you want to Submit?");'>
+						<?php endif; ?>
+							<button type="submit" name="submit" class="btn btn-success"  onclick='return confirm("Are you sure you want to Submit?");'>
 								<i class="fa fa-check"></i> Submit
 							</button>
 						</div>
