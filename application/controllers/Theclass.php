@@ -149,20 +149,30 @@ class Theclass extends CI_Controller{
         $num = $this->input->post('idnum');
         $idnumber = (int)$num;
         $result = $this->Theclass_model->validate($idnumber);
+        
+        var_dump($idnumber);
 
-        if ($result->num_rows() > 0) {
-            $params = array(
-                'classID' => '0',
-                'studentID' => $idnumber,
-                'remarks' => 'Enrolled',
-                'dateAdded' => date('Y-m-d'),
-                    );
-             $classlist_id = $this->Theclass_model->add_student($params);
-             return true;
-        }
-        else {
-            return false;
-        }
+        $num = $this->input->post('idnum');
+        $idnumber = (int)$num;
+        var_dump($result);
+
+        // if ($result == 0) {
+        //     $params = array(
+        //         'classID' => '0',
+        //         'studentID' => $idnumber,
+        //         'remarks' => 'Enrolled',
+        //         'dateAdded' => date('Y-m-d'),
+        //             );
+        //      $theclass_id = $this->Theclass_model->add_student($params);
+        //     echo json_encode(array(
+        //         'status' => 'success'
+        //     ));
+        // }
+        // else if ($result == 1){
+        //     echo json_encode(array(
+        //         'status' => 'error'
+        //     ));
+        // }
         
     }
 

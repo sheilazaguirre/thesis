@@ -69,10 +69,20 @@ class Theclass_model extends CI_Model
 
     function validate($idnumber)
     {
-        $this->db->select('studentID');
-        $where = array('studentID' => $idnumber, 'classID' => 0);
-        $this->db->where($where);
-        return $this->db->get('classlist')->result();
+        // $this->db->select('studentID');
+        // $where = array('studentID' => $idnumber, 'classID' => 0);
+        // $this->db->where($where);
+        // $this->db->get('classlist');
+        $query = $this->db->query('SELECT * from classlist where studentID = '.$idnumber.' AND classID = 0');
+        
+        if ($query->num_rows() > 0) 
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
   
 }

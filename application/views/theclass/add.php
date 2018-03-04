@@ -168,15 +168,20 @@ $("#btnAdd").click(function () {
                     type: "POST",
                     url: "<?php echo base_url(); ?>theclass/insert/",
                     data: {idnum: idnum},
-                    dataType: "html",
+                    dataType: "json",
                     success: function (response) {
-                        alert("Student successfully added");
-						showAllClasses();
-                    },
-					error: function response() {
-						alert("Student already exist in this class");
-					}
-						
+						if (response.status === "success"){
+							alert("Student successfully added");
+							showAllClasses();
+						} else if (response.status === "error")
+						{
+							alert("Student already exist in the class");
+						}
+                    }
+					error: function (response)
+					{
+						alert("Test data");
+					}	
                 });
             });
 
