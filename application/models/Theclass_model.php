@@ -61,39 +61,33 @@ class Theclass_model extends CI_Model
             return $this->db->get('users u', 5)->result();
     }
 
-    public function validate($idnumber)
-    {
-        
-    }
-
     function add_student($params)
     {
         $this->db->insert('classlist',$params);
-        return $this->db->insert_id();
+        if ($this->db->affected_rows() > 0 )
+        {
+            return true;
+        }else {
+            return false;
+        }
+    
+
+
     }
 
-<<<<<<< HEAD
     function validate($idnumber)
     {
         // $this->db->select('studentID');
         // $where = array('studentID' => $idnumber, 'classID' => 0);
         // $this->db->where($where);
-        // $this->db->get('classlist');
         $query = $this->db->query('SELECT * from classlist where studentID = '.$idnumber.' AND classID = 0');
-        
-        if ($query->num_rows() > 0) 
-        {
-            return 1;
+        if ($query->num_rows() > 0) {
+            return false;
         }
-        else
-        {
-            return 0;
-        }
+        else{
+            return true;
+        } 
+ 
     }
   
-=======
-
-
-   
->>>>>>> parent of 640d339... Classes add validations and table fixes
 }

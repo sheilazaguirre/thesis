@@ -100,26 +100,20 @@
 			</div>
 		<div class="box-body">
 		<table id="tableresult" name="tableresult" class="table table-striped">
+		<thead>
 		<tr>
 			<th>ClassListID</th>
-			<th>ClassID</th>
 			<th>StudentID</th>
-			<th>Remarks</th>
+			<th>Name</th>
 			<th>DateAdded</th>
 			<th>Actions</th>
 		</tr>
-		<?php foreach($tableresult as $c): ?>
-		<tr>
-			<td><?php echo $c['classListID']; ?></td>
-			<td><?php echo $c['classID']; ?></td>
-			<td><?php echo $c['studentID']; ?></td>
-			<td><?php echo $c['remarks']; ?></td>
-			<td><?php echo $c['dateAdded']; ?></td>
-			<td> 
-				<a href="<?php echo site_url('classlist/remove/'.$c['classListID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
-			</td>
-		</tr>
-			<?php endforeach; ?>
+		</thead>
+		
+		<tbody id="showdata">
+		
+		</tbody>
+		
 	</table>
 			<div class="pull-right">
 				<?php echo $this->pagination->create_links(); ?>                    
@@ -133,6 +127,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- start (JS code) -->
 <script type="text/javascript">
+showAllClasses();
 function ajaxSearch()
 {
 	var input_data = $('#search_data').val();
@@ -161,42 +156,68 @@ function ajaxSearch()
 		});
 	}
 }
-function inputData(IDNo)
-{
-	$('#search_data').val(IDNo);	
-	$('#suggestions').hide();       
-}
-$("#btnAdd").click(function () {
+	function inputData(IDNo)
+	{
+		$('#search_data').val(IDNo);	
+		$('#suggestions').hide();       
+	}
+	$("#btnAdd").click(function () {
 				var idnum = $('#search_data').val();
+				if (idnum.length === 0)
+				{
+					alert("Please provide an ID number");
+				}
+				else {
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>theclass/insert/",
-                    data: {idnum: idnum},
-                    dataType: "json",
+                    data: {"idnum": idnum},
+					dataType: "json",
                     success: function (response) {
-<<<<<<< HEAD
-						if (response.status === "success"){
-							alert("Student successfully added");
-							showAllClasses();
-						} else if (response.status === "error")
+						if (response.success)
 						{
-							alert("Student already exist in the class");
+						alert("Student successfully added");
+						showAllClasses();
 						}
-                    }
-					error: function (response)
-					{
-						alert("Test data");
-					}	
-=======
-                        $("#tableresult").load("/theclass/getclass")
+						else
+						{
+							alert("Student already on the list");
+						}
                     },
 					error: function response() {
-						alert("Wala akong nilalagay");
+						alert("Could not add data");
 					}
 						
->>>>>>> parent of 640d339... Classes add validations and table fixes
                 });
-            });
 
+				}
+            });
+	function showAllClasses(){
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo base_url() ?>theclass/showAllClasses/',
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					var html = '';
+					var i;
+					for(i=0; i<data.length; i++){
+						html +='<tr>'+
+									'<td>'+data[i].classListID+'</td>'+
+									'<td>'+data[i].studentID+'</td>'+
+									'<td>'+data[i].userName+'</td>'+
+									'<td>'+data[i].dateAdded+'</td>'+
+									'<td>'+
+										'<a href="javascript:;" class="btn btn-danger item-delete" data="'+data[i].id+'">Delete</a>'+
+									'</td>'+
+							    '</tr>';
+					}
+					$('#showdata').html(html);
+				},
+				error: function(){
+					alert('Could not get Data from Database');
+				}
+			});
+		}
 </script>
 <!-- end (JS code) -->

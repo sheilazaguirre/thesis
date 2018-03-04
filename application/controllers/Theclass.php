@@ -143,54 +143,36 @@ class Theclass extends CI_Controller{
                 echo "<ul style='list-style: none'><li>No records found ... </em> </li>";
             }
     }
-
     public function insert()
     {
-        $num = $this->input->post('idnum');
-        $idnumber = (int)$num;
-<<<<<<< HEAD
-        $result = $this->Theclass_model->validate($idnumber);
-        
-        var_dump($idnumber);
-
-        $num = $this->input->post('idnum');
-        $idnumber = (int)$num;
-        var_dump($result);
-
-        // if ($result == 0) {
-        //     $params = array(
-        //         'classID' => '0',
-        //         'studentID' => $idnumber,
-        //         'remarks' => 'Enrolled',
-        //         'dateAdded' => date('Y-m-d'),
-        //             );
-        //      $theclass_id = $this->Theclass_model->add_student($params);
-        //     echo json_encode(array(
-        //         'status' => 'success'
-        //     ));
-        // }
-        // else if ($result == 1){
-        //     echo json_encode(array(
-        //         'status' => 'error'
-        //     ));
-        // }
-        
-    }
-=======
-
+        $idnum = $this->input->post('idnum');
+        $idnumber = (int)$idnum;
+        // var_dump($idnumber);
+        // $idnumber = (int)$num;
+        // // if ($result->num_rows() > 0) {
+        $msg['success'] = false;
+        $result2 = $this->Theclass_model->validate($idnumber);
+        if ($result2)
+        {
             $params = array(
-                                'classID' => '0',
-                                'studentID' => $idnumber,
-                                'remarks' => 'Enrolled',
-                                'dateAdded' => date('Y-m-d'),
-            );
+                'classID' => '0',
+                'studentID' => $idnumber,
+                'remarks' => 'Enrolled',
+                'dateAdded' => date('Y-m-d'),
+                );
+        $result = $this->Theclass_model->add_student($params);
 
-            $classlist_id = $this->Classlist_model->add_classlist($params);
->>>>>>> parent of 640d339... Classes add validations and table fixes
+        if ($result)
+        {
+        $msg['success'] = true;
+        }
+        }
+        echo json_encode($msg);
 
-            if ($classlist_id){
-                return true;
-            } else return false;
+        
     }
-
+    public function showAllClasses(){
+		$result = $this->Classlist_model->showAllClasses();
+		echo json_encode($result);
+	}
 }
