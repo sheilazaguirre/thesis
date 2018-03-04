@@ -77,18 +77,4 @@ class Classlist_model extends CI_Model
         }
         return $this->db->get('classlist')->result_array();
     }
-
-    public function showAllClasses(){
-        $this->db->select('c.*, CONCAT(u.userFN, " ", u.userLN) AS userName');
-        $this->db->from('classlist as c');
-        $this->db->where('c.classID', 0);
-        $this->db->join('users as u', 'c.studentID = u.userIDNo', 'LEFT');
-        $this->db->order_by('userName', 'asc');
-        $query = $this->db->get();
-		if($query->num_rows() > 0){
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
 }

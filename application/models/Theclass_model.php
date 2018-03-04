@@ -61,12 +61,18 @@ class Theclass_model extends CI_Model
             return $this->db->get('users u', 5)->result();
     }
 
+    public function validate($idnumber)
+    {
+        
+    }
+
     function add_student($params)
     {
         $this->db->insert('classlist',$params);
         return $this->db->insert_id();
     }
 
+<<<<<<< HEAD
     function validate($idnumber)
     {
         // $this->db->select('studentID');
@@ -85,4 +91,9 @@ class Theclass_model extends CI_Model
         }
     }
   
+=======
+
+
+   
+>>>>>>> parent of 640d339... Classes add validations and table fixes
 }

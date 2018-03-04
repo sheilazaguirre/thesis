@@ -100,20 +100,26 @@
 			</div>
 		<div class="box-body">
 		<table id="tableresult" name="tableresult" class="table table-striped">
-		<thead>
 		<tr>
 			<th>ClassListID</th>
+			<th>ClassID</th>
 			<th>StudentID</th>
-			<th>Name</th>
+			<th>Remarks</th>
 			<th>DateAdded</th>
 			<th>Actions</th>
 		</tr>
-		</thead>
-		
-		<tbody id="showdata">
-		
-		</tbody>
-		
+		<?php foreach($tableresult as $c): ?>
+		<tr>
+			<td><?php echo $c['classListID']; ?></td>
+			<td><?php echo $c['classID']; ?></td>
+			<td><?php echo $c['studentID']; ?></td>
+			<td><?php echo $c['remarks']; ?></td>
+			<td><?php echo $c['dateAdded']; ?></td>
+			<td> 
+				<a href="<?php echo site_url('classlist/remove/'.$c['classListID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+			</td>
+		</tr>
+			<?php endforeach; ?>
 	</table>
 			<div class="pull-right">
 				<?php echo $this->pagination->create_links(); ?>                    
@@ -127,8 +133,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- start (JS code) -->
 <script type="text/javascript">
-showAllClasses();
-
 function ajaxSearch()
 {
 	var input_data = $('#search_data').val();
@@ -170,6 +174,7 @@ $("#btnAdd").click(function () {
                     data: {idnum: idnum},
                     dataType: "json",
                     success: function (response) {
+<<<<<<< HEAD
 						if (response.status === "success"){
 							alert("Student successfully added");
 							showAllClasses();
@@ -182,37 +187,16 @@ $("#btnAdd").click(function () {
 					{
 						alert("Test data");
 					}	
+=======
+                        $("#tableresult").load("/theclass/getclass")
+                    },
+					error: function response() {
+						alert("Wala akong nilalagay");
+					}
+						
+>>>>>>> parent of 640d339... Classes add validations and table fixes
                 });
             });
-
-
-function showAllClasses(){
-			$.ajax({
-				type: 'ajax',
-				url: '<?php echo base_url() ?>theclass/showAllClasses/',
-				async: false,
-				dataType: 'json',
-				success: function(data){
-					var html = '';
-					var i;
-					for(i=0; i<data.length; i++){
-						html +='<tr>'+
-									'<td>'+data[i].classListID+'</td>'+
-									'<td>'+data[i].studentID+'</td>'+
-									'<td>'+data[i].userName+'</td>'+
-									'<td>'+data[i].dateAdded+'</td>'+
-									'<td>'+
-										'<a href="javascript:;" class="btn btn-danger item-delete" data="'+data[i].id+'">Delete</a>'+
-									'</td>'+
-							    '</tr>';
-					}
-					$('#showdata').html(html);
-				},
-				error: function(){
-					alert('Could not get Data from Database');
-				}
-			});
-		}
 
 </script>
 <!-- end (JS code) -->

@@ -144,10 +144,11 @@ class Theclass extends CI_Controller{
             }
     }
 
-    public function insert($idnumber)
+    public function insert()
     {
         $num = $this->input->post('idnum');
         $idnumber = (int)$num;
+<<<<<<< HEAD
         $result = $this->Theclass_model->validate($idnumber);
         
         var_dump($idnumber);
@@ -175,10 +176,21 @@ class Theclass extends CI_Controller{
         // }
         
     }
+=======
 
-    public function showAllClasses(){
-		$result = $this->Classlist_model->showAllClasses();
-		echo json_encode($result);
-	}
+            $params = array(
+                                'classID' => '0',
+                                'studentID' => $idnumber,
+                                'remarks' => 'Enrolled',
+                                'dateAdded' => date('Y-m-d'),
+            );
+
+            $classlist_id = $this->Classlist_model->add_classlist($params);
+>>>>>>> parent of 640d339... Classes add validations and table fixes
+
+            if ($classlist_id){
+                return true;
+            } else return false;
+    }
 
 }
