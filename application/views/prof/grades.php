@@ -184,6 +184,7 @@
 							<h5>SY: 2017-2018</h5>
 							<h5>Venue: D405</h5>
 							<h5>Schedule: MW 11:20 - 12:50</h5>
+							<h5>Status:  </h5>
 						</div>
 					</div>
 					<br>

@@ -1,8 +1,9 @@
 <?php
+if(!defined('BASEPATH')) exit('Hacking Attempt : Get Out of the system ..!');
 
 class Login_model extends CI_Model
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
     }
@@ -10,15 +11,23 @@ class Login_model extends CI_Model
     /*
     * Get user by userIDNo and password
     */
-    function get_user($params = array())
+    public function takeUser($userIDNo, $password, $status)
     {
-        return $this->db->get_where('users',array('userIDNo' => $params['userIDNo']))->row_array();
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('userIDNo', $userIDNo);
+        $this->db->where('userPassword', $password);
+        $this->db->where('status', $status);
+        $query = $this->db->get();
+        return $query->num_rows();                        
     }
 
-    function getuser($userIDNo)
+    public function userData($userIDNo)
     {
-        return $this->db->get_where('users',array('userIDNo'=>$userIDNo))->row_array();
+        $this->db->select('userIDNo');
+        $this->db->where('userIDNo', $userIDNo);
+        $query = $this->db->get('users');
+        return $query->row();
     }
-
 
 }

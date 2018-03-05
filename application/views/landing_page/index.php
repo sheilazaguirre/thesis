@@ -272,7 +272,7 @@
 
 		<!-- END REVOLUTION SLIDER --> 
 		<!-- CONTENT section -->
-	<div class="col-lg-6">
+	<div id="form-login" class="col-lg-6">
 		<div class="wrapper">
 			</br>
 			<h1 class="text-center">Sign in to your account</h1>
@@ -280,7 +280,7 @@
 				<form method="POST" class="form-horizontal">
 					<div class="form-group">
 						<div>
-							<input name="un" type="text" placeholder="USERNAME" 
+							<input name="userIDNo" type="text" placeholder="ID Numeber" 
 								class="textbox" required />
 						</div>
 					</div>

@@ -54,7 +54,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="listing.html"><span class="act-underline">ENCODE GRADES</span></a>
+							<a href="prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
 						</span>						
 					</li>
 					<li>
