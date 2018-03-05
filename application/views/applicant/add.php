@@ -89,7 +89,7 @@
                     <div class="col-md-6">
                         <label for="mobile" class="control-label"><span class="text-danger">*</span>Mobile</label>
                         <div class="form-group">
-                            <input type="tel" pattern="[0-9-() ]*" placeholder="0-9 Only" name="mobile" value="<?php echo $this->input->post('mobile'); ?>" data-inputmask='"mask": "(0999)999-9999"' class="form-control" id="mobile" data-mask required />
+                            <input type="tel" pattern="[0-9-() ]*" placeholder="0-9 Only" name="mobile" value="<?php echo $this->input->post('mobile'); ?>" data-inputmask='"mask": "(0999)999-9999"' class="form-control" id="mobile" data-mask=""/>
                             <span class="text-danger"><?php echo form_error('mobile');?></span>
                         </div>
                     </div>

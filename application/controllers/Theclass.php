@@ -147,12 +147,12 @@ class Theclass extends CI_Controller{
     {
         $idnum = $this->input->post('idnum');
         $idnumber = (int)$idnum;
-        // var_dump($idnumber);
-        // $idnumber = (int)$num;
-        // // if ($result->num_rows() > 0) {
-        $msg['success'] = false;
+        // // var_dump($idnumber);
+        // // $idnumber = (int)$num;
+        // // // if ($result->num_rows() > 0) {
+        $msg = 0;
         $result2 = $this->Theclass_model->validate($idnumber);
-        if ($result2)
+        if ($result2 === 1)
         {
             $params = array(
                 'classID' => '0',
@@ -160,12 +160,17 @@ class Theclass extends CI_Controller{
                 'remarks' => 'Enrolled',
                 'dateAdded' => date('Y-m-d'),
                 );
-        $result = $this->Theclass_model->add_student($params);
+            $result = $this->Theclass_model->add_student($params);
 
-        if ($result)
+            if ($result)
+            {
+            $msg = 1;
+            }
+        } else if ($result2 === 2)
         {
-        $msg['success'] = true;
-        }
+            $msg = 2;
+        } else {
+            $msg = 3;
         }
         echo json_encode($msg);
 

@@ -71,8 +71,6 @@ class Theclass_model extends CI_Model
             return false;
         }
     
-
-
     }
 
     function validate($idnumber)
@@ -80,14 +78,22 @@ class Theclass_model extends CI_Model
         // $this->db->select('studentID');
         // $where = array('studentID' => $idnumber, 'classID' => 0);
         // $this->db->where($where);
-        $query = $this->db->query('SELECT * from classlist where studentID = '.$idnumber.' AND classID = 0');
-        if ($query->num_rows() > 0) {
-            return false;
-        }
-        else{
-            return true;
+        
+        $queryusers = $this->db->query('SELECT * from users where userIDNo = '.$idnumber.' AND userTypeID = 3');
+        if ($queryusers->num_rows() > 0)
+        {
+            $query = $this->db->query('SELECT * from classlist where studentID = '.$idnumber.' AND classID = 0');
+            if ($query->num_rows() > 0) {
+            return  2;
+            }
+            else{
+            return 1;
+            } 
         } 
- 
+        else
+        {
+            return 3;
+        } 
     }
-  
+
 }
