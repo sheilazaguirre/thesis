@@ -1,3 +1,13 @@
+<?php
+	$db = mysqli_connect("localhost", "root", "", "thesis");
+
+	$result = mysqli_query($db, "SELECT CONCAT('userLN', 'userFN') as userName
+	FROM users WHERE userIDNo=$_SESSION[userIDNo]");
+
+	var_dump($result);
+	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -82,7 +92,7 @@
 						<!-- col-left -->
 						<div class="col-sm-3 text-left">
 							<!-- slogan start -->
-							<div class="slogan"> Welcome, "Name"! </div>
+							<div class="slogan"> Welcome, "<?php echo ''; ?>"! </div>
 							<!-- slogan end --> 	
 						</div>
 						<!-- /col-left -->
@@ -103,7 +113,7 @@
 									</a>
 									<ul class="dropdown-menu dropdown-menu--xs-full">
 										<li><a href="login_form.html"><span class="icon icon-person"></span>Account Information</a></li>
-										<li><a href="#"  data-toggle="modal" data-target="#modalLoginForm"><span class="icon icon-lock"></span>Log-out</a></li>
+										<li><a href="<?php echo site_url('landing_page/logout/') ?>"><span class="icon icon-lock"></span>Log-out</a></li>
 										<li class="dropdown-menu__close"><a href="#"><span class="icon icon-close"></span>close</a></li>
 									</ul>
 								</div>

@@ -1,16 +1,17 @@
 <?php
-
+if(!defined('BASEPATH')) exit('Hacking Attempt : Get Out of the system ..!');
  
 class Student_Page extends CI_Controller{
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
+        $this->load->library(array('session'));
     } 
 
     /*
      * Listing of prof
      */
-    function index()
+    public function index()
     {
         $params['limit'] = RECORDS_PER_PAGE; 
         $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
@@ -19,9 +20,15 @@ class Student_Page extends CI_Controller{
         $config['base_url'] = site_url('student_page/index?');
         $this->pagination->initialize($config);
 
+        if($this->session->userdata('isLogin') == TRUE)
+        {
+            redirect('landing_page/index');
+        }
+        else
+        {
+            $this->load->view('student_page/index');
+        }
 
-
-        $this->load->view('student_page/index');
     }
 
     function schedule()

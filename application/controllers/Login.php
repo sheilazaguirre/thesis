@@ -1,8 +1,6 @@
 <?php
-if(!defined('BASEPATH')) exit('Hacking Attempt : Get Out of the system ..!');
-
 class Login extends CI_Controller{
-    public function __construct()
+    function __construct()
     {
         parent::__construct();
         $this->load->model('Auditlog_model');
@@ -12,58 +10,54 @@ class Login extends CI_Controller{
              
     }
     
-    public function index()
+    function index()
     {
-        $session = $this->session->userdata('isLogin');
-        if($session == FALSE)
-        {
-            redirect('landing_page/index')
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
+        $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
+        $_SESSION['errormsg'] = 0;
+        if($this->form_validation->run())     
+        {   
+            $params = array(
+                'userPassword' => $this->input->post('userPassword'),
+                'userIDNo' => $this->input->post('userIDNo'),);
+            
+            $login = $this->Login_model->get_user($params); 
+            if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
+                $_SESSION['errormsg'] = 1;
+            }
+            else {
+                if(isset($login['userID']) and isset($login['userTypeID']))
+                {
+                    $_SESSION['userID'] = $login['userID'];
+                    $_SESSION['userTypeID'] = $login['userTypeID'];
+                    
+                    $params1 = array(
+                        'userID' => $login['userIDNo'],
+                        'auditDesc' => $login['userPassword'].' logged in',
+                    );
+                    $this->Auditlog_model->add_auditlog($params1);
+                    redirect('dashboard/index');
+                    //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
+                }
+                else {
+                    $_SESSION['errormsg'] = 2;
+                }
+            }
         }
-        else
-        {
-            redirect('student_page/index')
+        $data['_view'] = 'login/index';
+        $this->load->view('login/Login', $data);
         }
-    }
-
-    public function login_form()
+    function logout()
     {
-        $this->form->validation->set_rules('userIDNo', 'IDNumber', 'required');
-        $this->form->validation->set_rules('userPassword', 'Password', 'required');
-        $this->form->validation->set_error_delimiters('<span class="error">', '</span>');
-
-        if($this->form->validation->run()==FALSE)
-        {
-            $this->load->view('landing_page/index');
-        }
-        else
-        {
-            $userIDNo = $this->input->post('userIDNo');
-            $password = $this->input->post('password');
-            $cek = $this->Login_Model->takeUser($userIDNo, $password, 1);
-
-            if($cek <> 0)
-            {
-                $this->session->set_userdata('isLogin', TRUE);
-                $this->session->set_userdata('userIDNo', $userIDNo);
-                redirect('student_page/index');
-            }
-            else
-            {
-
-            }
-?>
-<script>
-    alert('Failed Login: Check your ID Number and password!');
-    history.go(-1);
-</script>
-<?php
-        }
+        $login = $this->User_model->get_user($_SESSION['userID']); 
+         $params1 = array(
+                        'userID' => $login['userIDNo'],
+                        'auditDesc' => $login['userPassword'].' logged in',
+                    );
+                    $this->Auditlog_model->add_auditlog($params1);
+        session_destroy();
+        redirect(site_url().'login/index');
     }
 }
-
-public function logout()
-{
-    $this->session->sess_destroy();
-    redirect('landing_page/index');
-}
-?>

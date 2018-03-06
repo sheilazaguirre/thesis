@@ -171,20 +171,20 @@
 		<!-- End HEADER section -->
 
 	<div>
-		<div class="wrapper">
+		<div id="login_form" class="wrapper">
 			</br>
 			<h1 class="text-center">Faculty Log-in</h1>
 			</br>
 				<form method="POST" class="form-horizontal">
 					<div class="form-group">
 						<div>
-							<input name="un" type="text" placeholder="USERNAME" 
+							<input name="IDNumber" type="text" placeholder="ID Number" 
 								class="textbox" required />
 						</div>
 					</div>
 					<div class="form-group">
 						<div>
-							<input name="pw" type="password" placeholder="PASSWORD" 
+							<input name="password" type="password" placeholder="PASSWORD" 
 								class="textbox" required />
 						</div>
 					</div>

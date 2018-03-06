@@ -1,27 +1,66 @@
 <?php
-
+if(!defined('BASEPATH')) exit('Hacking Attempt : Get Out of the system ..!');
  
 class Landing_Page extends CI_Controller{
     function __construct()
     {
         parent::__construct();
+        $this->load->model('Landing_Page_model');        
+        $this->load->model('User_model'); 
+        $this->load->helper('url');
     } 
 
-    /*
-     * Listing of prof
-     */
+    
     function index()
     {
-        $params['limit'] = RECORDS_PER_PAGE; 
-        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+        $this->load->library('form_validation');
         
-        $config = $this->config->item('pagination');
-        $config['base_url'] = site_url('landing_page/index?');
-        $this->pagination->initialize($config);
+        $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
+        $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
+        $_SESSION['errormsg'] = 0;
+        if($this->form_validation->run())     
+        {   
+            $params = array(
+                'userPassword' => $this->input->post('userPassword'),
+                'userIDNo' => $this->input->post('userIDNo'),);
+            
+            $login = $this->Landing_Page_model->get_user($params); 
+            if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
+                $_SESSION['errormsg'] = 1;
+            }
+            else {
+                if(isset($login['userIDNo']) and isset($login['userTypeID']))
+                {
+                    $_SESSION['userIDNo'] = $login['userIDNo'];
+                    $_SESSION['userTypeID'] = $login['userTypeID'];
 
-
-
-        $this->load->view('landing_page/index');
+                    
+                    $params1 = array(
+                        'userID' => $login['userIDNo'],
+                        'auditDesc' => $login['userPassword'].' logged in',
+                    );
+                    // $this->Auditlog_model->add_auditlog($params1);
+                    redirect('student_page/index');
+                    //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
+                }
+                else {
+                    $_SESSION['errormsg'] = 2;
+                }
+            }
+        }
+        $data['_view'] = 'landing_page/index';
+        $this->load->view('landing_page/index', $data);
+        }
+    function logout()
+    {
+        $login = $this->User_model->get_user($_SESSION['userIDNo']); 
+         $params1 = array(
+                        'userID' => $login['userIDNo'],
+                        'auditDesc' => $login['userPassword'].' logged in',
+                    );
+                    // $this->Auditlog_model->add_auditlog($params1);
+        session_destroy();
+        redirect(site_url().'landing_page/index');
     }
 
     function about()
