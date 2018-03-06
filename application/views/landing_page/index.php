@@ -280,7 +280,7 @@
 				<form method="POST" class="form-horizontal">
 					<div class="form-group">
 						<div>
-							<input name="userIDNo" type="text" placeholder="ID Numeber" 
+							<input name="userIDNo" type="text" placeholder="ID Number" 
 								class="textbox" required />
 						</div>
 					</div>

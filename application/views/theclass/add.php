@@ -161,37 +161,6 @@ function ajaxSearch()
 		$('#search_data').val(IDNo);	
 		$('#suggestions').hide();       
 	}
-	// $("#btnAdd").click(function () {
-	// 			var idnum = $('#search_data').val();
-	// 			if (idnum.length === 0)
-	// 			{
-	// 				alert("Please provide an ID number");
-	// 			}
-	// 			else {
-    //             $.ajax({
-    //                 type: "POST",
-    //                 url: "<?php echo base_url(); ?>theclass/insert/",
-    //                 data: {"idnum": idnum},
-	// 				dataType: "json",
-    //                 success: function (response) {
-	// 					if (response.success)
-	// 					{
-	// 					alert("Student successfully added");
-	// 					showAllClasses();
-	// 					}
-	// 					else
-	// 					{
-	// 						alert("Student cannot be added");
-	// 					}
-    //                 },
-	// 				error: function response() {
-	// 					alert("Could not add data");
-	// 				}
-						
-    //             });
-
-	// 			}
-    //         });
 	$("#btnAdd").click(function () {
 				var idnum = $('#search_data').val();
 				if (idnum.length === 0)
@@ -205,7 +174,6 @@ function ajaxSearch()
                     data: {"idnum": idnum},
 					dataType: "json",
                     success: function (data) {
-
 						if (data === 1)
 						{
 						alert("Student successfully added");
