@@ -58,42 +58,53 @@ class User extends CI_Controller{
             $today = date("Y-m-d");
             $diff = date_diff(date_create($datebirth), date_create($today));
             $num = $diff->format('%y');
-            $age = (int)$num;
+			$age = (int)$num;
+			
+			if ($age >= 14)
+			{
+				$params = array(
+					'userTypeID' => $this->input->post('userTypeID'),
+					'status' => 'Active',
+					'gender' => $this->input->post('gender'),
+					'userPassword' => password_hash('gapcmypassword', PASSWORD_BCRYPT),
+					'userIDNo' => $this->input->post('userIDNo'),
+					'userLN' => $this->input->post('userLN'),
+					'userFN' => $this->input->post('userFN'),
+					'userMN' => $this->input->post('userMN'),
+					'userEmail' => $this->input->post('userEmail'),
+					'userMobile' => $this->input->post('userMobile'),
+					'birthdate' => $datebirth,
+					'age' => $age,
+					'civstat' => $this->input->post('civstat'),
+					'nationality' => $this->input->post('nationality'),
+					'religion' => $this->input->post('religion'),
+					'elemschool' => $this->input->post('elemschool'),
+					'secschool' => $this->input->post('secschool'),
+					'tertschool' => $this->input->post('tertchool'),
+					'guardian' => $this->input->post('guardian'),
+					'relation' => $this->input->post('relation'),
+					'fathername' => $this->input->post('fathername'),
+					'fatherocc' => $this->input->post('fatherocc'),
+					'mothername' => $this->input->post('mothername'),
+					'motherocc' => $this->input->post('motherocc'),
+					'birthplace' => $this->input->post('birthplace'),
+					'addcity' => $this->input->post('addcity'),
+					'addprov' => $this->input->post('addprov'),
+					'dateadded' => date('Y-m-d H:i:s'),
+					'datemodified' => null,
+				);
+				
+				$user_id = $this->User_model->add_user($params);
+				redirect('user/index');
+			} 
+			else if ($age >= 40) {
+				show_error('Student too old');
+			}
+			else {
+				show_error('Student too young for college');
+			}
 
-            $params = array(
-				'userTypeID' => $this->input->post('userTypeID'),
-				'status' => 'Active',
-				'gender' => $this->input->post('gender'),
-				'userPassword' => password_hash('gapcmypassword', PASSWORD_BCRYPT),
-				'userIDNo' => $this->input->post('userIDNo'),
-				'userLN' => $this->input->post('userLN'),
-				'userFN' => $this->input->post('userFN'),
-				'userMN' => $this->input->post('userMN'),
-				'userEmail' => $this->input->post('userEmail'),
-				'userMobile' => $this->input->post('userMobile'),
-				'birthdate' => $datebirth,
-				'age' => $age,
-				'civstat' => $this->input->post('civstat'),
-				'nationality' => $this->input->post('nationality'),
-				'religion' => $this->input->post('religion'),
-				'elemschool' => $this->input->post('elemschool'),
-				'secschool' => $this->input->post('secschool'),
-				'tertschool' => $this->input->post('tertchool'),
-				'guardian' => $this->input->post('guardian'),
-				'relation' => $this->input->post('relation'),
-				'fathername' => $this->input->post('fathername'),
-				'fatherocc' => $this->input->post('fatherocc'),
-				'mothername' => $this->input->post('mothername'),
-				'motherocc' => $this->input->post('motherocc'),
-				'birthplace' => $this->input->post('birthplace'),
-				'addcity' => $this->input->post('addcity'),
-				'addprov' => $this->input->post('addprov'),
-                'dateadded' => date('Y-m-d H:i:s'),
-                'datemodified' => null,
-            );
             
-            $user_id = $this->User_model->add_user($params);
-            redirect('user/index');
         }
         else
         {

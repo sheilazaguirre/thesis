@@ -25,7 +25,7 @@ class Applicant extends CI_Controller{
         $this->form_validation->set_rules('apfn','First Name','required|max_length[50]');
         $this->form_validation->set_rules('apln','Last Name','required|max_length[50]');
         $this->form_validation->set_rules('apmn','Middle Name','required|max_length[50]');
-        $this->form_validation->set_rules('course','Course','required|max_length[50]');
+        $this->form_validation->set_rules('courseID','Course','required|max_length[50]');
         $this->form_validation->set_rules('email','Email','required|max_length[100]');
         $this->form_validation->set_rules('mobile','Mobile','required|max_length[15]');
         $this->form_validation->set_rules('birthdate','Birth date','required');
@@ -46,8 +46,6 @@ class Applicant extends CI_Controller{
         $this->form_validation->set_rules('fatherocc','Father occupation','required|max_length[50]');
         $this->form_validation->set_rules('mothername','Mother name','required|max_length[50]');
         $this->form_validation->set_rules('motherocc','Mother occupation','required|max_length[50]');
-        $this->form_validation->set_rules('datesubmitted','Datesubmitted');
-        $this->form_validation->set_rules('datemodified','Datemodified');
         $this->form_validation->set_rules('studentstat','Student status','required|max_length[20]');
 
         if($this->form_validation->run())
@@ -61,7 +59,7 @@ class Applicant extends CI_Controller{
 
 
             $params = array(
-                'course' => $this->input->post('course'),
+                'courseID' => $this->input->post('courseID'),
                 'studentstat' => $this->input->post('studentstat'),
                 'status' => 'Active',
                 'apfn' => $this->input->post('apfn'),
@@ -110,7 +108,7 @@ class Applicant extends CI_Controller{
         $this->form_validation->set_rules('apfn','First Name','required|max_length[50]');
         $this->form_validation->set_rules('apln','Last Name','required|max_length[50]');
         $this->form_validation->set_rules('apmn','Middle Name','required|max_length[50]');
-        $this->form_validation->set_rules('course','Course','required|max_length[50]');
+        $this->form_validation->set_rules('courseID','Course','required|max_length[50]');
         $this->form_validation->set_rules('email','Email','required|max_length[100]');
         $this->form_validation->set_rules('mobile','Mobile','required|max_length[15]');
         $this->form_validation->set_rules('birthdate','Birth date','required');
@@ -146,7 +144,7 @@ class Applicant extends CI_Controller{
 
 
             $params = array(
-                'course' => $this->input->post('course'),
+                'courseID' => $this->input->post('courseID'),
                 'studentstat' => $this->input->post('studentstat'),
                 'status' => 'Active',
                 'apfn' => $this->input->post('apfn'),
@@ -257,7 +255,7 @@ class Applicant extends CI_Controller{
             $this->form_validation->set_rules('apfn','First Name','required|max_length[50]');
             $this->form_validation->set_rules('apln','Last Name','required|max_length[50]');
             $this->form_validation->set_rules('apmn','Middle Name','required|max_length[50]');
-            $this->form_validation->set_rules('course','Course','required|max_length[50]');
+            $this->form_validation->set_rules('courseID','Course','required|max_length[50]');
             $this->form_validation->set_rules('email','Email','required|max_length[100]|valid_email');
             $this->form_validation->set_rules('mobile','Mobile','required|max_length[15]');
             $this->form_validation->set_rules('birthdate','Birth date','required');
