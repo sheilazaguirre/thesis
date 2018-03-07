@@ -290,6 +290,7 @@
 								class="textbox" required />
 						</div>
 					</div>
+					<div id="infoMessage"><?php echo $this->session->flashdata('err_message');?></div>
 					<div class="form-group">
 						<div>
 							<button name="signin"

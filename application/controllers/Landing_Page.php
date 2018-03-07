@@ -14,22 +14,25 @@ class Landing_Page extends CI_Controller{
     function index()
     {
         $this->load->library('form_validation');
-        
         $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
         $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
         $_SESSION['errormsg'] = 0;
+        $form_reponse=$this->input->post('g-recaptcha-response');
+        $url="https://www.google.com/recaptcha/api/siteverify";
+        $secretkey="6LfRmzcUAAAAALyhGzTaoIa5XsHxb3MocPDbDZd_";
+        $response=file_get_contents($url."?secret=".$secretkey."&response=".$form_reponse."&remoteip=".$_SERVER["REMOTE_ADDR"]);
+        $dota=json_decode($response);
         if($this->form_validation->run())     
         {   
             $params = array(
                 'userPassword' => $this->input->post('userPassword'),
                 'userIDNo' => $this->input->post('userIDNo'),);
-            
             $login = $this->Landing_Page_model->get_user($params); 
             if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
-                $_SESSION['errormsg'] = 1;
+                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
             }
             else {
-                if(isset($login['userIDNo']) and isset($login['userTypeID']))
+                if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
                 {
                     $_SESSION['userIDNo'] = $login['userIDNo'];
                     $_SESSION['userTypeID'] = $login['userTypeID'];
@@ -44,7 +47,7 @@ class Landing_Page extends CI_Controller{
                     //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
                 }
                 else {
-                    $_SESSION['errormsg'] = 2;
+                $this->session->set_flashdata('err_message', 'Invalid credentials, also make sure to validate with recaptcha');
                 }
             }
         }

@@ -218,7 +218,7 @@
 								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
 								
 								<td>
-									<select name="grade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> required>
+									<select name="grade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> required />
 										<option value="">Select Grade</option>
 										<option value="1" <?php echo $c["grade"] == "1" ? "selected" : "" ?>>1.00</option>
 										<option value="1.25" <?php echo $c["grade"] == "1.25" ? "selected" : "" ?>>1.25</option>
@@ -237,7 +237,7 @@
 									<br/>
 								</td>
 								<td>
-									<textarea rows="2" value="" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> name="remarks[<?=$c['classlistID']?>]">
+									<textarea <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> name="remarks[<?=$c['classlistID']?>]">
 										<?php echo $c['remarks']; ?>
 									</textarea>
 								</td>

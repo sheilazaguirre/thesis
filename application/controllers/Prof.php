@@ -20,12 +20,12 @@ class Prof extends CI_Controller{
 
     function lessons()
     {
-        $this->load->view('faculty_page/lessons');
+        $this->load->view('prof/lessons');
     }
 
     function assignments()
     {
-        $this->load->view('faculty_page/assignments');
+        $this->load->view('prof/assignments');
     }
 
     /*

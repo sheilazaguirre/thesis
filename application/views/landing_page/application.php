@@ -294,6 +294,8 @@
     </div>
 </div>
 
+        
+
         <script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="<?php echo site_url('resources/js/bootstrap.min.js');?>"></script>
@@ -311,6 +313,10 @@
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.js');?>"></script>
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.extensions.js');?>"></script>
         <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
+
+        <script>
+            $('[data-mask]').inputmask();
+        </script>
       
 
     </body>
