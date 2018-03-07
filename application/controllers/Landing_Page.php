@@ -14,7 +14,6 @@ class Landing_Page extends CI_Controller{
     function index()
     {
         $this->load->library('form_validation');
-        
         $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
         $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
         $_SESSION['errormsg'] = 0;
@@ -23,10 +22,9 @@ class Landing_Page extends CI_Controller{
             $params = array(
                 'userPassword' => $this->input->post('userPassword'),
                 'userIDNo' => $this->input->post('userIDNo'),);
-            
             $login = $this->Landing_Page_model->get_user($params); 
             if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
-                $_SESSION['errormsg'] = 1;
+                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
             }
             else {
                 if(isset($login['userIDNo']) and isset($login['userTypeID']))
@@ -44,7 +42,7 @@ class Landing_Page extends CI_Controller{
                     //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
                 }
                 else {
-                    $_SESSION['errormsg'] = 2;
+                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
                 }
             }
         }
