@@ -286,7 +286,7 @@
 					</div>
 					<div class="form-group">
 						<div>
-							<input name="userPassword" type="password" placeholder="PASSWORD" 
+							<input name="userPassword" type="password" placeholder="Password" 
 								class="textbox" required />
 						</div>
 					</div>
