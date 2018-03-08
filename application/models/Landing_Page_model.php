@@ -49,7 +49,7 @@ class Landing_Page_model extends CI_Model
     function update_password()
     {
         $email = $this->input->post('userEmail');
-        $password = sha1($this->config->item('salt') . $this->input->post('password'));
+        $password = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
 
         $sql = "UPDATE users SET userPassword = '{$password}' WHERE userEmail = '{$email}' LIMIT 1";
         $this->db->query($sql);

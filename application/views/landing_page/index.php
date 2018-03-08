@@ -299,7 +299,7 @@
 							</button>
 						</div>
 						<div>
-							<a href="forgotpass" name="forgot">
+							<a href="forgot_password" name="forgot">
 								Forgot Password?
 							</a>
 						</div>
