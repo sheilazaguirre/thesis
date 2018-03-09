@@ -64,4 +64,11 @@ class Landing_Page_model extends CI_Model
         }
     }
 
+    // function validate($idnumber)
+    // {
+    //     $valuser = $this->db->query('SELECT userTypeID FROM users where userIDNo = '.$idnumber.'');
+
+    
+    // }
+
 }

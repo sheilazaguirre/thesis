@@ -68,7 +68,7 @@ class Prof_model extends CI_Model
         $this->db->join('users u', 'u.userIDNo = c.studentID');
         $this->db->join('grades g', 'g.studentID = c.studentID', "left");
         $this->db->order_by('u.userLN', 'asc');
-        $this->db->where('c.classID', 2);
+        $this->db->where('c.classID', 1);
         return $this->db->get()->result_array();
     }
 
@@ -78,7 +78,7 @@ class Prof_model extends CI_Model
     
     function get_all_grades($classID = NULL)
     {
-        $this->db->where('classID', 2);
+        $this->db->where('classID', 1);
         return $this->db->get("grades")->result_array();
     }
     

@@ -1,0 +1,8 @@
+Feb 5 2018 Consultation
+
+Prof - Preferences (subject)
+
+Classlist - Validate if Existing sa table and/or student 
+            Validate if not insert
+
+Classlist - input all inside the forms into database
