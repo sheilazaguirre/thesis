@@ -197,7 +197,7 @@ class Applicant extends CI_Controller{
                 'status' => 'Active',
                 'gender' => $applicant['gender'],
                 'userPassword' => password_hash('gapcmypassword', PASSWORD_BCRYPT),
-                'userIDNo' => '11410020',
+                'userIDNo' => '11810051',
                 'userLN' => $applicant['apln'],
                 'userFN' => $applicant['apfn'],
                 'userMN' => $applicant['apmn'],
