@@ -27,7 +27,7 @@
                     <tr>
 						<td><?php echo $a['assignID']; ?></td>
 						<td><?php echo $a['classID']; ?></td>
-						<td><a href="../../uploads/assignments/<?php echo $a['assignFile']; ?>" target="_blank" class='btn btn-success' download>
+						<td><a href="../uploads/assignments/<?php echo $a['assignFile']; ?>" target="_blank" class='btn btn-success' download>
                         Download
                         </a></td>
 						<td><?php echo $a['assignDesc']; ?></td>

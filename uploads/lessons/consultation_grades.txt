@@ -1,0 +1,11 @@
+grades
+---------
+gradeID
+classID (FK)
+studentID (FK)
+grade - varchar(3)
+remarks
+status - Saved, Submitted
+dateAdded
+lastSaved
+dateSubmitted
