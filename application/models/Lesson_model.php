@@ -22,6 +22,7 @@ class Lesson_model extends CI_Model
     function get_all_lessons()
     {
         $this->db->order_by('lessonID', 'asc');
+        $this->db->where('status !=', 'Archived');
         return $this->db->get('lessons')->result_array();
     }
         

@@ -6,3 +6,6 @@ $route['default_controller'] = 'dashboard/index';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['uploads/lessons'] = '../../uploads/lessons/';
+$route['uploads/assignments'] = '../../uploads/assignments/';

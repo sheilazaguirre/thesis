@@ -34,17 +34,17 @@
 					<div class="col-md-6">
 						<label for="announceFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
-							<input type="text" name="announceFile" value="<?php echo ($this->input->post('announceFile') ? $this->input->post('announceFile') : $announcement['announceFile']); ?>" class="form-control" id="announceFile" />
+							<input type="file" name="filen" size="20" value="<?php echo ($this->input->post('announceFile') ? $this->input->post('announceFile') : $announcement['announceFile']); ?>" class="form-control" id="announceFile">
 							<span class="text-danger"><?php echo form_error('announceFile');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="announceDetail" class="control-label"><span class="text-danger">*</span>Details</label>
-						<div class="form-group">
-							<input type="text" name="announceDetail" value="<?php echo ($this->input->post('announceDetail') ? $this->input->post('announceDetail') : $announcement['announceDetail']); ?>" class="form-control" id="announceDetail" />
-							<span class="text-danger"><?php echo form_error('announceDetail');?></span>
-						</div>
-					</div>
+                        <label for="announceDetail" class="control-label"><span class="text-danger">*</span>Details</label>
+                        <div class="form-group">
+                            <textarea name="announceDetail" value="<?php echo ($this->input->post('announceDetail') ? $this->input->post('announceDetail') : $announcement['announceDetail']); ?>" class="form-control" id="announceDetail"><?php echo $announcement['announceDetail']; ?></textarea>
+                            <span class="text-danger"><?php echo form_error('announceDetail');?></span>
+                        </div>
+                    </div>
 					<div class="col-md-6">
 						<label for="announceDate" class="control-label"><span class="text-danger">*</span>Announcement Date</label>
 						<div class="form-group">

@@ -100,7 +100,7 @@ class Assignment extends CI_Controller{
                 $config['max_height'] = 768;
     
                 $this->load->library('upload', $config);
-                $var;
+                $var1;
                 if ( ! $this->upload->do_upload('filen'))
                 {
                         $error = array('error' => $this->upload->display_errors());
@@ -109,7 +109,7 @@ class Assignment extends CI_Controller{
                 {
                         $data = array('upload_data' => $this->upload->data());
                         
-                        $var = $this->upload->data()["file_name"];
+                        $var1 = $this->upload->data()["file_name"];
                         //var_dump($var);
                 }
 
@@ -146,7 +146,7 @@ class Assignment extends CI_Controller{
         // check if the assignment exists before trying to delete it
         if(isset($assignment['assignID']))
         {
-            $this->db->set('status', 'Archive');
+            $this->db->set('status', 'Archived');
             $this->Assignment_model->delete_assignment($assignID);
             redirect('assignment/index');
         }

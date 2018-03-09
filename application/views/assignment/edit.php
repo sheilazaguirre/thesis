@@ -17,7 +17,7 @@
 								{
 									$selected = ($theclass['classID'] == $assignment['classID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['subjectID'].'</option>';
+									echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
 								} 
 								?>
 							</select>
@@ -26,17 +26,17 @@
 					<div class="col-md-6">
 						<label for="assignFile" class="control-label"><span class="text-danger">*</span>File</label>
 						<div class="form-group">
-							<input type="text" name="assignFile" value="<?php echo ($this->input->post('assignFile') ? $this->input->post('assignFile') : $assignment['assignFile']); ?>" class="form-control" id="assignFile" />
+							<input type="file" name="filen" size="20" value="<?php echo ($this->input->post('assignFile') ? $this->input->post('assignFile') : $assignment['assignFile']); ?>" class="form-control" id="assignFile">
 							<span class="text-danger"><?php echo form_error('assignFile');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="assignDesc" class="control-label"><span class="text-danger">*</span>Assign Description</label>
-						<div class="form-group">
-							<input type="text" name="assignDesc" value="<?php echo ($this->input->post('assignDesc') ? $this->input->post('assignDesc') : $assignment['assignDesc']); ?>" class="form-control" id="assignDesc" />
-							<span class="text-danger"><?php echo form_error('assignDesc');?></span>
-						</div>
-					</div>
+                        <label for="assignDesc" class="control-label"><span class="text-danger">*</span>Description</label>
+                        <div class="form-group">
+                            <textarea name="assignDesc" value="<?php echo ($this->input->post('assignDesc') ? $this->input->post('assignDesc') : $assignment['assignDesc']); ?>" class="form-control" id="assignDesc"><?php echo $assignment['assignDesc']; ?></textarea>
+                            <span class="text-danger"><?php echo form_error('assignDesc');?></span>
+                        </div>
+                    </div>
 					<div class="col-md-6">
 						<label for="assignTitle" class="control-label"><span class="text-danger">*</span>Title</label>
 						<div class="form-group">

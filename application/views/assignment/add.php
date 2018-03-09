@@ -18,7 +18,7 @@
 								{
 									$selected = ($theclass['classID'] == $this->input->post('classID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['subjectID'].'</option>';
+									echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
 								} 
 								?>
 							</select>
@@ -32,12 +32,12 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="assignDesc" class="control-label"><span class="text-danger">*</span>Description</label>
-						<div class="form-group">
-							<input type="text" name="assignDesc" value="<?php echo $this->input->post('assignDesc'); ?>" class="form-control" id="assignDesc" />
-							<span class="text-danger"><?php echo form_error('assignDesc');?></span>
-						</div>
-					</div>
+                        <label for="assignDesc" class="control-label"><span class="text-danger">*</span>Description</label>
+                        <div class="form-group">
+                            <textarea name="assignDesc" class="form-control" id="assignDesc"><?php echo $this->input->post('assignDesc'); ?></textarea>
+                            <span class="text-danger"><?php echo form_error('assignDesc');?></span>
+                        </div>
+                    </div>
 					<div class="col-md-6">
 						<label for="assignTitle" class="control-label"><span class="text-danger">*</span>Title</label>
 						<div class="form-group">

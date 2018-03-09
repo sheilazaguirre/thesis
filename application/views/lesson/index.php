@@ -27,7 +27,9 @@
                     <tr>
 						<td><?php echo $l['lessonID']; ?></td>
 						<td><?php echo $l['classID']; ?></td>
-						<td><?php echo $l['lessonFile']; ?></td>
+						<td><a href="../uploads/lessons/<?php echo $l['lessonFile']; ?>" target="_blank" class='btn btn-success' download>
+                        Download
+                        </a></td>
 						<td><?php echo $l['lessonDesc']; ?></td>
 						<td><?php echo $l['lessonTitle']; ?></td>
 						<td><?php echo $l['dateUploaded']; ?></td>

@@ -46,59 +46,58 @@ class Announcement extends CI_Controller{
     //         $announceFile = 'abc';
     //     }
     // } 
-
+    
     function add()
     {   
-        $this->load->library('form_validation');
+       $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('userID','UserID','required|integer');
-		$this->form_validation->set_rules('announceTitle','AnnounceTitle','required|max_length[50]');
-		$this->form_validation->set_rules('announceDetail','AnnounceDetail','required|max_length[150]');
-		$this->form_validation->set_rules('announceDate','AnnounceDate','required|max_length[50]');
-		
-		if($this->form_validation->run())     
-        {   
-            $config['upload_path'] = './uploads/announcements';
-            $config['allowed_types'] = 'jpg|png';
-            $config['max_size'] = 100;
-            $config['max_width'] = 1024;
-            $config['max_height'] = 768;
+       $this->form_validation->set_rules('userID','UserID','required|integer');
+       $this->form_validation->set_rules('announceTitle','AnnounceTitle','required|max_length[50]');
+       $this->form_validation->set_rules('announceDetail','AnnounceDetail','required|max_length[150]');
+       $this->form_validation->set_rules('announceDate','AnnounceDate','required|max_length[50]');
+       
+       if($this->form_validation->run())
+       {
+           $config['upload_path'] = './uploads/announcements';
+           $config['allowed_types'] = 'jpg|png';
+           $config['max_size'] = 100;
+           $cofig['max_width'] = 1024;
+           $config['max_height'] = 768;
 
-            $this->load->library('upload', $config);
-            $var;
-            if ( ! $this->upload->do_upload('filen'))
-            {
-                    $error = array('error' => $this->upload->display_errors());
-            }
-            else
-            {
-                    $data = array('upload_data' => $this->upload->data());
-                    
-                    $var = $this->upload->data()["file_name"];
-                    //var_dump($var);
-            }
+           $this->load->library('upload', $config);
+           $var;
+           if (! $this->upload->do_upload('filen'))
+           {
+               $error = array('error' => $this->upload->display_errors());
+           }
+           else
+           {
+               $data = array('upload_data' => $this->upload->data());
 
-            $params = array(
-				'userID' => $this->input->post('userID'),
-				'announceTitle' => $this->input->post('announceTitle'),
-				'announceFile' => $var,
-				'announceDetail' => $this->input->post('announceDetail'),
-				'announceDate' => $this->input->post('announceDate'),
-            );
-            $this->db->set('dateUploaded', 'NOW()', FALSE);
-            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
-            $this->db->set('status', 'Active');
-            $announcement_id = $this->Announcement_model->add_announcement($params);
-            redirect('announcement/index');
-        }
-        else
-        {
-			$this->load->model('User_model');
-			$data['all_users'] = $this->User_model->get_all_users();
-            
-            $data['_view'] = 'announcement/add';
-            $this->load->view('layouts/main',$data);
-        }
+               $var = $this->upload->data()["file_name"];
+           }
+
+           $params = array(
+               'userID' => $this->input->post('userID'),
+               'announceTitle' => $this->input->post('announceTitle'),
+               'announceFile' => $var,
+               'announceDetail' => $this->input->post('announceDetail'),
+               'announceDate' => $this->input->post('announceDate'),
+           );
+           $this->db->set('dateUploaded', 'NOW()', FALSE);
+           $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
+           $this->db->set('status', 'Active');
+           $announce_id = $this->Announcement_model->add_announcement($params);
+           redirect('announcement/index');
+       }
+       else
+       {
+           $this->load->model('User_model');
+           $data['all_users'] = $this->User_model->get_all_users();
+
+           $data['_view'] = 'announcement/add';
+           $this->load->view('layouts/main',$data);
+       }
     }  
 
     /*
@@ -106,17 +105,17 @@ class Announcement extends CI_Controller{
      */
     function edit($announceID)
     {   
-        // check if the announcement exists before trying to edit it
-        $data['announcement'] = $this->Announcement_model->get_announcement($announceID);
+        // check if the assignment exists before trying to edit it
+        $data['announcement'] = $this->Announcement_model->getannouncement($announceID);
         
         if(isset($data['announcement']['announceID']))
         {
             $this->load->library('form_validation');
 
 			$this->form_validation->set_rules('userID','UserID','required|integer');
-			$this->form_validation->set_rules('announceTitle','AnnounceTitle','required|max_length[50]');
-			$this->form_validation->set_rules('announceDetail','AnnounceDetail','required|max_length[150]');
-			$this->form_validation->set_rules('announceDate','AnnounceDate','required|max_length[50]');
+            $this->form_validation->set_rules('announceTitle','AnnounceTitle','required|max_length[50]');
+            $this->form_validation->set_rules('announceDetail','AnnounceDetail','required|max_length[150]');
+            $this->form_validation->set_rules('announceDate','AnnounceDate','required|max_length[50]');
 		
 			if($this->form_validation->run())     
             {   
@@ -140,7 +139,7 @@ class Announcement extends CI_Controller{
                         $var = $this->upload->data()["file_name"];
                         //var_dump($var);
                 }
-    
+
                 $params = array(
                     'userID' => $this->input->post('userID'),
                     'announceTitle' => $this->input->post('announceTitle'),
@@ -148,7 +147,6 @@ class Announcement extends CI_Controller{
                     'announceDetail' => $this->input->post('announceDetail'),
                     'announceDate' => $this->input->post('announceDate'),
                 );
-
                 $this->db->set('dateModified', 'NOW()', FALSE);
                 $this->Announcement_model->update_announcement($announceID,$params);            
                 redirect('announcement/index');
@@ -167,16 +165,16 @@ class Announcement extends CI_Controller{
     } 
 
     /*
-     * Deleting announcement
+     * Deleting assignment
      */
     function remove($announceID)
     {
-        $announcement = $this->Announcement_model->get_announcement($announceID);
+        $announcement = $this->Announcement_model->getannouncement($announceID);
 
-        // check if the announcement exists before trying to delete it
+        // check if the assignment exists before trying to delete it
         if(isset($announcement['announceID']))
         {
-            $this->db->set('status', 'Archive');
+            $this->db->set('status', 'Archived');
             $this->Announcement_model->delete_announcement($announceID);
             redirect('announcement/index');
         }
