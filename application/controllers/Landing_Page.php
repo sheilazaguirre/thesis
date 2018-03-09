@@ -17,6 +17,11 @@ class Landing_Page extends CI_Controller{
         $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
         $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
         $_SESSION['errormsg'] = 0;
+        $form_reponse=$this->input->post('g-recaptcha-response');
+        $url="https://www.google.com/recaptcha/api/siteverify";
+        $secretkey="6LfRmzcUAAAAALyhGzTaoIa5XsHxb3MocPDbDZd_";
+        $response=file_get_contents($url."?secret=".$secretkey."&response=".$form_reponse."&remoteip=".$_SERVER["REMOTE_ADDR"]);
+        $dota=json_decode($response);
         if($this->form_validation->run())     
         {   
             $params = array(
@@ -27,7 +32,7 @@ class Landing_Page extends CI_Controller{
                 $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
             }
             else {
-                if(isset($login['userIDNo']) and isset($login['userTypeID']))
+                if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
                 {
                     $_SESSION['userIDNo'] = $login['userIDNo'];
                     $_SESSION['userTypeID'] = $login['userTypeID'];
@@ -42,7 +47,7 @@ class Landing_Page extends CI_Controller{
                     //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
                 }
                 else {
-                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
+                $this->session->set_flashdata('err_message', 'Invalid credentials, also make sure to validate with recaptcha');
                 }
             }
         }
@@ -59,6 +64,139 @@ class Landing_Page extends CI_Controller{
                     // $this->Auditlog_model->add_auditlog($params1);
         session_destroy();
         redirect(site_url().'landing_page/index');
+    }
+
+    function forgot_password()
+    {
+        if (isset($_POST['userEmail']) && !empty($_POST['userEmail']))
+        {
+            $this->load->library('form_validation');
+            //check if email is valid
+            $this->form_validation->set_rules('userEmail', 'Email Addresss', 'trim|required|min_length[6]|max_length[50]|valid_email|xss_clean');
+            if ($this->form_validation->run() == FALSE)
+            {
+                $this->load->view('layouts/header');
+                $this->load->view('landing_page/forgot', array('error' => 'Please supply a valid email address.'));
+                $this->load->view('layouts/footer');
+            }
+            else
+            {
+                $userEmail = trim($this->input->post('userEmail'));
+                $result = $this->Landing_Page_model->email_exists($userEmail);
+
+                if($result)
+                {
+                    $this->send_reset_password_email($userEmail, $result);
+                    $this->load->view('layouts/header');
+                    $this->load->view('landing_page/reset_password_sent', array('userEmail'=> $userEmail));
+                    $this->load->view('layouts/footer');
+                }
+                else
+                {
+                    $this->load->view('layouts/header');
+                    $this->load->view('landing_page/forgot', array('error'=> 'Email address not registered'));
+                    $this->load->view('layouts/footer');
+                }
+            }
+        }
+        else
+        {
+            $this->load->view('layouts/header');
+            $this->load->view('landing_page/forgot');
+            $this->load->view('layouts/footer');
+        }
+    }
+
+    function forgot_password_form($userEmail, $email_code)
+    {
+        if(isset($userEmail, $email_code))
+        {
+            $userEmail = trim($userEmail);
+            $email_hash = sha1($userEmail . $email_code);
+            $verified = $this->Landing_Page_model->verify_reset_password_code($userEmail, $email_code);
+
+            if($verified)
+            {
+                $this->load->view('layouts/header');
+                $this->load->view('landing_page/update_password', array('email_hash' => $email_hash, 'email_code' => $email_code, 'userEmail' => $userEmail));
+                $this->load->view('layouts/footer');
+            }
+            else
+            {
+               $this->load->view('layouts/header');
+               $this->load->view('landing_page/forgot', array('error' => 'There was a problem with your link', 'userEmail' => $userEmail));
+               $this->load->view('layouts/footer');  
+            }
+        }
+    }
+
+
+
+    function update_password()
+    {
+        if (!isset($_POST['userEmail'], $_POST['email_hash']) || $_POST['email_hash'] !== sha1($_POST['userEmail'] . $_POST['email_code']))
+        {
+            die("No hacking please");
+        }
+
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('email_hash', 'Email Hash', 'trim|required');
+        $this->form_validation->set_rules('userEmail', 'Email', 'trim|required|valid_email|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[50]|matches[password_conf]|xss_clean');
+        $this->form_validation->set_rules('password_conf', 'Confirmed Password', 'trim|required|min_length[6]|max_length[50]|xss_clean');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('layouts/header');
+            $this->load->view('landing_page/update_password');
+            $this->load->view('layouts/footer');
+        }
+        else
+        {
+            $result = $this->Landing_Page_model->update_password();
+
+            if($result)
+            {
+                $this->load->view('layouts/header');
+                $this->load->view('landing_page/update_password_success');
+                $this->load->view('layouts/footer');
+            }
+            else
+            {
+                $this->load->view('layouts/header');
+                $this->load->view('landing_page/update_password', array('error' => 'Problem updating your password'));
+                $this->load->view('layouts/footer');
+            }
+        }
+    }
+
+    function send_reset_password_email($userEmail, $userFN)
+    {
+        $this->load->library('email');
+        $email_code = md5($this->config->item('salt') . $userFN);
+
+        $this->email->set_mailtype('html');
+        $this->email->from('shaunxavierpascual@yahoo.com', 'GAPC');
+        $this->email->to($userEmail);
+        $this->email->subject('Confirm to reset password');
+
+        $message = '<!DOCTYPE html><html lang="en"><head></head><body>';
+        $message .= '<p>Dear ' . $userFN .  ',</p>';
+        $message .= '<p>We want to help you reset your password! Please<strong><a href="' . base_url() .'landing_page/forgot_password_form/' . $userEmail . '/' .$email_code . '"> click here</a></strong> to reset your password.</p>';
+        $message .= '<p>If this is not you, kindly ignore this message or contact us</p>';
+        $message .= 'Thank you!</p>';
+        $message .= '</body></html>';
+
+        $this->email->message($message);
+        $this->email->send();
+    }
+
+    function try()
+    {
+        $this->load->view('layouts/header');
+        $this->load->view('landing_page/update_password');
+        $this->load->view('layouts/footer');
     }
 
     function about()

@@ -286,7 +286,7 @@
 					</div>
 					<div class="form-group">
 						<div>
-							<input name="userPassword" type="password" placeholder="PASSWORD" 
+							<input name="userPassword" type="password" placeholder="Password" 
 								class="textbox" required />
 						</div>
 					</div>
@@ -299,7 +299,7 @@
 							</button>
 						</div>
 						<div>
-							<a href="forgotpass" name="forgot">
+							<a href="forgot_password" name="forgot">
 								Forgot Password?
 							</a>
 						</div>
