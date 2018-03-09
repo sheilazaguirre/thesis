@@ -1,0 +1,19 @@
+Assumption
+ - the school have pre-finals nad finals
+ - the school always offer/open subjects every semester
+ - grades 
+ - clearance not included
+ - year level
+ - 1 registrar
+ 
+
+
+faculty
+- lesson
+- assignment
+
+
+student
+- lesson (view/download)
+- assignment (view/download)
+

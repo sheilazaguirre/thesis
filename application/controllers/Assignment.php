@@ -145,7 +145,7 @@ class Assignment extends CI_Controller{
         // check if the assignment exists before trying to delete it
         if(isset($assignment['assignID']))
         {
-            $this->db->set('status', 'Archive');
+            $this->db->set('status', 'Archived');
             $this->Assignment_model->delete_assignment($assignID);
             redirect('assignment/index');
         }

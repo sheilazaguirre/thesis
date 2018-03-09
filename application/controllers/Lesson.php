@@ -33,7 +33,7 @@ class Lesson extends CI_Controller{
         {   
 
             $config['upload_path'] = './uploads/lessons';
-            $config['allowed_types'] = 'gif|jpg|png|pdf|docx';
+            $config['allowed_types'] = 'jpg|png|pdf|docx|txt|ppt|xlsx';
             $config['max_size'] = 100;
             $config['max_width'] = 1024;
             $config['max_height'] = 768;
@@ -49,7 +49,7 @@ class Lesson extends CI_Controller{
                     $data = array('upload_data' => $this->upload->data());
                     
                     $var = $this->upload->data()["file_name"];
-                    //var_dump($var);
+                    var_dump($var);
             }
 
             $params = array(
@@ -146,7 +146,7 @@ class Lesson extends CI_Controller{
         // check if the lesson exists before trying to delete it
         if(isset($lesson['lessonID']))
         {
-            $this->db->set('status', 'Archive');
+            $this->db->set('status', 'Archived');
             $this->Lesson_model->delete_lesson($lessonID);
             redirect('lesson/index');
         }

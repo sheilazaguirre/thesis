@@ -30,9 +30,7 @@
 						<td><?php echo $a['announceID']; ?></td>
 						<td><?php echo $a['userName']; ?></td>
 						<td><?php echo $a['announceTitle']; ?></td>
-						<td><a href="../../uploads/<?php echo $a['announceFile']; ?>" target="_blank" class='btn btn-success'>
-                        Download
-                        </a></td>
+                        <td><img src=" <?php echo base_url ('uploads/announcements/' . $a['announceFile']); ?>" height="100" width="100"></td>
 						<td><?php echo $a['announceDetail']; ?></td>
 						<td><?php echo $a['announceDate']; ?></td>
 						<td><?php echo $a['dateUploaded']; ?></td>
@@ -40,8 +38,8 @@
 						<td><?php echo $a['dateExpiry']; ?></td>
 						<td><?php echo $a['status']; ?></td>
 						<td>
-                            <a href="<?php echo site_url('announcement/edit/'.$a['announceID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-                            <a href="<?php echo site_url('announcement/remove/'.$a['announceID']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+                            <a href="<?php echo site_url('announcement/edit/'.$a['announceID']); ?>" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Edit</a> 
+                            <a href="<?php echo site_url('announcement/remove/'.$a['announceID']); ?>" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
                         </td>
                     </tr>
                 </tbody>

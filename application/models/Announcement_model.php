@@ -18,7 +18,7 @@ class Announcement_model extends CI_Model
             "SELECT a.announceID, CONCAT(u.userFN,' ', u.userLN) as userName, a.announceTitle, a.announceFile, a.announceDetail, a.announceDate, a.dateUploaded, a.dateModified, a.dateExpiry, a.status from announcements a
             INNER JOIN users u ON a.userID = u.userID"
         );
-        return $query->result();
+        return $query->result_array();
     }
     
     /*
@@ -36,6 +36,7 @@ class Announcement_model extends CI_Model
     function get_all_announcements($params = array())
     {
         $this->db->order_by('announceID', 'asc');
+        $this->db->where('status !=', 'Archived');
         if(isset($params) && !empty($params))
         {
             $this->db->limit($params['limit'], $params['offset']);
