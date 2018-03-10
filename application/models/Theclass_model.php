@@ -96,4 +96,18 @@ class Theclass_model extends CI_Model
         } 
     }
 
+    function count()
+    {
+        $query = $this->db->query('SELECT COUNT(*) as StudentCount FROM classlist WHERE classID = 0');
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->row();
+            return $result->StudentCount;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
 }

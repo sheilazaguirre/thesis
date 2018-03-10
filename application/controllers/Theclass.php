@@ -52,7 +52,7 @@ class Theclass extends CI_Controller{
 			$this->load->model('Subject_model');
 			$data['all_subjects'] = $this->Subject_model->get_all_subjects();
 			$this->load->model('User_model');
-			$data['all_users'] = $this->User_model->get_all_users();
+			$data['all_users'] = $this->User_model->get_all_faculty();
 			$this->load->model('Timeslot_model');
 			$data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
 			$this->load->model('Venue_model');
@@ -150,7 +150,7 @@ class Theclass extends CI_Controller{
         // // var_dump($idnumber);
         // // $idnumber = (int)$num;
         // // // if ($result->num_rows() > 0) {
-        $msg = 0;
+        $msg = [];
         $result2 = $this->Theclass_model->validate($idnumber);
         if ($result2 === 1)
         {
@@ -164,20 +164,20 @@ class Theclass extends CI_Controller{
 
             if ($result)
             {
-            $msg = 1;
+            $msg[0] = 1;
             }
         } else if ($result2 === 2)
         {
-            $msg = 2;
+            $msg[0] = 2;
         } else {
-            $msg = 3;
+            $msg[0] = 3;
         }
-        echo json_encode($msg);
-
-        
+        echo json_encode($msg);   
     }
     public function showAllClasses(){
-		$result = $this->Classlist_model->showAllClasses();
-		echo json_encode($result);
+        $out = [];
+        $out['result'] = $this->Classlist_model->showAllClasses();
+        $out['count'] = $this->Theclass_model->count();
+        echo json_encode($out);
 	}
 }

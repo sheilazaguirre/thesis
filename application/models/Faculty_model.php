@@ -33,7 +33,7 @@ class Faculty_model extends CI_Model
     {
         $this->db->join('users', 'userID');
         $this->db->join('subjects', 'subjectID');
-        $this->db->order_by('facultyID', 'asc');
+        $this->db->order_by('userLN', 'asc');
         $this->db->where('faculty.status', 'Active');
         return $this->db->get('faculty')->result_array();
     }
