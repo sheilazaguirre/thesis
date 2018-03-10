@@ -204,7 +204,7 @@ class Applicant extends CI_Controller{
                 'userEmail' => $applicant['email'],
                 'userMobile' => $applicant['mobile'],
                 'birthdate' => $applicant['birthdate'],
-                'course' => $applicant['course'],
+                'courseID' => $applicant['courseID'],
                 'age' => $applicant['age'],
                 'birthplace' => $applicant['birthplace'],
                 'civstat' => $applicant['civstat'],
@@ -283,7 +283,7 @@ class Applicant extends CI_Controller{
             {
 
                 $params = array(
-                    'course' => $this->input->post('course'),
+                    'courseID' => $this->input->post('courseID'),
                     'studentstat' => $this->input->post('studentstat'),
                     'status' => $this->input->post('status'),
                     'apfn' => $this->input->post('apfn'),

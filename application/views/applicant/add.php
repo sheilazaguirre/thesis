@@ -11,7 +11,7 @@
                         <label for="courseID" class="control-label"><span class="text-danger">*</span>Course</label>
                         <div class="form-group">
                             <select name="courseID" class="form-control">
-                                <option value="">select</option>
+                                <option value="">Select Course...</option>
                                 <?php
                                 $course_values = array(
                                     '1'=>'Bachelor of Science in Computer Science',
@@ -37,7 +37,7 @@
                         <label for="studentstat" class="control-label"><span class="text-danger">*</span>Student Status</label>
                         <div class="form-group">
                             <select name="studentstat" class="form-control">
-                                <option value="">select</option>
+                                <option value="">Select Student Status...</option>
                                 <?php
                                 $studentstat_values = array(
                                     'Approved'=>'Approved',
@@ -82,14 +82,14 @@
                         <label for="email" class="control-label"><span class="text-danger">*</span>Email Address</label>
                         <div class="form-group">
 
-                            <input type="email" name="email" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
+                            <input type="email" name="email" placeholder="Ex: example@yahoo.com" value="<?php echo $this->input->post('email'); ?>" class="form-control" id="email" />
                             <span class="text-danger"><?php echo form_error('email');?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="mobile" class="control-label"><span class="text-danger">*</span>Mobile</label>
                         <div class="form-group">
-                            <input type="tel" pattern="[0-9-() ]*" placeholder="0-9 Only" name="mobile" value="<?php echo $this->input->post('mobile'); ?>" data-inputmask='"mask": "(0999)999-9999"' class="form-control" id="mobile" data-mask required />
+                            <input type="tel" pattern="[0-9-() ]*" placeholder="Ex: (0920)999-9999" name="mobile" value="<?php echo $this->input->post('mobile'); ?>" data-inputmask='"mask": "(0999)999-9999"' class="form-control" id="mobile" data-mask required />
                             <span class="text-danger"><?php echo form_error('mobile');?></span>
                         </div>
                     </div>
@@ -116,14 +116,44 @@
                     <div class="col-md-6">
                         <label for="gender" class="control-label"><span class="text-danger">*</span>Gender</label>
                         <div class="form-group">
-                            <input type="text" name="gender" value="<?php echo $this->input->post('gender'); ?>" class="form-control" id="gender" />
+                        <select name="gender" class="form-control">
+                                <option value="">Select Gender...</option>
+                                <?php
+                                $gender_values = array(
+                                    'Male'=>'Male',
+                                    'Female'=>'Female',
+                                );
+                                foreach($gender_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $this->input->post('gender')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('gender');?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="civstat" class="control-label"><span class="text-danger">*</span>Civil Status</label>
                         <div class="form-group">
-                            <input type="text" name="civstat" value="<?php echo $this->input->post('civstat'); ?>" class="form-control" id="civstat" />
+                        <select name="civstat" class="form-control">
+                                <option value="">Select Status...</option>
+                                <?php
+                                $civstat_values = array(
+                                    'Single'=>'Single',
+                                    'Married'=>'Married',
+                                    'Widowed'=>'Widowed',
+                                );
+
+                                foreach($civstat_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $this->input->post('civstat')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('civstat');?></span>
                         </div>
                     </div>
@@ -131,7 +161,7 @@
                         <label for="nationality" class="control-label"><span class="text-danger">*</span>Nationality</label>
                         <div class="form-group">
                             <select name="nationality" class="form-control">
-                                <option value="">select</option>
+                                <option value="">Select Gender...</option>
                                 <?php
                                 $nationality_values= array(
                                     'Filipino'=>'Filipino',
