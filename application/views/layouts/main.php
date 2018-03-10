@@ -105,7 +105,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Announcement</span>
+                                <i class="fa fa-bullhorn"></i> <span>Announcement</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -118,7 +118,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Applicant</span>
+                                <i class="fa fa-inbox"></i> <span>Applicant</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -131,7 +131,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Assignment</span>
+                                <i class="fa fa-save"></i> <span>Assignment</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -170,7 +170,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Class</span>
+                                <i class="fa fa-graduation-cap"></i> <span>Class</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -222,7 +222,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Lesson</span>
+                                <i class="fa fa-book"></i> <span>Lesson</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -261,7 +261,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Timeslot</span>
+                                <i class="fa fa-calendar-plus-o"></i> <span>Timeslot</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -274,7 +274,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-inbox"></i> <span>User</span>
+                                <i class="fa fa-users"></i> <span>User</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">
@@ -287,7 +287,7 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Venue</span>
+                                <i class="fa fa-flag"></i> <span>Venue</span>
                             </a>
                             <ul class="treeview-menu">
 								<li class="active">

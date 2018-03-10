@@ -53,7 +53,21 @@
 					<div class="col-md-6">
 						<label for="gender" class="control-label"><span class="text-danger">*</span>Gender</label>
                         <div class="form-group">
-                            <input type="text" name="gender" value="<?php echo $this->input->post('gender'); ?>" class="form-control" id="gender" />
+						<select name="gender" class="form-control">
+                                <option value="">Select Gender...</option>
+                                <?php
+                                $gender_values = array(
+                                    'Male'=>'Male',
+                                    'Female'=>'Female',
+                                );
+                                foreach($gender_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $this->input->post('gender')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('gender');?></span>
                         </div>
 					</div>
@@ -88,28 +102,49 @@
 					<div class="col-md-6">
 						<label for="userEmail" class="control-label"><span class="text-danger">*</span>Email Address</label>
 						<div class="form-group">
-							<input type="email" name="userEmail" value="<?php echo $this->input->post('userEmail'); ?>" class="form-control" id="userEmail" />
+							<input type="email" name="userEmail" placeholder="Ex: example@yahoo.com" value="<?php echo $this->input->post('userEmail'); ?>" class="form-control" id="userEmail" />
 							<span class="text-danger"><?php echo form_error('userEmail');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="userMobile" class="control-label"><span class="text-danger">*</span>Mobile</label>
 						<div class="form-group">
-							<input type="tel" pattern="[0-9-() ]*" placeholder="0-9 Only" name="userMobile" value="<?php echo $this->input->post('userMobile'); ?>" data-inputmask='"mask": "(0999)999-9999"' class="form-control" id="userMobile" data-mask required/>
+							<input type="tel" pattern="[0-9-() ]*" placeholder="Ex: (0920)999-9999" name="userMobile" value="<?php echo $this->input->post('userMobile'); ?>" data-inputmask='"mask": "(0999)999-9999"' class="form-control" id="userMobile" data-mask required/>
 							<span class="text-danger"><?php echo form_error('userMobile');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="birthdate" class="control-label"><span class="text-danger">*</span>Birth date</label>
 						<div class="form-group">
-							<input type="date" name="birthdate" value="<?php echo $this->input->post('birthdate'); ?>" class="date form-control" id="birthdate" />
+						<div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" name="birthdate" value="<?php echo $this->input->post('birthdate'); ?>" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask required />
+                            </div>
 							<span class="text-danger"><?php echo form_error('birthdate');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="civstat" class="control-label"><span class="text-danger">*</span>Civil Status</label>
 						<div class="form-group">
-							<input type="text" name="civstat" value="<?php echo $this->input->post('civstat'); ?>" class="form-control" id="civstat" />
+						<select name="civstat" class="form-control">
+                                <option value="">Select Status...</option>
+                                <?php
+                                $civstat_values = array(
+                                    'Single'=>'Single',
+                                    'Married'=>'Married',
+                                    'Widowed'=>'Widowed',
+                                );
+
+                                foreach($civstat_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $this->input->post('civstat')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
 							<span class="text-danger"><?php echo form_error('civstat');?></span>
 						</div>
 					</div>

@@ -8,29 +8,29 @@
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
-                        <label for="course" class="control-label"><span class="text-danger">*</span>Course</label>
+                        <label for="courseID" class="control-label"><span class="text-danger">*</span>Course</label>
                         <div class="form-group">
-                            <select name="course" class="form-control">
-                                <option value="">select</option>
+                            <select name="courseID" class="form-control">
+                                <option value="">Select Course...</option>
                                 <?php
                                 $course_values = array(
-                                    'Bachelor of Science in Computer Science'=>'Bachelor of Science in Computer Science',
-                                    'Bachelor of Elementary Education'=>'Bachelor of Elementary Education',
-                                    'BSE- Major in English'=>'Bachelor of Secondary Education - Major in English',
-                                    'BSE - Major in Mathematics'=>'Bachelor of Secondary Education - Major in Mathematics',
-                                    'BSE - Major in Filipino'=>'Bachelor of Secondary Education - Major in Filipino',
-                                    'BSBA - Major in Mathematics'=>'Bachelor of Science in Business Administration - Major in Management',
+                                    '1'=>'Bachelor of Science in Computer Science',
+                                    '2'=>'Bachelor of Secondary Education - Major in Mathematics',
+                                    '3'=>'Bachelor of Elementary Education',
+                                    '3'=>'Bachelor of Secondary Education - Major in Filipino',
+                                    '5'=>'Bachelor of Science in Business Administration - Major in Management',
+                                    '6'=>'Bachelor of Secondary Education - Science & Health',
                                 );
 
                                 foreach($course_values as $value => $display_text)
                                 {
-                                    $selected = ($value == $applicant['course']) ? ' selected="selected"' : "";
+                                    $selected = ($value == $applicant['courseID']) ? ' selected="selected"' : "";
 
                                     echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
                                 }
                                 ?>
                             </select>
-                            <span class="text-danger"><?php echo form_error('course');?></span>
+                            <span class="text-danger"><?php echo form_error('courseID');?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -139,21 +139,67 @@
                     <div class="col-md-6">
                         <label for="gender" class="control-label"><span class="text-danger">*</span>Gender</label>
                         <div class="form-group">
-                            <input type="text" name="gender" value="<?php echo ($this->input->post('gender') ? $this->input->post('gender') : $applicant['gender']); ?>" class="form-control" id="gender" />
+                        <select name="gender" class="form-control">
+                        <option value="">Select Gender...</option>
+                                <?php
+                                $gender_values = array(
+                                    'Male'=>'Male',
+                                    'Female'=>'Female',
+                                );
+                                foreach($gender_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $applicant['gender']) ? ' selected="selected"' : "";
+                                  
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                                </select>
                             <span class="text-danger"><?php echo form_error('gender');?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="civstat" class="control-label"><span class="text-danger">*</span>Civil Status</label>
                         <div class="form-group">
-                            <input type="text" name="civstat" value="<?php echo ($this->input->post('civstat') ? $this->input->post('civstat') : $applicant['civstat']); ?>" class="form-control" id="civstat" />
+                        
+                        <select name="civstat" class="form-control">
+                                <option value="">Select Status...</option>
+                                <?php
+                                $civstat_values = array(
+                                    'Single'=>'Single',
+                                    'Married'=>'Married',
+                                    'Widowed'=>'Widowed',
+                                );
+
+                                foreach($civstat_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $applicant['civstat']) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('civstat');?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <label for="nationality" class="control-label"><span class="text-danger">*</span>Nationality</label>
                         <div class="form-group">
-                            <input type="text" name="nationality" value="<?php echo ($this->input->post('nationality') ? $this->input->post('nationality') : $applicant['nationality']); ?>" class="form-control" id="nationality" />
+                        <select name="nationality" class="form-control">
+                                <option value="">Select Gender...</option>
+                                <?php
+                                $nationality_values= array(
+                                    'Filipino'=>'Filipino',
+                                    'Chinese'=>'Chinese',
+                                );
+
+                                foreach($nationality_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $applicant['nationality']) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                }
+                                ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('nationality');?></span>
                         </div>
                     </div>
