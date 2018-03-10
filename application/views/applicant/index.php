@@ -31,7 +31,7 @@
                         <tr>
                             <td><?php echo $a['apid']; ?></td>
                             <td><?php echo $a['apfn']; ?> <?php echo $a['apmn']; ?> <?php echo $a['apln']; ?></td>
-                            <td><?php echo $a['course']; ?></td>
+                            <td><?php echo $a['courseCode']; ?></td>
                             <td><?php echo $a['studentstat']; ?></td>
                             <td><?php echo $a['age']; ?></td>
                             <td><?php echo $a['gender']; ?></td>

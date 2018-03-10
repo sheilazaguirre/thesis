@@ -28,9 +28,9 @@ class Auditlog_model extends CI_Model
     /*
      * function to add new auditlog
      */
-    function add_auditlog($params)
+    function add_auditlog($paramsaudit)
     {
-        $this->db->insert('auditlogs',$params);
+        $this->db->insert('auditlogs',$paramsaudit);
         return $this->db->insert_id();
     }
     

@@ -142,7 +142,7 @@
                                 </li>
 							</ul>
                         </li>
-						<li>
+						<!-- <li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Auditlog</span>
                             </a>
@@ -154,7 +154,7 @@
                                     <a href="<?php echo site_url('auditlog/index');?>"><i class="fa fa-list-ul"></i> View Auditlogs</a>
                                 </li>
 							</ul>
-                        </li>
+                        </li> -->
 						<li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Block</span>
@@ -181,7 +181,7 @@
                                 </li>
 							</ul>
                         </li>
-						<li>
+						<!-- <li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Classlist</span>
                             </a>
@@ -193,7 +193,7 @@
                                     <a href="<?php echo site_url('classlist/index');?>"><i class="fa fa-list-ul"></i> View Classlist</a>
                                 </li>
 							</ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Course</span>
@@ -287,19 +287,6 @@
                         </li>
 						<li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Usertype</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('usertype/add');?>"><i class="fa fa-plus"></i> Add Usertype</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('usertype/index');?>"><i class="fa fa-list-ul"></i> View Usertype</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Venue</span>
                             </a>
                             <ul class="treeview-menu">
@@ -329,7 +316,7 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-                <strong>Created By <a href="http://www.facebook.com/ibeeep">Team CodeOps</a> 2018</strong>
+                <strong>Created By <a href="http://www.facebook.com/ibeeeep">Team CodeOps</a> 2018</strong>
             </footer>
 
             <!-- Control Sidebar -->
@@ -381,11 +368,6 @@
 
 
         <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-
-
-
-
 
         <script>
             $('[data-mask]').inputmask();

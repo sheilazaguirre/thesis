@@ -31,12 +31,12 @@
                                 <option value="">Select Course...</option>
                                 <?php
                                  $course_values = array(
-                                     'Bachelor of Science in Computer Science'=>'Bachelor of Science in Computer Science',
-                                     'Bachelor of Elementary Education'=>'Bachelor of Elementary Education',
-                                     'BSE- Major in English'=>'Bachelor of Secondary Education - Major in English',
-                                     'BSE - Major in Mathematics'=>'Bachelor of Secondary Education - Major in Mathematics',
-                                     'BSE - Major in Filipino'=>'Bachelor of Secondary Education - Major in Filipino',
-                                     'BSBA - Major in Mathematics'=>'Bachelor of Science in Business Administration - Major in Management',
+                                     '1'=>'Bachelor of Science in Computer Science',
+                                     '2'=>'Bachelor of Secondary Education - Major in Mathematics',
+                                     '3'=>'Bachelor of Elementary Education',
+                                     '4'=>'Bachelor of Secondary Education - Major in Filipino',
+                                     '5'=>'Bachelor of Science in Business Administration - Major in Management',
+                                     '6'=>'Bachelor of Secondary Education - Major in Science & Health',
                                  );
                                  foreach($course_values as $value => $display_text)
                                  {

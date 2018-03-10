@@ -54,8 +54,8 @@ class Theclass_model extends CI_Model
     public function get_autocomplete($search_data)
     {
             $this->db->select('u.userIDNo, CONCAT(u.userLN, ", ", u.userFN) AS userName');
-            $this->db->where('userTypeID', 3);
             $this->db->or_like('userIDNo', $search_data);
+            $this->db->where('userTypeID', 3);
             $this->db->or_like('userLN', $search_data);
             $this->db->or_like('userFN', $search_data);
             return $this->db->get('users u', 5)->result();

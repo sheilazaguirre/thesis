@@ -21,6 +21,7 @@ class Applicant_model extends CI_Model
      */
     function get_all_applicant()
     {
+        $this->db->join('course', 'courseID');
         $this->db->order_by('apid', 'asc');
         $this->db->where('studentstat !=', 'Approved');
         return $this->db->get('applicant')->result_array();

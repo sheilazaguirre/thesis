@@ -299,7 +299,7 @@
 							</button>
 						</div>
 						<div>
-							<a href="forgot_password" name="forgot">
+							<a href="<?php echo base_url()?>landing_page/forgot_password" name="forgot">
 								Forgot Password?
 							</a>
 						</div>
