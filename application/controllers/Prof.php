@@ -115,7 +115,6 @@ class Prof extends CI_Controller{
                         $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                     }
                 }
-                $var_dump($_POST['submit']);
             }
             redirect('prof/index');
         }

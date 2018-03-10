@@ -166,7 +166,7 @@
 
 		<!-- The content of your page would go here. -->
 		<div class="menu">
-
+		<form action="<?php echo base_url()?>prof/grades" method="POST">
 			<div id="studentContent">
 				<div class="container">
 					<br>
@@ -406,6 +406,7 @@
 					<!--                                         -->
 				</div>
 			</div>
+		</form>
 
 
 
