@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2018 at 06:26 AM
+-- Generation Time: Mar 10, 2018 at 09:12 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -46,10 +46,7 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`announceID`, `userID`, `announceTitle`, `announceFile`, `announceDetail`, `announceDate`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
-(1, 1, 'shgjs', '', 'shfgk', '10-11-17', '2017-10-11 19:13:33', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active'),
-(2, 1, 'sdufyi', 'abc', 'shdgfkj', '10-11-17', '2017-10-11 19:17:10', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active'),
-(3, 1, 'DFHKJ', 'abc', 'AKJDF', '10-11-17', '2017-10-11 19:18:09', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active'),
-(4, 1, 'q', 'Doraemon3.jpg', 'q', 'q', '2017-10-11 19:42:22', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Active');
+(1, 1, 'try1', '', 'try', '2018-03-10', '2018-03-09 00:26:45', '2018-03-09 13:35:02', '2018-09-09 00:26:45', 'Archived');
 
 -- --------------------------------------------------------
 
@@ -62,7 +59,7 @@ CREATE TABLE `applicant` (
   `apfn` varchar(50) NOT NULL,
   `apln` varchar(50) NOT NULL,
   `apmn` varchar(50) NOT NULL,
-  `course` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `mobile` varchar(15) NOT NULL,
   `birthdate` date NOT NULL,
@@ -94,16 +91,19 @@ CREATE TABLE `applicant` (
 -- Dumping data for table `applicant`
 --
 
-INSERT INTO `applicant` (`apid`, `apfn`, `apln`, `apmn`, `course`, `email`, `mobile`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `reasonleave`, `guardianame`, `relationship`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `datesubmitted`, `datemodified`, `studentstat`, `status`) VALUES
-(11, 'First', 'Last', 'Middle', 'Bachelor of Elementary Education', 'beper.ong@benilde.edu.ph', '(0926)047-2440', '2016-12-30', 22, 'Mamburao Occidental Mindoro', 'Transginger', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'asdzxca', 'dzxcasdas', 'zvcads', 'asdzxcasd', '', '', 'xcvzafd', 'adsfsdfz', 'fdsafdsf', 'aadfsasdf', '2017-10-24 08:20:40', '2017-11-07 09:59:01', 'Approved', 'Closed'),
-(12, 'Beper', 'Ong', 'Middle', 'BEE', 'beper.ong@benilde.edu.ph', '09260472440', '1995-11-06', 22, 'Mamburao Occidental Mindoro', 'Transginger', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'MCS', 'OMNHS', 'Huh?', 'I hate the school bow\r\n', 'Cardo Dalisay', 'Waifu', 'Darth Vader', 'My father', 'Never met her', 'Single wut?!', '2017-10-24 08:48:04', '0000-00-00 00:00:00', 'Approved', 'Closed'),
-(13, 'Beper', 'Ong', 'Test 3', 'BSE', 'beper.ong@benilde.edu.ph', '09260472440', '2012-09-28', 22, 'Mamburao Occidental Mindoro', 'She-male', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'MCS', 'OMNHS', 'Huh?', 'I dont layk', '', '', 'Bernabe', 'Worker', 'Perla', 'Bahay', '2017-10-24 09:12:45', '2017-10-24 09:13:01', 'Pending', 'Archived'),
-(14, 'Beper', 'Ong', 'Clenista', 'BSE - Major in Mathematics', 'beper.ong@benilde.edu.ph', '09260472440', '1995-02-27', 22, 'Occidental Mindoro', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila', 'Mamburao Occidental Mindoro', 'MCS', 'OMNHS', 'OMNHS', 'Too much units dropped', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-10-31 11:13:13', '2017-11-03 09:21:15', 'Pending', 'Closed'),
-(15, 'Beper', 'Ong', 'Test', 'BSE - Major in Filipino', 'beper.ong@benilde.edu.ph', '09260472440', '2000-01-30', 17, 'Occidental Mindoro', 'Male', 'Single', 'Chinese', 'Catholic', 'Sto. Cristo Street Binondo Manila', 'Mamburao Occidental Mindoro', 'MCS', 'OMNHS', 'OMNHS', 'nothing', 'qq', '', 'aDASCXC', 'mviadnav', 'mksdnadi', 'nmsfaiosdxzc', '2017-11-03 09:03:14', NULL, 'Approved', 'Closed'),
-(16, 'Beper', 'Ong', 'Login test', 'Bachelor of Science in Computer Science', 'beper.ong@benilde.edu.ph', '(0926)047-2440', '1999-05-27', 18, 'Occidental Mindoro', 'Male', 'Single', 'Chinese', 'Catholic', 'Sto. Cristo Street Binondo Manila', 'Mamburao Occidental Mindoro', 'MCS', 'OMNHS', 'OMNHS', 'asdkjocjas', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-11-08 08:12:56', NULL, 'Pending', 'Active'),
-(17, 'Beper Test', 'Ong', 'Test', 'BSE- Major in English', 'beper.ong@benilde.edu.ph', '09260472440', '1992-06-18', 25, 'Occidental Mindoro', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila', '', 'MCS', 'OMNHS', 'OMNHS', 'Reasoon', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-11-08 10:30:08', NULL, 'Approved', 'Closed'),
-(18, 'Shaun Xavier', 'Pascual', 'Beper Test', 'BSE - Major in Mathematics', 'bep@yahoo.com', '09260472440', '1996-04-24', 21, 'Occidental Mindoro', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila', '', 'MCS', 'OMNHS', 'OMNHS', 'Test', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-11-08 12:17:48', '2017-11-08 12:18:42', 'Approved', 'Closed'),
-(19, '1sjaiu', 'Pasudasucj', 'ASDJashdah', 'BSE- Major in English', 'shaunmxm@gmail.com', '(0977)750-1264', '0496-02-10', 127, 'Manilaj', 'Make', 'sdjsdjas', 'Chinese', 'Mahsdjasd', 'Pasjdajsd', 'AKSDasdjasj', 'KASDsdfsjd', 'JASdahsdhashd', 'KDASJDA', 'FIAled', 'AJSDJASJDAsd', 'ASJdjasjd', 'ASDASJDFSD', 'ASDKASDKA', 'AKJSDJASDJA', 'AKSDJASDJASd', '2017-11-09 12:59:33', NULL, 'Approved', 'Closed');
+INSERT INTO `applicant` (`apid`, `apfn`, `apln`, `apmn`, `courseID`, `email`, `mobile`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `reasonleave`, `guardianame`, `relationship`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `datesubmitted`, `datemodified`, `studentstat`, `status`) VALUES
+(11, 'First', 'Last', 'Middle', 0, 'beper.ong@benilde.edu.ph', '(0926)047-2440', '2016-12-30', 22, 'Mamburao Occidental Mindoro', 'Transginger', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'asdzxca', 'dzxcasdas', 'zvcads', 'asdzxcasd', '', '', 'xcvzafd', 'adsfsdfz', 'fdsafdsf', 'aadfsasdf', '2017-10-24 08:20:40', '2017-11-07 09:59:01', 'Approved', 'Closed'),
+(12, 'Beper', 'Ong', 'Middle', 0, 'beper.ong@benilde.edu.ph', '09260472440', '1995-11-06', 22, 'Mamburao Occidental Mindoro', 'Transginger', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'MCS', 'OMNHS', 'Huh?', 'I hate the school bow\r\n', 'Cardo Dalisay', 'Waifu', 'Darth Vader', 'My father', 'Never met her', 'Single wut?!', '2017-10-24 08:48:04', '0000-00-00 00:00:00', 'Approved', 'Closed'),
+(13, 'Beper', 'Ong', 'Test 3', 0, 'beper.ong@benilde.edu.ph', '09260472440', '2012-09-28', 22, 'Mamburao Occidental Mindoro', 'She-male', 'Single', 'Filipino', 'Catholic', 'asdzxcasda', 'zxc', 'MCS', 'OMNHS', 'Huh?', 'I dont layk', '', '', 'Bernabe', 'Worker', 'Perla', 'Bahay', '2017-10-24 09:12:45', '2017-10-24 09:13:01', 'Pending', 'Archived'),
+(14, 'Beper', 'Ong', 'Clenista', 0, 'beper.ong@benilde.edu.ph', '09260472440', '1995-02-27', 22, 'Occidental Mindoro', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila', 'Mamburao Occidental Mindoro', 'MCS', 'OMNHS', 'OMNHS', 'Too much units dropped', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-10-31 11:13:13', '2017-11-03 09:21:15', 'Pending', 'Closed'),
+(15, 'Beper', 'Ong', 'Test', 0, 'beper.ong@benilde.edu.ph', '09260472440', '2000-01-30', 17, 'Occidental Mindoro', 'Male', 'Single', 'Chinese', 'Catholic', 'Sto. Cristo Street Binondo Manila', 'Mamburao Occidental Mindoro', 'MCS', 'OMNHS', 'OMNHS', 'nothing', 'qq', '', 'aDASCXC', 'mviadnav', 'mksdnadi', 'nmsfaiosdxzc', '2017-11-03 09:03:14', NULL, 'Approved', 'Closed'),
+(16, 'Beper', 'Ong', 'Login test', 0, 'beper.ong@benilde.edu.ph', '(0926)047-2440', '2018-02-07', 18, 'Occidental Mindoro', 'Male', 'Single', 'Chinese', 'Catholic', 'Sto. Cristo Street Binondo Manila', 'Mamburao Occidental Mindoro', 'MCS', 'OMNHS', 'OMNHS', 'asdkjocjas', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-11-08 08:12:56', '2018-02-17 10:57:29', 'Pending', 'Active'),
+(17, 'Beper Test', 'Ong', 'Test', 0, 'beper.ong@benilde.edu.ph', '09260472440', '1992-06-18', 25, 'Occidental Mindoro', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila', '', 'MCS', 'OMNHS', 'OMNHS', 'Reasoon', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-11-08 10:30:08', NULL, 'Approved', 'Closed'),
+(18, 'Shaun Xavier', 'Pascual', 'Beper Test', 0, 'bep@yahoo.com', '09260472440', '1996-04-24', 21, 'Occidental Mindoro', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila', '', 'MCS', 'OMNHS', 'OMNHS', 'Test', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Housewife', '2017-11-08 12:17:48', '2017-11-08 12:18:42', 'Approved', 'Closed'),
+(19, '1sjaiu', 'Pasudasucj', 'ASDJashdah', 0, 'shaunmxm@gmail.com', '(0977)750-1264', '0496-02-10', 127, 'Manilaj', 'Make', 'sdjsdjas', 'Chinese', 'Mahsdjasd', 'Pasjdajsd', 'AKSDasdjasj', 'KASDsdfsjd', 'JASdahsdhashd', 'KDASJDA', 'FIAled', 'AJSDJASJDAsd', 'ASJdjasjd', 'ASDASJDFSD', 'ASDKASDKA', 'AKJSDJASDJA', 'AKSDJASDJASd', '2017-11-09 12:59:33', NULL, 'Approved', 'Closed'),
+(20, 'TEst', 'TEst', 'test', 2, 'test@yahoo.com', '(0926)484-8484', '0000-00-00', 23, 'Test', 'tESt', 'testset', 'Filipino', 'test', 'testset', 'tests', 'testset', 'testest', 'testse', 'Testing', '', 'tes', 'Testing', 'testste', 'testes', 'test', '2018-03-07 10:26:12', NULL, 'Approved', 'Closed'),
+(21, 'BeperTESTING', 'TEST', 'TEST', 1, 'test@yahoo.com', '(0926)262-6262', '1995-02-27', 23, 'Kanto', 'Male', 'Single', 'Filipino', 'Catholic', 'Testing', 'TEST', 'TEST', 'TEST', 'TEST', 'TEST', '', '', 'TEST', 'TEST', 'TEST', 'TEST', '2018-03-09 20:24:29', '2018-03-09 20:36:56', 'Approved', 'Closed'),
+(22, 'Test', 'Test', 'Test', 3, 'Test@yahoo.com', '(0916)161-6166', '0000-00-00', 23, 'Test', 'Male', 'Single', 'Filipino', 'Catholic', 'test', '', 'Test', 'Test', 'Test', 'Test', '', '', 'Test', 'Test', 'Test', 'Test', '2018-03-10 01:13:57', NULL, 'Approved', 'Closed');
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,8 @@ CREATE TABLE `assignments` (
 
 INSERT INTO `assignments` (`assignID`, `classID`, `assignFile`, `assignDesc`, `assignTitle`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
 (1, 2, 'download.txt', 'try', 'test', '2017-11-08 15:19:17', '0000-00-00 00:00:00', '2018-05-08 15:19:17', 'Active'),
-(2, 2, 'things_to_do_friday.txt', 'Test', 'Test', '2017-11-08 17:15:25', '0000-00-00 00:00:00', '2018-05-08 17:15:25', 'Active');
+(2, 2, '', 'Test', 'Test1', '2017-11-08 17:15:25', '2018-03-09 12:55:35', '2018-05-08 17:15:25', 'Active'),
+(3, 4, 'assumption.txt', 'try', 'ytru', '2018-03-07 16:30:19', '0000-00-00 00:00:00', '2018-09-07 16:30:19', 'Active');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ INSERT INTO `assignments` (`assignID`, `classID`, `assignFile`, `assignDesc`, `a
 
 CREATE TABLE `auditlogs` (
   `auditID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userIDNo` int(11) NOT NULL,
   `auditDesc` varchar(50) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(15) NOT NULL
@@ -149,10 +150,12 @@ CREATE TABLE `auditlogs` (
 -- Dumping data for table `auditlogs`
 --
 
-INSERT INTO `auditlogs` (`auditID`, `userID`, `auditDesc`, `timestamp`, `status`) VALUES
+INSERT INTO `auditlogs` (`auditID`, `userIDNo`, `auditDesc`, `timestamp`, `status`) VALUES
 (1, 11410020, '$2y$10$Paaa31jLytojwEun8CYSt.5G9GAChZwerlRrbXgqRvb', '2017-11-08 09:31:01', ''),
 (2, 11210032, '$2y$10$97Z2wvhDh86npDvOqdhZ4OYgHju74U.dXx2egvD5vE1', '2017-11-08 11:15:11', ''),
-(3, 11210032, '$2y$10$97Z2wvhDh86npDvOqdhZ4OYgHju74U.dXx2egvD5vE1', '2017-11-09 12:13:25', '');
+(3, 11210032, '$2y$10$97Z2wvhDh86npDvOqdhZ4OYgHju74U.dXx2egvD5vE1', '2017-11-09 12:13:25', ''),
+(4, 1, '$2y$10$1/4ENc8h6Ske/jBSk9sqiedU2SSMEvr94ptBT5GnaoQ', '2018-03-09 06:10:55', ''),
+(5, 11810004, 'Logged In', '2018-03-09 08:40:35', '');
 
 -- --------------------------------------------------------
 
@@ -187,6 +190,7 @@ CREATE TABLE `classes` (
   `subjectID` int(11) NOT NULL,
   `facultyID` int(11) NOT NULL,
   `timeSlotID` int(11) NOT NULL,
+  `venueID` int(11) NOT NULL,
   `academicYear` varchar(4) NOT NULL,
   `semester` varchar(10) NOT NULL,
   `remarks` varchar(100) NOT NULL,
@@ -197,11 +201,11 @@ CREATE TABLE `classes` (
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`classID`, `subjectID`, `facultyID`, `timeSlotID`, `academicYear`, `semester`, `remarks`, `status`) VALUES
-(1, 1, 1, 1, '2017', '1st', '', 'Active'),
-(2, 1, 1, 1, '2018', '1st', '', 'Active'),
-(3, 1, 9, 1, '2018', '1ST', '', 'Active'),
-(4, 1, 33, 2, '2018', '2nd', '', 'Active');
+INSERT INTO `classes` (`classID`, `subjectID`, `facultyID`, `timeSlotID`, `venueID`, `academicYear`, `semester`, `remarks`, `status`) VALUES
+(1, 1, 1, 1, 0, '2017', '1st', '', 'Active'),
+(2, 1, 1, 1, 0, '2018', '1st', '', 'Active'),
+(3, 1, 9, 1, 0, '2018', '1ST', '', 'Active'),
+(4, 1, 33, 2, 0, '2018', '2nd', '', 'Active');
 
 -- --------------------------------------------------------
 
@@ -214,7 +218,7 @@ CREATE TABLE `classlist` (
   `classID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
   `remarks` varchar(200) NOT NULL,
-  `dateAdded` int(11) NOT NULL
+  `dateAdded` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -222,56 +226,180 @@ CREATE TABLE `classlist` (
 --
 
 INSERT INTO `classlist` (`classListID`, `classID`, `studentID`, `remarks`, `dateAdded`) VALUES
-(1, 1, 11810001, '', 20180214),
-(2, 1, 11810035, '', 20180214),
-(3, 1, 11810021, '', 20180214),
-(4, 1, 11810002, '', 20180214),
-(5, 1, 11810010, '', 20180214),
-(6, 1, 11810030, '', 20180214),
-(7, 1, 11810006, '', 20180214),
-(8, 1, 11810024, '', 20180214),
-(9, 1, 11810019, '', 20180214),
-(10, 1, 11810040, '', 20180214),
-(11, 1, 11810008, '', 20180214),
-(12, 1, 11810017, '', 20180214),
-(13, 1, 11810022, '', 20180214),
-(14, 1, 11810042, '', 20180214),
-(15, 1, 11810029, '', 20180214),
-(16, 1, 11810041, '', 20180214),
-(17, 1, 11810026, '', 20180214),
-(18, 1, 11810038, '', 20180214),
-(19, 1, 11810012, '', 20180214),
-(20, 1, 11810016, '', 20180214),
-(21, 1, 11810045, '', 20180214),
-(22, 1, 11810033, '', 20180214),
-(23, 1, 11810015, '', 20180214),
-(24, 1, 11810039, '', 20180214),
-(25, 1, 11810011, '', 20180214),
-(26, 2, 11810003, '', 20180214),
-(27, 2, 11810004, '', 20180214),
-(28, 2, 11810005, '', 20180214),
-(29, 2, 11810007, '', 20180214),
-(30, 2, 11810009, '', 20180214),
-(31, 2, 11810013, '', 20180214),
-(32, 2, 11810014, '', 20180214),
-(33, 2, 11810018, '', 20180214),
-(34, 2, 11810020, '', 20180214),
-(35, 2, 11810023, '', 20180214),
-(36, 2, 11810025, '', 20180214),
-(37, 2, 11810027, '', 20180214),
-(38, 2, 11810028, '', 20180214),
-(39, 2, 11810031, '', 20180214),
-(40, 2, 11810032, '', 20180214),
-(41, 2, 11810034, '', 20180214),
-(42, 2, 11810036, '', 20180214),
-(43, 2, 11810037, '', 20180214),
-(44, 2, 11810043, '', 20180214),
-(45, 2, 11810044, '', 20180214),
-(46, 2, 11810046, '', 20180214),
-(47, 2, 11810047, '', 20180214),
-(48, 2, 11810048, '', 20180214),
-(49, 2, 11810049, '', 20180214),
-(50, 2, 11810050, '', 20180214);
+(1, 1, 11810001, '', '2018-02-14'),
+(2, 1, 11810035, '', '2018-02-14'),
+(3, 1, 11810021, '', '2018-02-14'),
+(4, 1, 11810002, '', '2018-02-14'),
+(5, 1, 11810010, '', '2018-02-14'),
+(6, 1, 11810030, '', '2018-02-14'),
+(7, 1, 11810006, '', '2018-02-14'),
+(8, 1, 11810024, '', '2018-02-14'),
+(9, 1, 11810019, '', '2018-02-14'),
+(10, 1, 11810040, '', '2018-02-14'),
+(11, 1, 11810008, '', '2018-02-14'),
+(12, 1, 11810017, '', '2018-02-14'),
+(13, 1, 11810022, '', '2018-02-14'),
+(14, 1, 11810042, '', '2018-02-14'),
+(15, 1, 11810029, '', '2018-02-14'),
+(16, 1, 11810041, '', '2018-02-14'),
+(17, 1, 11810026, '', '2018-02-14'),
+(18, 1, 11810038, '', '2018-02-14'),
+(19, 1, 11810012, '', '2018-02-14'),
+(20, 1, 11810016, '', '2018-02-14'),
+(21, 1, 11810045, '', '2018-02-14'),
+(22, 1, 11810033, '', '2018-02-14'),
+(23, 1, 11810015, '', '2018-02-14'),
+(24, 1, 11810039, '', '2018-02-14'),
+(25, 1, 11810011, '', '2018-02-14'),
+(26, 2, 11810003, '', '2018-02-14'),
+(27, 2, 11810004, '', '2018-02-14'),
+(28, 2, 11810005, '', '2018-02-14'),
+(29, 2, 11810007, '', '2018-02-14'),
+(30, 2, 11810009, '', '2018-02-14'),
+(31, 2, 11810013, '', '2018-02-14'),
+(32, 2, 11810014, '', '2018-02-14'),
+(33, 2, 11810018, '', '2018-02-14'),
+(34, 2, 11810020, '', '2018-02-14'),
+(35, 2, 11810023, '', '2018-02-14'),
+(36, 2, 11810025, '', '2018-02-14'),
+(37, 2, 11810027, '', '2018-02-14'),
+(38, 2, 11810028, '', '2018-02-14'),
+(39, 2, 11810031, '', '2018-02-14'),
+(40, 2, 11810032, '', '2018-02-14'),
+(41, 2, 11810034, '', '2018-02-14'),
+(42, 2, 11810036, '', '2018-02-14'),
+(43, 2, 11810037, '', '2018-02-14'),
+(44, 2, 11810043, '', '2018-02-14'),
+(45, 2, 11810044, '', '2018-02-14'),
+(46, 2, 11810046, '', '2018-02-14'),
+(47, 2, 11810047, '', '2018-02-14'),
+(48, 2, 11810048, '', '2018-02-14'),
+(49, 2, 11810049, '', '2018-02-14'),
+(50, 2, 11810050, '', '2018-02-14'),
+(135, 3, 11810001, 'Enrolled', '2018-03-05'),
+(136, 3, 11810002, 'Enrolled', '2018-03-05'),
+(137, 3, 11810003, 'Enrolled', '2018-03-05'),
+(138, 3, 11810004, 'Enrolled', '2018-03-05'),
+(139, 3, 11810005, 'Enrolled', '2018-03-05'),
+(140, 3, 11810006, 'Enrolled', '2018-03-05'),
+(141, 3, 11810007, 'Enrolled', '2018-03-05'),
+(142, 3, 11810008, 'Enrolled', '2018-03-05'),
+(143, 3, 11810009, 'Enrolled', '2018-03-05'),
+(144, 3, 11810010, 'Enrolled', '2018-03-05'),
+(145, 3, 11810011, 'Enrolled', '2018-03-05'),
+(146, 3, 11810012, 'Enrolled', '2018-03-05'),
+(147, 3, 11810013, 'Enrolled', '2018-03-05'),
+(148, 3, 11810014, 'Enrolled', '2018-03-05'),
+(149, 3, 11810015, 'Enrolled', '2018-03-05'),
+(150, 3, 11810016, 'Enrolled', '2018-03-05'),
+(151, 3, 11810017, 'Enrolled', '2018-03-05'),
+(152, 3, 11810018, 'Enrolled', '2018-03-05'),
+(153, 3, 11810019, 'Enrolled', '2018-03-05'),
+(154, 3, 11810020, 'Enrolled', '2018-03-05'),
+(155, 3, 11810021, 'Enrolled', '2018-03-05'),
+(156, 3, 11810022, 'Enrolled', '2018-03-05'),
+(157, 3, 11810023, 'Enrolled', '2018-03-05'),
+(158, 3, 11810024, 'Enrolled', '2018-03-05'),
+(159, 3, 11810025, 'Enrolled', '2018-03-05'),
+(160, 4, 11810001, 'Enrolled', '2018-03-05'),
+(161, 4, 11810002, 'Enrolled', '2018-03-05'),
+(162, 4, 11810003, 'Enrolled', '2018-03-05'),
+(163, 4, 11810004, 'Enrolled', '2018-03-05'),
+(164, 4, 11810005, 'Enrolled', '2018-03-05'),
+(165, 4, 11810006, 'Enrolled', '2018-03-05'),
+(166, 4, 11810007, 'Enrolled', '2018-03-05'),
+(167, 4, 11810008, 'Enrolled', '2018-03-05'),
+(168, 4, 11810009, 'Enrolled', '2018-03-05'),
+(169, 4, 11810010, 'Enrolled', '2018-03-05'),
+(170, 4, 11810018, 'Enrolled', '2018-03-05'),
+(171, 4, 11810019, 'Enrolled', '2018-03-05'),
+(172, 4, 11810020, 'Enrolled', '2018-03-05'),
+(173, 4, 11810023, 'Enrolled', '2018-03-05'),
+(174, 4, 11810024, 'Enrolled', '2018-03-05'),
+(175, 4, 11810025, 'Enrolled', '2018-03-05'),
+(176, 4, 11810030, 'Enrolled', '2018-03-05'),
+(177, 4, 11810033, 'Enrolled', '2018-03-05'),
+(178, 4, 11810036, 'Enrolled', '2018-03-05'),
+(179, 4, 11810037, 'Enrolled', '2018-03-05'),
+(180, 4, 11810038, 'Enrolled', '2018-03-05'),
+(181, 4, 11810039, 'Enrolled', '2018-03-05'),
+(182, 4, 11810040, 'Enrolled', '2018-03-05'),
+(183, 4, 11810041, 'Enrolled', '2018-03-05'),
+(184, 4, 11810042, 'Enrolled', '2018-03-05'),
+(185, 4, 11810043, 'Enrolled', '2018-03-05'),
+(186, 4, 11810044, 'Enrolled', '2018-03-05'),
+(187, 4, 11810045, 'Enrolled', '2018-03-05'),
+(188, 4, 11810046, 'Enrolled', '2018-03-05'),
+(189, 5, 11810001, 'Enrolled', '2018-03-05'),
+(190, 5, 11810002, 'Enrolled', '2018-03-05'),
+(191, 5, 11810003, 'Enrolled', '2018-03-05'),
+(192, 5, 11810004, 'Enrolled', '2018-03-05'),
+(193, 5, 11810005, 'Enrolled', '2018-03-05'),
+(194, 5, 11810006, 'Enrolled', '2018-03-05'),
+(195, 5, 11810007, 'Enrolled', '2018-03-05'),
+(196, 5, 11810008, 'Enrolled', '2018-03-05'),
+(197, 5, 11810009, 'Enrolled', '2018-03-05'),
+(198, 5, 11810010, 'Enrolled', '2018-03-05'),
+(199, 5, 11810011, 'Enrolled', '2018-03-05'),
+(200, 5, 11810012, 'Enrolled', '2018-03-05'),
+(201, 5, 11810013, 'Enrolled', '2018-03-05'),
+(202, 5, 11810014, 'Enrolled', '2018-03-05'),
+(203, 5, 11810015, 'Enrolled', '2018-03-05'),
+(204, 5, 11810018, 'Enrolled', '2018-03-05'),
+(205, 5, 11810019, 'Enrolled', '2018-03-05'),
+(206, 5, 11810020, 'Enrolled', '2018-03-05'),
+(207, 5, 11810021, 'Enrolled', '2018-03-05'),
+(208, 5, 11810022, 'Enrolled', '2018-03-05'),
+(209, 5, 11810023, 'Enrolled', '2018-03-05'),
+(210, 5, 11810024, 'Enrolled', '2018-03-05'),
+(211, 5, 11810025, 'Enrolled', '2018-03-05'),
+(212, 5, 11810026, 'Enrolled', '2018-03-05'),
+(213, 5, 11810027, 'Enrolled', '2018-03-05'),
+(214, 5, 11810028, 'Enrolled', '2018-03-05'),
+(215, 5, 11810029, 'Enrolled', '2018-03-05'),
+(216, 6, 11810001, 'Enrolled', '2018-03-05'),
+(217, 6, 11810002, 'Enrolled', '2018-03-05'),
+(218, 6, 11810003, 'Enrolled', '2018-03-05'),
+(219, 6, 11810004, 'Enrolled', '2018-03-05'),
+(220, 6, 11810006, 'Enrolled', '2018-03-05'),
+(221, 6, 11810007, 'Enrolled', '2018-03-05'),
+(222, 6, 11810008, 'Enrolled', '2018-03-05'),
+(223, 6, 11810009, 'Enrolled', '2018-03-05'),
+(224, 6, 11810010, 'Enrolled', '2018-03-05'),
+(225, 6, 11810012, 'Enrolled', '2018-03-05'),
+(226, 6, 11810013, 'Enrolled', '2018-03-05'),
+(227, 6, 11810014, 'Enrolled', '2018-03-05'),
+(228, 6, 11810015, 'Enrolled', '2018-03-05'),
+(229, 6, 11810016, 'Enrolled', '2018-03-05'),
+(230, 6, 11810017, 'Enrolled', '2018-03-05'),
+(231, 6, 11810018, 'Enrolled', '2018-03-05'),
+(232, 6, 11810019, 'Enrolled', '2018-03-05'),
+(233, 6, 11810020, 'Enrolled', '2018-03-05'),
+(234, 6, 11810021, 'Enrolled', '2018-03-05'),
+(235, 6, 11810022, 'Enrolled', '2018-03-05'),
+(236, 6, 11810023, 'Enrolled', '2018-03-05'),
+(237, 6, 11810024, 'Enrolled', '2018-03-05'),
+(238, 6, 11810025, 'Enrolled', '2018-03-05'),
+(239, 6, 11810026, 'Enrolled', '2018-03-05'),
+(240, 6, 11810027, 'Enrolled', '2018-03-05'),
+(241, 6, 11810028, 'Enrolled', '2018-03-05'),
+(242, 6, 11810029, 'Enrolled', '2018-03-05'),
+(270, 0, 11810004, 'Enrolled', '2018-03-05'),
+(271, 0, 11810001, 'Enrolled', '2018-03-05'),
+(272, 0, 11810002, 'Enrolled', '2018-03-05'),
+(273, 0, 11810005, 'Enrolled', '2018-03-05'),
+(274, 0, 11810006, 'Enrolled', '2018-03-05'),
+(275, 0, 11810007, 'Enrolled', '2018-03-05'),
+(276, 0, 11810010, 'Enrolled', '2018-03-09'),
+(277, 0, 11810011, 'Enrolled', '2018-03-10'),
+(278, 0, 11810012, 'Enrolled', '2018-03-10'),
+(279, 0, 11810013, 'Enrolled', '2018-03-10'),
+(280, 0, 11810015, 'Enrolled', '2018-03-10'),
+(281, 0, 11810016, 'Enrolled', '2018-03-10'),
+(282, 0, 11810024, 'Enrolled', '2018-03-10'),
+(283, 0, 11810023, 'Enrolled', '2018-03-10'),
+(284, 0, 11810025, 'Enrolled', '2018-03-10'),
+(285, 0, 11810028, 'Enrolled', '2018-03-10');
 
 -- --------------------------------------------------------
 
@@ -363,31 +491,31 @@ CREATE TABLE `grades` (
 --
 
 INSERT INTO `grades` (`gradeID`, `classID`, `studentID`, `grade`, `remarks`, `status`, `dateAdded`, `lastSaved`, `dateSubmitted`) VALUES
-(1, 1, 11810021, '1.50', '																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(2, 1, 11810035, '2.25', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(3, 1, 11810001, '3', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(4, 1, 11810041, '2', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(5, 1, 11810042, 'X', '										exceed more than 5 absences									', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(6, 1, 11810011, 'W', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(7, 1, 11810033, '2.25', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(8, 1, 11810038, 'inc', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(9, 1, 11810016, '2', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(10, 1, 11810019, '1', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(11, 1, 11810040, '1.50', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(12, 1, 11810030, '2.75', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(13, 1, 11810022, '1', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(14, 1, 11810029, '1.75', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(15, 1, 11810008, '2.75', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(16, 1, 11810006, '1.50', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(17, 1, 11810039, '2.50', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(18, 1, 11810017, '1.25', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(19, 1, 11810045, '2', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(20, 1, 11810002, 'W', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(21, 1, 11810010, '2', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(22, 1, 11810026, '1', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(23, 1, 11810015, '1.75', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(24, 1, 11810012, '2', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01'),
-(25, 1, 11810024, '2.75', '																																																							', 'Submitted', '2018-03-02 04:25:09', '2018-03-02 04:25:09', '2018-03-02 05:45:01');
+(1, 1, 11810021, '1.50', '																														dkrjgdsf																											', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:26'),
+(2, 1, 11810035, '2.25', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:26'),
+(3, 1, 11810001, '3', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:26'),
+(4, 1, 11810041, '2', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:26'),
+(5, 1, 11810042, 'X', '																																																		exceed more than 5 absences																																													', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:27'),
+(6, 1, 11810011, 'W', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:27'),
+(7, 1, 11810033, '2.25', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:27'),
+(8, 1, 11810038, 'inc', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:28'),
+(9, 1, 11810016, '2', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:28'),
+(10, 1, 11810019, '1', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:29'),
+(11, 1, 11810040, '1.50', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:30'),
+(12, 1, 11810030, '2.75', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:30'),
+(13, 1, 11810022, '1', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:31'),
+(14, 1, 11810029, '1.75', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:32'),
+(15, 1, 11810008, '2.75', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:33'),
+(16, 1, 11810006, '1.50', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:33'),
+(17, 1, 11810039, '2.50', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:35'),
+(18, 1, 11810017, '1.25', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:36'),
+(19, 1, 11810045, '2', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:37'),
+(20, 1, 11810002, 'W', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:38'),
+(21, 1, 11810010, '2', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:39'),
+(22, 1, 11810026, '1', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:40'),
+(23, 1, 11810015, '1.75', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:41'),
+(24, 1, 11810012, '2', '																																																																																																																																			', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:42'),
+(25, 1, 11810024, '1.50', '																				ndskfdf																		', 'Submitted', '2018-03-02 04:25:09', '2018-03-10 05:20:24', '2018-03-10 05:33:44');
 
 -- --------------------------------------------------------
 
@@ -407,6 +535,14 @@ CREATE TABLE `lessons` (
   `status` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lessons`
+--
+
+INSERT INTO `lessons` (`lessonID`, `classID`, `lessonFile`, `lessonDesc`, `lessonTitle`, `dateUploaded`, `dateModified`, `dateExpiry`, `status`) VALUES
+(1, 3, '', 'try2', 'qyt2', '2018-03-09 01:05:18', '2018-03-09 12:33:03', '2018-09-09 01:05:18', 'Active'),
+(2, 4, 'consultation_grades.txt', 'try2', 'try2', '2018-03-09 13:02:10', '0000-00-00 00:00:00', '2018-09-09 13:02:10', 'Active');
+
 -- --------------------------------------------------------
 
 --
@@ -420,6 +556,13 @@ CREATE TABLE `prof` (
   `remarks` varchar(200) NOT NULL,
   `status` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `prof`
+--
+
+INSERT INTO `prof` (`profID`, `facultyID`, `subjectID`, `remarks`, `status`) VALUES
+(1, 0, 54, 'ssdf', 'Active');
 
 -- --------------------------------------------------------
 
@@ -690,7 +833,7 @@ CREATE TABLE `users` (
   `userPassword` varchar(300) NOT NULL,
   `userMobile` varchar(15) NOT NULL,
   `status` varchar(15) NOT NULL,
-  `course` varchar(50) NOT NULL,
+  `courseID` int(11) NOT NULL,
   `birthdate` date NOT NULL,
   `age` tinyint(4) NOT NULL,
   `birthplace` varchar(150) NOT NULL,
@@ -717,73 +860,76 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `userIDNo`, `userTypeID`, `userLN`, `userFN`, `userMN`, `userEmail`, `userPassword`, `userMobile`, `status`, `course`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `guardian`, `relation`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `dateadded`, `datemodified`) VALUES
-(1, 1, 1, 'Kho', 'Hidden', 'Que', 'hiddenkho@outlook.com', '$2y$10$1/4ENc8h6Ske/jBSk9sqiedU2SSMEvr94ptBT5GnaoQ2yToQP30Ye', '(0917)000-0001', 'Active', '', '1980-02-07', 37, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Pasay City', 'N/A\r\n', 'sample', 'sample', 'sample', 'mike', 'cousin', 'Lyold', 'sample', 'Elizabeth', 'sample', '2018-01-18 09:52:14', NULL),
-(2, 2, 1, 'Dallas', 'Israel', 'Quinones', 'mangkaknorr@outlook.com', '$2y$10$RE3xMvuTunnyVS1OraGVKeLEcm9ePtkhmphnvhh1J9J.tkusjVxx6', '(0917)000-0002', 'Active', '', '1978-07-13', 39, 'Masbate', 'Female', 'Married', 'Filipino', 'Catholic', 'Metro Manila', 'Masbate', 'sample', 'sample', 'sample', 'anton', 'uncle', 'john', 'farmer', 'lyza', 'store owner', '2018-01-18 09:58:07', NULL),
-(3, 3, 1, 'Hernandez', 'Shea', 'Acebedo', 'cheatermirienda@outlook.com', '$2y$10$dIEA7hfykoclxuC4gyoKW.AH8kRF3DRlfFyYe613lVX80LsDov9ba', '(0017)000-0003', 'Active', '', '1982-11-12', 35, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Catholic', 'Paranaque', 'N/A', 'sample', 'sample', 'sample', 'Anna', 'Nanny', 'Lucas', 'mechanics', 'ryza', 'call center', '2018-01-18 10:02:33', NULL),
-(4, 4, 4, 'Luciano', 'Catherine', 'Aquino', 'catherinejalili@outlook.com', '$2y$10$GJQDSPkLXqqGXsDZXpCF/uUth.i.iwQNutweTU7zanajknQpDt3EC', '(0917)000-0004', 'Active', '', '1986-08-12', 31, 'Metro Manila', 'Female', 'Single', 'Filipino', 'Catholic', 'Las Pinas', 'N/A', 'sample', 'sample', 'sample', 'Juan', 'Cousin', 'Noel', 'Store Owner', 'Jen', 'store owner', '2018-01-18 10:07:50', NULL),
-(5, 5, 4, 'Legazpi', 'Franco', 'Dacudag', 'zsazsagrain@outlook.com', '$2y$10$.UJs18GxNyyKShh5a2cszu16NOKBdk.Nbwxvb7u0qGyMzP3g91UMS', '(0917)000-0005', 'Active', '', '1983-07-13', 34, 'metro manila', 'Male', 'Married', 'Filipino', 'Catholic', 'malabon', 'n/a', 'sample', 'sample', 'sample', 'Analiza', 'Grand Mother', 'henry', 'officer', 'jean', 'teacher', '2018-01-18 10:15:08', NULL),
-(6, 6, 4, 'Dimaunahan', 'stanley', 'Gordon', 'hugejackedman@outlook', '$2y$10$aKde.eH4jYxBGGUctCF3zeh2lP1P87jX8/ojflNzWrf5F3qb5lwu6', '(0917)000-0006', 'Active', '', '1984-04-18', 33, 'metro manila', 'Male', 'Single', 'Filipino', 'Catholic', 'quezon', 'n/a', 'sample', 'sample', 'sample', 'none', 'none', 'sean', 'Computer analysts', 'nadine', 'Shoe maker', '2018-01-18 10:19:59', NULL),
-(7, 20181001, 2, 'Razon', 'Perry', 'Espana', 'williebayolie@outlook.com', '$2y$10$/VSDt/CspN.tDUYeo50EQ.D00yT09SGi7F//iYpbiaF8He3B369r2', '(0917)000-0007', 'Active', '', '1974-07-12', 43, 'Iloilo', 'Female', 'Married', 'Filipino', 'Catholic', 'manila', 'iloilo', 'sample', 'sample', 'sample', 'Tony', 'Brother', 'Kaden', 'farmer', 'Sally', 'housewife', '2018-01-18 12:29:43', NULL),
-(8, 20181002, 2, 'Arabejo', 'Natalio', 'Dumlao', 'broadpete@outlook.com', '$2y$10$DlFH2SJeoG2qs5SoNk1WTOnWtE.l7mAdV0YCKXu9guolQvlgk0Lhu', '(0917)000-0008', 'Active', '', '1990-09-05', 27, 'Metro Manila', 'Male', 'Single', 'Filipino', 'Catholic', 'Pasig City', 'n/a', 'sample', 'sample', 'sample', 'Theo', 'Father', 'Theo', 'Teacher', 'Elvita', 'Nurse', '2018-01-18 12:33:59', NULL),
-(9, 20181003, 2, 'Peterson', 'Abby', 'Alejo', 'roadtheedothirteen@outlook.com', '$2y$10$7u05rv82tq1RIrnnPlZrv.tkCXrFJvE6bYI5vs2d0WLWEanuDRSWe', '(0917)000-0009', 'Active', '', '1987-02-11', 30, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Harry', 'Cousin', 'Stephen', 'Broadcaster', 'Gail', 'Librarian', '2018-01-18 12:38:14', NULL),
-(10, 20181004, 2, 'Roxas', 'Leah', 'Quiason', 'antoniusthrillianus@outlook.com', '$2y$10$3ptLlMqF23MdqNtIVjy.6OIt30Un.kxSq1s.XgeDZ3RbJexH1zjIC', '(0917)000-0010', 'Active', '', '1966-08-07', 51, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Jerry', 'Cousin', 'Sam', 'Architect', 'Martha', 'Designer', '2018-01-18 12:50:14', NULL),
-(11, 20181005, 2, 'Salvador', 'Ronaldo', 'Omar', 'robbingpaddillus@gmail.com', '$2y$10$AzJGYLx3ixb9u2joc1KsMOCZ/dYkv3iz7q9jQAElMqsypVNzm3HuS', '(0917)000-0011', 'Active', '', '1980-12-29', 37, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Quezon City', 'n/a', 'sample', 'sample', 'sample', 'Jake', 'Brother', 'Marcel', 'Journalist', 'Elsa', 'Store Owner', '2018-01-18 13:28:09', NULL),
-(12, 20181006, 2, 'Ortega', 'Elisa', 'Fajardo', 'dannietargaryano@gmail.com', '$2y$10$LAOqD4UEARfHJaqzCFOO5.vmp3HcsENWMkfweQyBDySTF1rdmUZZe', '(0917)000-0012', 'Active', '', '1988-04-27', 29, 'Leyte', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'Leyte', 'sample', 'sample', 'sample', 'Rey', 'Brother', 'Zion', 'Artist', 'Catalina', 'Artist', '2018-01-18 13:39:51', NULL),
-(13, 20181007, 2, 'Moreno', 'Simon', 'Davis', 'itimnabalo@gmail.com', '$2y$10$ptQE.9enO/NS9Q75XNBJh.OwS3ir1FfmetxAwSsCVAROFcglwVHS.', '(0917)000-0013', 'Active', '', '1990-03-31', 27, 'Metro Manila', 'Male', 'Single', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Analiza', 'Mother', 'Hernando', 'Teacher', 'Analiza', 'Teacher', '2018-01-18 13:43:50', NULL),
-(14, 20181008, 2, 'Arcega', 'Emesta', 'Camat', 'iskarlatangbruha@gmail.com', '$2y$10$WcHGEiOUvVDgsjE2g0ELC.RxCTRhX5DbLzkBOoff.XS7vrKnZdHEi', '(0917)000-0014', 'Active', '', '1990-08-30', 27, 'Metro Manila', 'Female', 'Single', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Belicia', 'Mother', 'Marcos', 'mechanics', 'Maria', 'Analyst', '2018-01-18 14:33:08', NULL),
-(15, 20181009, 2, 'Fernandez', 'Ryan', 'Lacson', 'vicksuetoe321@gmail.com', '$2y$10$OQpGMBnyvgRI2zKUxoN9aOIMa8IbUTBW/NT1Oaa4llGmAmLjA.rfm', '(0917)000-0015', 'Active', '', '1981-11-28', 36, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Henry', 'Father', 'Henry', 'Optalmologist', 'Jane', 'Nurse', '2018-01-18 14:38:07', NULL),
-(16, 20181010, 2, 'Pavia', 'Marilyn', 'Daplas', 'ianmanoy24@yahoo.com', '$2y$10$aNIcpgKMpnfRorG6luaQW.PxLlqVGM79eaMs7WF3Jr.zHO8hbCUhq', '(0917)000-0016', 'Active', '', '1988-08-01', 29, 'Cebu', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'Cebu', 'sample', 'sample', 'sample', 'Athena', 'Sister', 'Alfredo', 'Farmer', 'Sandra', 'store owner', '2018-01-18 14:50:55', NULL),
-(17, 11810001, 3, 'Blake', 'Ian', 'Veneracion', 'ianmanoy24@yahoo.com', '$2y$10$A96ICsumikc8O8DOO/3.cO3Fp8G.hAckH3V/kXgZdNJ.t6UWl30.K', '(0926)010-1010', 'Active', '5', '1998-07-12', 19, 'St Luke\'s Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Binondo Manila', '', 'Mamburao Central School', 'Sample', 'Sample', '', '', 'Kiko Magalona', 'Rapper', 'Michaela Baldos', 'Housewife', '2018-01-19 09:37:59', NULL),
-(18, 11810002, 3, 'Sanchez', 'Victoria', 'Lopez', 'victorsanchz416@yahoo.com', '$2y$10$LW78zDXeaJsqenPtmUa4xuW6hfR2ckCWO5bPbEMA7PtkOhrWnh7gW', '(0995)012-5354', 'Active', '2', '1995-06-13', 22, 'UST Hospital', 'Female', 'Single', 'Filipino', 'Christian', 'Sta. Cruz Manila', '', 'Sample', 'Sample', 'Sample', '', '', 'Mike Enriquez', 'Reporter', 'Jessica Soho', 'Reporter', '2018-01-19 09:42:18', NULL),
-(19, 11810003, 3, 'Go', 'Troy', 'Tan', 'troymanoi69@yahoo.com', '$2y$10$oDwYkLlVlgzxnc9/RFbIq.9vvykDr7JBsXXroq2TotmfpJiJh4MW2', '(0995)613-5421', 'Active', '3', '0197-05-28', 127, 'Philippine General Hospital', 'Male', 'Single', 'Chinese', 'Buddhism', 'Bonifacio Global City Taguig, Manila', '', 'Sample Data', 'Sample Data', 'Sample Data', '', '', 'Henry Sy', 'Chinese Mogul', 'Korina Sanchez', 'Reporter', '2018-01-19 09:44:58', NULL),
-(20, 11810004, 3, 'Ong', 'Beper', 'Clenista', 'beper.ong@benilde.edu.ph', '$2y$10$AOebJRgvwb/e5MqJLrxvr.3oSrsANpSesDw2lMnABMR3flmHRgeCe', '(0926)047-2440', 'Active', '5', '1995-02-27', 22, 'Mamburao Occidental Mindoro provincial hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila\r\n', '', 'Mamburao Central School', 'Occidental Mindoro National Highschool', 'Occidental Mindoro National Highschool', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Businesswoman', '2018-01-19 09:46:50', NULL),
-(21, 11810005, 3, 'Zaguirre', 'Sheila Mae', 'Polhen', 'sheila.zaguirre@benilde.edu.ph', '$2y$10$3q1rzgxiZsGM.Dlb./VS0uTF/gW9Y34zcZ1QOHZUEuLvLP1pOColS', '(0915)905-0303', 'Active', '4', '1997-11-13', 20, 'San Juan de Dios general Hospital', 'Female', 'Single', 'Chinese', 'Catholic', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'DLS-CSB', '', '', 'James Zaguirre', 'Businessman', 'Lilibeth Zaguirre', 'Store owner', '2018-01-19 09:49:43', NULL),
-(22, 11810006, 3, 'Pascual', 'Shaun Xavier', 'Gideon', 'shaunxavierpascual@gmail.com', '$2y$10$v3R8.ftBWyl1GZlaQHUpCONYBjQ8yh0xWWlGHJNJFkaW8v.H/ySQO', '(0915)151-5151', 'Active', '6', '1996-10-13', 21, 'Chinese General Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Navotas City', '', 'GAPC', 'GAPC', 'Sample', '', '', 'Michael Jordan', 'Basketball Legend', 'Oprah Winfrey', 'Smile giver', '2018-01-19 09:52:18', NULL),
-(23, 11810007, 3, 'Villanueva', 'Miko', 'Ganda', 'mikovillanueva96@gmail.com', '$2y$10$ERrEDdJev7Q2OLmsDqTkVuLRyMz8q6dXFJpY0Y8IbYXCxDbBNQbJK', '(0915)161-1300', 'Active', '1', '1996-02-15', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Gideon Academy', 'Sample', 'DLS-CSB', '', '', 'Manny Pacquiao', 'Boxer', 'Kris Aquino', 'Host', '2018-01-19 09:54:31', NULL),
-(24, 11810008, 3, 'Ozawa', 'Maria', 'Sample', 'marialim675@yahoo.com', '$2y$10$UnySz/41TYogJPXsG05sQuZC.8/VkLLveaaHItuzy4nPuariKoqZm', '(0915)222-2151', 'Active', '3', '1997-05-14', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Comia', 'None', 'Julienna Santos', 'Developer', '2018-01-19 09:56:24', NULL),
-(25, 11810009, 3, 'James', 'Lebron', 'Brown', 'jameslebron41@outlook.com', '$2y$10$OlTdbbG40dmFhe5hMOoTveAiN.WRHOy9argdgOeAQs78LxVT9U.Xi', '(0999)158-7563', 'Active', '4', '1997-02-15', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'James Senior', 'Basketball player', 'Lilybeth Comia', 'Store owner', '2018-01-19 09:59:21', NULL),
-(26, 11810010, 3, 'Santos', 'Julienne', 'Limpin', 'johnmor556@yahoo.com', '$2y$10$a4Xqre5v6nmF07vzPcOGpe.nq9KuU.BwoDY14.ssfPsV0NrgfSFpC', '(0915)678-4954', 'Active', '2', '1995-01-26', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Julio Santos', 'Seaman', 'Jane Santos', 'Housewife', '2018-01-19 10:02:52', NULL),
-(27, 11810011, 3, 'Comia', 'Ralph', 'Gavan', 'mikejordan64@outlook.com', '$2y$10$4HnNMw2U6048sWfWQrvLMu1Fn95uKk582eHmQSf51Y775e8j/dLkO', '(0915)624-8103', 'Active', '2', '1996-01-08', 22, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Manny Comia', 'OFW', 'Mandy Comia', 'OFW', '2018-01-19 10:05:53', NULL),
-(28, 11810012, 3, 'Valmeo', 'Bianca', 'Teng', 'irvingkyrie32@outlook.com', '$2y$10$HPZ.rRspRa/PDzQ80Xz/C.TPefPlvdJFdIZMa8ksI1.fl/FhEWAU6', '(0916)842-6849', 'Active', '6', '1995-02-15', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Blake Valmeo', 'Cashier', 'Joan Valmeo', 'Architech', '2018-01-19 10:07:44', NULL),
-(29, 11810013, 3, 'Talimban', 'Bea', 'Supot', 'stephcarry1@outlook.com', '$2y$10$PbFFtPqAtk0X1j/BgyXz3u2MnJo7BDHNntUzc7qba26ClyEThp1Le', '(0915)846-9555', 'Active', '1', '1996-03-16', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'John Talimban', 'Engineer', 'Joan Talimban', 'Teacher', '2018-01-19 10:11:11', NULL),
-(30, 11810014, 3, 'Estera', 'Gian', 'Baldoza', 'junanaksjanah@yahoo.com', '$2y$10$3cJLyEdCXZDOnwOJuHGUD.tBdZFxUTzHfv2B830YGIep9jZKLmjHK', '(0915)984-6222', 'Active', '3', '1996-12-15', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Jonathan Estera', 'Oil producer', 'Caroline Estera', 'Cashier', '2018-01-19 10:13:48', NULL),
-(31, 11810015, 3, 'Tuazon', 'Paul', 'Mercedez', 'angelovillanueva1@outlook.com', '$2y$10$UmB2LYfWMuY9.qnB2wg.oevaA8.yyzYc99CpXFeObWDyaacL.iZ7W', '(0915)684-9994', 'Active', '3', '1997-02-28', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Michael Tuazon', 'Construction worker', 'Maja Tuazon', 'Social media ambassador', '2018-01-19 10:17:04', NULL),
-(32, 11810016, 3, 'Hernando', 'Alexa', 'Sy', 'mangkaknorr@gmail.com', '$2y$10$gzNvN9OQr7DzZNotwoZxOO32hnr/BDyNe/NX5kX9L6ZXLZ3EEFAGi', '(0915)874-8933', 'Active', '4', '1999-09-25', 18, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Felix Hernando', 'Engineer', 'Theresa Hernando', 'Housewife', '2018-01-19 10:31:00', NULL),
-(33, 11810017, 3, 'Remulla', 'Jionna', 'Ong', 'mangka.knorr@yahoo.com', '$2y$10$eceIAyosl9vcQ5s7iBrhD.47bobNy/.2hikPaPi5I1OizprO8v8z6', '(0916)849-6288', 'Active', '6', '1996-02-16', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Nikko Remulla', 'Policeman', 'Tintin Remulla', 'Nurse', '2018-01-19 10:49:41', NULL),
-(34, 11810018, 3, 'Su', 'Samantha', 'Supsop', 'cheatermirienda@gmail.com', '$2y$10$t9Va92BKP24mBbDr18kTQuSd0c24tRifPSBKAu4CU3BCuoAogc0ge', '(0956)842-9233', 'Active', '2', '1997-05-15', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ramon Su', 'Store Owner', 'Sheila Su', 'Petshop Owner', '2018-01-19 10:52:16', NULL),
-(35, 11810019, 3, 'Magsaysay', 'Joseph', 'Sy', 'cheatermirienda@yahoo.com', '$2y$10$LdrNY8mysOPwxTm1f9b7m.lKUtDPplkcMgxI87HkMRCmvNoJHsYDa', '(0915)974-6222', 'Active', '5', '1996-02-29', 21, 'Sample', 'Male', 'Single', 'Chinese', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Magsaysay', 'Gardener', 'Felicia Magsaysay', 'Dentist', '2018-01-19 10:54:33', NULL),
-(36, 11810020, 3, 'Filipinas', 'Luzviminda', 'Asia', 'hiddenkho3039@gmail.com', '$2y$10$.2SgrXOAfNEU7uCwxBWpaO37O.64pTdmbv.pDlrJ101Lc6l8hNF3S', '(0916)849-9211', 'Active', '1', '1997-10-17', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Henrico Filipinas', 'Governor', 'Lucia Filipinas', 'Assistant Brand Manager', '2018-01-19 10:58:01', NULL),
-(37, 11810021, 3, 'Ang', 'Aaron', 'Bacong', 'aaron12@gmail.com', '$2y$10$f2b1Wq6gX9TjQuVPPDC9nuO5PmZ2qA/kpRu1jbbgjd/pCUEMqU1Ke', '(0916)343-7847', 'Active', '', '1997-12-15', 20, 'Pasay City', 'Male', 'Single', 'Filipino', 'Christian', 'Pasay City', 'sample', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Albert Ang', 'Architect', 'Julia Ang', 'Physicist', '2018-02-13 14:58:15', NULL),
-(38, 11810022, 3, 'Mulingtapang', 'Kristen', 'Ang', 'ten_ten@gmail.com', '$2y$10$VzE5JcM5IL.EpzP6FTx3wuXfzMW.Y4y5WseLzhjC7796c7WZTTgQ2', '(0905)275-9238', 'Active', '', '1997-12-25', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', 'Bacolod', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Mark Mulingtapang', 'Photographer', 'Gail Mulingtapang', 'Writer', '2018-02-13 15:01:28', NULL),
-(39, 11810023, 3, 'Chan', 'Jamie', 'So', 'jamieann97@gmail.com', '$2y$10$.0ujVyx5.ItBv8WRp8RYhOtb7eYElG8MFm.o8BdyK0s1UTZYItAUS', '(0922)385-9246', 'Active', '', '1997-04-10', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'John Chan', 'IT Manager', 'Jane Chan', 'Denist', '2018-02-13 15:04:54', NULL),
-(40, 11810024, 3, 'Yu', 'Lance', 'Timkang', 'lance19@gmail.com', '$2y$10$B41QBo0hRvVxJZRVzkOwf.gPKO1ocY9CWl8tCvzaa7Etcly4uzLWC', '(0922)885-9404', 'Active', '', '1997-05-19', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Henry Yu', 'Economist', 'Lanny Yu', 'Receptionist', '2018-02-13 15:07:21', NULL),
-(41, 11810025, 3, 'Jao', 'Princess', 'Baynosa', 'princessj06@gmail.com', '$2y$10$iZKEZ8IbRUtAAHN4N6dvpOlxXHnTo8rbFxyQqwdo/UFm1Toy8LXmK', '(0917)923-0811', 'Active', '', '1996-12-06', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Bryan Jao', 'Auto Mechanic', 'Daisy Jao', 'Physician', '2018-02-13 15:10:34', NULL),
-(42, 11810026, 3, 'Sy', 'Ryan', 'Rivera', 'rysy13@gmail.com', '$2y$10$EFR9jFFPvC/s02W.4o3umepMB/purDEV3QIGxTR571HRtN1KvGQe.', '(0915)248-0509', 'Active', '', '1997-10-13', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Daniel Sy', 'Doctor', 'Felia Sy', 'Store Owner', '2018-02-13 15:15:20', NULL),
-(43, 11810027, 3, 'Santillan', 'Jayson', 'Huang', 'jayson082497@gmail.com', '$2y$10$fsbH/dkGdBFPtjV0iRKv3up/F1kgOx3.AJBZBkQYfyLejR5gqa942', '(0927)273-5850', 'Active', '', '1996-08-24', 21, 'Manila City', 'Male', 'Single', 'Chinese', 'Buddhism', 'Manila City ', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Willy Santillan', 'CEO', 'Bela Santillan', 'HouseWife', '2018-02-13 15:20:36', NULL),
-(44, 11810028, 3, 'Matias', 'John', 'Matel', 'jolo_mat@gmail.com', '$2y$10$yUuZBAjN8n1ZQo21v0x2GOASYvHjo5FKJehaihKP4YTDc5nr/LMCW', '(0915)403-9570', 'Active', '', '1997-10-12', 20, 'Pasay City', 'Male', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Fernando Matias', 'Pilot', 'Sally Matias', 'Marketing Manager', '2018-02-13 15:24:21', NULL),
-(45, 11810029, 3, 'Ong', 'Czakrina', 'Dominique', 'czakydo97@gmail.com', '$2y$10$NpCKHdICWvfjwuW.ErGeSu8LhcKn6UMKksE2pF1NrcoB85hKalFVq', '(0927)398-1749', 'Active', '', '1997-09-13', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Thomas Ong', 'Accountant', 'Olivia Ong', 'School Counselor', '2018-02-13 15:27:41', NULL),
-(46, 11810030, 3, 'Moya', 'Lawrens', 'Uy', 'rensmoyaaa@gmail.com', '$2y$10$/loJcXQTHfh.atA621okj.fcDFK5cdL4mrqHM/q5G.r4bGn/9XK0y', '(0935)194-3100', 'Active', '', '1997-04-12', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Peter Moya', 'Real Estate Agent', 'Regine Moya', 'High School Teacher', '2018-02-13 15:30:58', NULL),
-(47, 11810031, 3, 'Lim', 'Ezekiel', 'So', 'kyleesl98@gmail.com', '$2y$10$F7XMb844o39L0y/.bBspruP66XvMbBJ860Ok5fyIzZCgpKkAdnrX2', '(0917)398-4799', 'Active', '', '1998-01-06', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Terence Lim', 'Pastor', 'Kathy Lim', 'Pastor', '2018-02-13 15:33:05', NULL),
-(48, 11810032, 3, 'Poa', 'Mary', 'Lo', 'meh0997@gmail.com', '$2y$10$Rdt8r3BsR/7xc198Q8/tn.ZFmMZhyFJ9TNUT9xZsJVh.tmOJkUURS', '(0927)961-3222', 'Active', '', '1997-09-05', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Wilson Poa', 'Photographer', 'Isabell Poa', 'Event Planner', '2018-02-13 15:38:24', NULL),
-(49, 11810033, 3, 'Dela Pena', 'Karen', 'Ling', 'kkdp0919@gmail.com', '$2y$10$xhziAHVloo3jCAaBq/pRiOZyUJWgYfgfpzsnhw2WoezIVMFwF1ZeS', '(0906)719-8430', 'Active', '', '1997-09-19', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Peter Dela Pena', 'Business Owner', 'Aly Dela Pena', 'HouseWife', '2018-02-13 15:41:30', NULL),
-(50, 11810034, 3, 'Ching', 'Shaira', 'Sy', 'shaira25@gmail.com', '$2y$10$1C5pHN6e.qw8EzXjTuXNve73yjmiSPbLJcnZfLDsIv0fclIB3zYL2', '(0922)948-1908', 'Active', '', '1997-01-25', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Mike Ching', 'Financial Analyst', 'Natalie Ching', 'Designer', '2018-02-13 15:44:41', NULL),
-(51, 11810035, 3, 'Bating', 'Christine', 'Miranda', 'cjoyb14@gmail.com', '$2y$10$MszirVteRJR6c0UbykeFte6uQRgxNvPrGijfwOsPOx0X8Ve1/uJeu', '(0915)948-5039', 'Active', '', '1997-06-14', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Herald Banting', 'Lawyer', 'Christina Banting', 'Secretary', '2018-02-13 15:47:41', NULL),
-(52, 11810036, 3, 'So', 'Ella', 'Marie', 'elsie17@gmail.com', '$2y$10$mYOqVT.AON2TKcVUkIOHcuBKMjkJWVTE6EFNUXKklI9zZICEHCYWK', '(0927)606-6417', 'Active', '', '1997-03-17', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Ronald So', 'Business Owner', 'Mary So', 'HouseWife', '2018-02-13 15:50:46', NULL),
-(53, 11810037, 3, 'Wong Hin', 'Justine', 'Que', 'justinewh03@gmail.com', '$2y$10$x3WNyrK2IecWqC4a5ppa/OgJ1v6jkG6iAYyqKZ/tVcQomn1UY.t12', '(0905)340-3079', 'Active', '', '1997-03-03', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', 'Ilo-ilo City', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Jefferson Wong Hin', 'Store Owner', 'Dabbie Wong Hin', 'Doctor', '2018-02-13 15:53:41', NULL),
-(54, 11810038, 3, 'Hernandez', 'Andy', 'Ramos', 'andyhernandez@gmail.com', '$2y$10$reFmku/SAB5cBBPdIHlwCu.rSGPXZq1OI31fw/.Sz8eHb1.gjeByG', '(0927)239-5081', 'Active', '', '1996-07-31', 21, 'Bacolod City', 'Male', 'Single', 'Chinese', 'Christian', 'Manila City', 'Bacolod City', 'Makati Hope Christian School', 'Makati Hope Christian School', 'Sample', '', '', 'Johnny Hernandez', 'Chef', 'Janelle Hernandez', 'Teacher', '2018-02-13 15:58:35', NULL),
-(55, 11810039, 3, 'Perez', 'Jordan', 'Brooke', 'brookeJordan@gmail.com', '$2y$10$Jl7o9JjjhpNgmceA05XjBuchxIhKZl0.SDRjpC0TUtO0lHVeSkRo.', '(0917)239-8509', 'Active', '', '1996-09-27', 21, 'Manila City', 'Male', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Daniel Perez', 'Musician', 'Faye Perez', 'Event Organizer', '2018-02-13 16:02:58', NULL),
-(56, 11810040, 3, 'Martin', 'Carl', 'Ong', 'martinCO@gmail.com', '$2y$10$W1MWOsKu6T2rNBXRF49AAOfw5YHUcm7leKBnkN0Bg4pOS9QMaMmBS', '(0922)293-5093', 'Active', '', '1997-08-01', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Christian Martin', 'Business Owner', 'Britanny Martin', 'Editor', '2018-02-13 16:05:30', NULL),
-(57, 11810041, 3, 'Castro', 'Alice', 'Ellis', 'alicewonderland@gmail.com', '$2y$10$66JkrfHZSMtT2GsBQlOOs.J/smSUVd3YFsTGhrRD0oth8v9VzZhAW', '(0915)283-4599', 'Active', '', '1996-04-13', 21, 'Quezon City', 'Female', 'Single', 'Filipino', 'Catholic', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Larry Castro', 'Data Analyst', 'Penny Castro ', 'Executive Assistant', '2018-02-13 16:07:51', NULL),
-(58, 11810042, 3, 'Chavez', 'Freddie', 'Nelson', 'ChavezFN@yahoo.com', '$2y$10$.UbMeGoP/bM2ZCQ1XxZO8OrHlsFJ9PzgX1mLFrXky1umFvouQhDhC', '(0922)587-9242', 'Active', '', '1998-05-30', 19, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Jeff Chavez', 'Basketball Player', 'Marie Chavez', 'Statistician', '2018-02-13 16:10:07', NULL),
-(59, 11810043, 3, 'Ingram', 'Carlton', 'Scott', 'carltoningram@yahoo.com', '$2y$10$NFW1VnysydsKsLwtz1jUc.lj7dUM/7iPz.FHVzZ5z6pRx3.Q4nW1O', '(0917)387-9583', 'Active', '', '1997-10-31', 20, 'Paranaque City', 'Male', 'Single', 'Filipino', 'Catholic', 'Paranaque City', '', 'Sample', 'Sample', 'Sample', '', '', 'Arnold Ingram', 'Insurance Agent', 'Patricia Ingram', 'Journalist', '2018-02-13 16:14:27', NULL),
-(60, 11810044, 3, 'Peterson', 'Antonio', 'Bridges', 'petersonanton@yahoo.com', '$2y$10$6ri/0xkqJGm4ir6gtewfz.HJriX/3plB1yB3p8cnMIuM73jvudhWO', '(0936)940-9602', 'Active', '', '1997-02-04', 21, 'Quezon City', 'Male', 'Single', 'Filipino', 'Christian', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Kirk Peterson', 'Public Relations Specialist', 'Whitney Peterson', 'Journalist', '2018-02-13 16:18:46', NULL),
-(61, 11810045, 3, 'Salazar', 'Regina', 'Valdez', 'reginasalazarv@yahoo.com', '$2y$10$x1i5TwkkUZN3NJAniOcr.uUDzLctmq6IfSu.haxqmm4V2hA5rmLBe', '(0917)394-5020', 'Active', '', '1996-04-10', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Fred Salazar', 'HR Specialist', 'Dani Salazar', 'Secretary', '2018-02-13 16:22:02', NULL),
-(62, 11810046, 3, 'Gonzales', 'Marck', 'Anderson', 'gonzales15marck@yahoo.com', '$2y$10$bYchEhh2ZgIfhGXx9lV4jOTnvUQULCcC1Op903q2vj42121JJJtDO', '(0915)235-0294', 'Active', '', '1997-03-31', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Clark Gonzales', 'Mechanical Engineer', 'Rachel Gonzales', 'Mathematician', '2018-02-13 16:25:59', NULL),
-(63, 11810047, 3, 'Mendoza', 'Jeanine', 'Clark', 'mendozaj14@yahoo.com', '$2y$10$bLQKaqoiP92mrfBQUJT8q.l6m6i8k.LbGNm1CIfYIZoDAcU0DdbjG', '(0015)948-9879', 'Active', '', '1997-05-14', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Paul Mendoza', 'Director', 'Elizabeth Mendoza', 'Editor', '2018-02-14 03:43:13', NULL),
-(64, 11810048, 3, 'Santos', 'Bill', 'West', 'billwestsantos@yahoo.com', '$2y$10$Y4W.tW.2NR.5LG4.Jos1mOOO6U0zljnTn5tnHPf9sMlZUGO9KboPS', '(0917)387-4913', 'Active', '', '1996-10-10', 21, 'Pasay City', 'Male', 'Single', 'Filipino', 'Catholic', 'Pasay City', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Santos', 'Web Developer', 'Myra Santos', 'Veterinarian', '2018-02-14 03:47:53', NULL),
-(65, 11810049, 3, 'Torres', 'Harry', 'Garcia', 'torresharry18@yahoo.com', '$2y$10$JJ1E2VhqObyWrrIRA1yGlewrE5.uclrkLVLp.AKGSQUaOQmS0ntcO', '(0922)735-9878', 'Active', '', '1996-09-22', 21, 'Quezon City', 'Male', 'Single', 'Filipino', 'Catholic', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Victor Torres', 'Painter', 'Vicky Torres', 'Art Director', '2018-02-14 03:50:48', NULL),
-(66, 11810050, 3, 'Morales', 'Mitchell', 'Vasques', 'mmoralesv@yahoo.com', '$2y$10$eG3xpD3yoxgEi4eiBQ15wuPyfW6sn8IRPVodlHP4rrOVKCMHXliy.', '(0918)375-8475', 'Active', '', '1997-05-11', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Henry Morales', 'Business Owner', 'Tiffany Morales', 'Marketing Manager', '2018-02-14 03:53:08', NULL);
+INSERT INTO `users` (`userID`, `userIDNo`, `userTypeID`, `userLN`, `userFN`, `userMN`, `userEmail`, `userPassword`, `userMobile`, `status`, `courseID`, `birthdate`, `age`, `birthplace`, `gender`, `civstat`, `nationality`, `religion`, `addcity`, `addprov`, `elemschool`, `secschool`, `tertschool`, `guardian`, `relation`, `fathername`, `fatherocc`, `mothername`, `motherocc`, `dateadded`, `datemodified`) VALUES
+(1, 1, 1, 'Kho', 'Hidden', 'Que', 'hiddenkho@outlook.com', '$2y$10$1/4ENc8h6Ske/jBSk9sqiedU2SSMEvr94ptBT5GnaoQ2yToQP30Ye', '(0917)000-0001', 'Active', 0, '1980-02-07', 37, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Pasay City', 'N/A\r\n', 'sample', 'sample', 'sample', 'mike', 'cousin', 'Lyold', 'sample', 'Elizabeth', 'sample', '2018-01-18 09:52:14', NULL),
+(2, 2, 1, 'Dallas', 'Israel', 'Quinones', 'mangkaknorr@outlook.com', '$2y$10$RE3xMvuTunnyVS1OraGVKeLEcm9ePtkhmphnvhh1J9J.tkusjVxx6', '(0917)000-0002', 'Active', 0, '1978-07-13', 39, 'Masbate', 'Female', 'Married', 'Filipino', 'Catholic', 'Metro Manila', 'Masbate', 'sample', 'sample', 'sample', 'anton', 'uncle', 'john', 'farmer', 'lyza', 'store owner', '2018-01-18 09:58:07', NULL),
+(3, 3, 1, 'Hernandez', 'Shea', 'Acebedo', 'cheatermirienda@outlook.com', '$2y$10$dIEA7hfykoclxuC4gyoKW.AH8kRF3DRlfFyYe613lVX80LsDov9ba', '(0017)000-0003', 'Active', 0, '1982-11-12', 35, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Catholic', 'Paranaque', 'N/A', 'sample', 'sample', 'sample', 'Anna', 'Nanny', 'Lucas', 'mechanics', 'ryza', 'call center', '2018-01-18 10:02:33', NULL),
+(4, 4, 4, 'Luciano', 'Catherine', 'Aquino', 'catherinejalili@outlook.com', '$2y$10$GJQDSPkLXqqGXsDZXpCF/uUth.i.iwQNutweTU7zanajknQpDt3EC', '(0917)000-0004', 'Active', 0, '1986-08-12', 31, 'Metro Manila', 'Female', 'Single', 'Filipino', 'Catholic', 'Las Pinas', 'N/A', 'sample', 'sample', 'sample', 'Juan', 'Cousin', 'Noel', 'Store Owner', 'Jen', 'store owner', '2018-01-18 10:07:50', NULL),
+(5, 5, 4, 'Legazpi', 'Franco', 'Dacudag', 'zsazsagrain@outlook.com', '$2y$10$.UJs18GxNyyKShh5a2cszu16NOKBdk.Nbwxvb7u0qGyMzP3g91UMS', '(0917)000-0005', 'Active', 0, '1983-07-13', 34, 'metro manila', 'Male', 'Married', 'Filipino', 'Catholic', 'malabon', 'n/a', 'sample', 'sample', 'sample', 'Analiza', 'Grand Mother', 'henry', 'officer', 'jean', 'teacher', '2018-01-18 10:15:08', NULL),
+(6, 6, 4, 'Dimaunahan', 'stanley', 'Gordon', 'hugejackedman@outlook', '$2y$10$aKde.eH4jYxBGGUctCF3zeh2lP1P87jX8/ojflNzWrf5F3qb5lwu6', '(0917)000-0006', 'Active', 0, '1984-04-18', 33, 'metro manila', 'Male', 'Single', 'Filipino', 'Catholic', 'quezon', 'n/a', 'sample', 'sample', 'sample', 'none', 'none', 'sean', 'Computer analysts', 'nadine', 'Shoe maker', '2018-01-18 10:19:59', NULL),
+(7, 20181001, 2, 'Razon', 'Perry', 'Espana', 'williebayolie@outlook.com', '$2y$10$/VSDt/CspN.tDUYeo50EQ.D00yT09SGi7F//iYpbiaF8He3B369r2', '(0917)000-0007', 'Active', 0, '1974-07-12', 43, 'Iloilo', 'Female', 'Married', 'Filipino', 'Catholic', 'manila', 'iloilo', 'sample', 'sample', 'sample', 'Tony', 'Brother', 'Kaden', 'farmer', 'Sally', 'housewife', '2018-01-18 12:29:43', NULL),
+(8, 20181002, 2, 'Arabejo', 'Natalio', 'Dumlao', 'broadpete@outlook.com', '$2y$10$DlFH2SJeoG2qs5SoNk1WTOnWtE.l7mAdV0YCKXu9guolQvlgk0Lhu', '(0917)000-0008', 'Active', 0, '1990-09-05', 27, 'Metro Manila', 'Male', 'Single', 'Filipino', 'Catholic', 'Pasig City', 'n/a', 'sample', 'sample', 'sample', 'Theo', 'Father', 'Theo', 'Teacher', 'Elvita', 'Nurse', '2018-01-18 12:33:59', NULL),
+(9, 20181003, 2, 'Peterson', 'Abby', 'Alejo', 'roadtheedothirteen@outlook.com', '$2y$10$7u05rv82tq1RIrnnPlZrv.tkCXrFJvE6bYI5vs2d0WLWEanuDRSWe', '(0917)000-0009', 'Active', 0, '1987-02-11', 30, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Harry', 'Cousin', 'Stephen', 'Broadcaster', 'Gail', 'Librarian', '2018-01-18 12:38:14', NULL),
+(10, 20181004, 2, 'Roxas', 'Leah', 'Quiason', 'antoniusthrillianus@outlook.com', '$2y$10$3ptLlMqF23MdqNtIVjy.6OIt30Un.kxSq1s.XgeDZ3RbJexH1zjIC', '(0917)000-0010', 'Active', 0, '1966-08-07', 51, 'Metro Manila', 'Female', 'Married', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Jerry', 'Cousin', 'Sam', 'Architect', 'Martha', 'Designer', '2018-01-18 12:50:14', NULL),
+(11, 20181005, 2, 'Salvador', 'Ronaldo', 'Omar', 'robbingpaddillus@gmail.com', '$2y$10$AzJGYLx3ixb9u2joc1KsMOCZ/dYkv3iz7q9jQAElMqsypVNzm3HuS', '(0917)000-0011', 'Active', 0, '1980-12-29', 37, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Quezon City', 'n/a', 'sample', 'sample', 'sample', 'Jake', 'Brother', 'Marcel', 'Journalist', 'Elsa', 'Store Owner', '2018-01-18 13:28:09', NULL),
+(12, 20181006, 2, 'Ortega', 'Elisa', 'Fajardo', 'dannietargaryano@gmail.com', '$2y$10$LAOqD4UEARfHJaqzCFOO5.vmp3HcsENWMkfweQyBDySTF1rdmUZZe', '(0917)000-0012', 'Active', 0, '1988-04-27', 29, 'Leyte', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'Leyte', 'sample', 'sample', 'sample', 'Rey', 'Brother', 'Zion', 'Artist', 'Catalina', 'Artist', '2018-01-18 13:39:51', NULL),
+(13, 20181007, 2, 'Moreno', 'Simon', 'Davis', 'itimnabalo@gmail.com', '$2y$10$ptQE.9enO/NS9Q75XNBJh.OwS3ir1FfmetxAwSsCVAROFcglwVHS.', '(0917)000-0013', 'Active', 0, '1990-03-31', 27, 'Metro Manila', 'Male', 'Single', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Analiza', 'Mother', 'Hernando', 'Teacher', 'Analiza', 'Teacher', '2018-01-18 13:43:50', NULL),
+(14, 20181008, 2, 'Arcega', 'Emesta', 'Camat', 'iskarlatangbruha@gmail.com', '$2y$10$WcHGEiOUvVDgsjE2g0ELC.RxCTRhX5DbLzkBOoff.XS7vrKnZdHEi', '(0917)000-0014', 'Active', 0, '1990-08-30', 27, 'Metro Manila', 'Female', 'Single', 'Filipino', 'Evangelical', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Belicia', 'Mother', 'Marcos', 'mechanics', 'Maria', 'Analyst', '2018-01-18 14:33:08', NULL),
+(15, 20181009, 2, 'Fernandez', 'Ryan', 'Lacson', 'vicksuetoe321@gmail.com', '$2y$10$OQpGMBnyvgRI2zKUxoN9aOIMa8IbUTBW/NT1Oaa4llGmAmLjA.rfm', '(0917)000-0015', 'Active', 0, '1981-11-28', 36, 'Metro Manila', 'Male', 'Married', 'Filipino', 'Catholic', 'Manila', 'n/a', 'sample', 'sample', 'sample', 'Henry', 'Father', 'Henry', 'Optalmologist', 'Jane', 'Nurse', '2018-01-18 14:38:07', NULL),
+(16, 20181010, 2, 'Pavia', 'Marilyn', 'Daplas', 'ianmanoy24@yahoo.com', '$2y$10$aNIcpgKMpnfRorG6luaQW.PxLlqVGM79eaMs7WF3Jr.zHO8hbCUhq', '(0917)000-0016', 'Active', 0, '1988-08-01', 29, 'Cebu', 'Female', 'Married', 'Filipino', 'Catholic', 'Manila', 'Cebu', 'sample', 'sample', 'sample', 'Athena', 'Sister', 'Alfredo', 'Farmer', 'Sandra', 'store owner', '2018-01-18 14:50:55', NULL),
+(17, 11810001, 3, 'Blake', 'Ian', 'Veneracion', 'ianmanoy24@yahoo.com', '$2y$10$A96ICsumikc8O8DOO/3.cO3Fp8G.hAckH3V/kXgZdNJ.t6UWl30.K', '(0926)010-1010', 'Active', 5, '1998-07-12', 19, 'St Luke\'s Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Binondo Manila', '', 'Mamburao Central School', 'Sample', 'Sample', '', '', 'Kiko Magalona', 'Rapper', 'Michaela Baldos', 'Housewife', '2018-01-19 09:37:59', NULL),
+(18, 11810002, 3, 'Sanchez', 'Victoria', 'Lopez', 'victorsanchz416@yahoo.com', '$2y$10$LW78zDXeaJsqenPtmUa4xuW6hfR2ckCWO5bPbEMA7PtkOhrWnh7gW', '(0995)012-5354', 'Active', 2, '1995-06-13', 22, 'UST Hospital', 'Female', 'Single', 'Filipino', 'Christian', 'Sta. Cruz Manila', '', 'Sample', 'Sample', 'Sample', '', '', 'Mike Enriquez', 'Reporter', 'Jessica Soho', 'Reporter', '2018-01-19 09:42:18', NULL),
+(19, 11810003, 3, 'Go', 'Troy', 'Tan', 'troymanoi69@yahoo.com', '$2y$10$oDwYkLlVlgzxnc9/RFbIq.9vvykDr7JBsXXroq2TotmfpJiJh4MW2', '(0995)613-5421', 'Active', 3, '1997-05-28', 20, 'Philippine General Hospital', 'Male', 'Single', 'Chinese', 'Buddhism', 'Bonifacio Global City Taguig, Manila', '', 'Sample Data', 'Sample Data', 'Sample Data', '', '', 'Henry Sy', 'Chinese Mogul', 'Korina Sanchez', 'Reporter', '2018-01-19 09:44:58', NULL),
+(20, 11810004, 3, 'Ong', 'Beper', 'Clenista', 'beper.ong@benilde.edu.ph', '$2y$10$AOebJRgvwb/e5MqJLrxvr.3oSrsANpSesDw2lMnABMR3flmHRgeCe', '(0926)047-2440', 'Active', 5, '1995-02-27', 22, 'Mamburao Occidental Mindoro provincial hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Sto. Cristo Street Binondo Manila\r\n', '', 'Mamburao Central School', 'Occidental Mindoro National Highschool', 'Occidental Mindoro National Highschool', '', '', 'Bernabe Ong', 'Businessman', 'Perla Ong', 'Businesswoman', '2018-01-19 09:46:50', NULL),
+(21, 11810005, 3, 'Zaguirre', 'Sheila Mae', 'Polhen', 'sheila.zaguirre@benilde.edu.ph', '$2y$10$3q1rzgxiZsGM.Dlb./VS0uTF/gW9Y34zcZ1QOHZUEuLvLP1pOColS', '(0915)905-0303', 'Active', 4, '1997-11-13', 20, 'San Juan de Dios general Hospital', 'Female', 'Single', 'Chinese', 'Catholic', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'DLS-CSB', '', '', 'James Zaguirre', 'Businessman', 'Lilibeth Zaguirre', 'Store owner', '2018-01-19 09:49:43', NULL),
+(22, 11810006, 3, 'Pascual', 'Shaun Xavier', 'Gideon', 'shaunxavierpascual@gmail.com', '$2y$10$v3R8.ftBWyl1GZlaQHUpCONYBjQ8yh0xWWlGHJNJFkaW8v.H/ySQO', '(0915)151-5151', 'Active', 6, '1996-10-13', 21, 'Chinese General Hospital', 'Male', 'Single', 'Filipino', 'Catholic', 'Navotas City', '', 'GAPC', 'GAPC', 'Sample', '', '', 'Michael Jordan', 'Basketball Legend', 'Oprah Winfrey', 'Smile giver', '2018-01-19 09:52:18', NULL),
+(23, 11810007, 3, 'Villanueva', 'Miko', 'Ganda', 'mikovillanueva96@gmail.com', '$2y$10$ERrEDdJev7Q2OLmsDqTkVuLRyMz8q6dXFJpY0Y8IbYXCxDbBNQbJK', '(0915)161-1300', 'Active', 1, '1996-02-15', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Gideon Academy', 'Sample', 'DLS-CSB', '', '', 'Manny Pacquiao', 'Boxer', 'Kris Aquino', 'Host', '2018-01-19 09:54:31', NULL),
+(24, 11810008, 3, 'Ozawa', 'Maria', 'Sample', 'marialim675@yahoo.com', '$2y$10$UnySz/41TYogJPXsG05sQuZC.8/VkLLveaaHItuzy4nPuariKoqZm', '(0915)222-2151', 'Active', 3, '1997-05-14', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample\r\n', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Comia', 'None', 'Julienna Santos', 'Developer', '2018-01-19 09:56:24', NULL),
+(25, 11810009, 3, 'James', 'Lebron', 'Brown', 'jameslebron41@outlook.com', '$2y$10$OlTdbbG40dmFhe5hMOoTveAiN.WRHOy9argdgOeAQs78LxVT9U.Xi', '(0999)158-7563', 'Active', 4, '1997-02-15', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'James Senior', 'Basketball player', 'Lilybeth Comia', 'Store owner', '2018-01-19 09:59:21', NULL),
+(26, 11810010, 3, 'Santos', 'Julienne', 'Limpin', 'johnmor556@yahoo.com', '$2y$10$a4Xqre5v6nmF07vzPcOGpe.nq9KuU.BwoDY14.ssfPsV0NrgfSFpC', '(0915)678-4954', 'Active', 2, '1995-01-26', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Julio Santos', 'Seaman', 'Jane Santos', 'Housewife', '2018-01-19 10:02:52', NULL),
+(27, 11810011, 3, 'Comia', 'Ralph', 'Gavan', 'mikejordan64@outlook.com', '$2y$10$4HnNMw2U6048sWfWQrvLMu1Fn95uKk582eHmQSf51Y775e8j/dLkO', '(0915)624-8103', 'Active', 2, '1996-01-08', 22, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Manny Comia', 'OFW', 'Mandy Comia', 'OFW', '2018-01-19 10:05:53', NULL),
+(28, 11810012, 3, 'Valmeo', 'Bianca', 'Teng', 'irvingkyrie32@outlook.com', '$2y$10$HPZ.rRspRa/PDzQ80Xz/C.TPefPlvdJFdIZMa8ksI1.fl/FhEWAU6', '(0916)842-6849', 'Active', 6, '1995-02-15', 22, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Blake Valmeo', 'Cashier', 'Joan Valmeo', 'Architech', '2018-01-19 10:07:44', NULL),
+(29, 11810013, 3, 'Talimban', 'Bea', 'Supot', 'stephcarry1@outlook.com', '$2y$10$PbFFtPqAtk0X1j/BgyXz3u2MnJo7BDHNntUzc7qba26ClyEThp1Le', '(0915)846-9555', 'Active', 1, '1996-03-16', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'John Talimban', 'Engineer', 'Joan Talimban', 'Teacher', '2018-01-19 10:11:11', NULL),
+(30, 11810014, 3, 'Estera', 'Gian', 'Baldoza', 'junanaksjanah@yahoo.com', '$2y$10$3cJLyEdCXZDOnwOJuHGUD.tBdZFxUTzHfv2B830YGIep9jZKLmjHK', '(0915)984-6222', 'Active', 3, '1996-12-15', 21, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Jonathan Estera', 'Oil producer', 'Caroline Estera', 'Cashier', '2018-01-19 10:13:48', NULL),
+(31, 11810015, 3, 'Tuazon', 'Paul', 'Mercedez', 'angelovillanueva1@outlook.com', '$2y$10$UmB2LYfWMuY9.qnB2wg.oevaA8.yyzYc99CpXFeObWDyaacL.iZ7W', '(0915)684-9994', 'Active', 3, '1997-02-28', 20, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', 'Michael Tuazon', 'Construction worker', 'Maja Tuazon', 'Social media ambassador', '2018-01-19 10:17:04', NULL),
+(32, 11810016, 3, 'Hernando', 'Alexa', 'Sy', 'mangkaknorr@gmail.com', '$2y$10$gzNvN9OQr7DzZNotwoZxOO32hnr/BDyNe/NX5kX9L6ZXLZ3EEFAGi', '(0915)874-8933', 'Active', 4, '1999-09-25', 18, 'Sample', 'Male', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Felix Hernando', 'Engineer', 'Theresa Hernando', 'Housewife', '2018-01-19 10:31:00', NULL),
+(33, 11810017, 3, 'Remulla', 'Jionna', 'Ong', 'mangka.knorr@yahoo.com', '$2y$10$eceIAyosl9vcQ5s7iBrhD.47bobNy/.2hikPaPi5I1OizprO8v8z6', '(0916)849-6288', 'Active', 6, '1996-02-16', 21, 'Sample', 'Male', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Nikko Remulla', 'Policeman', 'Tintin Remulla', 'Nurse', '2018-01-19 10:49:41', NULL),
+(34, 11810018, 3, 'Su', 'Samantha', 'Supsop', 'cheatermirienda@gmail.com', '$2y$10$t9Va92BKP24mBbDr18kTQuSd0c24tRifPSBKAu4CU3BCuoAogc0ge', '(0956)842-9233', 'Active', 2, '1997-05-15', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Catholic', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ramon Su', 'Store Owner', 'Sheila Su', 'Petshop Owner', '2018-01-19 10:52:16', NULL),
+(35, 11810019, 3, 'Magsaysay', 'Joseph', 'Sy', 'cheatermirienda@yahoo.com', '$2y$10$LdrNY8mysOPwxTm1f9b7m.lKUtDPplkcMgxI87HkMRCmvNoJHsYDa', '(0915)974-6222', 'Active', 5, '1996-02-29', 21, 'Sample', 'Male', 'Single', 'Chinese', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Magsaysay', 'Gardener', 'Felicia Magsaysay', 'Dentist', '2018-01-19 10:54:33', NULL),
+(36, 11810020, 3, 'Filipinas', 'Luzviminda', 'Asia', 'hiddenkho3039@gmail.com', '$2y$10$.2SgrXOAfNEU7uCwxBWpaO37O.64pTdmbv.pDlrJ101Lc6l8hNF3S', '(0916)849-9211', 'Active', 1, '1997-10-17', 20, 'Sample', 'Female', 'Single', 'Filipino', 'Christian', 'Sample', '', 'Sample', 'Sample', 'Sample', '', '', 'Henrico Filipinas', 'Governor', 'Lucia Filipinas', 'Assistant Brand Manager', '2018-01-19 10:58:01', NULL),
+(37, 11810021, 3, 'Ang', 'Aaron', 'Bacong', 'aaron12@gmail.com', '$2y$10$f2b1Wq6gX9TjQuVPPDC9nuO5PmZ2qA/kpRu1jbbgjd/pCUEMqU1Ke', '(0916)343-7847', 'Active', 0, '1997-12-15', 20, 'Pasay City', 'Male', 'Single', 'Filipino', 'Christian', 'Pasay City', 'sample', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Albert Ang', 'Architect', 'Julia Ang', 'Physicist', '2018-02-13 14:58:15', NULL),
+(38, 11810022, 3, 'Mulingtapang', 'Kristen', 'Ang', 'ten_ten@gmail.com', '$2y$10$VzE5JcM5IL.EpzP6FTx3wuXfzMW.Y4y5WseLzhjC7796c7WZTTgQ2', '(0905)275-9238', 'Active', 0, '1997-12-25', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', 'Bacolod', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Mark Mulingtapang', 'Photographer', 'Gail Mulingtapang', 'Writer', '2018-02-13 15:01:28', NULL),
+(39, 11810023, 3, 'Chan', 'Jamie', 'So', 'jamieann97@gmail.com', '$2y$10$.0ujVyx5.ItBv8WRp8RYhOtb7eYElG8MFm.o8BdyK0s1UTZYItAUS', '(0922)385-9246', 'Active', 0, '1997-04-10', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'John Chan', 'IT Manager', 'Jane Chan', 'Denist', '2018-02-13 15:04:54', NULL),
+(40, 11810024, 3, 'Yu', 'Lance', 'Timkang', 'lance19@gmail.com', '$2y$10$B41QBo0hRvVxJZRVzkOwf.gPKO1ocY9CWl8tCvzaa7Etcly4uzLWC', '(0922)885-9404', 'Active', 0, '1997-05-19', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Henry Yu', 'Economist', 'Lanny Yu', 'Receptionist', '2018-02-13 15:07:21', NULL),
+(41, 11810025, 3, 'Jao', 'Princess', 'Baynosa', 'princessj06@gmail.com', '$2y$10$iZKEZ8IbRUtAAHN4N6dvpOlxXHnTo8rbFxyQqwdo/UFm1Toy8LXmK', '(0917)923-0811', 'Active', 0, '1996-12-06', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Bryan Jao', 'Auto Mechanic', 'Daisy Jao', 'Physician', '2018-02-13 15:10:34', NULL),
+(42, 11810026, 3, 'Sy', 'Ryan', 'Rivera', 'rysy13@gmail.com', '$2y$10$EFR9jFFPvC/s02W.4o3umepMB/purDEV3QIGxTR571HRtN1KvGQe.', '(0915)248-0509', 'Active', 0, '1997-10-13', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Daniel Sy', 'Doctor', 'Felia Sy', 'Store Owner', '2018-02-13 15:15:20', NULL),
+(43, 11810027, 3, 'Santillan', 'Jayson', 'Huang', 'jayson082497@gmail.com', '$2y$10$fsbH/dkGdBFPtjV0iRKv3up/F1kgOx3.AJBZBkQYfyLejR5gqa942', '(0927)273-5850', 'Active', 0, '1996-08-24', 21, 'Manila City', 'Male', 'Single', 'Chinese', 'Buddhism', 'Manila City ', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Willy Santillan', 'CEO', 'Bela Santillan', 'HouseWife', '2018-02-13 15:20:36', NULL),
+(44, 11810028, 3, 'Matias', 'John', 'Matel', 'jolo_mat@gmail.com', '$2y$10$yUuZBAjN8n1ZQo21v0x2GOASYvHjo5FKJehaihKP4YTDc5nr/LMCW', '(0915)403-9570', 'Active', 0, '1997-10-12', 20, 'Pasay City', 'Male', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Fernando Matias', 'Pilot', 'Sally Matias', 'Marketing Manager', '2018-02-13 15:24:21', NULL),
+(45, 11810029, 3, 'Ong', 'Czakrina', 'Dominique', 'czakydo97@gmail.com', '$2y$10$NpCKHdICWvfjwuW.ErGeSu8LhcKn6UMKksE2pF1NrcoB85hKalFVq', '(0927)398-1749', 'Active', 0, '1997-09-13', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Thomas Ong', 'Accountant', 'Olivia Ong', 'School Counselor', '2018-02-13 15:27:41', NULL),
+(46, 11810030, 3, 'Moya', 'Lawrens', 'Uy', 'rensmoyaaa@gmail.com', '$2y$10$/loJcXQTHfh.atA621okj.fcDFK5cdL4mrqHM/q5G.r4bGn/9XK0y', '(0935)194-3100', 'Active', 0, '1997-04-12', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Peter Moya', 'Real Estate Agent', 'Regine Moya', 'High School Teacher', '2018-02-13 15:30:58', NULL),
+(47, 11810031, 3, 'Lim', 'Ezekiel', 'So', 'kyleesl98@gmail.com', '$2y$10$F7XMb844o39L0y/.bBspruP66XvMbBJ860Ok5fyIzZCgpKkAdnrX2', '(0917)398-4799', 'Active', 0, '1998-01-06', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Terence Lim', 'Pastor', 'Kathy Lim', 'Pastor', '2018-02-13 15:33:05', NULL),
+(48, 11810032, 3, 'Poa', 'Mary', 'Lo', 'meh0997@gmail.com', '$2y$10$Rdt8r3BsR/7xc198Q8/tn.ZFmMZhyFJ9TNUT9xZsJVh.tmOJkUURS', '(0927)961-3222', 'Active', 0, '1997-09-05', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Wilson Poa', 'Photographer', 'Isabell Poa', 'Event Planner', '2018-02-13 15:38:24', NULL),
+(49, 11810033, 3, 'Dela Pena', 'Karen', 'Ling', 'kkdp0919@gmail.com', '$2y$10$xhziAHVloo3jCAaBq/pRiOZyUJWgYfgfpzsnhw2WoezIVMFwF1ZeS', '(0906)719-8430', 'Active', 0, '1997-09-19', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Peter Dela Pena', 'Business Owner', 'Aly Dela Pena', 'HouseWife', '2018-02-13 15:41:30', NULL),
+(50, 11810034, 3, 'Ching', 'Shaira', 'Sy', 'shaira25@gmail.com', '$2y$10$1C5pHN6e.qw8EzXjTuXNve73yjmiSPbLJcnZfLDsIv0fclIB3zYL2', '(0922)948-1908', 'Active', 0, '1997-01-25', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Mike Ching', 'Financial Analyst', 'Natalie Ching', 'Designer', '2018-02-13 15:44:41', NULL),
+(51, 11810035, 3, 'Bating', 'Christine', 'Miranda', 'cjoyb14@gmail.com', '$2y$10$MszirVteRJR6c0UbykeFte6uQRgxNvPrGijfwOsPOx0X8Ve1/uJeu', '(0915)948-5039', 'Active', 0, '1997-06-14', 20, 'Pasay City', 'Female', 'Single', 'Filipino', 'Christian', 'Pasay City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Herald Banting', 'Lawyer', 'Christina Banting', 'Secretary', '2018-02-13 15:47:41', NULL),
+(52, 11810036, 3, 'So', 'Ella', 'Marie', 'elsie17@gmail.com', '$2y$10$mYOqVT.AON2TKcVUkIOHcuBKMjkJWVTE6EFNUXKklI9zZICEHCYWK', '(0927)606-6417', 'Active', 0, '1997-03-17', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Ronald So', 'Business Owner', 'Mary So', 'HouseWife', '2018-02-13 15:50:46', NULL),
+(53, 11810037, 3, 'Wong Hin', 'Justine', 'Que', 'justinewh03@gmail.com', '$2y$10$x3WNyrK2IecWqC4a5ppa/OgJ1v6jkG6iAYyqKZ/tVcQomn1UY.t12', '(0905)340-3079', 'Active', 0, '1997-03-03', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Paranaque City', 'Ilo-ilo City', 'Gideon Academy', 'Gideon Academy', 'Sample', '', '', 'Jefferson Wong Hin', 'Store Owner', 'Dabbie Wong Hin', 'Doctor', '2018-02-13 15:53:41', NULL),
+(54, 11810038, 3, 'Hernandez', 'Andy', 'Ramos', 'andyhernandez@gmail.com', '$2y$10$reFmku/SAB5cBBPdIHlwCu.rSGPXZq1OI31fw/.Sz8eHb1.gjeByG', '(0927)239-5081', 'Active', 0, '1996-07-31', 21, 'Bacolod City', 'Male', 'Single', 'Chinese', 'Christian', 'Manila City', 'Bacolod City', 'Makati Hope Christian School', 'Makati Hope Christian School', 'Sample', '', '', 'Johnny Hernandez', 'Chef', 'Janelle Hernandez', 'Teacher', '2018-02-13 15:58:35', NULL),
+(55, 11810039, 3, 'Perez', 'Jordan', 'Brooke', 'brookeJordan@gmail.com', '$2y$10$Jl7o9JjjhpNgmceA05XjBuchxIhKZl0.SDRjpC0TUtO0lHVeSkRo.', '(0917)239-8509', 'Active', 0, '1996-09-27', 21, 'Manila City', 'Male', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Daniel Perez', 'Musician', 'Faye Perez', 'Event Organizer', '2018-02-13 16:02:58', NULL),
+(56, 11810040, 3, 'Martin', 'Carl', 'Ong', 'martinCO@gmail.com', '$2y$10$W1MWOsKu6T2rNBXRF49AAOfw5YHUcm7leKBnkN0Bg4pOS9QMaMmBS', '(0922)293-5093', 'Active', 0, '1997-08-01', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Christian Martin', 'Business Owner', 'Britanny Martin', 'Editor', '2018-02-13 16:05:30', NULL),
+(57, 11810041, 3, 'Castro', 'Alice', 'Ellis', 'alicewonderland@gmail.com', '$2y$10$66JkrfHZSMtT2GsBQlOOs.J/smSUVd3YFsTGhrRD0oth8v9VzZhAW', '(0915)283-4599', 'Active', 0, '1996-04-13', 21, 'Quezon City', 'Female', 'Single', 'Filipino', 'Catholic', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Larry Castro', 'Data Analyst', 'Penny Castro ', 'Executive Assistant', '2018-02-13 16:07:51', NULL),
+(58, 11810042, 3, 'Chavez', 'Freddie', 'Nelson', 'ChavezFN@yahoo.com', '$2y$10$.UbMeGoP/bM2ZCQ1XxZO8OrHlsFJ9PzgX1mLFrXky1umFvouQhDhC', '(0922)587-9242', 'Active', 0, '1998-05-30', 19, 'Manila City', 'Male', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Jeff Chavez', 'Basketball Player', 'Marie Chavez', 'Statistician', '2018-02-13 16:10:07', NULL),
+(59, 11810043, 3, 'Ingram', 'Carlton', 'Scott', 'carltoningram@yahoo.com', '$2y$10$NFW1VnysydsKsLwtz1jUc.lj7dUM/7iPz.FHVzZ5z6pRx3.Q4nW1O', '(0917)387-9583', 'Active', 0, '1997-10-31', 20, 'Paranaque City', 'Male', 'Single', 'Filipino', 'Catholic', 'Paranaque City', '', 'Sample', 'Sample', 'Sample', '', '', 'Arnold Ingram', 'Insurance Agent', 'Patricia Ingram', 'Journalist', '2018-02-13 16:14:27', NULL),
+(60, 11810044, 3, 'Peterson', 'Antonio', 'Bridges', 'petersonanton@yahoo.com', '$2y$10$6ri/0xkqJGm4ir6gtewfz.HJriX/3plB1yB3p8cnMIuM73jvudhWO', '(0936)940-9602', 'Active', 0, '1997-02-04', 21, 'Quezon City', 'Male', 'Single', 'Filipino', 'Christian', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Kirk Peterson', 'Public Relations Specialist', 'Whitney Peterson', 'Journalist', '2018-02-13 16:18:46', NULL),
+(61, 11810045, 3, 'Salazar', 'Regina', 'Valdez', 'reginasalazarv@yahoo.com', '$2y$10$x1i5TwkkUZN3NJAniOcr.uUDzLctmq6IfSu.haxqmm4V2hA5rmLBe', '(0917)394-5020', 'Active', 0, '1996-04-10', 21, 'Manila City', 'Female', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Fred Salazar', 'HR Specialist', 'Dani Salazar', 'Secretary', '2018-02-13 16:22:02', NULL),
+(62, 11810046, 3, 'Gonzales', 'Marck', 'Anderson', 'gonzales15marck@yahoo.com', '$2y$10$bYchEhh2ZgIfhGXx9lV4jOTnvUQULCcC1Op903q2vj42121JJJtDO', '(0915)235-0294', 'Active', 0, '1997-03-31', 20, 'Manila City', 'Male', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Clark Gonzales', 'Mechanical Engineer', 'Rachel Gonzales', 'Mathematician', '2018-02-13 16:25:59', NULL),
+(63, 11810047, 3, 'Mendoza', 'Jeanine', 'Clark', 'mendozaj14@yahoo.com', '$2y$10$bLQKaqoiP92mrfBQUJT8q.l6m6i8k.LbGNm1CIfYIZoDAcU0DdbjG', '(0015)948-9879', 'Active', 0, '1997-05-14', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Catholic', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Paul Mendoza', 'Director', 'Elizabeth Mendoza', 'Editor', '2018-02-14 03:43:13', NULL),
+(64, 11810048, 3, 'Santos', 'Bill', 'West', 'billwestsantos@yahoo.com', '$2y$10$Y4W.tW.2NR.5LG4.Jos1mOOO6U0zljnTn5tnHPf9sMlZUGO9KboPS', '(0917)387-4913', 'Active', 0, '1996-10-10', 21, 'Pasay City', 'Male', 'Single', 'Filipino', 'Catholic', 'Pasay City', '', 'Sample', 'Sample', 'Sample', '', '', 'Ralph Santos', 'Web Developer', 'Myra Santos', 'Veterinarian', '2018-02-14 03:47:53', NULL),
+(65, 11810049, 3, 'Torres', 'Harry', 'Garcia', 'torresharry18@yahoo.com', '$2y$10$JJ1E2VhqObyWrrIRA1yGlewrE5.uclrkLVLp.AKGSQUaOQmS0ntcO', '(0922)735-9878', 'Active', 0, '1996-09-22', 21, 'Quezon City', 'Male', 'Single', 'Filipino', 'Catholic', 'Quezon City', '', 'Sample', 'Sample', 'Sample', '', '', 'Victor Torres', 'Painter', 'Vicky Torres', 'Art Director', '2018-02-14 03:50:48', NULL),
+(66, 11810050, 3, 'Morales', 'Mitchell', 'Vasques', 'mmoralesv@yahoo.com', '$2y$10$eG3xpD3yoxgEi4eiBQ15wuPyfW6sn8IRPVodlHP4rrOVKCMHXliy.', '(0918)375-8475', 'Active', 0, '1997-05-11', 20, 'Manila City', 'Female', 'Single', 'Filipino', 'Christian', 'Manila City', '', 'Sample', 'Sample', 'Sample', '', '', 'Henry Morales', 'Business Owner', 'Tiffany Morales', 'Marketing Manager', '2018-02-14 03:53:08', NULL),
+(67, 11810051, 3, 'Ongtest', 'Beper', 'Clenista', 'beper.ong@benilde.edu.ph', '$2y$10$XS1npdxt29t1IOGXhSXAV.Sbh6lG4ukQgX6FlK32k6Ytl77/1ujFK', '(0926)151-5151', 'Active', 0, '1995-01-04', 23, 'test', 'Male', 'Single', 'Chinese', 'Catholic', 'test', '', 'Test', 'Test', 'test', '', '', 'test', 'test', 'test', 'test', '2018-03-09 07:18:29', NULL),
+(68, 11810051, 3, 'Test', 'Test', 'Test', 'Test@yahoo.com', '$2y$10$7mnekwENhOJOHUdyRBMA3e50Z/foMFMyymJUFFkOPXclw5VvVPyyq', '(0916)161-6166', 'Active', 3, '0000-00-00', 23, 'Test', 'Male', 'Single', 'Filipino', 'Catholic', 'test', '', 'Test', 'Test', 'Test', '', '', 'Test', 'Test', 'Test', 'Test', '2018-03-10 01:14:02', NULL),
+(69, 11810051, 3, 'TEST', 'BeperTESTING', 'TEST', 'test@yahoo.com', '$2y$10$FSDn9Fk9k87V4aE9KN4O7.GHnsKL33OsX4iF8JE/xPZO5nwctsexW', '(0926)262-6262', 'Active', 1, '1995-02-27', 23, 'Kanto', 'Male', 'Single', 'Filipino', 'Catholic', 'Testing', 'TEST', 'TEST', 'TEST', 'TEST', '', '', 'TEST', 'TEST', 'TEST', 'TEST', '2018-03-10 02:03:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -954,22 +1100,22 @@ ALTER TABLE `venues`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `announceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `announceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `applicant`
 --
 ALTER TABLE `applicant`
-  MODIFY `apid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `apid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `assignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `assignID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `auditlogs`
 --
 ALTER TABLE `auditlogs`
-  MODIFY `auditID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `auditID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `blocks`
 --
@@ -984,7 +1130,7 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `classlist`
 --
 ALTER TABLE `classlist`
-  MODIFY `classListID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `classListID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 --
 -- AUTO_INCREMENT for table `course`
 --
@@ -1009,12 +1155,12 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `lessonID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lessonID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `prof`
 --
 ALTER TABLE `prof`
-  MODIFY `profID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `profID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `students`
 --
@@ -1034,7 +1180,7 @@ ALTER TABLE `timeslots`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `usertype`
 --
