@@ -18,11 +18,7 @@ class Announcement_model extends CI_Model
         $query = $this->db->query(
             "SELECT a.announceID, CONCAT(u.userFN,' ', u.userLN) as userName, a.announceTitle, a.announceFile, a.announceDetail, a.announceDate, a.dateUploaded, a.dateModified, a.dateExpiry, a.status from announcements a
             INNER JOIN users u ON a.userID = u.userID
-<<<<<<< HEAD
-            WHERE a.status ='Active'"
-=======
             WHERE a.status='Active'"
->>>>>>> a0353c446111b681e373a7be49fff961473562f8
         );
         return $query->result_array();
     }
