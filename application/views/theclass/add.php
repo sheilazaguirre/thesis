@@ -24,6 +24,22 @@
 					</div>
 				</div>
 				<div class="col-md-12">
+						<label for="userID" class="control-label">Faculty</label>
+						<div class="form-group">
+							<select name="userID" class="form-control">
+								<option value="">Select a Faculty</option>
+								<?php 
+								foreach($all_users as $user)
+								{
+									$selected = ($user['userID'] == $this->input->post('userID')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userLN'].', '.$user['userFN'].'</option>';
+								} 
+								?>
+							</select>
+						</div>
+					</div>
+				<div class="col-md-12">
 					<label for="timeSlotID" class="control-label"><span class="text-danger">*</span>Timeslot</label>
 					<div class="form-group">
 						<select name="timeSlotID" class="form-control">
@@ -98,6 +114,13 @@
               </div>
 				<!-- end Live Search -->
 			</div>
+		<div class="col-md-6">
+		<span>
+		<h4>Student Count: 
+		<label for="studcount" id="studcount" class="control-label"></label>
+		</h4>
+		</span>
+		</div>
 		<div class="box-body">
 		<table id="tableresult" name="tableresult" class="table table-striped">
 		<thead>
@@ -128,6 +151,7 @@
 <!-- start (JS code) -->
 <script type="text/javascript">
 showAllClasses();
+
 function ajaxSearch()
 {
 	var input_data = $('#search_data').val();
@@ -174,16 +198,18 @@ function ajaxSearch()
                     data: {"idnum": idnum},
 					dataType: "json",
                     success: function (data) {
-						if (data === 1)
+						if (data[0] === 1)
 						{
 						alert("Student successfully added");
 						showAllClasses();
+						$('#search_data').val(' ');
+						$('#autoSuggestionsList').hide();  
 						}
-						else if (data === 2)
+						else if (data[0] === 2)
 						{
 							alert("Student already exist!");
 						}
-						else if (data === 3)
+						else if (data[0] === 3)
 						{
 							alert("Not a valid ID number");
 						}
@@ -205,18 +231,20 @@ function ajaxSearch()
 				success: function(data){
 					var html = '';
 					var i;
-					for(i=0; i<data.length; i++){
+					var result = data['result'];
+					for(i=0; i<result.length; i++){
 						html +='<tr>'+
-									'<td>'+data[i].classListID+'</td>'+
-									'<td>'+data[i].studentID+'</td>'+
-									'<td>'+data[i].userName+'</td>'+
-									'<td>'+data[i].dateAdded+'</td>'+
+									'<td>'+result[i].classListID+'</td>'+
+									'<td>'+result[i].studentID+'</td>'+
+									'<td>'+result[i].userName+'</td>'+
+									'<td>'+result[i].dateAdded+'</td>'+
 									'<td>'+
-										'<a href="javascript:;" class="btn btn-danger item-delete" data="'+data[i].id+'">Delete</a>'+
+										'<a href="javascript:;" class="btn btn-danger item-delete" data="'+result[i].id+'">Delete</a>'+
 									'</td>'+
 							    '</tr>';
 					}
 					$('#showdata').html(html);
+					$('#studcount').html(data['count']);
 				},
 				error: function(){
 					alert('Could not get Data from Database');
