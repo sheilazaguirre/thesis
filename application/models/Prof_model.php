@@ -63,12 +63,12 @@ class Prof_model extends CI_Model
     
     function get_classlist($params = array())
     {
-        $this->db->select("c.classlistID,c.studentID, c.classID, CONCAT(u.userFN,' ', u.userLN) as userName, g.gradeID, g.grade, g.remarks, g.status");
+        $this->db->select("c.classlistID,c.studentID, c.classID, CONCAT(u.userLN,', ', u.userFN) as userName, g.gradeID, g.grade, g.remarks, g.status");
         $this->db->from("classlist c");
         $this->db->join('users u', 'u.userIDNo = c.studentID');
         $this->db->join('grades g', 'g.studentID = c.studentID', "left");
         $this->db->order_by('u.userLN', 'asc');
-        $this->db->where('c.classID', 2);
+        $this->db->where('c.classID', 1);
         return $this->db->get()->result_array();
     }
 
@@ -78,7 +78,7 @@ class Prof_model extends CI_Model
     
     function get_all_grades($classID = NULL)
     {
-        $this->db->where('classID', 2);
+        $this->db->where('classID', 1);
         return $this->db->get("grades")->result_array();
     }
     

@@ -50,10 +50,11 @@ class Prof extends CI_Controller{
 
     function grades()
     {        
-        if(isset($_POST) && count($_POST) > 0)     
-        {   
+        if(isset($_POST) && count($_POST) > 0)
+        {
             $params = [];
-            foreach ($this->input->post('clID') as $clID) {
+            foreach ($this->input->post('clID') as $clID)
+            {
                 $params[$clID] = array(
                     'studentID' => $this->input->post('sid['.$clID.']'),
                     'classID' => $this->input->post('classid'),
@@ -63,21 +64,24 @@ class Prof extends CI_Controller{
                     'dateAdded' => date('Y-m-d H:i:s'),
                     'lastSaved' => date('Y-m-d H:i:s'),
                 );
-
             }
-            
+
             $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
-            
-            if(count($grades) == 0){
-                foreach($params as $p){
+
+            if(count($grades) == 0)
+            {
+                foreach($params as $p)
+                {
                     $addgrades = $this->Prof_model->add_grades($p);
                 }
             }
-            else{   
+            else
+            {
                 if(isset($_POST['submit']))
                 {
-                    $params = []; 
-                    foreach($this->input->post('clID') as $clID){      
+                    $params = [];
+                    foreach($this->input->post('clID') as $clID)
+                    {
                         $params[$clID] = array(
                             'studentID' => $this->input->post('sid['.$clID.']'),
                             'classID' => $this->input->post('classid'),
@@ -86,15 +90,17 @@ class Prof extends CI_Controller{
                             'status' => "Submitted",
                             'dateSubmitted' => date('Y-m-d H:i:s'),
                         );
-                    }
-                    foreach($params as $p){
-                    $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
+                        foreach($params as $p)
+                        {
+                            $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
+                        }
                     }
                 }
                 else
                 {
-                    $params = []; 
-                    foreach($this->input->post('clID') as $clID){      
+                    $params = [];
+                    foreach($this->input->post('clID') as $clID)
+                    {
                         $params[$clID] = array(
                             'studentID' => $this->input->post('sid['.$clID.']'),
                             'classID' => $this->input->post('classid'),
@@ -104,27 +110,28 @@ class Prof extends CI_Controller{
                             'lastSaved' => date('Y-m-d H:i:s'),
                         );
                     }
-                    foreach($params as $p){
-                    $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
+                    foreach($params as $p)
+                    {
+                        $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                     }
-                }  
-                
+                }
+                $var_dump($_POST['submit']);
             }
-
             redirect('prof/index');
         }
-        else{
+        else
+        {
             $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
-            if($grades){
-                for($i = 0; $i<count($grades); $i++){
+            if($grades)
+            {
+                for($i = 0; $i<count($grades); $i++)
+                {
                     $data['classlist']['grade'][$i] = $grades[$i]['grade'];
                 }
-            }          
+            }
             $data['classlist'] = $this->Prof_model->get_classlist();
-            // var_dump($data['classlist']);
             $this->load->view('prof/grades', $data);
         }
-
     }
 
     
@@ -139,7 +146,6 @@ class Prof extends CI_Controller{
                 'subjectID' => $this->input->post('subjectID'),
                 'remarks' => $this->input->post('remarks'),
             );
-            $this->db->set('dateAdded', 'NOW()', FALSE);
             $this->db->set('status', 'Active');
             $prof_id = $this->Prof_model->add_prof($params);
             redirect('prof/index');
