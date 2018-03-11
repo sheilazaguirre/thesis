@@ -54,6 +54,11 @@ class Reports extends CI_Controller{
         $this->load->view('reports/studentlistreport');
     }
 
+    function userlist()
+    {
+        $this->load->view('reports/userlistreport');
+    }
+
 
     function comsci()
     {

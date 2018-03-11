@@ -34,9 +34,9 @@
                 <!-- Logo -->
                 <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini">GAPC</span>
+                    <span class="logo-mini"></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg">GAPC</span>
+                    <span class="logo-lg"><img src="<?php echo site_url('resources/my-images/transparent_logo.png')?>" height="80" width="100" style="margin-top: 15px;"></span>
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
@@ -54,7 +54,7 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                                    <span class="hidden-xs">Admin GAPC</span>
+                                    <span class="hidden-xs">MENU</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
@@ -91,7 +91,7 @@
 
                         </div>
                         <div class="pull-left info">
-                            <p>Beper Ong - Admin</p>
+                            <p></p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>

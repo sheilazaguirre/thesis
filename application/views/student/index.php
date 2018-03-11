@@ -6,6 +6,9 @@
             	<div class="box-tools">
                     <a href="<?php echo site_url('student/add'); ?>" class="btn btn-success btn-sm">Add Student</a>
                 </div>
+                <div style="text-align: right; margin-top: 10px;">
+                    <a href="<?php echo site_url('reports/studentlist'); ?>" class="btn btn-warning btn-sm" target="_blank">Generate Report</a> 
+                </div>
             </div>
             <div class="box-body">
                 <table id="tblstudent" class="table table-striped">

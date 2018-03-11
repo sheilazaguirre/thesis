@@ -86,7 +86,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="<?php echo site_url('applicant/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+							<a href="<?php echo site_url('landing_page/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 						</span>
 					</li>		
 				</ul>
@@ -169,7 +169,7 @@
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="<?php echo site_url('applicant/application')?>" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+												<a href="<?php echo site_url('landing_page/application')?>" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 											</li>
 											</li>
 										</ul>

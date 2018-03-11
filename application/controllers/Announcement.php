@@ -26,6 +26,8 @@ class Announcement extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
+    
+
     /*
      * Adding a new announcement
      */

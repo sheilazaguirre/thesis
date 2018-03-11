@@ -51,36 +51,36 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="index"><span class="act-underline">HOME</span></a>
+							<a href="<?php echo base_url()?>landing_page/index"><span class="act-underline">HOME</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="about"><span class="act-underline">ABOUT US</span></a>
+							<a href="<?php echo base_url()?>landing_page/about"><span class="act-underline">ABOUT US</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="admission"><span class="act-underline"><span class="act-underline">ADMISSION</span></span></a>
+							<a href="<?php echo base_url()?>landing_page/admission"><span class="act-underline"><span class="act-underline">ADMISSION</span></span></a>
 						</span>
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="contact"><span class="act-underline">CONTACT US</span></a>
+							<a href="<?php echo base_url()?>landing_page/contact"><span class="act-underline">CONTACT US</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="<?php echo site_url('applicant/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+							<a href="<?php echo site_url('landing_page/application')?>"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 						</span>
 					</li>
 					<li>
 						<span class="name"><span class="expander">-</span>
-							<a href="faculty"><span class="act-underline">FACULTY LOGIN</span></a>
+							<a href="<?php echo base_url()?>landing_page/faculty"><span class="act-underline">FACULTY LOGIN</span></a>
 						</span>						
 					</li>		
 				</ul>
@@ -134,27 +134,27 @@
 										<ul class="nav navbar-nav">
 											<li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>										
 											<li class="dropdown dropdown-mega-menu">											
-												<a href="index" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">HOME</span></a>
+												<a href="<?php echo base_url()?>landing_page/index" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">HOME</span></a>
 											</li>											
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="about" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ABOUT US</span></a>
+												<a href="<?php echo base_url()?>landing_page/about" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ABOUT US</span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="admission" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ADMISSION</span></a>
+												<a href="<?php echo base_url()?>landing_page/admission" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ADMISSION</span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="contact" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">CONTACT US</span></a>
+												<a href="<?php echo base_url()?>landing_page/contact" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">CONTACT US</span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="<?php echo site_url('applicant/application')?>"" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
+												<a href="<?php echo site_url('landing_page/application')?>"" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">APPLICATION<span class="badge badge--menu">NEW</span></span></a>
 											</li>
 											<li class="dropdown dropdown-mega-menu dropdown-two-col">
 												<span class="dropdown-toggle extra-arrow"></span>
-												<a href="faculty" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">FACULTY LOGIN</span></a>
+												<a href="<?php echo base_url()?>landing_page/faculty" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">FACULTY LOGIN</span></a>
 											</li>
 											</li>
 										</ul>
@@ -207,9 +207,9 @@
 								data-easing="Power4.easeOut" 
 								data-endeasing="Power4.easeIn" 
 								style="z-index: 2;">
-								<div class="tp-caption1--wd-1">S.Y 17-18 Term 1</div>
+								<div class="tp-caption1--wd-1"></div>
 								<div class="tp-caption1--wd-2">Announcements</div>
-								<a href="" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
+								<a href="<?php echo site_url('landing_page/announcements')?>" class="link-button button--border-thick" data-text="Shop now!">Click Here</a>
 							</div>
 						</li>
 						<!-- /SLIDE -1 -->
@@ -259,7 +259,7 @@
 								<div class="tp-caption3--wd-2">NEW</div>
 								<div class="tp-caption3--wd-3 color-white">ONLINE</div>
 								<div class="tp-caption3--wd-3 color-white">APPLICATION</div>
-								<div class="text-center"><a href="<?php echo site_url('applicant/application')?>" class="link-button button--border-thick" data-text="Shop now!">APPLY NOW</a></div>
+								<div class="text-center"><a href="<?php echo site_url('landing_page/application')?>" class="link-button button--border-thick" data-text="Shop now!">APPLY NOW</a></div>
 							</div>	
 						
 						</li>

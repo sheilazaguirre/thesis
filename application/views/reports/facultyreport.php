@@ -1,6 +1,11 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-	$query = "SELECT userIDNo,userFN, userLN FROM users WHERE userTypeID = '2' AND status ='Active'";
+	$count = "SELECT COUNT(*) FROM users WHERE userTypeID = '2' AND status ='Active'";
+	$query = "SELECT userIDNo,userFN, userLN, age FROM users WHERE userTypeID = '2' AND status ='Active'";
+	$results = mysqli_query($db, $query);
+
+	$countresult = mysqli_query($db, $count);
+	$facultycount = mysqli_fetch_array($countresult);
 	$results = mysqli_query($db, $query);
 ?>
 
@@ -12,28 +17,46 @@
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 		 	rel="stylesheet" />
 	</head>
-	<body>
+	<div id="wrap">
 		<div>
 			<p class="text-center"><img src="images/logo.png"></p>
 			<h3 style="color:#80091F" class="text-center">Governor Andres Pascual College</h3>
 			<p class="text-center">1045 M. Naval St, City of Navotas, 1485 Metro Manila</p>
 			<p class="text-center">(02) 282 9035</p>
 			<br>
-			<p class="text-center">Faculty List</p>
+			<h3 class="text-center">Faculty List</h3>
+			<h4 class="text-center">Academic Year: <?php echo date("Y"); ?></h4>
+			<br>
+			<p><?php echo "Total Number of Faculty: " .$facultycount[0].""; ?> </p>
+			<table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+				<thead>
+                    <tr>
+                    	<th bgcolor="#80091F" style="color: #fff;">ID Number</th>
+                        <th bgcolor="#80091F" style="color: #fff;">Name</th>
+                        <th bgcolor="#80091F" style="color: #fff;">Age</th>
+                    </tr>
+                </thead>
+                <tbody>
 				<?php
 					while ($row = mysqli_fetch_array($results))
 					{
 						$fn = $row['userFN'];
 						$ln = $row['userLN'];
+						$age = $row['age'];
 						$uid = $row['userIDNo'];
 
-						echo "<hr>";
-						echo "<div class='well col-sm-12'>";
-						echo "<h5>ID: ".$uid."</h5>";
-						echo "<h5>Name: ".$fn." ".$ln."</h5>";
-						echo "</div>";
+						echo "<tr>";
+						echo "<td style='color: black;'>".$uid."</td>";
+						echo "<td style='color: black;'>".$ln.", ".$fn."</td>";
+						echo "<td style='color: black;'>".$age."</td>";
+						echo "</tr>";
 					}
 				?>
+			</tbody>
+		</table>
+	</div>
+			<br>
+			<img src="images/signature.png">
 		</div>
 	</body>
 </html>

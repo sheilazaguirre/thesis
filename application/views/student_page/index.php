@@ -195,35 +195,9 @@
 					<ul>
 						<!-- SLIDE -1 -->
 						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-										<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide3"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-									<!-- LAYER NR. 1 -->
-									<div class="tp-caption tp-fade fadeout fullscreenvideo"
-										data-x="0"
-										data-y="0"
-										data-speed="1000"
-										data-start="1100"
-										data-easing="Power4.easeOut"
-										data-endspeed="1500"
-										data-endeasing="Power4.easeIn"
-										data-autoplay="true"
-										data-autoplayonlyfirsttime="false"
-										data-nextslideatend="true"
-										data-forceCover="1"
-										data-dottedoverlay="twoxtwo"
-										data-aspectratio="16:9"
-										data-forcerewind="on"
-										style="z-index: 2">
-
-
-										<video class="video-js vjs-default-skin" preload="none" 
-										data-setup="{}">
-										<source src='<?php echo site_url('resources/my-images/slides/video/explore.mp4')?>' type='video/mp4' />
-										<source src='<?php echo site_url('resources/my-images/slides/video/explore.webm')?>' type='video/webm' />
-										<source src='<?php echo site_url('resources/my-images/slides/video/explore.ogv')?>' type='video/ogg'  />
-										</video>
-
-									</div>
-						
+							<!-- MAIN IMAGE --> 
+							<img src="<?php echo site_url('resources/my-images/slide.jpg')?>"  alt="slide2"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+							<!-- LAYERS -->												
 						</li>
 						<!-- /SLIDE -1 -->
 						<!-- SLIDE 2  -->            

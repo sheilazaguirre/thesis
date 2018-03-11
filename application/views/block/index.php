@@ -6,6 +6,9 @@
             	<div class="box-tools">
                     <a href="<?php echo site_url('block/add'); ?>" class="btn btn-success btn-sm">Add Block</a> 
                 </div>
+                <div style="text-align: right; margin-top: 10px;">
+                    <a href="<?php echo site_url('reports/section'); ?>" class="btn btn-warning btn-sm" target="_blank">Generate Report</a> 
+                </div>
             </div>
             <div class="box-body">
                 <table id="blockTable" class="table table-striped">

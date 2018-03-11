@@ -77,6 +77,11 @@ class Landing_Page extends CI_Controller{
         if (isset($_POST['userEmail']) && !empty($_POST['userEmail']))
         {
             $this->load->library('form_validation');
+            $form_reponse=$this->input->post('g-recaptcha-response');
+            $url="https://www.google.com/recaptcha/api/siteverify";
+            $secretkey="6LfRmzcUAAAAALyhGzTaoIa5XsHxb3MocPDbDZd_";
+            $response=file_get_contents($url."?secret=".$secretkey."&response=".$form_reponse."&remoteip=".$_SERVER["REMOTE_ADDR"]);
+            $dota=json_decode($response);
             //check if email is valid
             $this->form_validation->set_rules('userEmail', 'Email Addresss', 'trim|required|min_length[6]|max_length[50]|valid_email|xss_clean');
             if ($this->form_validation->run() == FALSE)
@@ -90,7 +95,7 @@ class Landing_Page extends CI_Controller{
                 $userEmail = trim($this->input->post('userEmail'));
                 $result = $this->Landing_Page_model->email_exists($userEmail);
 
-                if($result)
+                if($result and isset($dota->success) && $dota->success=="true")
                 {
                     $this->send_reset_password_email($userEmail, $result);
                     $this->load->view('layouts/header');
@@ -100,7 +105,7 @@ class Landing_Page extends CI_Controller{
                 else
                 {
                     $this->load->view('layouts/header');
-                    $this->load->view('landing_page/forgot', array('error'=> 'Email address not registered'));
+                    $this->load->view('landing_page/forgot', array('error'=> 'Either your email is not registered or you did not click the recaptcha.'));
                     $this->load->view('layouts/footer');
                 }
             }
@@ -198,11 +203,104 @@ class Landing_Page extends CI_Controller{
         $this->email->send();
     }
 
-    function try()
+    function announcements()
     {
-        $this->load->view('layouts/header');
-        $this->load->view('landing_page/update_password');
-        $this->load->view('layouts/footer');
+        $this->load->model('Announcement_model');
+        $params['limit'] = RECORDS_PER_PAGE; 
+        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+        
+        $config = $this->config->item('pagination');
+        $config['base_url'] = site_url('announcement/index?');
+        $config['total_rows'] = $this->Announcement_model->get_all_announcements_count();
+        $this->pagination->initialize($config);
+
+        $data['announcements'] = $this->Announcement_model->get_announcement();
+        
+        $this->load->view('landing_page/announcements',$data);
+    }
+
+    function application()
+    {
+        $this->load->model('Applicant_model');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('apfn','First Name','required|max_length[50]');
+        $this->form_validation->set_rules('apln','Last Name','required|max_length[50]');
+        $this->form_validation->set_rules('apmn','Middle Name','required|max_length[50]');
+        $this->form_validation->set_rules('courseID','Course','required|max_length[50]');
+        $this->form_validation->set_rules('email','Email','required|max_length[100]');
+        $this->form_validation->set_rules('mobile','Mobile','required|max_length[15]');
+        $this->form_validation->set_rules('birthdate','Birth date','required');
+        $this->form_validation->set_rules('birthplace','Birthplace','required|max_length[150]');
+        $this->form_validation->set_rules('gender','Gender','required|max_length[20]');
+        $this->form_validation->set_rules('civstat','Civstat','required|max_length[20]');
+        $this->form_validation->set_rules('nationality','Nationality','required|max_length[20]');
+        $this->form_validation->set_rules('religion','Religion','required|max_length[20]');
+        $this->form_validation->set_rules('addcity','City Address','required|max_length[150]');
+        $this->form_validation->set_rules('addprov','Provincial Address','max_length[150]');
+        $this->form_validation->set_rules('elemschool','Elementary','required|max_length[50]');
+        $this->form_validation->set_rules('secschool','Secondary','required|max_length[50]');
+        $this->form_validation->set_rules('tertschool','Tertiary','required|max_length[50]');
+        $this->form_validation->set_rules('reasonleave','Reason for Leaving','required|max_length[150]');
+        $this->form_validation->set_rules('guardianame','Guardianame','max_length[50]');
+        $this->form_validation->set_rules('relationship','Relationship','max_length[20]');
+        $this->form_validation->set_rules('fathername','Father name','required|max_length[50]');
+        $this->form_validation->set_rules('fatherocc','Father occupation','required|max_length[50]');
+        $this->form_validation->set_rules('mothername','Mother name','required|max_length[50]');
+        $this->form_validation->set_rules('motherocc','Mother occupation','required|max_length[50]');
+        $this->form_validation->set_rules('datesubmitted','Datesubmitted');
+        $this->form_validation->set_rules('datemodified','Datemodified');
+
+        if($this->form_validation->run())
+        {
+            $datebirth = $this->input->post('birthdate');
+            $today = date("Y-m-d");
+            $diff = date_diff(date_create($datebirth), date_create($today));
+            $num = $diff->format('%y');
+            $age = (int)$num;
+
+
+
+            $params = array(
+                'courseID' => $this->input->post('courseID'),
+                'studentstat' => 'Pending',
+                'status' => 'Active',
+                'apfn' => $this->input->post('apfn'),
+                'apln' => $this->input->post('apln'),
+                'apmn' => $this->input->post('apmn'),
+                'email' => $this->input->post('email'),
+                'birthdate' => $datebirth,
+                'age' => $age,
+                'mobile' => $this->input->post('mobile'),
+                'gender' => $this->input->post('gender'),
+                'civstat' => $this->input->post('civstat'),
+                'nationality' => $this->input->post('nationality'),
+                'religion' => $this->input->post('religion'),
+                'elemschool' => $this->input->post('elemschool'),
+                'secschool' => $this->input->post('secschool'),
+                'tertschool' => $this->input->post('tertschool'),
+                'guardianame' => $this->input->post('guardianame'),
+                'relationship' => $this->input->post('relationship'),
+                'fathername' => $this->input->post('fathername'),
+                'fatherocc' => $this->input->post('fatherocc'),
+                'mothername' => $this->input->post('mothername'),
+                'motherocc' => $this->input->post('motherocc'),
+                'datesubmitted' => date('Y-m-d H:i:s'),
+                'datemodified' => null,
+                'birthplace' => $this->input->post('birthplace'),
+                'addcity' => $this->input->post('addcity'),
+                'addprov' => $this->input->post('addprov'),
+                'reasonleave' => $this->input->post('reasonleave'),
+            );
+
+            $applicant_id = $this->Applicant_model->add_applicant($params);
+            $this->load->view('layouts/header');
+            $this->load->view('landing_page/application_success');
+            $this->load->view('layouts/footer');
+        }
+        else {
+            $this->load->view('landing_page/application');
+        }
     }
 
     function about()
