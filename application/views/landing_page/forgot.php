@@ -10,7 +10,7 @@
 <form action="<?php echo base_url()?>landing_page/forgot_password" method="POST">
 <div style="text-align: center;">
 	<div>
-		<input type="email" class="textbox" value="<?php echo set_value('email'); ?>" name="userEmail" placeholder="Email"/>
+		<input type="email" class="textbox" value="<?php echo set_value('email'); ?>" name="userEmail" autocomplete="off" placeholder="Email"/>
 	</div>
 	<br>
 	<div>

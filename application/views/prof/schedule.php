@@ -173,7 +173,7 @@
 			<div class="container">
 					<ol class="breadcrumb breadcrumb--ys pull-left">
 						<li class="home-link"><a href="index" class="icon icon-home"></a></li>
-						<li>S.Y 2016-2017</li>
+						<li>S.Y <?php echo date("Y"); ?></li>
 						<li class="active">Schedule</li>
 					</ol>
 				</div>

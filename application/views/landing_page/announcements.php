@@ -57,7 +57,8 @@
         margin: auto;
         display: block;
         width: 80%;
-        max-width: 700px;
+        max-height: 500px;
+        max-width: 750px;
     }
 
     /* Caption of Modal Image */
@@ -99,7 +100,7 @@
         position: absolute;
         top: 20px;
         right: 35px;
-        color: #f1f1f1;
+        color: #fff;
         font-size: 40px;
         font-weight: bold;
         transition: 0.3s;

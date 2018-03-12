@@ -170,7 +170,7 @@
             <div class="container">
                     <ol class="breadcrumb breadcrumb--ys pull-left">
                         <li class="home-link"><a href="index" class="icon icon-home"></a></li>
-                        <li>S.Y 2016-2017</li>
+                        <li>S.Y <?php echo date("Y"); ?></li>
                         <li class="active">Lessons</li>
                     </ol>
                 </div>
@@ -187,7 +187,7 @@
                                 <div class="col-md-10">
                                 </div>
                                 <div class="col-md-2">
-                                <a href="<?php echo site_url('assignment/add'); ?>" class="btn btn-success btn-sm">Add Lesson</a>
+                                <a href="<?php echo site_url('prof/addlesson'); ?>" class="btn btn-success btn-sm">Add Lesson</a>
                             </div>
                                 <!-- Tab panes -->
                                 <div class="tab-content tab-content--ys nav-stacked">
@@ -214,7 +214,6 @@
                                                     <td class="text-center">Instructions.txt</td>
                                                     <td class="text-center">Secret</td>
                                                     <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Edit</a>
                                                         <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
                                                     </td>
                                                 </tr>
@@ -244,7 +243,6 @@
                                                     <td class="text-center">Instructions.txt</td>
                                                     <td class="text-center">Secret</td>
                                                     <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Edit</a>
                                                         <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
                                                     </td>
                                                 </tr>

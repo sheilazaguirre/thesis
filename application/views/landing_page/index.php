@@ -281,7 +281,7 @@
 					<div class="form-group">
 						<div>
 							<input name="userIDNo" type="text" placeholder="ID Number" 
-								class="textbox" required />
+								class="textbox" autocomplete="off" required />
 						</div>
 					</div>
 					<div class="form-group">

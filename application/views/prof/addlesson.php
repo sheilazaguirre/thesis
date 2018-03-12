@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <!-- Basic -->
         <meta charset="utf-8">
-        <title>Governor Andres Pascual College - Information Systems</title>
-        <meta name="keywords" content="HTML5 Template" />
-        <meta name="description" content="YOURStore - Responsive HTML5 Template">
-        <meta name="author" content="etheme.com">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GAPC Main</title>
         <link rel="shortcut icon" href="<?php echo site_url('resources/my-images/gapc-favicon.ico')?>">
-        <!-- Mobile Specific Metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- External Plugins CSS -->
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/bootstrap.min.css');?>">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/font-awesome.min.css');?>">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Datetimepicker -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/bootstrap-datetimepicker.min.css');?>">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/AdminLTE.min.css');?>">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/_all-skins.min.css');?>">
+
         <link rel="stylesheet" href="<?php echo site_url('resources/my-external/slick/slick.css')?>">
         <link rel="stylesheet" href="<?php echo site_url('resources/my-external/slick/slick-theme.css')?>">
         <link rel="stylesheet" href="<?php echo site_url('resources/my-external/magnific-popup/magnific-popup.css')?>">
@@ -24,7 +34,16 @@
         <!-- Head Libs -->
         <!-- Modernizr -->
         <script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js')?>"></script>
+
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
     </head>
+
     <body class="index">        
         <div id="loader-wrapper">
             <div id="loader">
@@ -150,6 +169,10 @@
                                         <span class="dropdown-toggle extra-arrow"></span>
                                         <a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
                                     </li>
+                                    <li class="dropdown dropdown-mega-menu">
+                                        <span class="dropdown-toggle extra-arrow"></span>
+                                        <a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MONITOR DOWNLOAD</span></a>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
@@ -160,105 +183,86 @@
             </header>
 
         </div>
-        <!-- End HEADER section -->
-        <!-- breadcrumbs -->
-        
-        <!-- /breadcrumbs --> 
-        <!-- CONTENT section -->
-        <div id="studentContent">
-            <div class="breadcrumbs">
-            <div class="container">
-                    <ol class="breadcrumb breadcrumb--ys pull-left">
-                        <li class="home-link"><a href="index" class="icon icon-home"></a></li>
-                        <li>S.Y <?php echo date("Y"); ?></</li>
-                        <li class="active">Assignments</li>
-                    </ol>
+
+
+<div class="row" id="studentContent">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Add Lesson</h3>
+            </div>
+            <form action="<?php echo base_url()?>prof/addassign" method="POST">
+            <div class="box-body">
+                <div class="row clearfix">
+                    <div class="col-md-6">
+                        <label for="classID" class="control-label"><span class="text-danger">*</span>Class</label>
+                        <div class="form-group">
+                            <select name="classID" class="form-control">
+                                <option value="">Select a Class</option>
+                                <?php 
+                                foreach($all_theclasses as $theclass)
+                                {
+                                    $selected = ($theclass['classID'] == $this->input->post('classID')) ? ' selected="selected"' : "";
+
+                                    echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
+                                } 
+                                ?>
+                            </select>
+                            <span class="text-danger"><?php echo form_error('classID');?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lessonFile" class="control-label"><span class="text-danger">*</span>File</label>
+                        <div class="form-group">
+                            <input type="file" name="filen" size="20" class="form-control" id="lessonFile" />
+                            <span class="text-danger"><?php if (isset($error)) { echo $error; } ?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lessonDesc" class="control-label"><span class="text-danger">*</span>Description</label>
+                        <div class="form-group">
+                            <textarea name="lessonDesc" class="form-control" id="lessonDesc"><?php echo $this->input->post('lessonDesc'); ?></textarea>
+                            <span class="text-danger"><?php echo form_error('lessonDesc');?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lessonTitle" class="control-label"><span class="text-danger">*</span>Title</label>
+                        <div class="form-group">
+                            <input type="text" name="lessonTitle" value="<?php echo $this->input->post('lessonTitle'); ?>" class="form-control" id="lessonTitle" />
+                            <span class="text-danger"><?php echo form_error('lessonTitle');?></span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <section class="content offset-top-0">
-                <div class="container">
-                            <div class="content">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
-                                    <li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">1st Semester</a></li>
-                                    <li><a href="#Tab2" role="tab" data-toggle="tab" class="text-uppercase">2nd Semester</a></li>
-                                </ul>
-                                <br>
-                                <div class="col-md-10">
-                                </div>
-                                <div class="col-md-2">
-                                <a href="<?php echo site_url('prof/addassign'); ?>" class="btn btn-success btn-sm">Add Assignment</a>
-                            </div>
-                                <!-- Tab panes -->
-                                <div class="tab-content tab-content--ys nav-stacked">
-                                    <div role="tabpanel" class="tab-pane active" id="Tab1">
-                                        <div class="divider divider--xs"></div>
-                                        <table class="table table-params" >
-                                            <thead>
-                                                <tr bgcolor="#80091F">
-                                                    <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
-                                                    <th class="text-center" style="color: #fff">Title</th>
-                                                    <th class="text-center" style="color: #fff">Description</th>
-                                                    <th class="text-center" style="color: #fff">File</th>
-                                                    <th class="text-center" style="color: #fff">Date Added</th>
-                                                    <th class="text-center" style="color: #fff">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAN</td>
-                                                    <td class="text-center">TI001</td>
-                                                    <td class="text-center">Management Assignment #1</td>
-                                                    <td class="text-center">First Assignment for PRINMAN</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="Tab2">
-                                        <div class="divider divider--xs"></div>
-                                        <table class="table table-params">
-                                            <thead>
-                                                <tr bgcolor="#80091F">
-                                                    <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
-                                                    <th class="text-center" style="color: #fff">Title</th>
-                                                    <th class="text-center" style="color: #fff">Description</th>
-                                                    <th class="text-center" style="color: #fff">File</th>
-                                                    <th class="text-center" style="color: #fff">Date Added</th>
-                                                    <th class="text-center" style="color: #fff">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAR</td>
-                                                    <td class="text-center">TI002</td>
-                                                    <td class="text-center">Marketing Assignment #1</td>
-                                                    <td class="text-center">First Assignment for PRINMAR</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>          
-            </section>          
-            <!-- related products -->
-            <!-- /related products -->
+            <div class="box-footer">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-check"></i> Save
+                </button>
+            </div>
+            </form>
         </div>
+    </div>
 
-        <hr>
-        <!-- End CONTENT section --> 
-        <!-- / Modal (quickViewModal) -->
-        <!-- External JS --> 
-        <!-- jQuery 1.10.1--> 
+        
+
+        <script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="<?php echo site_url('resources/js/bootstrap.min.js');?>"></script>
+        <!-- FastClick -->
+        <script src="<?php echo site_url('resources/js/fastclick.js');?>"></script>
+        <!-- AdminLTE App -->
+        <script src="<?php echo site_url('resources/js/app.min.js');?>"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="<?php echo site_url('resources/js/demo.js');?>"></script>
+        <!-- DatePicker -->
+        <script src="<?php echo site_url('resources/js/moment.js');?>"></script>
+        <script src="<?php echo site_url('resources/js/bootstrap-datetimepicker.min.js');?>"></script>
+        <script src="<?php echo site_url('resources/js/global.js');?>"></script>
+
+        <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.js');?>"></script>
+        <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.extensions.js');?>"></script>
+        <script src="<?php echo site_url('resources/input-mask/jquery.inputmask.date.extensions.js');?>"></script>
+
         <script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
         <!-- Bootstrap 3--> 
         <script src="<?php echo site_url('resources/my-external/bootstrap/bootstrap.min.js')?>"></script> 
@@ -278,6 +282,17 @@
 
         <!-- Custom --> 
         <script src="<?php echo site_url('resources/my-js/custom.js')?>"></script>
-        <script src="<?php echo site_url('resources/my-js/js-index-04.js')?>"></script>                 
+        <script src="<?php echo site_url('resources/my-js/js-index-04.js')?>"></script> 
+
+        <script>
+            $('[data-mask]').inputmask();
+        </script>
+      
+
     </body>
-</html>
+
+    </html>
+
+
+
+

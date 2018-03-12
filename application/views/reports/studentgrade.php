@@ -38,15 +38,17 @@
 				<table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th bgcolor="#a9404d">Course</th>
-							<th bgcolor="#a9404d">Professor</th>
-							<th bgcolor="#a9404d">Final Grade</th>
+							<th bgcolor="#80091F" style="color: #fff;">Course</th>
+							<th bgcolor="#80091F" style="color: #fff;">Professor</th>
+							<th bgcolor="#80091F" style="color: #fff;">Midterm Grade</th>
+							<th bgcolor="#80091F" style="color: #fff;">Final Grade</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>PRINMAR</td>
 							<td>Go, Bong</td>
+							<td>3.00</td>
 							<td>2.50</td>
 						</tr>
 
@@ -54,17 +56,20 @@
 							<td>ADVAAC</td>
 							<td>Roa, Rudolfo</td>
 							<td>3.00</td>
+							<td>3.00</td>
 						</tr>
 
 						<tr>
 							<td>ISPROJ1</td>
 							<td>Santos, Arlinde</td>
+							<td>3.00</td>
 							<td>2.00</td>
 						</tr>
 
 						<tr>
 							<td>BUFINMA</td>
 							<td>Fajardo, Greg</td>
+							<td>3.00</td>
 							<td>3.00</td>
 						</tr>
 					</tbody>

@@ -6,6 +6,8 @@ class Prof extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Prof_model');
+        $this->load->model('Assignment_model');
+        $this->load->model('Lesson_model');
         $this->load->helper('form');
         $this->load->helper('url');
         
@@ -46,6 +48,108 @@ class Prof extends CI_Controller{
         $data['prof'] = $this->Prof_model->get_all_prof($params);
         
         $this->load->view('prof/index');
+    }
+
+    function addassign()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('assignDesc','AssignDesc','required|max_length[150]');
+        $this->form_validation->set_rules('assignTitle','AssignTitle','required|max_length[50]');
+        
+        if($this->form_validation->run())     
+        {   
+
+            $config['upload_path'] = './uploads/assignments';
+            $config['allowed_types'] = 'jpg|png|pdf|docx|txt';
+            $config['max_size'] = 100;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+            $var;
+            if ( ! $this->upload->do_upload('filen'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+            }
+            else
+            {
+                    $data = array('upload_data' => $this->upload->data());
+                    
+                    $var = $this->upload->data()["file_name"];
+                    //var_dump($var);
+            }
+
+            $params = array(
+                'classID' => $this->input->post('classID'),
+                'assignFile' => $var,
+                'assignDesc' => $this->input->post('assignDesc'),
+                'assignTitle' => $this->input->post('assignTitle'),
+            );
+            $this->db->set('dateUploaded', 'NOW()', FALSE);
+            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
+            $this->db->set('status', 'Active');
+            $assignment_id = $this->Assignment_model->add_assignment($params);
+            redirect('prof/assignments');
+        }
+        else
+        {
+            $this->load->model('Theclass_model');
+            $data['all_theclasses'] = $this->Theclass_model->get_all_theclasses();
+            
+            $this->load->view('prof/addassign',$data);
+        }
+    }
+
+    function addlesson()
+    {   
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('classID','ClassID','required|integer');
+        $this->form_validation->set_rules('lessonDesc','LessonDesc','required|max_length[150]');
+        
+        if($this->form_validation->run())     
+        {   
+
+            $config['upload_path'] = './uploads/lessons';
+            $config['allowed_types'] = 'jpg|png|pdf|docx|txt|ppt|xlsx';
+            $config['max_size'] = 100;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+
+            $this->load->library('upload', $config);
+            $var;
+            if ( ! $this->upload->do_upload('filen'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+            }
+            else
+            {
+                    $data = array('upload_data' => $this->upload->data());
+                    
+                    $var = $this->upload->data()["file_name"];
+                    var_dump($var);
+            }
+
+            $params = array(
+                'classID' => $this->input->post('classID'),
+                'lessonFile' => $var,
+                'lessonDesc' => $this->input->post('lessonDesc'),
+                'lessonTitle' => $this->input->post('lessonTitle'),
+            );
+            $this->db->set('dateUploaded', 'NOW()', FALSE);
+            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
+            $this->db->set('status', 'Active');
+            $lesson_id = $this->Lesson_model->add_lesson($params);
+            redirect('prof/lessons');
+        }
+        else
+        {
+            $this->load->model('Theclass_model');
+            $data['all_theclasses'] = $this->Theclass_model->get_all_theclasses();
+            
+            $this->load->view('prof/addlesson',$data);
+        }
     }
 
     function grades()
