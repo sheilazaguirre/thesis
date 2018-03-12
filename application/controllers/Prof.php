@@ -72,7 +72,9 @@ class Prof extends CI_Controller{
             $config['max_height'] = 768;
 
             $this->load->library('upload', $config);
+
             $var;
+            
             if ( ! $this->upload->do_upload('filen'))
             {
                     $error = array('error' => $this->upload->display_errors());

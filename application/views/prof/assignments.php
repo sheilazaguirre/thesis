@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <!-- Basic -->
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Governor Andres Pascual College - Information Systems</title>
-        <meta name="keywords" content="HTML5 Template" />
-        <meta name="description" content="YOURStore - Responsive HTML5 Template">
-        <meta name="author" content="etheme.com">
         <link rel="shortcut icon" href="<?php echo site_url('resources/my-images/gapc-favicon.ico')?>">
-        <!-- Mobile Specific Metas -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- External Plugins CSS -->
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/bootstrap.min.css');?>">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/font-awesome.min.css');?>">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Datetimepicker -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/bootstrap-datetimepicker.min.css');?>">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/AdminLTE.min.css');?>">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="<?php echo site_url('resources/css/_all-skins.min.css');?>">
+
         <link rel="stylesheet" href="<?php echo site_url('resources/my-external/slick/slick.css')?>">
         <link rel="stylesheet" href="<?php echo site_url('resources/my-external/slick/slick-theme.css')?>">
         <link rel="stylesheet" href="<?php echo site_url('resources/my-external/magnific-popup/magnific-popup.css')?>">
@@ -24,7 +34,16 @@
         <!-- Head Libs -->
         <!-- Modernizr -->
         <script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js')?>"></script>
+
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
     </head>
+
     <body class="index">        
         <div id="loader-wrapper">
             <div id="loader">
@@ -48,25 +67,25 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="schedule"><span class="act-underline">SCHEDULE</span></a>
+                            <a href="<?php echo base_url()?>prof/schedule"><span class="act-underline">SCHEDULE</span></a>
                         </span>
                     </li>                   
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="listing.html"><span class="act-underline">ENCODE GRADES</span></a>
+                            <a href="<?php echo base_url()?>prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="product.html"><span class="act-underline"><span class="act-underline">MANAGE LESSONS</span></span></a>
+                            <a href="<?php echo base_url()?>prof/lessons"><span class="act-underline"><span class="act-underline">MANAGE LESSONS</span></span></a>
                         </span>
                     </li>
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="blog-layout-1.html"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
+                            <a href="<?php echo base_url()?>prof/assignments"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
                         </span>
                     </li>                       
                 </ul>
@@ -110,7 +129,7 @@
                             </div>
                             <!-- account menu end -->       
                         </div>
-                        <a href="index"><img class="logo replace-2x img-responsive" src="<?php echo site_url('resources/my-images/header-logo.png')?>" alt=""/></a> 
+                        <a href="<?php echo base_url()?>prof/index"><img class="logo replace-2x img-responsive" src="<?php echo site_url('resources/my-images/header-logo.png')?>" alt=""/></a> 
                     </div>
                 </div>
                 <!-- nav -->
@@ -136,19 +155,19 @@
                                 <ul class="nav navbar-nav">
                                     <li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>                                        
                                     <li class="dropdown dropdown-mega-menu">                                            
-                                        <a href="index" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
+                                        <a href="<?php echo base_url()?>prof/schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
                                     </li>                                   
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+                                        <a href="<?php echo base_url()?>prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE LESSONS</span></a>
+                                        <a href="<?php echo base_url()?>prof/lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE LESSONS</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
+                                        <a href="<?php echo base_url()?>prof/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
                                     </li>
                                 </ul>
                             </div>

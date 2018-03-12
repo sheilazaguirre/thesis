@@ -67,25 +67,25 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="schedule"><span class="act-underline">SCHEDULE</span></a>
+                            <a href="<?php echo base_url()?>prof/schedule"><span class="act-underline">SCHEDULE</span></a>
                         </span>
                     </li>                   
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="listing.html"><span class="act-underline">ENCODE GRADES</span></a>
+                            <a href="<?php echo base_url()?>prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="product.html"><span class="act-underline"><span class="act-underline">MANAGE LESSONS</span></span></a>
+                            <a href="<?php echo base_url()?>prof/lessons"><span class="act-underline"><span class="act-underline">MANAGE LESSONS</span></span></a>
                         </span>
                     </li>
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="blog-layout-1.html"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
+                            <a href="<?php echo base_url()?>prof/assignments"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
                         </span>
                     </li>                       
                 </ul>
@@ -129,7 +129,7 @@
                             </div>
                             <!-- account menu end -->       
                         </div>
-                        <a href="index"><img class="logo replace-2x img-responsive" src="<?php echo site_url('resources/my-images/header-logo.png')?>" alt=""/></a> 
+                        <a href="<?php echo base_url()?>prof/index"><img class="logo replace-2x img-responsive" src="<?php echo site_url('resources/my-images/header-logo.png')?>" alt=""/></a> 
                     </div>
                 </div>
                 <!-- nav -->
@@ -155,19 +155,19 @@
                                 <ul class="nav navbar-nav">
                                     <li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>                                        
                                     <li class="dropdown dropdown-mega-menu">                                            
-                                        <a href="index" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
+                                        <a href="<?php echo base_url()?>prof/schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
                                     </li>                                   
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+                                        <a href="<?php echo base_url()?>prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE LESSONS</span></a>
+                                        <a href="<?php echo base_url()?>prof/lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE LESSONS</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
+                                        <a href="<?php echo base_url()?>prof/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -187,7 +187,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Add Assignment</h3>
             </div>
-            <form action="<?php echo base_url()?>assignment/add" method="POST">
+            <form action="<?php echo base_url()?>prof/addassign" method="POST">
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
