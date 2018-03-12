@@ -20,8 +20,18 @@ class Theclass_model extends CI_Model
      */
     function get_all_theclasses()
     {
-        $this->db->order_by('classID', 'asc');
-        return $this->db->get('classes')->result_array();
+        $this->db->from('classes c');
+        $this->db->join('subjects s', 's.subjectID = c.subjectID', 'left');
+        $this->db->join('users u', 'u.userIDNo = c.facultyID', 'left');
+        $this->db->join('venues v', 'v.venueID = c.venueID', 'left');
+        $this->db->join('timeslots t', 't.timeSlotID = c.timeSlotID', 'left');
+        $this->db->where('c.status =', 'Active');
+        return $this->db->get()->result_array();
+
+        // $this->db->join('course', 'courseID');
+        // $this->db->order_by('apid', 'asc');
+        // $this->db->where('studentstat !=', 'Approved');
+        // return $this->db->get('applicant')->result_array();
     }
 
         
@@ -42,7 +52,6 @@ class Theclass_model extends CI_Model
         $this->db->where('classID',$classID);
         return $this->db->update('classes',$params);
     }
-    
     /*
      * function to delete theclass
      */
@@ -109,5 +118,33 @@ class Theclass_model extends CI_Model
             return false;
         }
     }
+
+    function max()
+    {
+        $query = $this->db->query('SELECT MAX(classID) as max FROM classes');
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->row();
+            return $result->max;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
+    function add_allclass($classid)
+    {
+        $query = $this->db->query('UPDATE classlist SET classID = '.$classid.', remarks= "Enrolled" WHERE classID = 0');
+        if ($query->num_rows() > 0)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+    
 
 }

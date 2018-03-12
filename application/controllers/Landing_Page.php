@@ -63,10 +63,11 @@ class Landing_Page extends CI_Controller{
     function logout()
     {
         $login = $this->User_model->get_user($_SESSION['userIDNo']); 
-         $params1 = array(
-                        'userID' => $login['userIDNo'],
-                        'auditDesc' => $login['userPassword'].' logged in',
-                    );
+        $paramsaudit = array(
+            'userIDNo' => $idnum,
+            'auditDesc' => 'Logged In',
+        );
+        $this->Auditlog_model->add_auditlog($paramsaudit);
                     // $this->Auditlog_model->add_auditlog($params1);
         session_destroy();
         redirect(site_url().'landing_page/index');
