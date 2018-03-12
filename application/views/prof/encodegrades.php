@@ -1,3 +1,10 @@
+<?php
+	$db = mysqli_connect("localhost", "root", "", "thesis");
+	$result = mysqli_query($db, "SELECT c.classID, s.subjectCode, c.facultyID FROM classes c
+	INNER JOIN subjects s ON c.subjectID = s.subjectID
+	WHERE c.facultyID='1' AND c.status='Active'");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -54,19 +61,19 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="grades"><span class="act-underline">GRADES</span></a>
+							<a href="listing.html"><span class="act-underline">ENCODE GRADES</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
+							<a href="product.html"><span class="act-underline"><span class="act-underline">MANAGE LESSONS</span></span></a>
 						</span>
 					</li>
 					<li>
-						<span class="assignments">
+						<span class="name">
 							<span class="expander">-</span>
-							<a href="blog-layout-1.html"><span class="act-underline">ASSSIGNMENTS</span></a>
+							<a href="blog-layout-1.html"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
 						</span>
 					</li>						
 				</ul>
@@ -143,15 +150,15 @@
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
+										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
+										<a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE LESSONS</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
+										<a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
 									</li>
 								</ul>
 							</div>
@@ -163,101 +170,82 @@
 			</header>
 
 		</div>
-		<!-- End HEADER section -->
-		<!-- breadcrumbs -->
-		
-		<!-- /breadcrumbs --> 
-		<!-- CONTENT section -->
-		<div id="studentContent">
-			<div class="breadcrumbs">
-			<div class="container">
-					<ol class="breadcrumb breadcrumb--ys pull-left">
-						<li class="home-link"><a href="index" class="icon icon-home"></a></li>
-						<li>S.Y 2016-2017</li>
-						<li class="active">Grades</li>
-					</ol>
+
+		<!-- The content of your page would go here. -->
+		<br/>
+		<div class="menu" id="studentContent">
+		<form action="<?php echo base_url()?>prof/encodegrades" method="POST">
+			<div id="classContent">
+				<div class="container">
+					
+					<table id="name" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th bgcolor="#80091F" style="color: #fff">ClassID</th>
+								<th bgcolor="#80091F" style="color: #fff">Subject</th>
+								<th bgcolor="#80091F" style="color: #fff">Action</th>
+
+							</tr>
+						</thead>
+						<tbody>
+						<?php
+                        	if (mysqli_num_rows($result) > 0)
+                        	    {
+                        	         while($row = $result->fetch_assoc())
+                        	         {
+                        	            $no = $row['classID'];
+                        	         	$subject = $row['subjectCode'];
+    
+                        	            echo
+                        	            "<tr>
+                        	                <td>" .$no . "</td>
+                        	                <td>" .$subject . "</td>
+                        	             	<td>
+                        	                </td>
+                        	            </tr>";
+                        	        }
+                        	    }
+                        ?>
+						</tbody>
+
+					</table>
+					<!--                                         -->
 				</div>
 			</div>
-			<section class="content offset-top-0">
-				<div class="container">
-							<div class="content">
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
-									<li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">1st Semester</a></li>
-									<li><a href="#Tab2" role="tab" data-toggle="tab" class="text-uppercase">2nd Semester</a></li>
-								</ul>
-								<!-- Tab panes -->
-								<div class="tab-content tab-content--ys nav-stacked">
-									<div role="tabpanel" class="tab-pane active" id="Tab1">
-										<div class="divider divider--xs"></div>
-										<table class="table table-params" >
-											<thead>
-      											<tr bgcolor="#80091F">
-        											<th class="text-center" style="color: #fff">Subject</th>
-        											<th class="text-center" style="color: #fff">Professor</th>
-        											<th class="text-center" style="color: #fff">Grade</th>
-        											<th class="text-center" style="color: #fff">Remarks</th>
-     											</tr>
-    										</thead>
-											<tbody>
-												<tr>
-													<td class="text-center">PRINMAN</td>
-													<td class="text-center">Curry, Stephen</td>
-													<td class="text-center">1.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">ISPROJ1</td>
-													<td class="text-center">Lillard, Damian</td>
-													<td class="text-center">2.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">JOSERIZ</td>
-													<td class="text-center">Clarkson, Jordan</td>
-													<td class="text-center">3.5</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-									<div role="tabpanel" class="tab-pane" id="Tab2">
-										<div class="divider divider--xs"></div>
-										<table class="table table-params">
-											<thead>
-      											<tr bgcolor="#80091F">
-        											<th class="text-center" style="color: #fff">Course</th>
-        											<th class="text-center" style="color: #fff">Professor</th>
-        											<th class="text-center" style="color: #fff">Final Grade</th>
-     											</tr>
-    										</thead>
-											<tbody>
-												<tr>
-													<td class="text-center">PRINMAR</td>
-													<td class="text-center">James, Lebron</td>
-													<td class="text-center">2.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">ISPROJ2</td>
-													<td class="text-center">Durant, Kevin</td>
-													<td class="text-center">1.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">WEBDEVT</td>
-													<td class="text-center">Harden, James</td>
-													<td class="text-center">3.0</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>			
-			</section>			
-			<!-- related products -->
-			<!-- /related products -->
-		</div>
+		</form>
 
-		<hr>
-		<!-- End CONTENT section --> 
-		<!-- / Modal (quickViewModal) -->
-		<!-- External JS --> 
-		<!-- jQuery 1.10.1--> 
-		<script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
+
+
+			<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+			<!-- // <script> -->
+
+			<!-- // 	$(document).ready(function(){
+
+		// 		var userMenu = $('.header-user-dropdown .header-user-menu');
+
+		// 		userMenu.on('touchend', function(e){
+
+		// 			userMenu.addClass('show');
+
+		// 			e.preventDefault();
+		// 			e.stopPropagation();
+
+		// 		});
+
+		// 		// This code makes the user dropdown work on mobile devices
+
+		// 		$(document).on('touchend', function(e){
+
+		// 			// If the page is touched anywhere outside the user menu, close it
+		// 			userMenu.removeClass('show');
+
+		// 		});
+
+		// 	}); -->
+
+			<!-- // </script> -->
+			<script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
 		<!-- Bootstrap 3--> 
 		<script src="<?php echo site_url('resources/my-external/bootstrap/bootstrap.min.js')?>"></script> 
 		<!-- Specific Page External Plugins --> 

@@ -143,7 +143,7 @@
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+										<a href="prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>

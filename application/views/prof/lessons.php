@@ -1,3 +1,11 @@
+<?php
+	$db = mysqli_connect("localhost", "root", "", "thesis");
+	$result = mysqli_query($db, "SELECT l.lessonID, l.classID, s.subjectCode, l.lessonTitle, l.lessonFile, l.lessonDesc, l.dateUploaded, l.status FROM lessons l
+    INNER JOIN classes c ON l.classID = c.classID
+    INNER JOIN subjects s ON s.subjectID = c.classID
+    WHERE c.facultyID = '33' AND l.status='Active'");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -197,7 +205,6 @@
                                             <thead>
                                                 <tr bgcolor="#80091F">
                                                     <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
                                                     <th class="text-center" style="color: #fff">Title</th>
                                                     <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">File</th>
@@ -206,18 +213,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAN</td>
-                                                    <td class="text-center">TI001</td>
-                                                    <td class="text-center">Management Lesson #1</td>
-                                                    <td class="text-center">First Lessson for PRINMAN</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Edit</a>
-                                                        <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                    if (mysqli_num_rows($result) > 0)
+                                                    {
+                                                        while($row = $result->fetch_assoc())
+                                                        {
+                                                            $no = $row['lessonID'];
+                                                            $subject = $row['subjectCode'];
+                                                            $title = $row['lessonTitle'];
+                                                            $desc = $row['lessonDesc'];
+                                                            $file = $row['lessonFile'];
+                                                            $dateadded = $row['dateUploaded'];
+    
+                                                            echo
+                                                            "<tr>
+                                                                <td>" .$subject . "</td>
+                                                                <td>" .$title . "</td>
+                                                                <td>" .$desc . "</td>
+                                                                <td>" .$file . "</td>
+                                                                <td>" .$dateadded . "</td>
+                                                                <td>
+                                                                <a onclick='return confirm('Archive Record?');' href='facultyheaderfooter-lessonsDelete.php?no=" . $no . " 'type='button' class='btn btn-danger'>
+                                                                <i class='fa fa-eraser'>
+                                                                </i></a>
+                                                                </td>
+                                                            </tr>";
+                                                        }
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
