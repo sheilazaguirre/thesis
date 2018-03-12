@@ -30,6 +30,11 @@ class Prof extends CI_Controller{
         $this->load->view('prof/assignments');
     }
 
+    function encodegrades()
+    {
+        $this->load->view('prof/encodegrades');
+    }
+
     /*
      * Listing of prof
      */

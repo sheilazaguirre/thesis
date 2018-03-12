@@ -1,3 +1,10 @@
+<?php
+	$db = mysqli_connect("localhost", "root", "", "thesis");
+	$result = mysqli_query($db, "SELECT c.classID, s.subjectCode, c.facultyID FROM classes c
+	INNER JOIN subjects s ON c.subjectID = s.subjectID
+	WHERE c.facultyID='1' AND c.status='Active'");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -54,7 +61,7 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
+							<a href="listing.html"><span class="act-underline">ENCODE GRADES</span></a>
 						</span>						
 					</li>
 					<li>
@@ -143,7 +150,7 @@
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
@@ -164,67 +171,81 @@
 
 		</div>
 
-		<!-- End HEADER section -->
-		<!-- Slider section --> 
-		<section class="content offset-top-0 intro tp-banner-button1" id="slider">
-			<!--
-				#################################
-				- THEMEPUNCH BANNER -
-				#################################
-				--> 
-			<!-- START REVOLUTION SLIDER 3.1 rev5 fullwidth mode -->
-			<h2 class="hidden">Slider Section</h2>
-			<div class="tp-banner-container">
-				
-				<div class="tp-banner">
-					<ul>
-						<!-- SLIDE -1 -->
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slide.jpg')?>"  alt="slide2"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-							<!-- LAYERS -->												
-						</li>
-						<!-- /SLIDE -1 -->
-						<!-- SLIDE 2  -->            
-						<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-							<!-- MAIN IMAGE --> 
-							<img src="<?php echo site_url('resources/my-images/slides/slide-bg-1.png')?>"  alt="slide2"  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-							<!-- LAYERS -->												
-						</li>
-						<!-- /SLIDE 2  -->
-						<!-- SLIDE 3  -->
-						<!-- /SLIDE 3  -->		  
-					</ul>
-				</div>
-			</div>
-		</section>
-		<!-- END REVOLUTION SLIDER --> 
-		
-		<!-- FOOTER section -->
-		<footer  class="layout-2">			
-			<!-- social-icon -->
-			<div class="container">
-				
-				
-			</div>
-			<!-- /social-icon --> 
-			<!-- footer-copyright -->
-			<div class="container footer-copyright">
-				<div class="row">
-					<div class="col-lg-12  text-center"> 
-						<a href="index"><span>GAPC</span> Information Systems</a> &copy; 2018 . All Rights Reserved. 
-					</div>
-				</div>
-			</div>
-			<!-- /footer-copyright -->			
-		</footer>
-		<!-- END FOOTER section -->
-		
-	
-		<!--================== /scripts ==================-->
+		<!-- The content of your page would go here. -->
+		<br/>
+		<div class="menu" id="studentContent">
+		<form action="<?php echo base_url()?>prof/encodegrades" method="POST">
+			<div id="classContent">
+				<div class="container">
+					
+					<table id="name" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th bgcolor="#80091F" style="color: #fff">ClassID</th>
+								<th bgcolor="#80091F" style="color: #fff">Subject</th>
+								<th bgcolor="#80091F" style="color: #fff">Action</th>
 
-		<!-- jQuery 1.10.1--> 
-		<script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
+							</tr>
+						</thead>
+						<tbody>
+						<?php
+                        	if (mysqli_num_rows($result) > 0)
+                        	    {
+                        	         while($row = $result->fetch_assoc())
+                        	         {
+                        	            $no = $row['classID'];
+                        	         	$subject = $row['subjectCode'];
+    
+                        	            echo
+                        	            "<tr>
+                        	                <td>" .$no . "</td>
+                        	                <td>" .$subject . "</td>
+                        	             	<td>
+                        	                </td>
+                        	            </tr>";
+                        	        }
+                        	    }
+                        ?>
+						</tbody>
+
+					</table>
+					<!--                                         -->
+				</div>
+			</div>
+		</form>
+
+
+
+			<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+			<!-- // <script> -->
+
+			<!-- // 	$(document).ready(function(){
+
+		// 		var userMenu = $('.header-user-dropdown .header-user-menu');
+
+		// 		userMenu.on('touchend', function(e){
+
+		// 			userMenu.addClass('show');
+
+		// 			e.preventDefault();
+		// 			e.stopPropagation();
+
+		// 		});
+
+		// 		// This code makes the user dropdown work on mobile devices
+
+		// 		$(document).on('touchend', function(e){
+
+		// 			// If the page is touched anywhere outside the user menu, close it
+		// 			userMenu.removeClass('show');
+
+		// 		});
+
+		// 	}); -->
+
+			<!-- // </script> -->
+			<script src="<?php echo site_url('resources/my-external/jquery/jquery-2.1.4.min.js')?>"></script> 
 		<!-- Bootstrap 3--> 
 		<script src="<?php echo site_url('resources/my-external/bootstrap/bootstrap.min.js')?>"></script> 
 		<!-- Specific Page External Plugins --> 

@@ -223,7 +223,7 @@
                                                     <td class="text-center">Instructions.txt</td>
                                                     <td class="text-center">Secret</td>
                                                     <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Download</a>
+                                                        <a href="" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Download</a>
                                                     </td>
                                                 </tr>
                                             </tbody>

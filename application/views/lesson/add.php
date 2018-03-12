@@ -18,7 +18,7 @@
 								{
 									$selected = ($theclass['classID'] == $this->input->post('classID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
+									echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['subjectCode'].'</option>';
 								} 
 								?>
 							</select>

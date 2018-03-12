@@ -63,7 +63,7 @@ class Assignment extends CI_Controller{
             $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
             $this->db->set('status', 'Active');
             $assignment_id = $this->Assignment_model->add_assignment($params);
-            redirect('assignment/index');
+            redirect('prof/assignment');
         }
         else
         {
@@ -146,7 +146,15 @@ class Assignment extends CI_Controller{
         // check if the assignment exists before trying to delete it
         if(isset($assignment['assignID']))
         {
+            $path_to_file = '.uploads/assignments/';
+            if(unlink($path_to_file)) {
+                 echo 'deleted successfully';
+            }
+            else {
+                 echo 'errors occured';
+            }
             $this->db->set('status', 'Archived');
+            $this->db->set('dateModified', 'NOW()', FALSE);
             $this->Assignment_model->delete_assignment($assignID);
             redirect('assignment/index');
         }

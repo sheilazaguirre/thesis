@@ -11,6 +11,12 @@
         }
     }
 
+    $query = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status FROM assignments a 
+    INNER JOIN classes c ON a.classID = c.classID 
+    INNER JOIN classlist cl ON a.classID = cl.classID 
+    INNER JOIN subjects s ON s.subjectID = c.classID 
+    WHERE cl.studentID ='11810001' AND a.status='Active'");
+
     
 ?>
 
@@ -206,26 +212,42 @@
                                             <thead>
                                                 <tr bgcolor="#80091F">
                                                     <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
                                                     <th class="text-center" style="color: #fff">Title</th>
-                                                    <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">File</th>
+                                                    <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">Date Added</th>
                                                     <th class="text-center" style="color: #fff">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAN</td>
-                                                    <td class="text-center">TI001</td>
-                                                    <td class="text-center">Management Assignment #1</td>
-                                                    <td class="text-center">First Assignment for PRINMAN</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Download</a>
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                    if (mysqli_num_rows($query) > 0)
+                                                    {
+                                                        while($row = $query->fetch_assoc())
+                                                        {
+                                                            $no = $row['assignID'];
+                                                            $subject = $row['subjectCode'];
+                                                            $title = $row['assignTitle'];
+                                                            $file = $row['assignFile'];
+                                                            $desc = $row['assignDesc'];
+                                                            $dateadded = $row['dateUploaded'];
+    
+                                                            echo
+                                                            "<tr>
+                                                                <td>" .$subject . "</td>
+                                                                <td>" .$title . "</td>
+                                                                <td>" .$file . "</td>
+                                                                <td>" .$desc . "</td>
+                                                                <td>" .$dateadded . "</td>
+                                                                <td>
+                                                                <a href='../uploads/assignments/'$file';' target='_blank' class='btn btn-success' download>
+                                                                Download
+                                                                </a></td>
+                                                                </td>
+                                                            </tr>";
+                                                        }
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

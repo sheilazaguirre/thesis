@@ -193,9 +193,10 @@
 										<table class="table table-params" >
 											<thead>
       											<tr bgcolor="#80091F">
-        											<th class="text-center" style="color: #fff">Course</th>
+        											<th class="text-center" style="color: #fff">Subject</th>
         											<th class="text-center" style="color: #fff">Professor</th>
-        											<th class="text-center" style="color: #fff">Final Grade</th>
+        											<th class="text-center" style="color: #fff">Grade</th>
+        											<th class="text-center" style="color: #fff">Remarks</th>
      											</tr>
     										</thead>
 											<tbody>
