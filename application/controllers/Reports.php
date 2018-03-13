@@ -29,6 +29,11 @@ class Reports extends CI_Controller{
         $this->load->view('reports/applicantlistreport');
     }
 
+    function classlist()
+    {
+        $this->load->view('reports/classlistreport');
+    }
+
     function faculty()
     {
         $this->load->view('reports/facultylistreport');
@@ -62,7 +67,7 @@ class Reports extends CI_Controller{
 
     function comsci()
     {
-        $this->load->view('reports/Com Sci.html');
+        $this->load->view('reports/classreport');
     }
 
     function bisad()

@@ -18,6 +18,11 @@ class Prof extends CI_Controller{
         $this->load->view('prof/schedule');
     }
 
+    function downloads()
+    {
+        $this->load->view('prof/monitordl');
+    }
+
 
     function lessons()
     {
