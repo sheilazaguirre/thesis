@@ -1,8 +1,18 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-	$result = mysqli_query($db, "SELECT c.classID, s.subjectCode, c.facultyID FROM classes c
-	INNER JOIN subjects s ON c.subjectID = s.subjectID
-	WHERE c.facultyID='20181006' AND c.status='Active'");
+	$result = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='1'");
+	$result1 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='1.25'");
+	$result2 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='1.50'");
+	$result3 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='1.75'");
+	$result4 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='2'");
+	$result5 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='2.25'");
+	$result6 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='2.50'");
+	$result7 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='2.75'");
+	$result8 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='3'");
+	$result9 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='5'");
+	$result10 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='W'");
+	$result11 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='X'");
+	$result12 = mysqli_query($db, "SELECT COUNT(*), fgrade FROM grades WHERE fgrade='INC'");
 
 ?>
 <!DOCTYPE html>
@@ -172,45 +182,219 @@
 		</div>
 
 		<!-- The content of your page would go here. -->
-		<br/>
-		<div class="menu" id="studentContent">
-		<form action="<?php echo base_url()?>prof/encodegrades" method="POST">
-			<div id="classContent">
+		<div class="menu">
+		<form action="<?php echo base_url()?>prof/fgrades" method="POST">
+			<div id="studentContent">
 				<div class="container">
-					
+					<br>
+					<h3>Grades Encoding</h3>
+					<br/>
+
+					<div class="container">
+						<div class="col-md-6">
+							<h5>Faculty: Salvador, Ronaldo</h5>
+							<h5>Subject: Fil 1</h5>
+							<h5>Section: TI001</h5>
+							<h5>Year: 1st Year</h5>
+						</div>
+						<div class="col-md-6">
+							<h5>SY: 2017-2018</h5>
+							<h5>Venue: D405</h5>
+							<h5>Schedule: MW 11:20 - 12:50</h5>
+							<h5>Status:  </h5>
+						</div>
+					</div>
+					<br>
+					<h3 align="center">
+						<b>Finals</b>
+					</h3>
+					<hr/>
+					<?php $this->session->flashdata('message_name'); ?>
 					<table id="name" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
 						<thead>
 							<tr>
-								<th bgcolor="#80091F" style="color: #fff">ClassID</th>
-								<th bgcolor="#80091F" style="color: #fff">Subject</th>
-								<th bgcolor="#80091F" style="color: #fff">Action</th>
+								<th bgcolor="#80091F" style="color: #fff">Student ID</th>
+								<th bgcolor="#80091F" style="color: #fff">Student Name</th>
+								<th bgcolor="#80091F" style="color: #fff">Grade</th>
+								<th bgcolor="#80091F" style="color: #fff">Remarks</th>
 
 							</tr>
 						</thead>
 						<tbody>
-						<?php
-                        	if (mysqli_num_rows($result) > 0)
-                        	    {
-                        	         while($row = $result->fetch_assoc())
-                        	         {
-                        	            $no = $row['classID'];
-                        	         	$subject = $row['subjectCode'];
-    
-                        	            echo
-                        	            "<tr>
-                        	                <td>" .$no . "</td>
-                        	                <td>" .$subject . "</td>
-											<td class='text-center'>
-                                                <a href='grades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
-                                                <a href='fgrades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
-                                            </td>
-                        	            </tr>";
-                        	        }
-                        	    }
-                        ?>
+						
+							<?php foreach($classlist as $c){ ?>
+							<tr>
+								<td>
+									<p><?php echo $c['studentID']; ?></p>
+								</td>
+								<td>
+									<?php echo $c['userName']; ?>
+								</td>
+								<input type="hidden" name="clID[<?php echo $c['classlistID']?>]" value="<?php echo $c['classlistID']?>"/>
+								<input type="hidden" name="classid" value="<?php echo $c['classID']?>"/>
+								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
+								
+								<td>
+									<select name="fgrade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Final Submitted'){ ?> disabled <?php   } ?> required />
+										<option value="">Select Grade</option>
+										<option value="1" <?php echo $c["fgrade"] == "1" ? "selected" : "" ?>>1.00</option>
+										<option value="1.25" <?php echo $c["fgrade"] == "1.25" ? "selected" : "" ?>>1.25</option>
+										<option value="1.50" <?php echo $c["fgrade"] == "1.50" ? "selected" : "" ?>>1.50</option>
+										<option value="1.75" <?php echo $c["fgrade"] == "1.75" ? "selected" : "" ?>>1.75</option>
+										<option value="2" <?php echo $c["fgrade"] == "2" ? "selected" : "" ?>>2.00</option>
+										<option value="2.25" <?php echo $c["fgrade"] == "2.25" ? "selected" : "" ?>>2.25</option>
+										<option value="2.50" <?php echo $c["fgrade"] == "2.50" ? "selected" : "" ?>>2.50</option>
+										<option value="2.75" <?php echo $c["fgrade"] == "2.75" ? "selected" : "" ?>>2.75</option>
+										<option value="3" <?php echo $c["fgrade"] == "3" ? "selected" : "" ?>>3.00</option>
+										<option value="5" <?php echo $c["fgrade"] == "5" ? "selected" : "" ?>>5.00</option>
+										<option value="W" <?php echo $c["fgrade"] == "W" ? "selected" : "" ?>>W</option>
+										<option value="X" <?php echo $c["fgrade"] == "X" ? "selected" : "" ?>>X</option>
+										<option value="inc" <?php echo $c["fgrade"] == "inc" ? "selected" : "" ?>>INC</option>
+									</select>
+									<br/>
+								</td>
+								<td>
+									<textarea <?php if ($c['status'] == 'Final Submitted'){ ?> disabled <?php   } ?> name="remarks[<?=$c['classlistID']?>]">
+										<?php echo $c['remarks']; ?>
+									</textarea>
+								</td>
+
+							</tr>
+							<?php }?>
 						</tbody>
 
 					</table>
+					<div class="form-group">
+                    1.00 - <?php
+							while($row = $result->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        1.25 - <?php
+							while($row = $result1->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        1.50 - <?php
+							while($row = $result2->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        1.75 - <?php
+							while($row = $result3->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        2.00 - <?php
+							while($row = $result4->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        2.25 - <?php
+							while($row = $result5->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        2.50 - <?php
+							while($row = $result6->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        2.75 - <?php
+							while($row = $result7->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        3.00 - <?php
+							while($row = $result8->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        5.00 - <?php
+							while($row = $result9->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        W - <?php
+							while($row = $result10->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        X - <?php
+							while($row = $result11->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?> |
+                        INC - <?php
+							while($row = $result12->fetch_assoc()) {
+								$fgrade = $row['COUNT(*)'];
+
+								echo $fgrade;
+							}
+						?>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2 left">
+							<p><b>Legend:</b><br/>
+							1.00: 98-100 <br/>
+							1.25: 95-97<br/>
+							1.50: 92-94<br/>
+							1.75: 89-91 <br/>
+							2.00: 86-88<br/>
+							2.25: 83-85<br/>
+							2.50: 80-82<br/>
+							</p>
+						</div>
+						<div class="col-md-3 right">
+							<p><b>Legend:</b><br/>
+							2.75: 77-79<br/>
+							3.00: 74-76<br/>
+							4.00: For Midterm Only<br/>
+							5.00: For Finals Only<br/>
+							W: Dropped <br/>
+							X: Absent from the Final Exam <br/>
+							INC: Incomplete <br/>
+							</p>
+						</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<div class="col-md-12 text-right">
+						<?php if($c['status'] != 'Final Submitted'): ?>
+							<button type="submit" name="save" class="btn btn-info" onclick='return confirm("Save?");'>
+								<i class="fa fa-check"></i> Save
+							</button>
+						<?php endif; ?>
+							<button type="submit" name="submit" class="btn btn-success"  onclick='return confirm("Are you sure you want to Submit?");'>
+								<i class="fa fa-check"></i> Submit
+							</button>
+						</div>
+					</div>
 					<!--                                         -->
 				</div>
 			</div>

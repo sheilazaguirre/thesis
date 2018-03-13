@@ -73,7 +73,7 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="<?php echo base_url()?>prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
+                            <a href="<?php echo base_url()?>prof/encodegrades"><span class="act-underline">ENCODE GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
@@ -159,7 +159,7 @@
                                     </li>                                   
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="<?php echo base_url()?>prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+                                        <a href="<?php echo base_url()?>prof/encodegrades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
@@ -167,7 +167,7 @@
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="<?php echo base_url()?>prof/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
+                                        <a href="<?php echo base_url()?>prof/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE lessonMENTS</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -181,63 +181,64 @@
         </div>
 
 
-<div class="row" id="studentContent">
-    <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Add Lesson</h3>
-            </div>
-            <form action="<?php echo base_url()?>prof/addlessons" method="POST">
-            <div class="box-body">
-                <div class="row clearfix">
-                    <div class="col-md-6">
-                        <label for="classID" class="control-label"><span class="text-danger">*</span>Class</label>
-                        <div class="form-group">
-                            <select name="classID" class="form-control">
-                                <option value="">Select a Class</option>
-                                <?php 
-                                foreach($all_theclasses as $theclass)
-                                {
-                                    $selected = ($theclass['classID'] == $this->input->post('classID')) ? ' selected="selected"' : "";
-
-                                    echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
-                                } 
-                                ?>
-                            </select>
-                            <span class="text-danger"><?php echo form_error('classID');?></span>
+        <?php echo form_open_multipart('./prof_func/addlesson');?>
+        <div class="row" id="studentContent">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Add Lesson</h3>
+                </div>
+                <?php echo form_open('prof_func/addlesson'); ?>
+                    <div class="box-body">
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <label for="classID" class="control-label">Class</label>
+                                <div class="form-group">
+                                    <select name="classID" class="form-control">
+                                        <option value="">Select a Class</option>
+                                        <?php 
+                                        foreach($all_theclasses as $theclass)
+                                        {
+                                            $selected = ($theclass['classID'] == $this->input->post('classID')) ? ' selected="selected"' : "";
+        
+                                            echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
+                                        } 
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lessonFile" class="control-label"><span class="text-danger">*</span>File</label>
+                                <div class="form-group">
+                                    <input type="file" name="filen" size="20" class="form-control" id="lessonFile" />
+                                    <span class="text-danger"><?php if (isset($error)) { echo $error; } ?></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lessonDesc" class="control-label"><span class="text-danger">*</span>Description</label>
+                                <div class="form-group">
+                                    <textarea name="lessonDesc" class="form-control" id="lessonDesc"><?php echo $this->input->post('lessonDesc'); ?></textarea>
+                                    <span class="text-danger"><?php echo form_error('lessonDesc');?></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lessonTitle" class="control-label"><span class="text-danger">*</span>Title</label>
+                                <div class="form-group">
+                                    <input type="text" name="lessonTitle" value="<?php echo $this->input->post('lessonTitle'); ?>" class="form-control" id="lessonTitle" />
+                                    <span class="text-danger"><?php echo form_error('lessonTitle');?></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="lessonFile" class="control-label"><span class="text-danger">*</span>File</label>
-                        <div class="form-group">
-                            <input type="file" name="filen" size="20" class="form-control" id="lessonFile" />
-                            <span class="text-danger"><?php if (isset($error)) { echo $error; } ?></span>
-                        </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check"></i> Save
+                        </button>
                     </div>
-                    <div class="col-md-6">
-                        <label for="lessonDesc" class="control-label"><span class="text-danger">*</span>Description</label>
-                        <div class="form-group">
-                            <textarea name="lessonDesc" class="form-control" id="lessonDesc"><?php echo $this->input->post('lessonDesc'); ?></textarea>
-                            <span class="text-danger"><?php echo form_error('lessonDesc');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lessonTitle" class="control-label"><span class="text-danger">*</span>Title</label>
-                        <div class="form-group">
-                            <input type="text" name="lessonTitle" value="<?php echo $this->input->post('lessonTitle'); ?>" class="form-control" id="lessonTitle" />
-                            <span class="text-danger"><?php echo form_error('lessonTitle');?></span>
-                        </div>
-                    </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
-            <div class="box-footer">
-                <button type="submit" class="btn btn-success">
-                    <i class="fa fa-check"></i> Save
-                </button>
-            </div>
-            </form>
         </div>
-    </div>
 
         
 

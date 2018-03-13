@@ -10,13 +10,17 @@ class Prof extends CI_Controller{
         $this->load->model('Lesson_model');
         $this->load->helper('form');
         $this->load->helper('url');
-        
-        
+             
     } 
 
     function schedule()
     {
         $this->load->view('prof/schedule');
+    }
+
+    function downloads()
+    {
+        $this->load->view('prof/monitordl');
     }
 
 
@@ -55,58 +59,22 @@ class Prof extends CI_Controller{
         $this->load->view('prof/index');
     }
 
-    function addassign()
+    function removeassign($assignID)
     {
-        $this->load->library('form_validation');
+        $assignment = $this->Assignment_model->get_assignment($assignID);
 
-        $this->form_validation->set_rules('assignDesc','AssignDesc','required|max_length[150]');
-        $this->form_validation->set_rules('assignTitle','AssignTitle','required|max_length[50]');
-        
-        if($this->form_validation->run())     
-        {   
-
-            $config['upload_path'] = './uploads/assignments';
-            $config['allowed_types'] = 'jpg|png|pdf|docx|txt';
-            $config['max_size'] = 100;
-            $config['max_width'] = 1024;
-            $config['max_height'] = 768;
-
-            $this->load->library('upload', $config);
-
-            $var;
-            
-            if ( ! $this->upload->do_upload('filen'))
-            {
-                    $error = array('error' => $this->upload->display_errors());
-            }
-            else
-            {
-                    $data = array('upload_data' => $this->upload->data());
-                    
-                    $var = $this->upload->data()["file_name"];
-                    //var_dump($var);
-            }
-
-            $params = array(
-                'classID' => $this->input->post('classID'),
-                'assignFile' => $var,
-                'assignDesc' => $this->input->post('assignDesc'),
-                'assignTitle' => $this->input->post('assignTitle'),
-            );
-            $this->db->set('dateUploaded', 'NOW()', FALSE);
-            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
-            $this->db->set('status', 'Active');
-            $assignment_id = $this->Assignment_model->add_assignment($params);
+        // check if the assignment exists before trying to delete it
+        if(isset($assignment['assignID']))
+        {
+            $this->db->set('status', 'Archived');
+            $this->db->set('dateModified', 'NOW()', FALSE);
+            $this->Assignment_model->delete_assignment($assignID);
             redirect('prof/assignments');
         }
         else
-        {
-            $this->load->model('Theclass_model');
-            $data['all_theclasses'] = $this->Theclass_model->get_all_theclasses();
-            
-            $this->load->view('prof/addassign',$data);
-        }
+            show_error('The assignment you are trying to delete does not exist.');
     }
+   
 
     function addlesson()
     {   
@@ -157,6 +125,22 @@ class Prof extends CI_Controller{
             
             $this->load->view('prof/addlesson',$data);
         }
+    }
+
+    function removelesson($lessonID)
+    {
+        $lesson = $this->Lesson_model->get_lesson($lessonID);
+
+        // check if the lesson exists before trying to delete it
+        if(isset($lesson['lessonID']))
+        {
+            $this->db->set('status', 'Archived');
+            $this->db->set('dateModified', 'NOW()', FALSE);
+            $this->Lesson_model->delete_lesson($lessonID);
+            redirect('prof/lessons');
+        }
+        else
+            show_error('The lesson you are trying to delete does not exist.');
     }
 
     function grades()
@@ -241,6 +225,91 @@ class Prof extends CI_Controller{
             }
             $data['classlist'] = $this->Prof_model->get_classlist();
             $this->load->view('prof/grades', $data);
+        }
+    }
+
+    function fgrades()
+    {        
+        if(isset($_POST) && count($_POST) > 0)
+        {
+            $params = [];
+            foreach ($this->input->post('clID') as $clID)
+            {
+                $params[$clID] = array(
+                    'studentID' => $this->input->post('sid['.$clID.']'),
+                    'classID' => $this->input->post('classid'),
+                    'fgrade' => $this->input->post('fgrade['.$clID.']'),
+                    'remarks' => $this->input->post('remarks['.$clID.']'),
+                    'status' => "FinalSaved",
+                    'dateAdded' => date('Y-m-d H:i:s'),
+                    'lastSaved' => date('Y-m-d H:i:s'),
+                );
+            }
+
+            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+
+            if(count($grades) == 0)
+            {
+                foreach($params as $p)
+                {
+                    $addfgrades = $this->Prof_model->add_fgrades($p);
+                }
+            }
+            else
+            {
+                if(isset($_POST['submit']))
+                {
+                    $params = [];
+                    foreach($this->input->post('clID') as $clID)
+                    {
+                        $params[$clID] = array(
+                            'studentID' => $this->input->post('sid['.$clID.']'),
+                            'classID' => $this->input->post('classid'),
+                            'fgrade' => $this->input->post('fgrade['.$clID.']'),
+                            'remarks' => $this->input->post('remarks['.$clID.']'),
+                            'status' => "FSubmitted",
+                            'dateSubmitted' => date('Y-m-d H:i:s'),
+                        );
+                        foreach($params as $p)
+                        {
+                            $editgrades = $this->Prof_model->updatefgrades($p['studentID'], $p);
+                        }
+                    }
+                }
+                else
+                {
+                    $params = [];
+                    foreach($this->input->post('clID') as $clID)
+                    {
+                        $params[$clID] = array(
+                            'studentID' => $this->input->post('sid['.$clID.']'),
+                            'classID' => $this->input->post('classid'),
+                            'fgrade' => $this->input->post('fgrade['.$clID.']'),
+                            'remarks' => $this->input->post('remarks['.$clID.']'),
+                            'status' => "FinalSaved",
+                            'lastSaved' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    foreach($params as $p)
+                    {
+                        $editgrades = $this->Prof_model->updatefgrades($p['studentID'], $p);
+                    }
+                }
+            }
+            redirect('prof/index');
+        }
+        else
+        {
+            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+            if($grades)
+            {
+                for($i = 0; $i<count($grades); $i++)
+                {
+                    $data['classlist']['fgrade'][$i] = $grades[$i]['fgrade'];
+                }
+            }
+            $data['classlist'] = $this->Prof_model->get_classlist();
+            $this->load->view('prof/fgrades', $data);
         }
     }
 

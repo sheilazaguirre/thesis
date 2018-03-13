@@ -107,7 +107,6 @@
                             <span class="text-danger"><?php echo form_error('mobile');?></span>
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <label for="birthdate" class="control-label"><span class="text-danger">*</span>Birthdate</label>
                         <div class="form-group">
@@ -117,7 +116,6 @@
                                 </div>
                                 <input type="text" name="birthdate" value="<?php echo $this->input->post('birthdate'); ?>" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask required />
                             </div>
-                            <!-- /.input group -->
                         </div>
                     </div>
                     <div class="col-md-6">

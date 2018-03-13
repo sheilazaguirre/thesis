@@ -1,0 +1,34 @@
+database
+ - classlist
+	-> classlistID
+	-> classID
+	-> studentID
+	-> remarks
+	-> dateAdded
+ 
+ - course
+	-> courseID
+	-> courseCode
+	-> courseName
+	-> remarks
+	-> dateAdded
+	-> dateModified
+	-> status
+
+ - prof
+	->profID
+	->facultyID
+	->subjectID
+	->remarks
+	->status
+
+ - grades
+	-> gradeID
+	-> classID
+	-> studentID
+	-> grade
+	-> remarks
+	-> status
+	-> dateAdded
+	-> lastSaved
+	-> dateSubmitted

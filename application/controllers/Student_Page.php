@@ -43,6 +43,7 @@ class Student_Page extends CI_Controller{
 
     function lessons()
     {
+        
         $this->load->view('student_page/lessons');
     }
 

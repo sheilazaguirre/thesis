@@ -59,6 +59,7 @@ class Landing_Page extends CI_Controller{
         }
         $data['_view'] = 'landing_page/index';
         $this->load->view('landing_page/index', $data);
+<<<<<<< HEAD
     }
 
     function facultylogin() 
@@ -105,6 +106,9 @@ class Landing_Page extends CI_Controller{
                 $this->session->set_flashdata('err_message', 'Invalid credentials, also make sure to validate with recaptcha');
                 }
             }
+=======
+        session_destroy();
+>>>>>>> 2d9675ee28947b7179732591f16f4d41544b8d90
         }
         $data['_view'] = 'landing_page/faculty';
         $this->load->view('landing_page/faculty', $data);

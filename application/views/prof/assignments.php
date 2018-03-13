@@ -1,3 +1,15 @@
+<?php
+	$db = mysqli_connect("localhost", "root", "", "thesis");
+    $result = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
+    INNER JOIN classes c ON a.classID = c.classID 
+    INNER JOIN subjects s ON c.subjectID = s.subjectID 
+    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='1st Semester'");
+
+    $result2 = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
+    INNER JOIN classes c ON a.classID = c.classID 
+    INNER JOIN subjects s ON c.subjectID = s.subjectID 
+    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='2nd Semester'");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -73,7 +85,7 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="<?php echo base_url()?>prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
+                            <a href="<?php echo base_url()?>prof/encodegrades"><span class="act-underline">ENCODE GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
@@ -159,7 +171,7 @@
                                     </li>                                   
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="<?php echo base_url()?>prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+                                        <a href="<?php echo base_url()?>prof/encodegrades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
@@ -206,7 +218,7 @@
                                 <div class="col-md-10">
                                 </div>
                                 <div class="col-md-2">
-                                <a href="<?php echo site_url('prof/addassign'); ?>" class="btn btn-success btn-sm">Add Assignment</a>
+                                <a href="<?php echo site_url('prof_func/add'); ?>" class="btn btn-success btn-sm">Add Assignment</a>
                             </div>
                                 <!-- Tab panes -->
                                 <div class="tab-content tab-content--ys nav-stacked">
@@ -216,26 +228,43 @@
                                             <thead>
                                                 <tr bgcolor="#80091F">
                                                     <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
                                                     <th class="text-center" style="color: #fff">Title</th>
                                                     <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">File</th>
-                                                    <th class="text-center" style="color: #fff">Date Added</th>
+                                                    <th class="text-center" style="color: #fff">Date Uploaded</th>
                                                     <th class="text-center" style="color: #fff">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAN</td>
-                                                    <td class="text-center">TI001</td>
-                                                    <td class="text-center">Management Assignment #1</td>
-                                                    <td class="text-center">First Assignment for PRINMAN</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
-                                                    </td>
-                                                </tr>
+                                            <?php
+                                                if (mysqli_num_rows($result) > 0)
+                                                        {
+                                                            while($row = $result->fetch_assoc())
+                                                            {
+                                                                $no = $row['assignID'];
+                                                                $subject = $row['subjectCode'];
+                                                                $title = $row['assignTitle'];
+                                                                $desc = $row['assignDesc'];
+                                                                $file = $row['assignFile'];
+                                                                $dateadded = $row['dateUploaded'];
+        
+                                                                echo
+                                                                "<tr>
+                                                                    <td>" .$subject . "</td>
+                                                                    <td>" .$title . "</td>
+                                                                    <td>" .$desc . "</td>
+                                                                    <td>" .$file . "</td>
+                                                                    <td>" .$dateadded . "</td>
+                                                                    <td>
+                                                                    <a onclick='return confirm('Archive Record?');' href='removeassign/".$no."' type='button' class='btn btn-danger'>
+                                                                    <i class='fa fa-eraser'>
+                                                                    DELETE
+                                                                    </i></a>
+                                                                    </td>
+                                                                </tr>";
+                                                            }
+                                                        }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -245,26 +274,43 @@
                                             <thead>
                                                 <tr bgcolor="#80091F">
                                                     <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
                                                     <th class="text-center" style="color: #fff">Title</th>
                                                     <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">File</th>
-                                                    <th class="text-center" style="color: #fff">Date Added</th>
+                                                    <th class="text-center" style="color: #fff">Date Uploaded</th>
                                                     <th class="text-center" style="color: #fff">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAR</td>
-                                                    <td class="text-center">TI002</td>
-                                                    <td class="text-center">Marketing Assignment #1</td>
-                                                    <td class="text-center">First Assignment for PRINMAR</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
-                                                    </td>
-                                                </tr>
+                                            <?php
+                                                if (mysqli_num_rows($result2) > 0)
+                                                        {
+                                                            while($row = $result->fetch_assoc())
+                                                            {
+                                                                $no = $row['assignID'];
+                                                                $subject = $row['subjectCode'];
+                                                                $title = $row['assignTitle'];
+                                                                $desc = $row['assignDesc'];
+                                                                $file = $row['assignFile'];
+                                                                $dateadded = $row['dateUploaded'];
+        
+                                                                echo
+                                                                "<tr>
+                                                                    <td>" .$subject . "</td>
+                                                                    <td>" .$title . "</td>
+                                                                    <td>" .$desc . "</td>
+                                                                    <td>" .$file . "</td>
+                                                                    <td>" .$dateadded . "</td>
+                                                                    <td>
+                                                                    <a onclick='return confirm('Archive Record?');' href='removeassign/".$no."' type='button' class='btn btn-danger'>
+                                                                    <i class='fa fa-eraser'>
+                                                                    DELETE
+                                                                    </i></a>
+                                                                    </td>
+                                                                </tr>";
+                                                            }
+                                                        }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>          
