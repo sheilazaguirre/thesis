@@ -59,6 +59,7 @@ class Landing_Page extends CI_Controller{
         }
         $data['_view'] = 'landing_page/index';
         $this->load->view('landing_page/index', $data);
+        session_destroy();
         }
     function logout()
     {

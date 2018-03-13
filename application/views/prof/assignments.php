@@ -206,7 +206,7 @@
                                 <div class="col-md-10">
                                 </div>
                                 <div class="col-md-2">
-                                <a href="<?php echo site_url('prof/addassign'); ?>" class="btn btn-success btn-sm">Add Assignment</a>
+                                <a href="<?php echo site_url('prof_func/add'); ?>" class="btn btn-success btn-sm">Add Assignment</a>
                             </div>
                                 <!-- Tab panes -->
                                 <div class="tab-content tab-content--ys nav-stacked">

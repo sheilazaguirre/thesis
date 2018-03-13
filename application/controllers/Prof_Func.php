@@ -1,7 +1,7 @@
 <?php
 
  
-class Assignment extends CI_Controller{
+class Prof_Func extends CI_Controller{
     function __construct()
     {
         parent::__construct();
@@ -63,15 +63,14 @@ class Assignment extends CI_Controller{
             $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
             $this->db->set('status', 'Active');
             $assignment_id = $this->Assignment_model->add_assignment($params);
-            redirect('assignment/index');
+            redirect('prof/assignments');
         }
         else
         {
 			$this->load->model('Theclass_model');
 			$data['all_theclasses'] = $this->Theclass_model->get_all_theclasses();
             
-            $data['_view'] = 'assignment/add';
-            $this->load->view('layouts/main',$data);
+            $this->load->view('prof/addassign',$data);
         }
     }  
 

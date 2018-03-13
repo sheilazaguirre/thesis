@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -179,15 +180,14 @@
             </header>
 
         </div>
-
-
+<?php echo form_open_multipart('./prof_func/add');?>
 <div class="row" id="studentContent">
-    <div class="col-md-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Add Assignment</h3>
-            </div>
-            <form action="<?php echo base_url()?>prof/addassign" method="POST">
+<div class="col-md-12">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Add Assignment</h3>
+        </div>
+        <?php echo form_open('prof_func/add'); ?>
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
@@ -234,14 +234,12 @@
                     <i class="fa fa-check"></i> Save
                 </button>
             </div>
-        </form>
+            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
 
-        
-
-        <script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
+<script src="<?php echo site_url('resources\js\jquery.min.js');?>"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="<?php echo site_url('resources/js/bootstrap.min.js');?>"></script>
         <!-- FastClick -->
@@ -287,8 +285,6 @@
 
     </body>
 
-    </html>
+</html>
 
-
-
-
+    

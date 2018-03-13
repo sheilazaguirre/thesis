@@ -1,0 +1,21 @@
+- kung gano karami section - how to divide student
+- change request
+
+ To do
+- Logout *
+- Back button -
+- Home button -
+- Redirection -
+- Logo -
+- Landing Page Design -
+- Insert Realistic Data *
+- Plug CRUD in Registrar *
+- Validations - paturo kay Jj
+- Announcements - hingi ng snippets kay Minrie
+
+
+ Miko
+- Change Request
+- Student Module HTML Layouts
+- Faculty Module HTML Layouts
+
