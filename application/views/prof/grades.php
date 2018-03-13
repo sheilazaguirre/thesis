@@ -1,7 +1,19 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-	$result = mysqli_query($db, "SELECT COUNT(grade), grade FROM grades GROUP BY grade ORDER BY COUNT(grade) ASC");
-
+	$result = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1'");
+	$result1 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.25'");
+	$result2 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.50'");
+	$result3 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.75'");
+	$result4 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2'");
+	$result5 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.25'");
+	$result6 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.50'");
+	$result7 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.75'");
+	$result8 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='3'");
+	$result9 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='4'");
+	$result10 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='W'");
+	$result11 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='X'");
+	$result12 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='inc'");
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -269,13 +281,99 @@
 
 					</table>
 					<div class="form-group">
-						<?php
+						1.00 - <?php
 							while($row = $result->fetch_assoc()) {
-								$grade = $row['COUNT(grade)'];
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        1.25 - <?php
+							while($row = $result1->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        1.50 - <?php
+							while($row = $result2->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        1.75 - <?php
+							while($row = $result3->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        2.00 - <?php
+							while($row = $result4->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        2.25 - <?php
+							while($row = $result5->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        2.50 - <?php
+							while($row = $result6->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        2.75 - <?php
+							while($row = $result7->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        3.00 - <?php
+							while($row = $result8->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        4.00 - <?php
+							while($row = $result9->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        W - <?php
+							while($row = $result10->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        X - <?php
+							while($row = $result11->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
+
+								echo $grade;
+							}
+						?> |
+                        INC - <?php
+							while($row = $result12->fetch_assoc()) {
+								$grade = $row['COUNT(*)'];
 
 								echo $grade;
 							}
 						?>
+                        
+
 					</div>
 					<div class="form-group">
 						<div class="col-md-2 left">

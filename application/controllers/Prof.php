@@ -244,6 +244,91 @@ class Prof extends CI_Controller{
         }
     }
 
+    function fgrades()
+    {        
+        if(isset($_POST) && count($_POST) > 0)
+        {
+            $params = [];
+            foreach ($this->input->post('clID') as $clID)
+            {
+                $params[$clID] = array(
+                    'studentID' => $this->input->post('sid['.$clID.']'),
+                    'classID' => $this->input->post('classid'),
+                    'fgrade' => $this->input->post('fgrade['.$clID.']'),
+                    'remarks' => $this->input->post('remarks['.$clID.']'),
+                    'status' => "FinalSaved",
+                    'dateAdded' => date('Y-m-d H:i:s'),
+                    'lastSaved' => date('Y-m-d H:i:s'),
+                );
+            }
+
+            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+
+            if(count($grades) == 0)
+            {
+                foreach($params as $p)
+                {
+                    $addfgrades = $this->Prof_model->add_fgrades($p);
+                }
+            }
+            else
+            {
+                if(isset($_POST['submit']))
+                {
+                    $params = [];
+                    foreach($this->input->post('clID') as $clID)
+                    {
+                        $params[$clID] = array(
+                            'studentID' => $this->input->post('sid['.$clID.']'),
+                            'classID' => $this->input->post('classid'),
+                            'fgrade' => $this->input->post('fgrade['.$clID.']'),
+                            'remarks' => $this->input->post('remarks['.$clID.']'),
+                            'status' => "FSubmitted",
+                            'dateSubmitted' => date('Y-m-d H:i:s'),
+                        );
+                        foreach($params as $p)
+                        {
+                            $editgrades = $this->Prof_model->updatefgrades($p['studentID'], $p);
+                        }
+                    }
+                }
+                else
+                {
+                    $params = [];
+                    foreach($this->input->post('clID') as $clID)
+                    {
+                        $params[$clID] = array(
+                            'studentID' => $this->input->post('sid['.$clID.']'),
+                            'classID' => $this->input->post('classid'),
+                            'fgrade' => $this->input->post('fgrade['.$clID.']'),
+                            'remarks' => $this->input->post('remarks['.$clID.']'),
+                            'status' => "FinalSaved",
+                            'lastSaved' => date('Y-m-d H:i:s'),
+                        );
+                    }
+                    foreach($params as $p)
+                    {
+                        $editgrades = $this->Prof_model->updatefgrades($p['studentID'], $p);
+                    }
+                }
+            }
+            redirect('prof/index');
+        }
+        else
+        {
+            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
+            if($grades)
+            {
+                for($i = 0; $i<count($grades); $i++)
+                {
+                    $data['classlist']['fgrade'][$i] = $grades[$i]['fgrade'];
+                }
+            }
+            $data['classlist'] = $this->Prof_model->get_classlist();
+            $this->load->view('prof/fgrades', $data);
+        }
+    }
+
     
     /*
      * Adding a new prof
