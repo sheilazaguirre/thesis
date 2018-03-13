@@ -240,7 +240,7 @@
                                                                 <td>" .$desc . "</td>
                                                                 <td>" .$dateadded . "</td>
                                                                 <td>
-                                                                <a href='../uploads/assignments/'$file';' target='_blank' class='btn btn-success' download>
+                                                                    <a href='../uploads/assignment/'><span class='fa fa-pencil'></span> Download</a>
                                                                 Download
                                                                 </a></td>
                                                                 </td>

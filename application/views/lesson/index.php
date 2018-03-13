@@ -27,7 +27,7 @@
                     <tr>
 						<td><?php echo $l['lessonID']; ?></td>
 						<td><?php echo $l['classID']; ?></td>
-						<td><a href="../uploads/lessons/<?php echo $l['lessonFile']; ?>" target="_blank" class='btn btn-success' download>
+						<td><a href="../uploads/lessons/<?php echo $l['lessonFile']; ?>" target="_blank" id="btnDownload" class='btn btn-success' download>
                         Download
                         </a></td>
 						<td><?php echo $l['lessonDesc']; ?></td>
@@ -48,3 +48,7 @@
         </div>
     </div>
 </div>
+
+<script type=text/javascript>
+    $("#btnDownload")
+</script>
