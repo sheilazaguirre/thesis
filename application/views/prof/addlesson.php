@@ -187,7 +187,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Add Lesson</h3>
             </div>
-            <form action="<?php echo base_url()?>prof/addlessons" method="POST">
+            <form action="<?php echo base_url()?>prof/addlesson" method="POST">
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">

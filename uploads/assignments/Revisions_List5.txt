@@ -1,0 +1,29 @@
+- Image unavailable (login)
+- Login: add autocomplete="off" attributes
+- Admin - Homepage - Dashboard
+- Applicant - Add: check of duplicates (email address)
+- Applicant - Add: email address set as not required**
+- Applicant - View: DataTables
+- Users - View: Replace username with student name
+- Units - Add: Min and max unit
+- Add Timeslots**
+- Navigation menu: fix icons
+- Class - View: INNER JOIN statements
+- Classlist - Add: Fix dropdownlist
+- Classlist - Add: use table / check boxlist to display list of students to be added
+- Students - Lessons
+- Students - remove all of IDs from front end side
+- Student - View Subjects
+- Login as Faculty /Students
+- Authorization of pages / access level
+- Grades - save (faculty)
+- Grades (student) fix grade display
+- Grades (student) display faculty
+- fix footer content
+- Load assignment validation: check min and max unit per faculty during assignment
+- fix session management to display records specifically for user
+- Add Lesson (Faculty) - fix submit
+- Reports - filter reports
+  - Print Date / Time
+  - Noted, Received
+- Audit Log
