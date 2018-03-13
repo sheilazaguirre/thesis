@@ -175,28 +175,28 @@
 			</br>
 			<h1 class="text-center">Faculty Log-in</h1>
 			</br>
-				<form method="POST" class="form-horizontal">
+				<form method="POST" action="<?php  echo base_url(); ?>​Landing_Page/facultylogin" class="form-horizontal">
 					<div class="form-group">
 						<div>
-							<input name="IDNumber" type="text" placeholder="ID Number" 
+							<input name="userIDNo" type="text" placeholder="ID Number" 
 								class="textbox" required />
+							<span class="text-danger"><?php echo form_error('userIDNo'); ?></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div>
-							<input name="password" type="password" placeholder="PASSWORD" 
+							<input name="userPassword" type="password" placeholder="PASSWORD" 
 								class="textbox" required />
+							<span class="text-danger"><?php echo form_error('userPassword'); ?></span>
 						</div>
 					</div>
+					<div id="infoMessage"><?php echo $this->session->flashdata('err_message');?></div>
 					<div class="form-group">
 						<div>
-							<button name="signin"
-								class="button">
-								Sign in
-							</button>
+							<input type="submit" name="insert" value="Login" />
 						</div>
 						<div>
-							<a href="forgotpass" name="signin"
+							<a href="<?php echo base_url()?>landing_page/forgot_password" name="forgot"
 								>
 								Forgot Password?
 							</a>

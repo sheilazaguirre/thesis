@@ -26,8 +26,8 @@
                     <tr>
 						<td><?php echo $c['classID']; ?></td>
 						<td><?php echo $c['subjectCode']; ?></td>
-						<td><?php echo $c['facultyID']; ?></td>
-						<td><?php echo $c['dayOfWeek']; ?></td>
+						<td><?php echo $c['userLN']; ?>, <?php echo $c['userFN']; ?></td>
+						<td><?php echo $c['dayOfWeek']; ?> <?php echo $c['startTime']; ?> - <?php echo $c['endTime']; ?></td>
 						<td><?php echo $c['venueCode']; ?></td>
 						<td><?php echo $c['academicYear']; ?></td>
 						<td><?php echo $c['semester']; ?></td>

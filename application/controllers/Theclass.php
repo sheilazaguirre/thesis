@@ -52,11 +52,11 @@ class Theclass extends CI_Controller{
                     'status' => 'Active',
                 );
                 $theclass_id = $this->Theclass_model->add_theclass($params);
-
                 $res = $this->Theclass_model->max();
                 $classid = (int)$res;
                 $resultclass = $this->Theclass_model->add_allclass($classid);
                 
+
                 redirect('theclass/index');
             }
             else if ($studcount > 50)
