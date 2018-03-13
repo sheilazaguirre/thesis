@@ -59,6 +59,21 @@ class Prof extends CI_Controller{
         $this->load->view('prof/index');
     }
 
+    function removeassign($assignID)
+    {
+        $assignment = $this->Assignment_model->get_assignment($assignID);
+
+        // check if the assignment exists before trying to delete it
+        if(isset($assignment['assignID']))
+        {
+            $this->db->set('status', 'Archived');
+            $this->db->set('dateModified', 'NOW()', FALSE);
+            $this->Assignment_model->delete_assignment($assignID);
+            redirect('prof/assignments');
+        }
+        else
+            show_error('The assignment you are trying to delete does not exist.');
+    }
    
 
     function addlesson()
@@ -110,6 +125,22 @@ class Prof extends CI_Controller{
             
             $this->load->view('prof/addlesson',$data);
         }
+    }
+
+    function removelesson($lessonID)
+    {
+        $lesson = $this->Lesson_model->get_lesson($lessonID);
+
+        // check if the lesson exists before trying to delete it
+        if(isset($lesson['lessonID']))
+        {
+            $this->db->set('status', 'Archived');
+            $this->db->set('dateModified', 'NOW()', FALSE);
+            $this->Lesson_model->delete_lesson($lessonID);
+            redirect('prof/lessons');
+        }
+        else
+            show_error('The lesson you are trying to delete does not exist.');
     }
 
     function grades()

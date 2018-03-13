@@ -1,9 +1,14 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-    $result = mysqli_query($db, "SELECT l.lessonID, l.classID, s.subjectCode, l.lessonTitle, l.lessonFile, l.lessonDesc, l.dateUploaded, l.status FROM lessons l 
+    $result = mysqli_query($db, "SELECT l.lessonID, l.classID, s.subjectCode, l.lessonTitle, l.lessonFile, l.lessonDesc, l.dateUploaded, l.status, c.semester FROM lessons l 
     INNER JOIN classes c ON l.classID = c.classID 
     INNER JOIN subjects s ON c.subjectID = s.subjectID 
-    WHERE c.facultyID = '33' AND l.status = 'Active'");
+    WHERE c.facultyID = '20181009' AND l.status = 'Active' AND c.semester='1st Semester'");
+
+    $result2 = mysqli_query($db, "SELECT l.lessonID, l.classID, s.subjectCode, l.lessonTitle, l.lessonFile, l.lessonDesc, l.dateUploaded, l.status, c.semester FROM lessons l 
+    INNER JOIN classes c ON l.classID = c.classID 
+    INNER JOIN subjects s ON c.subjectID = s.subjectID 
+    WHERE c.facultyID = '20181009' AND l.status = 'Active' AND c.semester='2nd Semester'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -210,7 +215,7 @@
                                                     <th class="text-center" style="color: #fff">Title</th>
                                                     <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">File</th>
-                                                    <th class="text-center" style="color: #fff">Date Added</th>
+                                                    <th class="text-center" style="color: #fff">Date Uploaded</th>
                                                     <th class="text-center" style="color: #fff">Actions</th>
                                                 </tr>
                                             </thead>
@@ -235,8 +240,9 @@
                                                                     <td>" .$file . "</td>
                                                                     <td>" .$dateadded . "</td>
                                                                     <td>
-                                                                    <a onclick='return confirm('Archive Record?');' href='' type='button' class='btn btn-danger'>
+                                                                    <a onclick='return confirm('Archive Record?');' href='removelesson/".$no."' type='button' class='btn btn-danger'>
                                                                     <i class='fa fa-eraser'>
+                                                                    DELETE
                                                                     </i></a>
                                                                     </td>
                                                                 </tr>";
@@ -253,26 +259,43 @@
                                             <thead>
                                                 <tr bgcolor="#80091F">
                                                     <th class="text-center" style="color: #fff">Class</th>
-                                                    <th class="text-center" style="color: #fff">Section</th>
                                                     <th class="text-center" style="color: #fff">Title</th>
                                                     <th class="text-center" style="color: #fff">Description</th>
                                                     <th class="text-center" style="color: #fff">File</th>
-                                                    <th class="text-center" style="color: #fff">Date Added</th>
+                                                    <th class="text-center" style="color: #fff">Date Uploaded</th>
                                                     <th class="text-center" style="color: #fff">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAR</td>
-                                                    <td class="text-center">TI002</td>
-                                                    <td class="text-center">Marketing  #1</td>
-                                                    <td class="text-center">First Lessson for PRINMAR</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-danger btn-xs" onclick='return confirm("Delete Record?");'><span class="fa fa-trash"></span> Delete</a>
-                                                    </td>
-                                                </tr>
+                                            <?php
+                                                if (mysqli_num_rows($result2) > 0)
+                                                        {
+                                                            while($row = $result->fetch_assoc())
+                                                            {
+                                                                $no = $row['lessonID'];
+                                                                $subject = $row['subjectCode'];
+                                                                $title = $row['lessonTitle'];
+                                                                $desc = $row['lessonDesc'];
+                                                                $file = $row['lessonFile'];
+                                                                $dateadded = $row['dateUploaded'];
+        
+                                                                echo
+                                                                "<tr>
+                                                                    <td>" .$subject . "</td>
+                                                                    <td>" .$title . "</td>
+                                                                    <td>" .$desc . "</td>
+                                                                    <td>" .$file . "</td>
+                                                                    <td>" .$dateadded . "</td>
+                                                                    <td>
+                                                                    <a onclick='return confirm('Archive Record?');' href='removelesson/".$no."' type='button' class='btn btn-danger'>
+                                                                    <i class='fa fa-eraser'>
+                                                                    DELETE
+                                                                    </i></a>
+                                                                    </td>
+                                                                </tr>";
+                                                            }
+                                                        }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>          

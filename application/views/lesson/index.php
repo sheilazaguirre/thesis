@@ -50,5 +50,18 @@
 </div>
 
 <script type=text/javascript>
-    $("#btnDownload")
+    $("#btnDownload").click(function (){
+        // var idnum = $_SESSION['idnumber']
+    //     $.ajax({
+    //         type:"POST",
+    //         url: "<?php echo base_url(); ?> function na gagawin mo",
+    //         data: {"idnum": idnum},
+    //         success: function (response) 
+    //         {
+    //             alert("Successfully downloaded");
+    //         }
+    //     })
+    // }
+    
+    )
 </script>

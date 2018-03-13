@@ -2,7 +2,7 @@
 	$db = mysqli_connect("localhost", "root", "", "thesis");
 	$result = mysqli_query($db, "SELECT c.classID, s.subjectCode, c.facultyID FROM classes c
 	INNER JOIN subjects s ON c.subjectID = s.subjectID
-	WHERE c.facultyID='1' AND c.status='Active'");
+	WHERE c.facultyID='20181006' AND c.status='Active'");
 
 ?>
 <!DOCTYPE html>
