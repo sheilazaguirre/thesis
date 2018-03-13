@@ -200,8 +200,10 @@
                         	            "<tr>
                         	                <td>" .$no . "</td>
                         	                <td>" .$subject . "</td>
-                        	             	<td>
-                        	                </td>
+											<td class='text-center'>
+                                                <a href='grades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
+                                                <a href='fgrades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
+                                            </td>
                         	            </tr>";
                         	        }
                         	    }

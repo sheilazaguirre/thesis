@@ -95,7 +95,7 @@ class Assignment extends CI_Controller{
 
                 $config['upload_path'] = './uploads/assignments';
                 $config['allowed_types'] = 'jpg|png|pdf|docx|txt';
-                $config['max_size'] = 100;
+                $config['max_size'] = 1024;
                 $config['max_width'] = 1024;
                 $config['max_height'] = 768;
     
