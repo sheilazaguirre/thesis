@@ -22,7 +22,9 @@ class Theclass extends CI_Controller{
      */
     function add()
     {   
-        $data['tableresult'] = $this->Classlist_model->getclass();
+        $data = array('error' => '');
+
+        // $data['tableresult'] = $this->Classlist_model->getclass();
         
         
         $this->load->library('form_validation');
@@ -31,21 +33,62 @@ class Theclass extends CI_Controller{
 		$this->form_validation->set_rules('timeSlotID','TimeSlotID','required|integer');
 		$this->form_validation->set_rules('venueID','VenueID','required|integer');
 		$this->form_validation->set_rules('academicYear','AcademicYear','required|max_length[4]');
-		$this->form_validation->set_rules('semester','Semester','required|max_length[10]');
+        $this->form_validation->set_rules('semester','Semester','required');
+        $this->form_validation->set_rules('remarks','Remarks','required|max_length[10]');
 		
 		if($this->form_validation->run())     
         {   
-            $params = array(
-				'subjectID' => $this->input->post('subjectID'),
-				'facultyID' => $this->input->post('facultyID'),
-				'timeSlotID' => $this->input->post('timeSlotID'),
-				'venueID' => $this->input->post('venueID'),
-				'academicYear' => $this->input->post('academicYear'),
-				'semester' => $this->input->post('semester'),
-            );
-            $this->db->set('status', 'Active');
-            $theclass_id = $this->Theclass_model->add_theclass($params);
-            redirect('theclass/index');
+            $studcount = $this->Theclass_model->count();
+            if ($studcount >= 25 && $studcount < 49)
+            {
+                $params = array(
+                    'subjectID' => $this->input->post('subjectID'),
+                    'facultyID' => $this->input->post('facultyID'),
+                    'timeSlotID' => $this->input->post('timeSlotID'),
+                    'venueID' => $this->input->post('venueID'),
+                    'academicYear' => $this->input->post('academicYear'),
+                    'semester' => $this->input->post('semester'),
+                    'remarks' => $this->input->post('remarks'),
+                    'status' => 'Active',
+                );
+                $theclass_id = $this->Theclass_model->add_theclass($params);
+
+                $res = $this->Theclass_model->max();
+                $classid = (int)$res;
+                $resultclass = $this->Theclass_model->add_allclass($classid);
+                
+                redirect('theclass/index');
+            }
+            else if ($studcount > 50)
+            {
+                $this->load->model('Subject_model');
+                $data['all_subjects'] = $this->Subject_model->get_all_subjects();
+                $this->load->model('User_model');
+                $data['all_users'] = $this->User_model->get_all_faculty();
+                $this->load->model('Timeslot_model');
+                $data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
+                $this->load->model('Venue_model');
+                $data['all_venues'] = $this->Venue_model->get_all_venues();
+                $data['error'] = "The class should not exceed more than 50 student";
+                $data['_view'] = 'theclass/add';
+                $this->load->view('layouts/main',$data);
+            }
+            else
+            {
+                $this->load->model('Subject_model');
+                $data['all_subjects'] = $this->Subject_model->get_all_subjects();
+                $this->load->model('User_model');
+                $data['all_users'] = $this->User_model->get_all_faculty();
+                $this->load->model('Timeslot_model');
+                $data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
+                $this->load->model('Venue_model');
+                $data['all_venues'] = $this->Venue_model->get_all_venues();
+                $data['error'] = "The class should have atleast 25 students";
+                $data['_view'] = 'theclass/add';
+                $this->load->view('layouts/main',$data);
+            }
+
+            
         }
         else
         {
@@ -147,6 +190,7 @@ class Theclass extends CI_Controller{
     {
         $idnum = $this->input->post('idnum');
         $idnumber = (int)$idnum;
+        
         // // var_dump($idnumber);
         // // $idnumber = (int)$num;
         // // // if ($result->num_rows() > 0) {
@@ -157,7 +201,7 @@ class Theclass extends CI_Controller{
             $params = array(
                 'classID' => '0',
                 'studentID' => $idnumber,
-                'remarks' => 'Enrolled',
+                'remarks' => 'Enlisted',
                 'dateAdded' => date('Y-m-d'),
                 );
             $result = $this->Theclass_model->add_student($params);

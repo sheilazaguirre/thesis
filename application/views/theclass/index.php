@@ -12,10 +12,10 @@
                 <thead>
                     <tr>
 						<th>ID#</th>
-						<th>Subject ID</th>
-						<th>Faculty ID</th>
-						<th>TimeSlot ID</th>
-						<th>Venue ID</th>
+						<th>Subject Code</th>
+						<th>Faculty Name</th>
+						<th>Timeslot</th>
+						<th>Venue Code</th>
 						<th>Academic Year</th>
 						<th>Semester</th>
 						<th>Status</th>
@@ -25,10 +25,10 @@
                     <?php foreach($theclasses as $c){ ?>
                     <tr>
 						<td><?php echo $c['classID']; ?></td>
-						<td><?php echo $c['subjectID']; ?></td>
+						<td><?php echo $c['subjectCode']; ?></td>
 						<td><?php echo $c['facultyID']; ?></td>
-						<td><?php echo $c['timeSlotID']; ?></td>
-						<td><?php echo $c['venueID']; ?></td>
+						<td><?php echo $c['dayOfWeek']; ?></td>
+						<td><?php echo $c['venueCode']; ?></td>
 						<td><?php echo $c['academicYear']; ?></td>
 						<td><?php echo $c['semester']; ?></td>
 						<td><?php echo $c['status']; ?></td>

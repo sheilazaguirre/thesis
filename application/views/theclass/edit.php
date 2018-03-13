@@ -15,9 +15,9 @@
 								<?php 
 								foreach($all_subjects as $subject)
 								{
-									$selected = ($subject['sujectID'] == $theclass['subjectID']) ? ' selected="selected"' : "";
+									$selected = ($subject['subjectID'] == $theclass['subjectID']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$subject['sujectID'].'" '.$selected.'>'.$subject['subjectCode'].'</option>';
+									echo '<option value="'.$subject['subjectID'].'" '.$selected.'>'.$subject['subjectCode'].'</option>';
 								} 
 								?>
 							</select>

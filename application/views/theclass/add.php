@@ -3,6 +3,11 @@
 	  <div class="box box-info">
 		<div class="box-header with-border">
 			  <h3 class="box-title">Add Class</h3>
+			  <span>
+				<h5> 
+				<label for="error" id="error" class="text-danger"><?php echo $error;?></label>
+				</h5>
+				</span>
 		</div>
 		<?php echo form_open('theclass/add'); ?>
 		  <div class="box-body">
@@ -15,8 +20,8 @@
 							<?php 
 							foreach($all_subjects as $subject)
 							{
-								$selected = ($subject['sujectID'] == $this->input->post('subjectID')) ? ' selected="selected"' : "";
-								echo '<option value="'.$subject['sujectID'].'" '.$selected.'>'.$subject['subjectCode'].'</option>';
+								$selected = ($subject['subjectID'] == $this->input->post('subjectID')) ? ' selected="selected"' : "";
+								echo '<option value="'.$subject['subjectID'].'" '.$selected.'>'.$subject['subjectCode'].'</option>';
 							} 
 							?>
 						</select>
@@ -24,16 +29,16 @@
 					</div>
 				</div>
 				<div class="col-md-12">
-						<label for="userID" class="control-label">Faculty</label>
+						<label for="facultyID" class="control-label">Faculty</label>
 						<div class="form-group">
-							<select name="userID" class="form-control">
+							<select name="facultyID" class="form-control">
 								<option value="">Select a Faculty</option>
 								<?php 
 								foreach($all_users as $user)
 								{
-									$selected = ($user['userID'] == $this->input->post('userID')) ? ' selected="selected"' : "";
+									$selected = ($user['userIDNo'] == $this->input->post('facultyID')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['userID'].'" '.$selected.'>'.$user['userLN'].', '.$user['userFN'].'</option>';
+									echo '<option value="'.$user['userIDNo'].'" '.$selected.'>Professor '.$user['userLN'].', '.$user['userFN'].'</option>';
 								} 
 								?>
 							</select>
@@ -48,7 +53,7 @@
 							foreach($all_timeslots as $timeslot)
 							{
 								$selected = ($timeslot['timeSlotID'] == $this->input->post('timeSlotID')) ? ' selected="selected"' : "";
-								echo '<option value="'.$timeslot['timeSlotID'].'" '.$selected.'>'.$timeslot['dayOfWeek'].'</option>';
+								echo '<option value="'.$timeslot['timeSlotID'].'" '.$selected.'>'.$timeslot['dayOfWeek'].' '.$timeslot['startTime'].' - '.$timeslot['endTime'].' </option>';
 							} 
 							?>
 						</select>
@@ -81,8 +86,30 @@
 				<div class="col-md-12">
 					<label for="semester" class="control-label"><span class="text-danger">*</span>Semester</label>
 					<div class="form-group">
-						<input type="text" name="semester" value="<?php echo $this->input->post('semester'); ?>" class="form-control" id="semester" />
+					<select name="semester" class="form-control">
+								<option value="">Select a Semester</option>
+								<?php 
+								$semester_values = array(
+									'1ST Semester'=>'1ST Semester',
+									'2ND Semester'=>'2ND Semester',
+								);
+
+								foreach($semester_values as $value => $display_text)
+								{
+									$selected = ($value == $this->input->post('semester')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+								?>
+							</select>
 						<span class="text-danger"><?php echo form_error('semester');?></span>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<label for="remarks" class="control-label"><span class="text-danger">*</span>Remarks</label>
+					<div class="form-group">
+						<input type="text" name="remarks" value="<?php echo $this->input->post('remarks'); ?>" class="form-control" id="remarks" />
+						<span class="text-danger"><?php echo form_error('remarks');?></span>
 					</div>
 				</div>
 			</div>
@@ -202,8 +229,8 @@ function ajaxSearch()
 						{
 						alert("Student successfully added");
 						showAllClasses();
-						$('#search_data').val(' ');
-						$('#autoSuggestionsList').hide();  
+						// $('#search_data').val(' ');
+						// $('#autoSuggestionsList').hide();  
 						}
 						else if (data[0] === 2)
 						{
