@@ -2,7 +2,7 @@
 	$db = mysqli_connect("localhost", "root", "", "thesis");
 	$result = mysqli_query($db, "SELECT c.classID, s.subjectCode, c.facultyID FROM classes c
 	INNER JOIN subjects s ON c.subjectID = s.subjectID
-	WHERE c.facultyID='20181006' AND c.status='Active'");
+	WHERE c.facultyID=$_SESSION[userIDNo] AND c.status='Active' AND c.academicYear=YEAR(NOW())");
 
 ?>
 <!DOCTYPE html>
@@ -173,48 +173,104 @@
 
 		<!-- The content of your page would go here. -->
 		<br/>
-		<div class="menu" id="studentContent">
-		<form action="<?php echo base_url()?>prof/encodegrades" method="POST">
-			<div id="classContent">
-				<div class="container">
-					
-					<table id="name" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
-						<thead>
-							<tr>
-								<th bgcolor="#80091F" style="color: #fff">ClassID</th>
-								<th bgcolor="#80091F" style="color: #fff">Subject</th>
-								<th bgcolor="#80091F" style="color: #fff">Action</th>
-
-							</tr>
-						</thead>
-						<tbody>
-						<?php
-                        	if (mysqli_num_rows($result) > 0)
-                        	    {
-                        	         while($row = $result->fetch_assoc())
-                        	         {
-                        	            $no = $row['classID'];
-                        	         	$subject = $row['subjectCode'];
-    
-                        	            echo
-                        	            "<tr>
-                        	                <td>" .$no . "</td>
-                        	                <td>" .$subject . "</td>
-											<td class='text-center'>
-                                                <a href='".base_url()."prof/grades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
-                                                <a href='".base_url()."prof/fgrades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
-                                            </td>
-                        	            </tr>";
-                        	        }
-                        	    }
-                        ?>
-						</tbody>
-
-					</table>
-					<!--                                         -->
-				</div>
-			</div>
-		</form>
+		<div id="studentContent">
+            <div class="breadcrumbs">
+            <div class="container">
+                    <ol class="breadcrumb breadcrumb--ys pull-left">
+                        <li class="home-link"><a href="index" class="icon icon-home"></a></li>
+                        <li>S.Y <?php echo date("Y"); ?></</li>
+                        <li class="active">Assignments</li>
+                    </ol>
+                </div>
+            </div>
+            <section class="content offset-top-0">
+                <div class="container">
+                            <div class="content">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-tabs--ys1" role="tablist">
+                                    <li class="active"><a href="#Tab1"  role="tab" data-toggle="tab" class="text-uppercase">1st Semester</a></li>
+                                    <li><a href="#Tab2" role="tab" data-toggle="tab" class="text-uppercase">2nd Semester</a></li>
+                                </ul>
+                                <br>
+                                <div class="col-md-10">
+                                </div>
+                                <div class="col-md-2">
+                                <a href="<?php echo site_url('prof_func/add'); ?>" class="btn btn-success btn-sm">Add Assignment</a>
+                            </div>
+                                <!-- Tab panes -->
+                                <div class="tab-content tab-content--ys nav-stacked">
+                                    <div role="tabpanel" class="tab-pane active" id="Tab1">
+                                        <div class="divider divider--xs"></div>
+                                        <table class="table table-params" >
+                                            <thead>
+                                                <tr bgcolor="#80091F">
+                                                    <th class="text-center" style="color: #fff">Class ID</th>
+                                                    <th class="text-center" style="color: #fff">Subject</th>
+                                                    <th class="text-center" style="color: #fff">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+												if (mysqli_num_rows($result) > 0)
+													{
+														while($row = $result->fetch_assoc())
+														{
+															$no = $row['classID'];
+															$subject = $row['subjectCode'];
+						
+															echo
+															"<tr>
+																<td>" .$no . "</td>
+																<td>" .$subject . "</td>
+																<td class='text-center'>
+																	<a href='".base_url()."prof/grades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
+																	<a href='".base_url()."prof/fgrades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
+																</td>
+															</tr>";
+														}
+													}
+											?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="Tab2">
+                                        <div class="divider divider--xs"></div>
+                                        <table class="table table-params">
+                                            <thead>
+                                                <tr bgcolor="#80091F">
+                                                    <th class="text-center" style="color: #fff">Class ID</th>
+                                                    <th class="text-center" style="color: #fff">Subject</th>
+                                                    <th class="text-center" style="color: #fff">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+												if (mysqli_num_rows($result) > 0)
+													{
+														while($row = $result->fetch_assoc())
+														{
+															$no = $row['classID'];
+															$subject = $row['subjectCode'];
+						
+															echo
+															"<tr>
+																<td>" .$no . "</td>
+																<td>" .$subject . "</td>
+																<td class='text-center'>
+																	<a href='".base_url()."prof/grades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
+																	<a href='".base_url()."prof/fgrades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
+																</td>
+															</tr>";
+														}
+													}
+											?>
+                                            </tbody>
+                                        </table>
+                                    </div>          
+            </section>          
+            <!-- related products -->
+            <!-- /related products -->
+        </div>
 
 
 
