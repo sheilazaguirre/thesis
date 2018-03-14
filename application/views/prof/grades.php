@@ -1,18 +1,19 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-	$result = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1'");
-	$result1 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.25'");
-	$result2 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.50'");
-	$result3 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.75'");
-	$result4 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2'");
-	$result5 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.25'");
-	$result6 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.50'");
-	$result7 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.75'");
-	$result8 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='3'");
-	$result9 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='4'");
-	$result10 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='W'");
-	$result11 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='X'");
-	$result12 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='inc'");
+	$result = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1' AND classID='".$classID."'");
+	$result1 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.25' AND classID='".$classID."'");
+	$result2 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.50' AND classID='".$classID."'");
+	$result3 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.75' AND classID='".$classID."'");
+	$result4 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2' AND classID='".$classID."'");
+	$result5 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.25' AND classID='".$classID."'");
+	$result6 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.50' AND classID='".$classID."'");
+	$result7 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.75' AND classID='".$classID."'");
+	$result8 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='3' AND classID='".$classID."'");
+	$result9 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='4' AND classID='".$classID."'");
+	$result10 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='W' AND classID='".$classID."'");
+	$result11 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='X' AND classID='".$classID."'");
+	$result12 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='inc' AND classID='".$classID."'");
+	var_dump($dump);
     
 ?>
 <!DOCTYPE html>
@@ -62,7 +63,7 @@
     </head>
 
     <body class="index">        
-        <div id="loader-wrapper">
+        <!-- <div id="loader-wrapper">
             <div id="loader">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -73,7 +74,7 @@
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-        </div>
+        </div> -->
         <!-- Back to top -->
         <div class="back-to-top"><span class="icon-keyboard_arrow_up"></span></div>
         <!-- /Back to top -->
@@ -90,7 +91,7 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="<?php echo base_url()?>prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
+                            <a href="<?php echo base_url()?>prof/encodegrades"><span class="act-underline">ENCODE GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
@@ -176,7 +177,7 @@
                                     </li>                                   
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="<?php echo base_url()?>prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+                                        <a href="<?php echo base_url()?>prof/encodegrades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
@@ -223,6 +224,7 @@
 					<br>
 					<h3 align="center">
 						<b>Prelims</b>
+
 					</h3>
 					<hr/>
 					<?php $this->session->flashdata('message_name'); ?>
@@ -237,7 +239,6 @@
 							</tr>
 						</thead>
 						<tbody>
-						
 							<?php foreach($classlist as $c){ ?>
 							<tr>
 								<td>
@@ -251,21 +252,22 @@
 								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
 								
 								<td>
+
 									<select name="grade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> required />
-										<option value="">Select Grade</option>
-										<option value="1" <?php echo $c["grade"] == "1" ? "selected" : "" ?>>1.00</option>
-										<option value="1.25" <?php echo $c["grade"] == "1.25" ? "selected" : "" ?>>1.25</option>
-										<option value="1.50" <?php echo $c["grade"] == "1.50" ? "selected" : "" ?>>1.50</option>
-										<option value="1.75" <?php echo $c["grade"] == "1.75" ? "selected" : "" ?>>1.75</option>
-										<option value="2" <?php echo $c["grade"] == "2" ? "selected" : "" ?>>2.00</option>
-										<option value="2.25" <?php echo $c["grade"] == "2.25" ? "selected" : "" ?>>2.25</option>
-										<option value="2.50" <?php echo $c["grade"] == "2.50" ? "selected" : "" ?>>2.50</option>
-										<option value="2.75" <?php echo $c["grade"] == "2.75" ? "selected" : "" ?>>2.75</option>
-										<option value="3" <?php echo $c["grade"] == "3" ? "selected" : "" ?>>3.00</option>
-										<option value="4" <?php echo $c["grade"] == "4" ? "selected" : "" ?>>4.00</option>
-										<option value="W" <?php echo $c["grade"] == "W" ? "selected" : "" ?>>W</option>
-										<option value="X" <?php echo $c["grade"] == "X" ? "selected" : "" ?>>X</option>
-										<option value="inc" <?php echo $c["grade"] == "inc" ? "selected" : "" ?>>INC</option>
+										<option value="" <?php if($c["grade"] == '') echo "selected"; else echo ""; ?>>Select Grade</option>
+										<option value="1" <?php if($c["grade"] == 1) echo "selected"; else echo ""; ?>>1.00</option>
+										<option value="1.25" <?php if($c["grade"] == 1.25) echo "selected"; else echo ""; ?>>1.25</option>
+										<option value="1.50" <?php if($c["grade"] == 1.50) echo "selected"; else echo ""; ?>>1.50</option>
+										<option value="1.75" <?php if($c["grade"] == 1.75) echo "selected"; else echo ""; ?>>1.75</option>
+										<option value="2" <?php if($c["grade"] == 2) echo "selected"; else echo ""; ?>>2.00</option>
+										<option value="2.25" <?php if($c["grade"] == 2.25) echo "selected"; else echo ""; ?>>2.25</option>
+										<option value="2.50" <?php if($c["grade"] == 2.50) echo "selected"; else echo ""; ?>>2.50</option>
+										<option value="2.75" <?php if($c["grade"] == 2.75) echo "selected"; else echo ""; ?>>2.75</option>
+										<option value="3" <?php if($c["grade"] == 3) echo "selected"; else echo ""; ?>>3.00</option>
+										<option value="4" <?php if($c["grade"] == 4) echo "selected"; else echo ""; ?>>4.00</option>
+										<option value="W" <?php if($c["grade"] == "W") echo "selected"; else echo ""; ?>>W</option>
+										<option value="X" <?php if($c["grade"] == "X") echo "selected"; else echo ""; ?>>X</option>
+										<option value="inc" <?php if($c["grade"] == "inc") echo "selected"; else echo ""; ?>>INC</option>
 									</select>
 									<br/>
 								</td>
@@ -403,7 +405,7 @@
 					
 					<div class="form-group">
 						<div class="col-md-12 text-right">
-						<?php if($c['status'] != 'Submitted'): ?>
+						<?php if($classlist[0]['status'] != 'Submitted'): ?>
 							<button type="submit" name="save" class="btn btn-info" onclick='return confirm("Save?");'>
 								<i class="fa fa-check"></i> Save
 							</button>
