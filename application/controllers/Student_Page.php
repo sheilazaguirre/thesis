@@ -5,7 +5,7 @@ class Student_Page extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->load->library(array('session'));
+        $this->load->library('session');
         $this->load->model('Auditlog_model');
     } 
 
