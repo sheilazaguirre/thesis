@@ -15,7 +15,18 @@ class Prof extends CI_Controller{
 
     function schedule()
     {
-        $this->load->view('prof/schedule');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/schedule',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
+        
     }
 
     function downloads()
@@ -26,17 +37,47 @@ class Prof extends CI_Controller{
 
     function lessons()
     {
-        $this->load->view('prof/lessons');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/lessons',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     function assignments()
     {
-        $this->load->view('prof/assignments');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/assignments',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     function encodegrades()
     {
-        $this->load->view('prof/encodegrades');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/encodegrades',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     /*
@@ -53,10 +94,17 @@ class Prof extends CI_Controller{
         $this->pagination->initialize($config);
 
 
-
-        $data['prof'] = $this->Prof_model->get_all_prof($params);
-        
-        $this->load->view('prof/index');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/index',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     function removeassign($assignID)

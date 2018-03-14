@@ -145,6 +145,7 @@ class Student_Page extends CI_Controller{
         
     }
 
+<<<<<<< HEAD
     function auditdownload()
     {
         $idnum = $this->session->userdata('userIDNo');
@@ -154,6 +155,59 @@ class Student_Page extends CI_Controller{
         );
         $this->Auditlog_model->add_auditlog($paramsaudit);
         redirect('student_page/assignments');
+=======
+    function account()
+    {
+        $this->load->view('student_page/account');
+    }
+
+    function updatepwd()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('password', 'Current Password', 'required|alpha_numeric|min_length[6]|max_length[20]');
+        $this->form_validation->set_rules('newpass', 'New Password', 'required|alpha_numeric|min_length[6]|max_length[20]');
+        $this->form_validation->set_rules('confpass', 'Confirm Password', 'required|alpha_numeric|min_length[6]|max_length[20]');
+
+        if($this->form_validation->run())
+        {
+            $cur_password = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
+            $new_password = $this->input->post('newpass');
+            $con_password = $this->input->post('confpass');
+            $this->load->model('Student_Page_model');
+            $userIDNo = $_SESSION['userIDNo'];
+            $passwd = $this->Student_Page_model->getCurrPassword($userIDNo);
+            if($passwd == $cur_password)
+            {
+                if($new_password == $conf_password)
+                {
+                    if ($this->queries->updatePassword($userIDNo)) 
+                    {
+                        echo "Password updated successfully";
+                    }
+                    else
+                    {
+                        echo "Failed to update password";
+                    }
+
+                }
+                else
+                {
+                    echo "New password & Confirm doesn't match";
+                }
+
+            } 
+            else
+            {
+                echo "Current Password does not match";
+            }
+        }
+        else
+        {
+            echo validation_errors();
+
+        }
+>>>>>>> 577dd22f988ae41280597480102d211b2587304c
     }
 
 

@@ -63,7 +63,7 @@
 
 
                                     <p>
-                                        Beper Ong - Admin
+                                        Registrar
 
                                     </p>
                                     </li>
