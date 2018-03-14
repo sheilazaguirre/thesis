@@ -213,18 +213,26 @@ class Prof extends CI_Controller{
             }
             redirect('prof/index');
         }
-        else
+        else 
         {
+            $data['classlist'] = $this->Prof_model->get_classlist(); 
             $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
-            if($grades)
+            if(count($grades) > 0)
             {
                 for($i = 0; $i<count($grades); $i++)
                 {
                     $data['classlist']['grade'][$i] = $grades[$i]['grade'];
                 }
             }
-            $data['classlist'] = $this->Prof_model->get_classlist();
-            $this->load->view('prof/grades', $data);
+            else
+            {
+                for($i = 0; $i<count($data['classlist']); $i++)
+                {
+                    $data['classlist']['grade'][$i] = 0;
+                }
+            }
+            // var_dump($); 
+            $this->load->view('prof/grades', $data); 
         }
     }
 

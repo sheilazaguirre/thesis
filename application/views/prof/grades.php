@@ -90,7 +90,7 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="<?php echo base_url()?>prof/grades"><span class="act-underline">ENCODE GRADES</span></a>
+                            <a href="<?php echo base_url()?>prof/encodegrades"><span class="act-underline">ENCODE GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
@@ -176,7 +176,7 @@
                                     </li>                                   
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
-                                        <a href="<?php echo base_url()?>prof/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
+                                        <a href="<?php echo base_url()?>prof/encodegrades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ENCODE GRADES</span></a>
                                     </li>
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
@@ -223,6 +223,7 @@
 					<br>
 					<h3 align="center">
 						<b>Prelims</b>
+
 					</h3>
 					<hr/>
 					<?php $this->session->flashdata('message_name'); ?>
@@ -251,21 +252,22 @@
 								<input type="hidden" name="sid[<?=$c['classlistID']?>]" value="<?php echo $c['studentID']?>"/>
 								
 								<td>
+
 									<select name="grade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> required />
 										<option value="">Select Grade</option>
-										<option value="1" <?php echo $c["grade"] == "1" ? "selected" : "" ?>>1.00</option>
-										<option value="1.25" <?php echo $c["grade"] == "1.25" ? "selected" : "" ?>>1.25</option>
-										<option value="1.50" <?php echo $c["grade"] == "1.50" ? "selected" : "" ?>>1.50</option>
-										<option value="1.75" <?php echo $c["grade"] == "1.75" ? "selected" : "" ?>>1.75</option>
-										<option value="2" <?php echo $c["grade"] == "2" ? "selected" : "" ?>>2.00</option>
-										<option value="2.25" <?php echo $c["grade"] == "2.25" ? "selected" : "" ?>>2.25</option>
-										<option value="2.50" <?php echo $c["grade"] == "2.50" ? "selected" : "" ?>>2.50</option>
-										<option value="2.75" <?php echo $c["grade"] == "2.75" ? "selected" : "" ?>>2.75</option>
-										<option value="3" <?php echo $c["grade"] == "3" ? "selected" : "" ?>>3.00</option>
-										<option value="4" <?php echo $c["grade"] == "4" ? "selected" : "" ?>>4.00</option>
-										<option value="W" <?php echo $c["grade"] == "W" ? "selected" : "" ?>>W</option>
-										<option value="X" <?php echo $c["grade"] == "X" ? "selected" : "" ?>>X</option>
-										<option value="inc" <?php echo $c["grade"] == "inc" ? "selected" : "" ?>>INC</option>
+										<option value="1" <?php if($c["grade"] == 1) echo "selected"; else echo ""; ?>>1.00</option>
+										<option value="1.25" <?php if($c["grade"] == 1.25) echo "selected"; else echo ""; ?>>1.25</option>
+										<option value="1.50" <?php if($c["grade"] == 1.50) echo "selected"; else echo ""; ?>>1.50</option>
+										<option value="1.75" <?php if($c["grade"] == 1.75) echo "selected"; else echo ""; ?>>1.75</option>
+										<option value="2" <?php if($c["grade"] == 2) echo "selected"; else echo ""; ?>>2.00</option>
+										<option value="2.25" <?php if($c["grade"] == 2.25) echo "selected"; else echo ""; ?>>2.25</option>
+										<option value="2.50" <?php if($c["grade"] == 2.50) echo "selected"; else echo ""; ?>>2.50</option>
+										<option value="2.75" <?php if($c["grade"] == 2.75) echo "selected"; else echo ""; ?>>2.75</option>
+										<option value="3" <?php if($c["grade"] == 3) echo "selected"; else echo ""; ?>>3.00</option>
+										<option value="4" <?php if($c["grade"] == 4) echo "selected"; else echo ""; ?>>4.00</option>
+										<option value="W" <?php if($c["grade"] == "W") echo "selected"; else echo ""; ?>>W</option>
+										<option value="X" <?php if($c["grade"] == "X") echo "selected"; else echo ""; ?>>X</option>
+										<option value="inc" <?php if($c["grade"] == "inc") echo "selected"; else echo ""; ?>>INC</option>
 									</select>
 									<br/>
 								</td>
