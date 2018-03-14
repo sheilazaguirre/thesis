@@ -179,7 +179,7 @@
                     <ol class="breadcrumb breadcrumb--ys pull-left">
                         <li class="home-link"><a href="index" class="icon icon-home"></a></li>
                         <li>S.Y <?php echo date("Y"); ?></</li>
-                        <li class="active">Assignments</li>
+                        <li class="active">Encode Grades</li>
                     </ol>
                 </div>
             </div>
