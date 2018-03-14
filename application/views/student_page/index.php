@@ -1,18 +1,3 @@
-<?php
-	$db = mysqli_connect("localhost", "root", "", "thesis");
-
-	$result = mysqli_query($db, "SELECT CONCAT(userFN, ' ',userLN) as userName
-	FROM users WHERE userIDNo=$_SESSION[userIDNo]");
-
-	if (mysqli_num_rows($result) > 0)
-	{
-		while($row = $result->fetch_assoc()) {
-			$name = $row['userName'];
-		}
-	}
-
-	
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +83,7 @@
 						<!-- col-left -->
 						<div class="col-sm-3 text-left">
 							<!-- slogan start -->
-							<div class="slogan"> Welcome, "<?php echo $name; ?>"! </div>
+							<div class="slogan"> Welcome, "<?php echo $fn; ?> <?php echo $ln; ?>"! </div>
 							<!-- slogan end --> 	
 						</div>
 						<!-- /col-left -->

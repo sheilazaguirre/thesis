@@ -82,7 +82,7 @@
 						<!-- col-left -->
 						<div class="col-sm-3 text-left">
 							<!-- slogan start -->
-							<div class="slogan"> Welcome, "Name"! </div>
+							<div class="slogan"> Welcome, "<?php echo $fn; ?> <?php echo $ln; ?>"! </div>
 							<!-- slogan end --> 	
 						</div>
 						<!-- /col-left -->
