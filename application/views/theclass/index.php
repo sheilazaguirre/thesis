@@ -30,7 +30,7 @@
 						<td><?php echo $c['dayOfWeek']; ?> <?php echo $c['startTime']; ?> - <?php echo $c['endTime']; ?></td>
 						<td><?php echo $c['venueCode']; ?></td>
 						<td><?php echo $c['academicYear']; ?></td>
-						<td><?php echo $c['semester']; ?></td>
+						<td><?php echo $c['semester']; ?> Semester</td>
 						<td><?php echo $c['status']; ?></td>
 						<td>
                             <a href="<?php echo site_url('theclass/edit/'.$c['classID']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 

@@ -89,14 +89,17 @@ class Theclass_model extends CI_Model
         // $this->db->where($where);
         
         $queryusers = $this->db->query('SELECT * from users where userIDNo = '.$idnumber.' AND userTypeID = 3');
+        // IF user exist
         if ($queryusers->num_rows() > 0)
         {
             $query = $this->db->query('SELECT * from classlist where studentID = '.$idnumber.' AND classID = 0');
             if ($query->num_rows() > 0) {
             return  2;
+            // return if student exist in the table
             }
             else{
             return 1;
+            // return if student does not exist
             } 
         } 
         else
@@ -107,9 +110,11 @@ class Theclass_model extends CI_Model
 
     function count()
     {
+        //count the number of student in class
         $query = $this->db->query('SELECT COUNT(*) as StudentCount FROM classlist WHERE classID = 0');
         if ($query->num_rows() > 0)
         {
+            //Returns StudentCount
             $result = $query->row();
             return $result->StudentCount;
         }
@@ -136,14 +141,29 @@ class Theclass_model extends CI_Model
     function add_allclass($classid)
     {
         $query = $this->db->query('UPDATE classlist SET classID = '.$classid.', remarks= "Enrolled" WHERE classID = 0');
+    }
+
+    function validateclass($params)
+    {
+        $facultyid = $params['facultyID'];
+        $timeslot = $params['timeSlotID'];
+        $venue = $params['venueID'];
+        $sem = $params['semester'];
+        $acad = $params['academicYear'];
+
+        $query = $this->db->query("SELECT * from classes where timeSlotID = '.$timeslot.' AND venueID = '.$venue.' AND semester = '.$sem.' AND academicYear = '.$acad.' AND status = 'Active'");
         if ($query->num_rows() > 0)
         {
-            return true;
+            //Exist
+            return 1;
         }
         else 
         {
-            return false;
+            //Nothing exist
+            return 2;
         }
+
+
     }
     
 

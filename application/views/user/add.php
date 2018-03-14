@@ -123,6 +123,7 @@
                                 <input type="text" name="birthdate" value="<?php echo $this->input->post('birthdate'); ?>" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask required />
                             </div>
 							<span class="text-danger"><?php echo form_error('birthdate');?></span>
+							<span class="text-danger"><?php echo $error?></span>
 						</div>
 					</div>
 					<div class="col-md-6">

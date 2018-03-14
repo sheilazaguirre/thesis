@@ -59,60 +59,9 @@ class Landing_Page extends CI_Controller{
         }
         $data['_view'] = 'landing_page/index';
         $this->load->view('landing_page/index', $data);
-<<<<<<< HEAD
-    }
-
-    function facultylogin() 
-    {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
-        $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
-        $_SESSION['errormsg'] = 0;
-        $form_reponse=$this->input->post('g-recaptcha-response');
-        $url="https://www.google.com/recaptcha/api/siteverify";
-        $secretkey="6LfRmzcUAAAAALyhGzTaoIa5XsHxb3MocPDbDZd_";
-        $response=file_get_contents($url."?secret=".$secretkey."&response=".$form_reponse."&remoteip=".$_SERVER["REMOTE_ADDR"]);
-        $dota=json_decode($response);
-        if($this->form_validation->run())     
-        {   
-            $params = array(
-                'userPassword' => $this->input->post('userPassword'),
-                'userIDNo' => $this->input->post('userIDNo'),);
-            $login = $this->Landing_Page_model->get_user($params); 
-            if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
-                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
-            }
-            else {
-                if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
-                {
-                    
-                    $_SESSION['userIDNo'] = $login['userIDNo'];
-                    $_SESSION['userTypeID'] = $login['userTypeID'];
-
-                    $idnum = $login['userIDNo'];
-                    // $usertype = $login['userTypeID'];  
-                    // $result = $this->Landing_Page_model->validate($idnum);
-
-                    $paramsaudit = array(
-                        'userIDNo' => $idnum,
-                        'auditDesc' => 'Logged In',
-                    );
-                    
-                    $this->Auditlog_model->add_auditlog($paramsaudit);
-                    redirect('landing_page/faculty');
-                    //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
-                }
-                else {
-                $this->session->set_flashdata('err_message', 'Invalid credentials, also make sure to validate with recaptcha');
-                }
-            }
-=======
         session_destroy();
->>>>>>> 2d9675ee28947b7179732591f16f4d41544b8d90
-        }
-        $data['_view'] = 'landing_page/faculty';
-        $this->load->view('landing_page/faculty', $data);
     }
+    
     function logout()
     {
         $login = $this->User_model->get_user($_SESSION['userIDNo']); 
@@ -379,12 +328,110 @@ class Landing_Page extends CI_Controller{
 
     function faculty()
     {
-        $this->load->view('landing_page/faculty');
+        $data = array('error' => '');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
+        $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
+        $_SESSION['errormsg'] = 0;
+        $form_reponse=$this->input->post('g-recaptcha-response');
+        $url="https://www.google.com/recaptcha/api/siteverify";
+        $secretkey="6LfRmzcUAAAAALyhGzTaoIa5XsHxb3MocPDbDZd_";
+        $response=file_get_contents($url."?secret=".$secretkey."&response=".$form_reponse."&remoteip=".$_SERVER["REMOTE_ADDR"]);
+        $dota=json_decode($response);
+        if($this->form_validation->run())     
+        {   
+            $params = array(
+                'userPassword' => $this->input->post('userPassword'),
+                'userIDNo' => $this->input->post('userIDNo'),);
+            $login = $this->Landing_Page_model->get_user($params); 
+            if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
+                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
+                $data = array('error' => 'Invalid ID Number or Password!');
+                // $this->load->view('landing_page/faculty', $data);
+            }
+            else {
+                if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
+                {
+                    
+                    $_SESSION['userIDNo'] = $login['userIDNo'];
+                    $_SESSION['userTypeID'] = $login['userTypeID'];
+
+                    $idnum = $login['userIDNo'];
+                    // $usertype = $login['userTypeID'];  
+                    // $result = $this->Landing_Page_model->validate($idnum);
+
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Logged In',
+                    );
+                    
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
+                    redirect('prof/index');
+                    //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
+                }
+                else {
+                    $data = array('error' => 'Invalid credentials, also make sure to validate with recaptcha');
+                    // $this->load->view('landing_page/faculty', $data);
+                }
+            }
+        }
+        $data['_view'] = 'landing_page/faculty';
+        $this->load->view('landing_page/faculty', $data);
+        session_destroy();
     }
 
     function registrar()
     {
-        $this->load->view('landing_page/registrar');
+        $data = array('error' => '');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
+        $this->form_validation->set_rules('userIDNo','ID Number','required|max_length[50]');
+        $_SESSION['errormsg'] = 0;
+        $form_reponse=$this->input->post('g-recaptcha-response');
+        $url="https://www.google.com/recaptcha/api/siteverify";
+        $secretkey="6LfRmzcUAAAAALyhGzTaoIa5XsHxb3MocPDbDZd_";
+        $response=file_get_contents($url."?secret=".$secretkey."&response=".$form_reponse."&remoteip=".$_SERVER["REMOTE_ADDR"]);
+        $dota=json_decode($response);
+        if($this->form_validation->run())     
+        {   
+            $params = array(
+                'userPassword' => $this->input->post('userPassword'),
+                'userIDNo' => $this->input->post('userIDNo'),);
+            $login = $this->Landing_Page_model->get_user($params); 
+            if(password_verify($params['userPassword'], $login['userPassword']) == FALSE){
+                $this->session->set_flashdata('err_message', 'Invalid ID Number or Password!');
+                $data = array('error' => 'Invalid ID Number or Password!');
+                // $this->load->view('landing_page/faculty', $data);
+            }
+            else {
+                if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
+                {
+                    
+                    $_SESSION['userIDNo'] = $login['userIDNo'];
+                    $_SESSION['userTypeID'] = $login['userTypeID'];
+
+                    $idnum = $login['userIDNo'];
+                    // $usertype = $login['userTypeID'];  
+                    // $result = $this->Landing_Page_model->validate($idnum);
+
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Logged In',
+                    );
+                    
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
+                    redirect('prof/index');
+                    //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
+                }
+                else {
+                    $data = array('error' => 'Invalid credentials, also make sure to validate with recaptcha');
+                    // $this->load->view('landing_page/faculty', $data);
+                }
+            }
+        }
+        $data['_view'] = 'landing_page/registrar';
+        $this->load->view('landing_page/registrar', $data);
+        session_destroy();
     }
 
 

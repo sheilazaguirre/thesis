@@ -22,7 +22,7 @@
                     <?php foreach($auditlogs as $a){ ?>
                     <tr>
 						<td><?php echo $a['auditID']; ?></td>
-						<td><?php echo $a['auname']; ?></td>
+						<td><?php echo $a['userFN']; ?> <?php echo $a['userLN']; ?></td>
 						<td><?php echo $a['auditDesc']; ?></td>
 						<td><?php echo $a['timestamp']; ?></td>
 						<td><?php echo $a['status']; ?></td>

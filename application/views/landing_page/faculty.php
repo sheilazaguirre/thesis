@@ -174,8 +174,11 @@
 		<div id="login_form" class="wrapper">
 			</br>
 			<h1 class="text-center">Faculty Log-in</h1>
+			<h5> 
+				<label for="error" id="error" class="text-danger"><?php echo $error;?></label>
+				</h5>
 			</br>
-				<form method="POST" action="<?php  echo base_url(); ?>​Landing_Page/facultylogin" class="form-horizontal">
+			<?php echo form_open('landing_page/faculty'); ?>
 					<div class="form-group">
 						<div>
 							<input name="userIDNo" type="text" placeholder="ID Number" 
@@ -205,7 +208,7 @@
 					<div class="form-group">
 						<div class="g-recaptcha" data-sitekey="6LfRmzcUAAAAAGUARi6CAjGlAVfuO0AzGwIS1z3k" align="center"></div>
 					</div>
-				</form>
+			<?php echo form_close(); ?>
 			</div>
 		</div>
 	</div>

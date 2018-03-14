@@ -90,8 +90,8 @@
 								<option value="">Select a Semester</option>
 								<?php 
 								$semester_values = array(
-									'1ST Semester'=>'1ST Semester',
-									'2ND Semester'=>'2ND Semester',
+									'1ST'=>'1ST Semester',
+									'2ND'=>'2ND Semester',
 								);
 
 								foreach($semester_values as $value => $display_text)

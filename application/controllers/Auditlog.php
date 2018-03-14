@@ -15,6 +15,7 @@ class Auditlog extends CI_Controller{
     {
         $data['auditlogs'] = $this->Auditlog_model->get_all_auditlogs();
         
+        
         $data['_view'] = 'auditlog/index';
         $this->load->view('layouts/main',$data);
     }

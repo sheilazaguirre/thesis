@@ -51,13 +51,27 @@ class Theclass extends CI_Controller{
                     'remarks' => $this->input->post('remarks'),
                     'status' => 'Active',
                 );
-                $theclass_id = $this->Theclass_model->add_theclass($params);
-                $res = $this->Theclass_model->max();
-                $classid = (int)$res;
-                $resultclass = $this->Theclass_model->add_allclass($classid);
+                $valresult = $this->Theclass_model->validateclass($params);
+                if ($valresult === 1 ) {
+                    $theclass_id = $this->Theclass_model->add_theclass($params);
+                    $res = $this->Theclass_model->max();
+                    $classid = (int)$res;
+                    $resultclass = $this->Theclass_model->add_allclass($classid);
+                    redirect('theclass/index');
+                } else {
+                    $this->load->model('Subject_model');
+                    $data['all_subjects'] = $this->Subject_model->get_all_subjects();
+                    $this->load->model('User_model');
+                    $data['all_users'] = $this->User_model->get_all_faculty();
+                    $this->load->model('Timeslot_model');
+                    $data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
+                    $this->load->model('Venue_model');
+                    $data['all_venues'] = $this->Venue_model->get_all_venues();
+                    $data['error'] = "Timeslot already taken for that Room";
+                    $data['_view'] = 'theclass/add';
+                    $this->load->view('layouts/main',$data);
+                }
                 
-
-                redirect('theclass/index');
             }
             else if ($studcount > 50)
             {

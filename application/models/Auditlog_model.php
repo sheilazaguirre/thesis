@@ -22,6 +22,7 @@ class Auditlog_model extends CI_Model
     function get_all_auditlogs()
     {
         $this->db->order_by('auditID', 'asc');
+        $this->db->join('users', 'userIDNo');
         return $this->db->get('auditlogs')->result_array();
     }
         

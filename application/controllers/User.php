@@ -24,6 +24,7 @@ class User extends CI_Controller{
      */
     function add()
     {   
+		$data['error'] = "";
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('userIDNo','UserIDNo','required|integer');
@@ -60,7 +61,7 @@ class User extends CI_Controller{
             $num = $diff->format('%y');
 			$age = (int)$num;
 			
-			if ($age >= 14)
+			if ($age >= 14 && $age <39)
 			{
 				$params = array(
 					'userTypeID' => $this->input->post('userTypeID'),
@@ -98,10 +99,18 @@ class User extends CI_Controller{
 				redirect('user/index');
 			} 
 			else if ($age >= 40) {
-				show_error('Student too old');
+				$this->load->model('Usertype_model');
+				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
+				$data['error'] = "Student too old / Invalid years";
+           		$data['_view'] = 'user/add';
+            	$this->load->view('layouts/main',$data);
 			}
 			else {
-				show_error('Student too young for college');
+				$this->load->model('Usertype_model');
+				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
+				$data['error'] = "Student too young for college / Invalid years";
+           		$data['_view'] = 'user/add';
+            	$this->load->view('layouts/main',$data);
 			}
 
             
