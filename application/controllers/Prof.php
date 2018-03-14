@@ -8,6 +8,7 @@ class Prof extends CI_Controller{
         $this->load->model('Prof_model');
         $this->load->model('Assignment_model');
         $this->load->model('Lesson_model');
+        $this->load->model('Auditlog_model');
         $this->load->helper('form');
         $this->load->helper('url');
              
@@ -217,6 +218,7 @@ class Prof extends CI_Controller{
                 foreach($params as $p)
                 {
                     $addgrades = $this->Prof_model->add_grades($p);
+                    
                 }
             }
             else
@@ -239,6 +241,12 @@ class Prof extends CI_Controller{
                             $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                         }
                     }
+                    $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Submitted all the student Prelim grades',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
                 }
                 else
                 {
@@ -258,6 +266,12 @@ class Prof extends CI_Controller{
                     {
                         $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                     }
+                    $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Saved all the student Prelim grades',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
                 }
             }
             redirect('prof/index');
@@ -337,6 +351,12 @@ class Prof extends CI_Controller{
                             $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                         }
                     }
+                    $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Submitted all the student Final grades',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
                 }
                 else
                 {
@@ -356,6 +376,12 @@ class Prof extends CI_Controller{
                     {
                         $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                     }
+                    $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Saved all the student Final grades',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
                 }
             }
             redirect('prof/index');

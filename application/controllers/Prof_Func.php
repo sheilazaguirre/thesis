@@ -7,6 +7,7 @@ class Prof_Func extends CI_Controller{
         parent::__construct();
         $this->load->model('Assignment_model');
         $this->load->model('Lesson_model');
+        $this->load->model('Auditlog_model');
     } 
 
     /*
@@ -65,6 +66,12 @@ class Prof_Func extends CI_Controller{
             $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
             $this->db->set('status', 'Active');
             $assignment_id = $this->Assignment_model->add_assignment($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Uploaded Assignment',
+                    );
+            $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('prof/assignments');
         }
         else
@@ -142,6 +149,12 @@ class Prof_Func extends CI_Controller{
             $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
             $this->db->set('status', 'Active');
             $lesson_id = $this->Lesson_model->add_lesson($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Uploaded lesson',
+                    );
+            $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('prof/lessons');
         }
         else

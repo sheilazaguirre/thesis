@@ -1,0 +1,55 @@
+Assignment
+
+
+STUDENT PAGE
+SELECT LESSON
+- idnumber
+- class from classlist
+- subject where classID == 
+- acad year
+- sem
+
+select * from lesson where IDnum = $session AND 
+
+SELECT Assignment 
+
+
+ASSIGNMENT FIX class values
+Applicant fix add button
+User Fix add Button
+
+applicantID 
+
+118100+ 'applicantID' = $
+
+FLOW of testing
+
+Same subject same prof different timeslot
+
+SELECT Count - done
+
+SAVE Button class should not have timeslot and 
+
+Session expire
+
+openssl.cafile = C:\xampp\htdocs\thesis\cacert.pem
+curl.cainfo = C:\xampp\htdocs\thesis\cacert.pem
+
+
+Add label sa taas
+
+$var = computed(prelims + finals)
+
+model: 
+compute = computed(prelims + finals)
+
+return $compute 
+
+USER ACCESS LEVEL/ include validation
+landing_page/faculty
+landing_page/admin - URL typed
+landing_page/registrar - URL typed
+
+
+form open form close then get IDNO validate return success
+
