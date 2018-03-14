@@ -7,7 +7,7 @@ class Prof_Func extends CI_Controller{
         parent::__construct();
         $this->load->model('Assignment_model');
         $this->load->model('Lesson_model');
-        // $this->load->model('Auditlog_model');
+        $this->load->model('Auditlog_model');
     } 
 
     /*
