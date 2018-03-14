@@ -143,8 +143,9 @@ class Prof extends CI_Controller{
             show_error('The lesson you are trying to delete does not exist.');
     }
 
-    function grades()
+    function grades($classID = NULL)
     {        
+        $data['dump'] = $classID;
         if(isset($_POST) && count($_POST) > 0)
         {
             $params = [];
@@ -213,23 +214,36 @@ class Prof extends CI_Controller{
             }
             redirect('prof/index');
         }
-        else
+        else 
         {
-            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
-            if($grades)
+            $data['classlist'] = $this->Prof_model->get_classlist($classID); 
+            $grades = $this->Prof_model->get_all_grades($classID);
+            if(count($grades) > 0)
             {
                 for($i = 0; $i<count($grades); $i++)
                 {
-                    $data['classlist']['grade'][$i] = $grades[$i]['grade'];
+                    $data['classlist'][$i]['grade'] = $grades[$i]['grade'];
+                    $data['classlist'][$i]['status'] = $grades[$i]['status'];
+                    $data['classlist'][$i]['remarks'] = $grades[$i]['remarks'];
                 }
             }
-            $data['classlist'] = $this->Prof_model->get_classlist();
-            $this->load->view('prof/grades', $data);
+            else
+            {
+                for($i = 0; $i<count($data['classlist']); $i++)
+                {
+                    $data['classlist'][$i]['grade'] = '';
+                    $data['classlist'][$i]['status'] = 'Saved';
+                    $data['classlist'][$i]['remarks'] = '';
+                }
+            }
+            $data['classID'] = $classID;
+            $this->load->view('prof/grades', $data); 
         }
     }
 
-    function fgrades()
+    function fgrades($classID = NULL)
     {        
+        $data['dump'] = $classID;
         if(isset($_POST) && count($_POST) > 0)
         {
             $params = [];
@@ -240,7 +254,7 @@ class Prof extends CI_Controller{
                     'classID' => $this->input->post('classid'),
                     'fgrade' => $this->input->post('fgrade['.$clID.']'),
                     'remarks' => $this->input->post('remarks['.$clID.']'),
-                    'status' => "FinalSaved",
+                    'status' => "Saved",
                     'dateAdded' => date('Y-m-d H:i:s'),
                     'lastSaved' => date('Y-m-d H:i:s'),
                 );
@@ -252,7 +266,7 @@ class Prof extends CI_Controller{
             {
                 foreach($params as $p)
                 {
-                    $addfgrades = $this->Prof_model->add_fgrades($p);
+                    $addgrades = $this->Prof_model->add_grades($p);
                 }
             }
             else
@@ -267,12 +281,12 @@ class Prof extends CI_Controller{
                             'classID' => $this->input->post('classid'),
                             'fgrade' => $this->input->post('fgrade['.$clID.']'),
                             'remarks' => $this->input->post('remarks['.$clID.']'),
-                            'status' => "FSubmitted",
+                            'status' => "Submitted",
                             'dateSubmitted' => date('Y-m-d H:i:s'),
                         );
                         foreach($params as $p)
                         {
-                            $editgrades = $this->Prof_model->updatefgrades($p['studentID'], $p);
+                            $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                         }
                     }
                 }
@@ -286,33 +300,44 @@ class Prof extends CI_Controller{
                             'classID' => $this->input->post('classid'),
                             'fgrade' => $this->input->post('fgrade['.$clID.']'),
                             'remarks' => $this->input->post('remarks['.$clID.']'),
-                            'status' => "FinalSaved",
+                            'status' => "Saved",
                             'lastSaved' => date('Y-m-d H:i:s'),
                         );
                     }
                     foreach($params as $p)
                     {
-                        $editgrades = $this->Prof_model->updatefgrades($p['studentID'], $p);
+                        $editgrades = $this->Prof_model->updategrades($p['studentID'], $p);
                     }
                 }
             }
             redirect('prof/index');
         }
-        else
+        else 
         {
-            $grades = $this->Prof_model->get_all_grades($this->input->post("classID"));
-            if($grades)
+            $data['classlist'] = $this->Prof_model->get_classlist($classID); 
+            $grades = $this->Prof_model->get_all_grades($classID);
+            if(count($grades) > 0)
             {
                 for($i = 0; $i<count($grades); $i++)
                 {
-                    $data['classlist']['fgrade'][$i] = $grades[$i]['fgrade'];
+                    $data['classlist'][$i]['fgrade'] = $grades[$i]['fgrade'];
+                    $data['classlist'][$i]['status'] = $grades[$i]['status'];
+                    $data['classlist'][$i]['remarks'] = $grades[$i]['remarks'];
                 }
             }
-            $data['classlist'] = $this->Prof_model->get_classlist();
-            $this->load->view('prof/fgrades', $data);
+            else
+            {
+                for($i = 0; $i<count($data['classlist']); $i++)
+                {
+                    $data['classlist'][$i]['fgrade'] = '';
+                    $data['classlist'][$i]['status'] = 'Saved';
+                    $data['classlist'][$i]['remarks'] = '';
+                }
+            }
+            $data['classID'] = $classID;
+            $this->load->view('prof/fgrades', $data); 
         }
     }
-
     
     /*
      * Adding a new prof

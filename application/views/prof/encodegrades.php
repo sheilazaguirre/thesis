@@ -1,8 +1,8 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-	$result = mysqli_query($db, "SELECT DISTINCT c.classID, s.subjectCode, c.facultyID FROM classes c
+	$result = mysqli_query($db, "SELECT c.classID, s.subjectCode, c.facultyID FROM classes c
 	INNER JOIN subjects s ON c.subjectID = s.subjectID
-	WHERE c.facultyID='20181006' AND c.status='Active' AND c.academicYear=YEAR(NOW())");
+	WHERE c.facultyID='20181006' AND c.status='Active'");
 
 ?>
 <!DOCTYPE html>
@@ -201,8 +201,8 @@
                         	                <td>" .$no . "</td>
                         	                <td>" .$subject . "</td>
 											<td class='text-center'>
-                                                <a href='grades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
-                                                <a href='fgrades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
+                                                <a href='".base_url()."prof/grades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
+                                                <a href='".base_url()."prof/fgrades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
                                             </td>
                         	            </tr>";
                         	        }

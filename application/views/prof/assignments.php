@@ -1,14 +1,14 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-    $result = mysqli_query($db, "SELECT DISTINCT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
+    $result = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
     INNER JOIN classes c ON a.classID = c.classID 
     INNER JOIN subjects s ON c.subjectID = s.subjectID 
-    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='1st Semester' AND c.academicYear=YEAR(NOW())");
+    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='1st Semester'");
 
-    $result2 = mysqli_query($db, "SELECT DISTINCT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
+    $result2 = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
     INNER JOIN classes c ON a.classID = c.classID 
     INNER JOIN subjects s ON c.subjectID = s.subjectID 
-    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='2nd Semester' AND c.academicYear=YEAR(NOW())");
+    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='2nd Semester'");
 ?>
 <!DOCTYPE html>
 <html>

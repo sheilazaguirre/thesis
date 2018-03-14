@@ -61,14 +61,13 @@ class Prof_model extends CI_Model
      * Get classlist
      */
     
-    function get_classlist($params = array())
+    function get_classlist($classID)
     {
-        $this->db->select("c.classlistID,c.studentID, c.classID, CONCAT(u.userLN,', ', u.userFN) as userName, g.gradeID, g.grade, g.fgrade, g.remarks, g.status");
+        $this->db->select("c.classlistID, c.studentID, c.classID, CONCAT(u.userLN,', ', u.userFN) as userName");
         $this->db->from("classlist c");
         $this->db->join('users u', 'u.userIDNo = c.studentID');
-        $this->db->join('grades g', 'g.studentID = c.studentID', "left");
         $this->db->order_by('u.userLN', 'asc');
-        $this->db->where('c.classID', 1);
+        $this->db->where('c.classID', $classID);
         return $this->db->get()->result_array();
     }
 
@@ -76,9 +75,10 @@ class Prof_model extends CI_Model
      * Get all grades
      */
     
-    function get_all_grades($classID = NULL)
+    function get_all_grades($classID)
     {
-        $this->db->where('classID', 1);
+
+        $this->db->where('classID', $classID);
         return $this->db->get("grades")->result_array();
     }
     
@@ -88,18 +88,18 @@ class Prof_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    function add_fgrades($params)
-    {
-        $this->db->insert('grades',$params);
-        return $this->db->insert_id();
-    }
-
+    
     function updategrades($studentID, $params)
     {
         $this->db->where('studentID',$studentID);
         return $this->db->update('grades',$params);
     }
-
+    
+    function add_fgrades($params)
+    {
+        $this->db->insert('grades',$params);
+        return $this->db->insert_id();
+    }
     function updatefgrades($studentID, $params)
     {
         $this->db->where('studentID',$studentID);
