@@ -1,3 +1,26 @@
+<?php
+    $db = mysqli_connect("localhost", "root", "", "thesis");
+
+    $result = mysqli_query($db, "SELECT CONCAT(userFN, ' ',userLN) as userName
+    FROM users WHERE userIDNo=$_SESSION[userIDNo]");
+
+    if (mysqli_num_rows($result) > 0)
+    {
+        while($row = $result->fetch_assoc()) {
+            $name = $row['userName'];
+        }
+    }
+
+    $query = mysqli_query($db, "SELECT (SELECT s.subjectCode FROM classes c INNER JOIN subjects s ON c.subjectID = s.subjectID WHERE c.classID = g.classID) AS subjectCode, g.grade, g.fgrade, g.remarks, g.status, c.semester FROM grades g 
+	INNER JOIN classes c ON c.classID = g.classID 
+	WHERE g.StudentID = '11810005' AND c.semester = '1st Semester' AND c.academicYear=YEAR(NOW())");
+
+    $query2 = mysqli_query($db, "SELECT (SELECT s.subjectCode FROM classes c INNER JOIN subjects s ON c.subjectID = s.subjectID WHERE c.classID = g.classID) AS subjectCode, g.grade, g.fgrade, g.remarks, g.status, c.semester FROM grades g 
+	INNER JOIN classes c ON c.classID = g.classID 
+	WHERE g.StudentID = $_SESSION[userIDNo] AND c.semester = '1st Semester' AND c.academicYear=YEAR(NOW())");
+
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -48,25 +71,25 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="schedule"><span class="act-underline">SCHEDULE</span></a>
+							<a href="<?php echo base_url()?>student_page/schedule"><span class="act-underline">SCHEDULE</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="grades"><span class="act-underline">GRADES</span></a>
+							<a href="<?php echo base_url()?>student_page/grades"><span class="act-underline">GRADES</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
+							<a href="<?php echo base_url()?>student_page/lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
 						</span>
 					</li>
 					<li>
 						<span class="assignments">
 							<span class="expander">-</span>
-							<a href="blog-layout-1.html"><span class="act-underline">ASSSIGNMENTS</span></a>
+							<a href="<?php echo base_url()?>student_page/assignments"><span class="act-underline">ASSSIGNMENTS</span></a>
 						</span>
 					</li>						
 				</ul>
@@ -82,7 +105,11 @@
 						<!-- col-left -->
 						<div class="col-sm-3 text-left">
 							<!-- slogan start -->
+<<<<<<< HEAD
 							<div class="slogan"> Welcome, "<?php echo $fn; ?> <?php echo $ln; ?>"! </div>
+=======
+							<div class="slogan"> Welcome, "<?php echo $name; ?>"! </div>
+>>>>>>> d5a0123cb8c62b4273468f2a1b4b5ec5880ca23a
 							<!-- slogan end --> 	
 						</div>
 						<!-- /col-left -->
@@ -139,19 +166,19 @@
 								<ul class="nav navbar-nav">
 									<li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>										
 									<li class="dropdown dropdown-mega-menu">											
-										<a href="schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
+										<a href="<?php echo base_url()?>student_page/schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
+										<a href="<?php echo base_url()?>student_page/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
+										<a href="<?php echo base_url()?>student_page/lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
+										<a href="<?php echo base_url()?>student_page/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
 									</li>
 								</ul>
 							</div>
@@ -194,27 +221,32 @@
 											<thead>
       											<tr bgcolor="#80091F">
         											<th class="text-center" style="color: #fff">Subject</th>
-        											<th class="text-center" style="color: #fff">Professor</th>
-        											<th class="text-center" style="color: #fff">Grade</th>
+        											<th class="text-center" style="color: #fff">Prelims</th>
+        											<th class="text-center" style="color: #fff">Final Grade</th>
         											<th class="text-center" style="color: #fff">Remarks</th>
      											</tr>
     										</thead>
 											<tbody>
-												<tr>
-													<td class="text-center">PRINMAN</td>
-													<td class="text-center">Curry, Stephen</td>
-													<td class="text-center">1.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">ISPROJ1</td>
-													<td class="text-center">Lillard, Damian</td>
-													<td class="text-center">2.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">JOSERIZ</td>
-													<td class="text-center">Clarkson, Jordan</td>
-													<td class="text-center">3.5</td>
-												</tr>
+											<?php
+                                                if (mysqli_num_rows($query) > 0)
+                                                {
+                                                    while($row = $query->fetch_assoc())
+                                                    {
+                                                        $subject = $row['subjectCode'];
+                                                        $grade = $row['grade'];
+                                                        $fgrade = $row['fgrade'];
+                                                        $status = $row['status'];
+
+                                                        echo
+                                                        "<tr>
+                                                            <td>" .$subject . "</td>
+                                                            <td>" .$grade . "</td>
+                                                            <td>" .$fgrade . "</td>
+                                                            <td>" .$status . "</td>
+                                                        </tr>";
+                                                    }
+                                                }
+                                            ?>
 											</tbody>
 										</table>
 									</div>

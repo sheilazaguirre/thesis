@@ -11,6 +11,20 @@
         }
     }
 
+    $query = mysqli_query($db, "SELECT l.lessonID, c.classID, u.userIDNo, s.subjectCode, l.lessonFile, l.lessonTitle, l.lessonDesc, l.dateUploaded FROM lessons l 
+    INNER JOIN classes c ON c.classID = l.classID 
+    INNER JOIN classlist cl ON cl.classID = c.classID 
+    INNER JOIN subjects s ON c.subjectID = s.subjectID 
+    INNER JOIN users u ON cl.studentID = u.userIDNo 
+    WHERE u.userIDNo = $_SESSION[userIDNo] AND l.status = 'Active' AND c.semester='1st Semester' AND c.academicYear=YEAR(NOW())");
+
+    $query2 = mysqli_query($db, "SELECT l.lessonID, c.classID, u.userIDNo, s.subjectCode, l.lessonFile, l.lessonTitle, l.lessonDesc, l.dateUploaded FROM lessons l 
+    INNER JOIN classes c ON c.classID = l.classID 
+    INNER JOIN classlist cl ON cl.classID = c.classID 
+    INNER JOIN subjects s ON c.subjectID = s.subjectID 
+    INNER JOIN users u ON cl.studentID = u.userIDNo 
+    WHERE u.userIDNo = $_SESSION[userIDNo] AND l.status = 'Active' AND c.semester='2nd Semester' AND c.academicYear=YEAR(NOW())");
+
     
 ?>
 
@@ -64,25 +78,25 @@
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="schedule"><span class="act-underline">SCHEDULE</span></a>
+                            <a href="<?php echo base_url()?>student_page/schedule"><span class="act-underline">SCHEDULE</span></a>
                         </span>
                     </li>                   
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="grades"><span class="act-underline">GRADES</span></a>
+                            <a href="<?php echo base_url()?>student_page/grades"><span class="act-underline">GRADES</span></a>
                         </span>                     
                     </li>
                     <li>
                         <span class="name">
                             <span class="expander">-</span>
-                            <a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
+                            <a href="<?php echo base_url()?>student_page/lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
                         </span>
                     </li>
                     <li>
                         <span class="assignments">
                             <span class="expander">-</span>
-                            <a href="blog-layout-1.html"><span class="act-underline">ASSSIGNMENTS</span></a>
+                            <a href="<?php echo base_url()?>student_page/assignments"><span class="act-underline">ASSSIGNMENTS</span></a>
                         </span>
                     </li>                       
                 </ul>
@@ -215,17 +229,33 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAN</td>
-                                                    <td class="text-center">TI001</td>
-                                                    <td class="text-center">Management Lesson #1</td>
-                                                    <td class="text-center">First Lesson for PRINMAN</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Download</a>
-                                                    </td>
-                                                </tr>
+                                            <?php
+                                                if (mysqli_num_rows($query) > 0)
+                                                {
+                                                    while($row = $query->fetch_assoc())
+                                                    {
+                                                        $no = $row['lessonID'];
+                                                        $subject = $row['subjectCode'];
+                                                        $title = $row['lessonTitle'];
+                                                        $file = $row['lessonFile'];
+                                                        $desc = $row['lessonDesc'];
+                                                        $dateadded = $row['dateUploaded'];
+
+                                                        echo
+                                                        "<tr>
+                                                            <td>" .$subject . "</td>
+                                                            <td>" .$title . "</td>
+                                                            <td>" .$file . "</td>
+                                                            <td>" .$desc . "</td>
+                                                            <td>" .$dateadded . "</td>
+                                                            <td>
+                                                                <a href='../uploads/lessons/".$file."' target='_blank' class='btn btn-success' download>
+                                                            Download                                                                </a></td>
+                                                            </td>
+                                                        </tr>";
+                                                    }
+                                                }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -244,17 +274,33 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">PRINMAR</td>
-                                                    <td class="text-center">TI002</td>
-                                                    <td class="text-center">Marketing Lesson #1</td>
-                                                    <td class="text-center">First Lesson for PRINMAR</td>
-                                                    <td class="text-center">Instructions.txt</td>
-                                                    <td class="text-center">Secret</td>
-                                                    <td class="text-center">
-                                                        <a href="" class="btn btn-info btn-xs" onclick='return confirm("Edit Record?");'><span class="fa fa-pencil"></span> Download</a>
-                                                    </td>
-                                                </tr>
+                                            <?php
+                                                if (mysqli_num_rows($query2) > 0)
+                                                {
+                                                    while($row = $query2->fetch_assoc())
+                                                    {
+                                                        $no = $row['lessonID'];
+                                                        $subject = $row['subjectCode'];
+                                                        $title = $row['lessonTitle'];
+                                                        $file = $row['lessonFile'];
+                                                        $desc = $row['lessonDesc'];
+                                                        $dateadded = $row['dateUploaded'];
+
+                                                        echo
+                                                        "<tr>
+                                                            <td>" .$subject . "</td>
+                                                            <td>" .$title . "</td>
+                                                            <td>" .$file . "</td>
+                                                            <td>" .$desc . "</td>
+                                                            <td>" .$dateadded . "</td>
+                                                            <td>
+                                                                <a href='../uploads/lessons/".$no."' target='_blank' class='btn btn-success' download>
+                                                            Download                                                                </a></td>
+                                                            </td>
+                                                        </tr>";
+                                                    }
+                                                }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>          

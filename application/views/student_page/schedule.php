@@ -1,3 +1,32 @@
+<?php
+    $db = mysqli_connect("localhost", "root", "", "thesis");
+
+    $result = mysqli_query($db, "SELECT CONCAT(userFN, ' ',userLN) as userName
+    FROM users WHERE userIDNo=$_SESSION[userIDNo]");
+
+    if (mysqli_num_rows($result) > 0)
+    {
+        while($row = $result->fetch_assoc()) {
+            $name = $row['userName'];
+        }
+    }
+
+    $query = mysqli_query($db, "SELECT DISTINCT c.classID, u.userIDNo, s.subjectCode, CONCAT(t.dayOfWeek,' ', t.startTime,'-', t.endTime) as timeslot, v.venueCode, c.semester FROM classes c 
+	INNER JOIN classlist cl ON c.classID = cl.classID 
+	INNER JOIN users u ON cl.studentID = u.userIDNo 
+	INNER JOIN subjects s ON c.subjectID = s.subjectID 
+	INNER JOIN timeslots t ON c.timeSlotID = t.timeSlotID 
+	INNER JOIN venues v ON c.venueID = v.venueID 
+	WHERE u.userIDNo=$_SESSION[userIDNo] AND c.status = 'Active' AND c.semester = '1st Semester' AND c.academicYear=YEAR(NOW())");
+
+	$query2 = mysqli_query($db, "SELECT DISTINCT c.classID, u.userIDNo, s.subjectCode, CONCAT(t.dayOfWeek,' ', t.startTime,'-', t.endTime) as timeslot, v.venueCode, c.semester FROM classes c 
+	INNER JOIN classlist cl ON c.classID = cl.classID 
+	INNER JOIN users u ON cl.studentID = u.userIDNo 
+	INNER JOIN subjects s ON c.subjectID = s.subjectID 
+	INNER JOIN timeslots t ON c.timeSlotID = t.timeSlotID 
+	INNER JOIN venues v ON c.venueID = v.venueID 
+	WHERE u.userIDNo=$_SESSION[userIDNo] AND c.status = 'Active' AND c.semester = '2nd Semester' AND c.academicYear=YEAR(NOW())");
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -48,25 +77,25 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="schedule"><span class="act-underline">SCHEDULE</span></a>
+							<a href="<?php echo base_url()?>student_page/schedule"><span class="act-underline">SCHEDULE</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="grades"><span class="act-underline">GRADES</span></a>
+							<a href="<?php echo base_url()?>student_page/grades"><span class="act-underline">GRADES</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
+							<a href="<?php echo base_url()?>student_page/lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
 						</span>
 					</li>
 					<li>
 						<span class="assignments">
 							<span class="expander">-</span>
-							<a href="assignments"><span class="act-underline">ASSSIGNMENTS</span></a>
+							<a href="<?php echo base_url()?>student_page/assignments"><span class="act-underline">ASSSIGNMENTS</span></a>
 						</span>
 					</li>						
 				</ul>
@@ -82,7 +111,11 @@
 						<!-- col-left -->
 						<div class="col-sm-3 text-left">
 							<!-- slogan start -->
+<<<<<<< HEAD
 							<div class="slogan"> Welcome, "<?php echo $fn; ?> <?php echo $ln; ?>"! </div>
+=======
+							<div class="slogan"> Welcome, "<?php echo $name; ?>"! </div>
+>>>>>>> d5a0123cb8c62b4273468f2a1b4b5ec5880ca23a
 							<!-- slogan end --> 	
 						</div>
 						<!-- /col-left -->
@@ -193,27 +226,31 @@
 										<table class="table table-params" >
 											<thead>
       											<tr bgcolor="#80091F">
-        											<th class="text-center" style="color: #fff">Course</th>
-        											<th class="text-center" style="color: #fff">Section</th>
+        											<th class="text-center" style="color: #fff">Class</th>
         											<th class="text-center" style="color: #fff">Timeslot</th>
+        											<th class="text-center" style="color: #fff">Venue</th>
      											</tr>
     										</thead>
 											<tbody>
-												<tr>
-													<td class="text-center">PRINMAN</td>
-													<td class="text-center">TI101</td>
-													<td class="text-center">MW 8:00 - 9:30</td>
-												</tr>
-												<tr>
-													<td class="text-center">ISPROJ1</td>
-													<td class="text-center">TI101</td>
-													<td class="text-center">TTH 13:00 - 14:30</td>
-												</tr>
-												<tr>
-													<td class="text-center">JOSERIZ</td>
-													<td class="text-center">TI101</td>
-													<td class="text-center">TTH 14:40 - 16:10</td>
-												</tr>
+											<?php
+                                                if (mysqli_num_rows($query) > 0)
+                                                {
+                                                    while($row = $query->fetch_assoc())
+                                                    {
+                                                        $no = $row['classID'];
+                                                        $subject = $row['subjectCode'];
+                                                        $time = $row['timeslot'];
+                                                        $venue = $row['venueCode'];
+
+                                                        echo
+                                                        "<tr>
+                                                            <td>" .$subject . "</td>
+                                                            <td>" .$time . "</td>
+                                                            <td>" .$venue . "</td>
+                                                        </tr>";
+                                                    }
+                                                }
+                                            ?>
 											</tbody>
 										</table>
 									</div>
@@ -222,22 +259,31 @@
 										<table class="table table-params">
 											<thead>
       											<tr bgcolor="#80091F">
-        											<th class="text-center" style="color: #fff">Course</th>
-        											<th class="text-center" style="color: #fff">Professor</th>
-        											<th class="text-center" style="color: #fff">Final Grade</th>
+        											<th class="text-center" style="color: #fff">Class</th>
+        											<th class="text-center" style="color: #fff">Timeslot</th>
+        											<th class="text-center" style="color: #fff">Venue</th>
      											</tr>
     										</thead>
 											<tbody>
-												<tr>
-													<td class="text-center">PRINMAR</td>
-													<td class="text-center">TG101</td>
-													<td class="text-center">MW 8:00 - 9:30</td>
-												</tr>
-												<tr>
-													<td class="text-center">ISPROJ2</td>
-													<td class="text-center">TG101</td>
-													<td class="text-center">TTH 14:40 - 16:10</td>
-												</tr>
+											<?php
+												if (mysqli_num_rows($query2) > 0)
+												{
+													while($row = $query2->fetch_assoc())
+													{
+														$no = $row['classID'];
+														$subject = $row['subjectCode'];
+														$time = $row['timeslot'];
+														$venue = $row['venueCode'];
+
+														echo
+														"<tr>
+															<td>" .$subject . "</td>
+															<td>" .$time . "</td>
+															<td>" .$venue . "</td>
+														</tr>";
+													}
+												}
+											?>
 											</tbody>
 										</table>
 									</div>			
