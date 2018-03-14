@@ -64,25 +64,25 @@
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="schedule"><span class="act-underline">SCHEDULE</span></a>
+							<a href="<?php echo base_url()?>student_page/schedule"><span class="act-underline">SCHEDULE</span></a>
 						</span>
 					</li>					
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="grades"><span class="act-underline">GRADES</span></a>
+							<a href="<?php echo base_url()?>student_page/grades"><span class="act-underline">GRADES</span></a>
 						</span>						
 					</li>
 					<li>
 						<span class="name">
 							<span class="expander">-</span>
-							<a href="lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
+							<a href="<?php echo base_url()?>student_page/lessons"><span class="act-underline"><span class="act-underline">LESSONS</span></span></a>
 						</span>
 					</li>
 					<li>
 						<span class="assignments">
 							<span class="expander">-</span>
-							<a href="blog-layout-1.html"><span class="act-underline">ASSSIGNMENTS</span></a>
+							<a href="<?php echo base_url()?>student_page/assignments"><span class="act-underline">ASSSIGNMENTS</span></a>
 						</span>
 					</li>						
 				</ul>
@@ -155,19 +155,19 @@
 								<ul class="nav navbar-nav">
 									<li class="dl-close"><a href="#"><span class="icon icon-close"></span>close</a></li>										
 									<li class="dropdown dropdown-mega-menu">											
-										<a href="schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
+										<a href="<?php echo base_url()?>student_page/schedule" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">SCHEDULE</span></a>
 									</li>									
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
+										<a href="<?php echo base_url()?>student_page/grades" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">GRADES</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
+										<a href="<?php echo base_url()?>student_page/lessons" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">LESSONS</span></a>
 									</li>
 									<li class="dropdown dropdown-mega-menu">
 										<span class="dropdown-toggle extra-arrow"></span>
-										<a href="assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
+										<a href="<?php echo base_url()?>student_page/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">ASSIGNMENTS</span></a>
 									</li>
 								</ul>
 							</div>
