@@ -3,12 +3,12 @@
     $result = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
     INNER JOIN classes c ON a.classID = c.classID 
     INNER JOIN subjects s ON c.subjectID = s.subjectID 
-    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='1st Semester'");
+    WHERE c.facultyID = $_SESSION[userIDNo] AND a.status='Active' AND c.semester='1st Semester' AND c.academicYear=YEAR(NOW())");
 
     $result2 = mysqli_query($db, "SELECT a.assignID, a.classID, s.subjectCode, a.assignTitle, a.assignFile, a.assignDesc, a.dateUploaded, a.status, c.semester FROM assignments a 
     INNER JOIN classes c ON a.classID = c.classID 
     INNER JOIN subjects s ON c.subjectID = s.subjectID 
-    WHERE c.facultyID = '20181009' AND a.status='Active' AND c.semester='2nd Semester'");
+    WHERE c.facultyID = $_SESSION[userIDNo] AND a.status='Active' AND c.semester='2nd Semester' AND c.academicYear=YEAR(NOW())");
 ?>
 <!DOCTYPE html>
 <html>
