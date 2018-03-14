@@ -162,6 +162,7 @@ class Student_Page extends CI_Controller{
         );
         $this->Auditlog_model->add_auditlog($paramsaudit);
         redirect('student_page/assignments');
+    }
 
     
 
