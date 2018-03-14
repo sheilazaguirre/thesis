@@ -248,9 +248,9 @@
                                                                 <td>" .$desc . "</td>
                                                                 <td>" .$dateadded . "</td>
                                                                 <td>
-                                                                    <a href='../uploads/assignments/".$file."' target='_blank' class='btn btn-success' download>
+                                                                    <button class='btn btn-success' onclick='student_page/auditdownload'><a href='../uploads/assignments/".$file."' target='_blank' download>
                                                                 Download
-                                                                </a></td>
+                                                                </a></button></td>
                                                                 </td>
                                                             </tr>";
                                                         }
@@ -263,6 +263,16 @@
                                         <div class="divider divider--xs"></div>
                                         <table class="table table-params">
                                             <thead>
+                                            <tr bgcolor="#80091F">
+                                                    <th class="text-center" style="color: #fff">Class</th>
+                                                    <th class="text-center" style="color: #fff">Title</th>
+                                                    <th class="text-center" style="color: #fff">File</th>
+                                                    <th class="text-center" style="color: #fff">Description</th>
+                                                    <th class="text-center" style="color: #fff">Date Added</th>
+                                                    <th class="text-center" style="color: #fff">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                             <?php
                                                 if (mysqli_num_rows($query2) > 0)
                                                 {
@@ -283,9 +293,9 @@
                                                             <td>" .$desc . "</td>
                                                             <td>" .$dateadded . "</td>
                                                             <td>
-                                                                <a href='../uploads/assignment/".$no."' target='_blank' class='btn btn-success' download>
+                                                                <button><a href='../uploads/assignment/".$no."' target='_blank' class='btn btn-success' download>
                                                             Download
-                                                            </a></td>
+                                                            </a></button></td>
                                                             </td>
                                                         </tr>";
                                                     }

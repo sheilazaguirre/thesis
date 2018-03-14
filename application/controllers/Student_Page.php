@@ -6,6 +6,7 @@ class Student_Page extends CI_Controller{
     {
         parent::__construct();
         $this->load->library(array('session'));
+        $this->load->model('Auditlog_model');
     } 
 
     /*
@@ -144,6 +145,17 @@ class Student_Page extends CI_Controller{
         
     }
 
+<<<<<<< HEAD
+    function auditdownload()
+    {
+        $idnum = $this->session->userdata('userIDNo');
+        $paramsaudit = array(
+            'userIDNo' => $idnum,
+            'auditDesc' => 'Download',
+        );
+        $this->Auditlog_model->add_auditlog($paramsaudit);
+        redirect('student_page/assignments');
+=======
     function account()
     {
         $this->load->view('student_page/account');
@@ -195,8 +207,8 @@ class Student_Page extends CI_Controller{
             echo validation_errors();
 
         }
+>>>>>>> 577dd22f988ae41280597480102d211b2587304c
     }
 
 
-    
 }
