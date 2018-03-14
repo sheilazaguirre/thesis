@@ -1,18 +1,19 @@
 <?php
 	$db = mysqli_connect("localhost", "root", "", "thesis");
-	$result = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1'");
-	$result1 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.25'");
-	$result2 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.50'");
-	$result3 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.75'");
-	$result4 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2'");
-	$result5 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.25'");
-	$result6 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.50'");
-	$result7 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.75'");
-	$result8 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='3'");
-	$result9 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='4'");
-	$result10 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='W'");
-	$result11 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='X'");
-	$result12 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='inc'");
+	$result = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1' AND classID='".$classID."'");
+	$result1 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.25' AND classID='".$classID."'");
+	$result2 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.50' AND classID='".$classID."'");
+	$result3 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='1.75' AND classID='".$classID."'");
+	$result4 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2' AND classID='".$classID."'");
+	$result5 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.25' AND classID='".$classID."'");
+	$result6 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.50' AND classID='".$classID."'");
+	$result7 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='2.75' AND classID='".$classID."'");
+	$result8 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='3' AND classID='".$classID."'");
+	$result9 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='4' AND classID='".$classID."'");
+	$result10 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='W' AND classID='".$classID."'");
+	$result11 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='X' AND classID='".$classID."'");
+	$result12 = mysqli_query($db, "SELECT COUNT(*), grade FROM grades WHERE grade='inc' AND classID='".$classID."'");
+	var_dump($dump);
     
 ?>
 <!DOCTYPE html>
@@ -62,7 +63,7 @@
     </head>
 
     <body class="index">        
-        <div id="loader-wrapper">
+        <!-- <div id="loader-wrapper">
             <div id="loader">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -73,7 +74,7 @@
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-        </div>
+        </div> -->
         <!-- Back to top -->
         <div class="back-to-top"><span class="icon-keyboard_arrow_up"></span></div>
         <!-- /Back to top -->
@@ -238,7 +239,6 @@
 							</tr>
 						</thead>
 						<tbody>
-						
 							<?php foreach($classlist as $c){ ?>
 							<tr>
 								<td>
@@ -254,7 +254,7 @@
 								<td>
 
 									<select name="grade[<?=$c['classlistID']?>]" <?php if ($c['status'] == 'Submitted'){ ?> disabled <?php   } ?> required />
-										<option value="">Select Grade</option>
+										<option value="" <?php if($c["grade"] == '') echo "selected"; else echo ""; ?>>Select Grade</option>
 										<option value="1" <?php if($c["grade"] == 1) echo "selected"; else echo ""; ?>>1.00</option>
 										<option value="1.25" <?php if($c["grade"] == 1.25) echo "selected"; else echo ""; ?>>1.25</option>
 										<option value="1.50" <?php if($c["grade"] == 1.50) echo "selected"; else echo ""; ?>>1.50</option>
@@ -405,7 +405,7 @@
 					
 					<div class="form-group">
 						<div class="col-md-12 text-right">
-						<?php if($c['status'] != 'Submitted'): ?>
+						<?php if($classlist[0]['status'] != 'Submitted'): ?>
 							<button type="submit" name="save" class="btn btn-info" onclick='return confirm("Save?");'>
 								<i class="fa fa-check"></i> Save
 							</button>

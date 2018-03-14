@@ -201,8 +201,8 @@
                         	                <td>" .$no . "</td>
                         	                <td>" .$subject . "</td>
 											<td class='text-center'>
-                                                <a href='grades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
-                                                <a href='fgrades' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
+                                                <a href='".base_url()."prof/grades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Prelims</a>
+                                                <a href='".base_url()."prof/fgrades/".$no."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Finals</a>
                                             </td>
                         	            </tr>";
                         	        }
