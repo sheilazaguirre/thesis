@@ -25,6 +25,7 @@
 		<!-- Head Libs -->	
 		<!-- Modernizr -->
 		<script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js');?>"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body class="index">				  
 		<div id="loader-wrapper">
@@ -221,11 +222,13 @@
 					<div id="infoMessage"><?php echo $this->session->flashdata('err_message');?></div>
 					<div class="form-group">
 						<div>
-							<input type="submit" name="insert" value="Login" />
+							<button name="signin"
+								class="button">
+								Sign in
+							</button>
 						</div>
 						<div>
-							<a href="<?php echo base_url()?>landing_page/forgot_password" name="forgot"
-								>
+							<a href="<?php echo base_url()?>landing_page/forgot_password" name="forgot">
 								Forgot Password?
 							</a>
 						</div>

@@ -25,6 +25,7 @@
 		<!-- Head Libs -->	
 		<!-- Modernizr -->
 		<script src="<?php echo site_url('resources/my-external/modernizr/modernizr.js');?>"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body class="index">				  
 		<div id="loader-wrapper">
@@ -199,19 +200,26 @@
 			</br>
 			<h1 class="text-center">Admin Log-in</h1>
 			</br>
-				<form method="POST" class="form-horizontal">
+			<h5> 
+				<label for="error" id="error" class="text-danger"><?php echo $error;?></label>
+				</h5>
+			</br>
+			<?php echo form_open('landing_page/admin'); ?>
 					<div class="form-group">
 						<div>
-							<input name="un" type="text" placeholder="USERNAME" 
+							<input name="userIDNo" type="text" placeholder="ID Number" 
 								class="textbox" required />
+							<span class="text-danger"><?php echo form_error('userIDNo'); ?></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div>
-							<input name="pw" type="password" placeholder="PASSWORD" 
+							<input name="userPassword" type="password" placeholder="PASSWORD" 
 								class="textbox" required />
+							<span class="text-danger"><?php echo form_error('userPassword'); ?></span>
 						</div>
 					</div>
+					<div id="infoMessage"><?php echo $this->session->flashdata('err_message');?></div>
 					<div class="form-group">
 						<div>
 							<button name="signin"
@@ -220,13 +228,15 @@
 							</button>
 						</div>
 						<div>
-							<a href="forgotpass" name="signin"
-								>
+							<a href="<?php echo base_url()?>landing_page/forgot_password" name="forgot">
 								Forgot Password?
 							</a>
 						</div>
 					</div>
-				</form>
+					<div class="form-group">
+						<div class="g-recaptcha" data-sitekey="6LfRmzcUAAAAAGUARi6CAjGlAVfuO0AzGwIS1z3k" align="center"></div>
+					</div>
+			<?php echo form_close(); ?>
 			</div>
 		</div>
 	</div>
