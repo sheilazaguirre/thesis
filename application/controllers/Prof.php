@@ -458,6 +458,65 @@ class Prof extends CI_Controller{
             show_error('The prof you are trying to delete does not exist.');
     }
 
+    function account()
+    {
+        $this->load->view('prof/account');
+    }
+
+    function updatepwd()
+    {
+        $this->load->library('form_validation');
+
+        
+        
+
+        $this->form_validation->set_rules('password', 'Current Password', 'required|alpha_numeric|min_length[6]|max_length[20]');
+        $this->form_validation->set_rules('newpass', 'New Password', 'required|alpha_numeric|min_length[6]|max_length[20]');
+        $this->form_validation->set_rules('confpass', 'Confirm Password', 'required|alpha_numeric|min_length[6]|max_length[20]');
+
+        if($this->form_validation->run())
+        {
+            $cur_password = $this->input->post('password');
+            $new_password = $this->input->post('newpass');
+            $con_password = $this->input->post('confpass');
+            $this->load->model('Prof_model');
+            $userIDNo = $_SESSION['userIDNo'];
+            $passwd = $this->Prof_model->getCurrPassword($userIDNo);
+            
+            if(password_verify($cur_password, $passwd) == TRUE)
+            {
+                if($new_password == $con_password)
+                {
+                    if ($this->Prof_model->updatePassword($userIDNo)) 
+                    {
+                        echo "Password updated successfully";
+
+                    }
+                    else
+                    {
+                        $this->load->view('prof/account', array('error'=> 'Failed to update password.'));
+                    }
+
+                }
+                else
+                {
+                    $this->load->view('prof/account', array('error'=> 'New password & Confirm does not match.'));
+                }
+
+            } 
+            else
+            {
+                echo "Current Password does not match";
+                $this->load->view('prof/account', array('error'=> 'The password you submitted does not match with the current password.'));    
+            }
+        }
+        else
+        {
+            echo validation_errors();
+
+        }
+    }
+
 
     
 }

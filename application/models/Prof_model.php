@@ -105,4 +105,26 @@ class Prof_model extends CI_Model
         $this->db->where('studentID',$studentID);
         return $this->db->update('grades',$params);
     }
+
+    function updatePassword($userIDNo)
+    {
+        $newpass = password_hash($this->input->post('newpass'), PASSWORD_BCRYPT);
+        $data = array('userPassword' => $newpass);
+        return $this->db->where('userIDNo', $userIDNo)
+        ->update('users', $data);
+    }
+
+    function getCurrPassword($userIDNo)
+    {
+        $sql = $this->db->query("SELECT userPassword FROM users WHERE userIDNo = '{$userIDNo}'");
+        if($sql->num_rows() > 0)
+        {
+            $result = $sql->row();
+            return $result->userPassword;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

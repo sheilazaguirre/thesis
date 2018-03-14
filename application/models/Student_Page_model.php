@@ -36,11 +36,16 @@ class Student_Page_model extends CI_Model
 
     function getCurrPassword($userIDNo)
     {
-        $sql = "SELECT userPassword FROM users WHERE userIDNo = '{$userIDNo}'";
-        $result = $this->db->query($sql);
-        $row = $result->row();
-
-        return ($row);
+        $sql = $this->db->query("SELECT userPassword FROM users WHERE userIDNo = '{$userIDNo}'");
+        if($sql->num_rows() > 0)
+        {
+            $result = $sql->row();
+            return $result->userPassword;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
