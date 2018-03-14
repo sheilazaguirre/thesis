@@ -335,6 +335,7 @@ class Landing_Page extends CI_Controller{
 
     function faculty()
     {
+        $this->load->library('session');
         $data = array('error' => '');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
@@ -360,8 +361,14 @@ class Landing_Page extends CI_Controller{
                 if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
                 {
                     
-                    $_SESSION['userIDNo'] = $login['userIDNo'];
-                    $_SESSION['userTypeID'] = $login['userTypeID'];
+                    $newdata = array( 
+                        'userIDNo'  => $login['userIDNo'],
+                        'userFN'  => $login['userFN'], 
+                        'userLN'  => $login['userLN'],  
+                        'userTypeID' => $login['userTypeID'], 
+                        'logged_in' => TRUE
+                     );  
+                     $this->session->set_userdata($newdata);
 
                     $idnum = $login['userIDNo'];
                     // $usertype = $login['userTypeID'];  
@@ -389,6 +396,7 @@ class Landing_Page extends CI_Controller{
 
     function registrar()
     {
+        $this->load->library('session');
         $data = array('error' => '');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('userPassword','Password','required|max_length[255]');
@@ -414,8 +422,14 @@ class Landing_Page extends CI_Controller{
                 if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
                 {
                     
-                    $_SESSION['userIDNo'] = $login['userIDNo'];
-                    $_SESSION['userTypeID'] = $login['userTypeID'];
+                    $newdata = array( 
+                        'userIDNo'  => $login['userIDNo'],
+                        'userFN'  => $login['userFN'], 
+                        'userLN'  => $login['userLN'],  
+                        'userTypeID' => $login['userTypeID'], 
+                        'logged_in' => TRUE
+                     );  
+                     $this->session->set_userdata($newdata);
 
                     $idnum = $login['userIDNo'];
                     // $usertype = $login['userTypeID'];  
@@ -425,9 +439,7 @@ class Landing_Page extends CI_Controller{
                         'userIDNo' => $idnum,
                         'auditDesc' => 'Logged In',
                     );
-                    
-                    $this->Auditlog_model->add_auditlog($paramsaudit);
-                    redirect('prof/index');
+                    redirect('registrar/index');
                     //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
                 }
                 else {
