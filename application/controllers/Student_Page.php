@@ -89,16 +89,16 @@ class Student_Page extends CI_Controller{
 
     function schedule()
     {
-        // if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 3)
-        // {
-        //     $data['fn'] = $this->session->userdata('userFN');
-        //     $data['ln'] = $this->session->userdata('userLN');
-        //     $this->load->view('student_page/schedule',$data);
-        // }
-        // else
-        // {
-        //     redirect('landing_page/index');
-        // }
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 3)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $this->load->view('student_page/schedule',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     function grades()
