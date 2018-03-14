@@ -26,7 +26,7 @@ class User_model extends CI_Model
         $this->db->where('status', 'Active');
         return $this->db->get('users')->result_array();
     }
-
+ 
     function get_all_faculty()
     {
         $this->db->join('usertype', 'userTypeID');

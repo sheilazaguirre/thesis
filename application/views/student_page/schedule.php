@@ -111,7 +111,11 @@
 						<!-- col-left -->
 						<div class="col-sm-3 text-left">
 							<!-- slogan start -->
+<<<<<<< HEAD
+							<div class="slogan"> Welcome, "<?php echo $fn; ?> <?php echo $ln; ?>"! </div>
+=======
 							<div class="slogan"> Welcome, "<?php echo $name; ?>"! </div>
+>>>>>>> d5a0123cb8c62b4273468f2a1b4b5ec5880ca23a
 							<!-- slogan end --> 	
 						</div>
 						<!-- /col-left -->

@@ -127,9 +127,9 @@
                                 <i class="fa fa-desktop"></i> <span>Auditlog</span>
                             </a>
                             <ul class="treeview-menu">
-								<li class="active">
+								<!-- <li class="active">
                                     <a href="<?php echo site_url('reg_auditlog/add');?>"><i class="fa fa-plus"></i> Add Auditlog</a>
-                                </li>
+                                </li> -->
 								<li>
                                     <a href="<?php echo site_url('reg_auditlog/index');?>"><i class="fa fa-list-ul"></i> View Auditlogs</a>
                                 </li>
