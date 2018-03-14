@@ -94,17 +94,17 @@ class Prof extends CI_Controller{
         $this->pagination->initialize($config);
 
 
-        // if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
-        // // {
-        //     $data['fn'] = $this->session->userdata('userFN');
-        //     $data['ln'] = $this->session->userdata('userLN');
-        //     $data['userID'] = $this->session->userdata('userIDNo');
-        //     $this->load->view('prof/index',$data);
-        // }
-        // else
-        // {
-        //     redirect('landing_page/index');
-        // }
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/index',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     function removeassign($assignID)
