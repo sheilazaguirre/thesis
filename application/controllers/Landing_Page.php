@@ -435,7 +435,7 @@ class Landing_Page extends CI_Controller{
                         'userIDNo' => $idnum,
                         'auditDesc' => 'Logged In',
                     );
-                    redirect('registrar/index');
+                    redirect('reg/dashboard');
                     //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);
                 }
                 else {
