@@ -125,8 +125,8 @@
 									<span class="icon icon-person "></span>
 									</a>
 									<ul class="dropdown-menu dropdown-menu--xs-full">
-										<li><a href="login_form.html"><span class="icon icon-person"></span>Account Information</a></li>
-										<li><a href="#"><span class="icon icon-lock"></span>Log-out</a></li>
+										<li><a href="<?php echo site_url('prof/account/') ?>"><span class="icon icon-person"></span>Account</a></li>
+										<li><a href="<?php echo site_url('landing_page/logout/') ?>"><span class="icon icon-lock"></span>Log-out</a></li>
 										<li class="dropdown-menu__close"><a href="#"><span class="icon icon-close"></span>close</a></li>
 									</ul>
 								</div>
