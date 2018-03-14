@@ -61,4 +61,6 @@ class Student_model extends CI_Model
     {
         return $this->db->delete('students',array('studentID'=>$studentID));
     }
+
+    
 }
