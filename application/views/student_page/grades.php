@@ -255,27 +255,33 @@
 										<table class="table table-params">
 											<thead>
       											<tr bgcolor="#80091F">
-        											<th class="text-center" style="color: #fff">Course</th>
-        											<th class="text-center" style="color: #fff">Professor</th>
-        											<th class="text-center" style="color: #fff">Final Grade</th>
+												  <th class="text-center" style="color: #fff">Subject</th>
+												  <th class="text-center" style="color: #fff">Prelims</th>
+												  <th class="text-center" style="color: #fff">Final Grade</th>
+												  <th class="text-center" style="color: #fff">Remarks</th>
      											</tr>
     										</thead>
 											<tbody>
-												<tr>
-													<td class="text-center">PRINMAR</td>
-													<td class="text-center">James, Lebron</td>
-													<td class="text-center">2.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">ISPROJ2</td>
-													<td class="text-center">Durant, Kevin</td>
-													<td class="text-center">1.5</td>
-												</tr>
-												<tr>
-													<td class="text-center">WEBDEVT</td>
-													<td class="text-center">Harden, James</td>
-													<td class="text-center">3.0</td>
-												</tr>
+											<?php
+												if (mysqli_num_rows($query) > 0)
+												{
+													while($row = $query->fetch_assoc())
+													{
+														$subject = $row['subjectCode'];
+														$grade = $row['grade'];
+														$fgrade = $row['fgrade'];
+														$status = $row['status'];
+
+														echo
+														"<tr>
+															<td>" .$subject . "</td>
+															<td>" .$grade . "</td>
+															<td>" .$fgrade . "</td>
+															<td>" .$status . "</td>
+														</tr>";
+													}
+												}
+											?>
 											</tbody>
 										</table>
 									</div>			

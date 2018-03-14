@@ -6,6 +6,7 @@ class Student_Page extends CI_Controller{
     {
         parent::__construct();
         $this->load->library(array('session'));
+        $this->load->model('Auditlog_model');
     } 
 
     /*
@@ -144,6 +145,16 @@ class Student_Page extends CI_Controller{
         
     }
 
+    function auditdownload()
+    {
+        $idnum = $this->session->userdata('userIDNo');
+        $paramsaudit = array(
+            'userIDNo' => $idnum,
+            'auditDesc' => 'Download',
+        );
+        $this->Auditlog_model->add_auditlog($paramsaudit);
+        redirect('student_page/assignments');
+    }
 
-    
+
 }
