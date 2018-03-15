@@ -6,6 +6,15 @@ class Usertype extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Usertype_model');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -35,6 +44,11 @@ class Usertype extends CI_Controller{
             );
             
             $usertype_id = $this->Usertype_model->add_usertype($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a new usertype',
+                        );
             redirect('usertype/index');
         }
         else
@@ -64,7 +78,12 @@ class Usertype extends CI_Controller{
 					'userType' => $this->input->post('userType'),
                 );
 
-                $this->Usertype_model->update_usertype($userTypeID,$params);            
+                $this->Usertype_model->update_usertype($userTypeID,$params); 
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully edited a usertype',
+                        );           
                 redirect('usertype/index');
             }
             else
@@ -88,6 +107,11 @@ class Usertype extends CI_Controller{
         if(isset($usertype['userTypeID']))
         {
             $this->Usertype_model->delete_usertype($userTypeID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully removed a usertype',
+                        );
             redirect('usertype/index');
         }
         else

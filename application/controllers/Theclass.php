@@ -6,6 +6,17 @@ class Theclass extends CI_Controller{
         parent::__construct();
         $this->load->model('Theclass_model');
         $this->load->model('Classlist_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
     /*
      * Listing of theclasses
@@ -60,6 +71,12 @@ class Theclass extends CI_Controller{
                     $res = $this->Theclass_model->max();
                     $classid = (int)$res;
                     $resultclass = $this->Theclass_model->add_allclass($classid);
+                    $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a new class',
+                        );
+                    
                     redirect('theclass/index');
                 } else 
                 {
@@ -182,6 +199,12 @@ class Theclass extends CI_Controller{
         {
             $this->db->set('status', 'Archive');
             $this->Theclass_model->delete_theclass($classID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Removed an existing class',
+                        );
+                    
             redirect('theclass/index');
         }
         else
@@ -223,6 +246,12 @@ class Theclass extends CI_Controller{
                 'dateAdded' => date('Y-m-d'),
                 );
             $result = $this->Theclass_model->add_student($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully enlisted student',
+                        );
+                    
 
             if ($result)
             {

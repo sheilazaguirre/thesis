@@ -6,6 +6,15 @@ class Venue extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Venue_model');
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -47,6 +56,11 @@ class Venue extends CI_Controller{
             );
             $this->db->set('status', 'Active');
             $venue_id = $this->Venue_model->add_venue($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a new venue',
+                        );
             redirect('venue/index');
         }
         else
@@ -82,7 +96,12 @@ class Venue extends CI_Controller{
 					'status' => $this->input->post('status'),
                 );
 
-                $this->Venue_model->update_venue($venueID,$params);            
+                $this->Venue_model->update_venue($venueID,$params);    
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully edited an existing venue',
+                        );        
                 redirect('venue/index');
             }
             else
@@ -107,6 +126,11 @@ class Venue extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Venue_model->delete_venue($venueID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully removed venue',
+                        );
             redirect('venue/index');
         }
         else

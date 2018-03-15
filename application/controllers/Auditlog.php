@@ -6,6 +6,16 @@ class Auditlog extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -73,7 +83,12 @@ class Auditlog extends CI_Controller{
 					'auditDesc' => $this->input->post('auditDesc'),
                 );
 
-                $this->Auditlog_model->update_auditlog($auditID,$params);            
+                $this->Auditlog_model->update_auditlog($auditID,$params);
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Edited Auditlogs',
+                        );            
                 redirect('auditlog/index');
             }
             else
@@ -101,6 +116,11 @@ class Auditlog extends CI_Controller{
         {
             $this->db->set('status', 'Archive');
             $this->Auditlog_model->delete_auditlog($auditID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Deleted auditlogs',
+                        );
             redirect('auditlog/index');
         }
         else

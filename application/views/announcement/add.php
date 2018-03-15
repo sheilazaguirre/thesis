@@ -37,6 +37,7 @@
 						<div class="form-group">
 							<input type="file" name="filen" size="20" class="form-control" id="announceFile" />
 							<span class="text-danger"><?php if (isset($error)) { echo $error; } ?></span>
+							
 						</div>
 					</div>
 					<div class="col-md-6">

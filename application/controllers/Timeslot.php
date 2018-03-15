@@ -6,6 +6,17 @@ class Timeslot extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Timeslot_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -39,6 +50,11 @@ class Timeslot extends CI_Controller{
             );
             $this->db->set('status', 'Active');
             $timeslot_id = $this->Timeslot_model->add_timeslot($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a new timeslot',
+                        );
             redirect('timeslot/index');
         }
         else
@@ -72,7 +88,12 @@ class Timeslot extends CI_Controller{
 					'endTime' => $this->input->post('endTime'),
                 );
 
-                $this->Timeslot_model->update_timeslot($timeSlotID,$params);            
+                $this->Timeslot_model->update_timeslot($timeSlotID,$params);  
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully edited a timeslot',
+                        );          
                 redirect('timeslot/index');
             }
             else
@@ -97,6 +118,11 @@ class Timeslot extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Timeslot_model->delete_timeslot($timeSlotID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully removed timeslot',
+                        );
             redirect('timeslot/index');
         }
         else

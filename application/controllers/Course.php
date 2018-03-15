@@ -5,6 +5,18 @@ class Course extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Course_model');
+
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -49,6 +61,11 @@ class Course extends CI_Controller{
             );
             $this->db->set('dateAdded', 'NOW()', FALSE);
             $course_id = $this->Course_model->add_course($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Added a new course',
+                        );
             redirect('course/index');
         }
         else
@@ -82,7 +99,12 @@ class Course extends CI_Controller{
 					'remarks' => $this->input->post('remarks'),
                 );
                 $this->db->set('dateModified', 'NOW()', FALSE);
-                $this->Course_model->update_course($courseID,$params);            
+                $this->Course_model->update_course($courseID,$params);   
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Edited existing course',
+                        );         
                 redirect('course/index');
             }
             else
@@ -107,6 +129,11 @@ class Course extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Course_model->archive_course($courseID, $params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Deleted a course',
+                        );
             redirect('course/index');
         }
         else

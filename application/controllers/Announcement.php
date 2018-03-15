@@ -11,7 +11,6 @@ class Announcement extends CI_Controller{
         {
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
-            $this->load->view('layouts/main',$data);
         }
         else
         {
@@ -58,35 +57,38 @@ class Announcement extends CI_Controller{
 
            $this->load->library('upload', $config);
            $var;
-           if (! $this->upload->do_upload('filen'))
+           if ( ! $this->upload->do_upload())
            {
-               $error = array('error' => $this->upload->display_errors());
+            //    $error = array('error' => $this->upload->display_errors());
+               $data['error'] = "File uploaded is not supported use JPEG or PNG";
+               $data['_view'] = 'announcement/add';
+               $this->load->view('layouts/main',$data);
            }
            else
            {
                $data = array('upload_data' => $this->upload->data());
 
                $var = $this->upload->data()["file_name"];
+               $params = array(
+                   'userID' => $this->input->post('userID'),
+                   'announceTitle' => $this->input->post('announceTitle'),
+                   'announceFile' => $var,
+                   'announceDetail' => $this->input->post('announceDetail'),
+                   'announceDate' => $this->input->post('announceDate'),
+               );
+               $this->db->set('dateUploaded', 'NOW()', FALSE);
+               $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
+               $this->db->set('status', 'Active');
+               $announce_id = $this->Announcement_model->add_announcement($params);
+               $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Added announcement',
+                        );
+                        $this->Auditlog_model->add_auditlog($paramsaudit);
+    
+               redirect('announcement/index');
            }
-
-           $params = array(
-               'userID' => $this->input->post('userID'),
-               'announceTitle' => $this->input->post('announceTitle'),
-               'announceFile' => $var,
-               'announceDetail' => $this->input->post('announceDetail'),
-               'announceDate' => $this->input->post('announceDate'),
-           );
-           $this->db->set('dateUploaded', 'NOW()', FALSE);
-           $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
-           $this->db->set('status', 'Active');
-           $announce_id = $this->Announcement_model->add_announcement($params);
-           $idnum = $this->session->userdata('userIDNo');
-                    $paramsaudit = array(
-                        'userIDNo' => $idnum,
-                        'auditDesc' => 'Added announcement',
-                    );
-                    $this->Auditlog_model->add_auditlog($paramsaudit);
-           redirect('announcement/index');
        }
        else
        {
@@ -128,7 +130,12 @@ class Announcement extends CI_Controller{
                 $var;
                 if ( ! $this->upload->do_upload('filen'))
                 {
-                        $error = array('error' => $this->upload->display_errors());
+                        // $error = array('error' => $this->upload->display_errors());
+                        $data['error'] = "File uploaded is not supported use JPEG or PNG";
+                        $data['_view'] = 'announcement/add';
+                        $this->load->model('User_model');
+				        $data['all_users'] = $this->User_model->get_all_users();
+                        $this->load->view('layouts/main',$data);
                 }
                 else
                 {
@@ -136,24 +143,24 @@ class Announcement extends CI_Controller{
                         
                         $var = $this->upload->data()["file_name"];
                         //var_dump($var);
+                        $params = array(
+                            'userID' => $this->input->post('userID'),
+                            'announceTitle' => $this->input->post('announceTitle'),
+                            'announceFile' => $var,
+                            'announceDetail' => $this->input->post('announceDetail'),
+                            'announceDate' => $this->input->post('announceDate'),
+                        );
+                        $this->db->set('dateModified', 'NOW()', FALSE);
+                        $this->Announcement_model->update_announcement($announceID,$params);
+                        $idnum = $this->session->userdata('userIDNo');
+                            $paramsaudit = array(
+                                'userIDNo' => $idnum,
+                                'auditDesc' => 'Edited announcement',
+                            );
+                            $this->Auditlog_model->add_auditlog($paramsaudit);            
+                        redirect('announcement/index');
                 }
 
-                $params = array(
-                    'userID' => $this->input->post('userID'),
-                    'announceTitle' => $this->input->post('announceTitle'),
-                    'announceFile' => $var,
-                    'announceDetail' => $this->input->post('announceDetail'),
-                    'announceDate' => $this->input->post('announceDate'),
-                );
-                $this->db->set('dateModified', 'NOW()', FALSE);
-                $this->Announcement_model->update_announcement($announceID,$params);
-                $idnum = $this->session->userdata('userIDNo');
-                    $paramsaudit = array(
-                        'userIDNo' => $idnum,
-                        'auditDesc' => 'Edited announcement',
-                    );
-                    $this->Auditlog_model->add_auditlog($paramsaudit);            
-                redirect('announcement/index');
             }
             else
             {

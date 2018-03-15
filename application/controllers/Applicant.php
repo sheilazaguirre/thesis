@@ -11,7 +11,7 @@ class Applicant extends CI_Controller{
         {
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
-            $this->load->view('layouts/main',$data);
+            
         }
         else
         {

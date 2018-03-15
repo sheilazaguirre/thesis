@@ -6,7 +6,15 @@ class User extends CI_Controller{
     {
         parent::__construct();
 		$this->load->model('User_model');
-		$this->load->model('Auditlog_model');
+		if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -101,6 +109,11 @@ class User extends CI_Controller{
 				if ($valres === 2)
 				{
 					$user_id = $this->User_model->add_user($params);
+					$idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a user',
+                        );
 					redirect('user/index');
 				}
 				else {
@@ -211,7 +224,12 @@ class User extends CI_Controller{
                     'datemodified' => date('Y-m-d H:i:s')
                 );
 
-                $this->User_model->update_user($userID,$params);            
+				$this->User_model->update_user($userID,$params);   
+				$idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully edited a user',
+                        );         
                 redirect('user/index');
             }
             else
@@ -238,7 +256,12 @@ class User extends CI_Controller{
         if(isset($user['userID']))
         {
             $this->db->set('status', 'Archived');
-            $this->User_model->delete_user($userID, $params);
+			$this->User_model->delete_user($userID, $params);
+			$idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully removed a user',
+                        );
             redirect('user/index');
         }
         else

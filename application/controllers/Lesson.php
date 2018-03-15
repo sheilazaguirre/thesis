@@ -6,6 +6,17 @@ class Lesson extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Lesson_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -42,7 +53,12 @@ class Lesson extends CI_Controller{
             $var;
             if ( ! $this->upload->do_upload('filen'))
             {
-                    $error = array('error' => $this->upload->display_errors());
+                    // $error = array('error' => $this->upload->display_errors());
+                    $data['error'] = "File uploaded is not supported use PDF, DOCX, PPT, TXT, JPEG or PNG";
+                    $data['_view'] = 'lesson/add';
+                    $this->load->model('User_model');
+                    $data['all_users'] = $this->User_model->get_all_users();
+                    $this->load->view('layouts/main',$data);   
             }
             else
             {
@@ -50,19 +66,25 @@ class Lesson extends CI_Controller{
                     
                     $var = $this->upload->data()["file_name"];
                     var_dump($var);
+                    $params = array(
+                        'classID' => $this->input->post('classID'),
+                        'lessonFile' => $var,
+                        'lessonDesc' => $this->input->post('lessonDesc'),
+                        'lessonTitle' => $this->input->post('lessonTitle'),
+                    );
+                    $this->db->set('dateUploaded', 'NOW()', FALSE);
+                    $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
+                    $this->db->set('status', 'Active');
+                    $lesson_id = $this->Lesson_model->add_lesson($params);
+                    $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Added a new lesson',
+                        );
+                    
+                    redirect('lesson/index');
             }
 
-            $params = array(
-				'classID' => $this->input->post('classID'),
-				'lessonFile' => $var,
-				'lessonDesc' => $this->input->post('lessonDesc'),
-				'lessonTitle' => $this->input->post('lessonTitle'),
-            );
-            $this->db->set('dateUploaded', 'NOW()', FALSE);
-            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
-            $this->db->set('status', 'Active');
-            $lesson_id = $this->Lesson_model->add_lesson($params);
-            redirect('lesson/index');
         }
         else
         {
@@ -103,7 +125,12 @@ class Lesson extends CI_Controller{
                 $var;
                 if ( ! $this->upload->do_upload('filen'))
                 {
-                        $error = array('error' => $this->upload->display_errors());
+                        // $error = array('error' => $this->upload->display_errors());
+                        $data['error'] = "File uploaded is not supported use PDF, DOCX, PPT, TXT, JPEG or PNG";
+                        $data['_view'] = 'lesson/add';
+                        $this->load->model('User_model');
+                        $data['all_users'] = $this->User_model->get_all_users();
+                        $this->load->view('layouts/main',$data);  
                 }
                 else
                 {
@@ -111,17 +138,22 @@ class Lesson extends CI_Controller{
                         
                         $var = $this->upload->data()["file_name"];
                         //var_dump($var);
+                        $params = array(
+                            'classID' => $this->input->post('classID'),
+                            'lessonFile' => $var,
+                            'lessonDesc' => $this->input->post('lessonDesc'),
+                            'lessonTitle' => $this->input->post('lessonTitle'),
+                        );
+                        $this->db->set('dateModified', 'NOW()', FALSE);
+                        $this->Lesson_model->update_lesson($lessonID,$params); 
+                        $idnum = $this->session->userdata('userIDNo');
+                                $paramsaudit = array(
+                                    'userIDNo' => $idnum,
+                                    'auditDesc' => 'Edited existing lesson',
+                                );           
+                        redirect('lesson/index');
                 }
 
-                $params = array(
-					'classID' => $this->input->post('classID'),
-					'lessonFile' => $var,
-					'lessonDesc' => $this->input->post('lessonDesc'),
-					'lessonTitle' => $this->input->post('lessonTitle'),
-                );
-                $this->db->set('dateModified', 'NOW()', FALSE);
-                $this->Lesson_model->update_lesson($lessonID,$params);            
-                redirect('lesson/index');
             }
             else
             {
@@ -148,6 +180,11 @@ class Lesson extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Lesson_model->delete_lesson($lessonID);
+            $idnum = $this->session->userdata('userIDNo');
+                                $paramsaudit = array(
+                                    'userIDNo' => $idnum,
+                                    'auditDesc' => 'Removed an existing lesson',
+                                );      
             redirect('lesson/index');
         }
         else

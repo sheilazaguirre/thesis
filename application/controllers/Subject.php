@@ -6,6 +6,17 @@ class Subject extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Subject_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -50,6 +61,12 @@ class Subject extends CI_Controller{
                 'status' => 'Active',
             );
             $subject_id = $this->Subject_model->add_subject($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Added a new subject',
+                        );
+                    
             redirect('subject/index');
         }
         else
@@ -89,7 +106,13 @@ class Subject extends CI_Controller{
 					'units' => $this->input->post('units'),
                 );
 
-                $this->Subject_model->update_subject($subjectID,$params);            
+                $this->Subject_model->update_subject($subjectID,$params);    
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Edited an existing subject',
+                        );
+                            
                 redirect('subject/index');
             }
             else
@@ -117,6 +140,12 @@ class Subject extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Subject_model->delete_subject($subjectID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Removed an existing subject',
+                        );
+                    
             redirect('subject/index');
         }
         else
