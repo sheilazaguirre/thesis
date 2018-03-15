@@ -386,12 +386,12 @@
                 $('#tblstudent').DataTable();
             });
             $(document).ready(function(){
-<<<<<<< HEAD
                 $('#classTable').DataTable();
-=======
-                $('#auditTable').DataTable();
->>>>>>> 9bac79a79e82fce3162f30cab3851aaf82ba189f
             });
+            $(document).ready(function(){
+                $('#auditTable').DataTable();
+            });
+            
 
         </script>
 
