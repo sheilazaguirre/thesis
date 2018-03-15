@@ -96,6 +96,7 @@ class User extends CI_Controller{
 					'dateadded' => date('Y-m-d H:i:s'),
 					'datemodified' => null,
 				);
+				
 				$valres = $this->User_model->validate($params);
 				if ($valres === 2)
 				{

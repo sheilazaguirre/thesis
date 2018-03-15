@@ -476,8 +476,14 @@ class Landing_Page extends CI_Controller{
                 if(isset($login['userIDNo']) and isset($login['userTypeID']) and isset($dota->success) && $dota->success=="true")
                 {
                     
-                    $_SESSION['userIDNo'] = $login['userIDNo'];
-                    $_SESSION['userTypeID'] = $login['userTypeID'];
+                    $newdata = array( 
+                        'userIDNo'  => $login['userIDNo'],
+                        'userFN'  => $login['userFN'], 
+                        'userLN'  => $login['userLN'],  
+                        'userTypeID' => $login['userTypeID'], 
+                        'logged_in' => TRUE
+                     );  
+                     $this->session->set_userdata($newdata);
 
                     $idnum = $login['userIDNo'];
                     // $usertype = $login['userTypeID'];  
@@ -487,7 +493,6 @@ class Landing_Page extends CI_Controller{
                         'userIDNo' => $idnum,
                         'auditDesc' => 'Logged In',
                     );
-                    
                     $this->Auditlog_model->add_auditlog($paramsaudit);
                     redirect('admin/dashboard');
                     //var_dump($_SESSION['userTypeID'], $_SESSION['userID']);

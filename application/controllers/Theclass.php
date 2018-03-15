@@ -51,8 +51,9 @@ class Theclass extends CI_Controller{
                     'remarks' => $this->input->post('remarks'),
                     'status' => 'Active',
                 );
+                $acad = $this->input->post('academicYear');
                 $valresult = $this->Theclass_model->validateclass($params);
-                var_dump($valresult);
+
                 if ($valresult === 2 ) 
                 {
                     $theclass_id = $this->Theclass_model->add_theclass($params);
@@ -70,7 +71,7 @@ class Theclass extends CI_Controller{
                     $data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
                     $this->load->model('Venue_model');
                     $data['all_venues'] = $this->Venue_model->get_all_venues();
-                    $data['error'] = "Timeslot already taken for that Room";
+                    $data['error'] = "Timeslot already taken for that room this semester of $acad" ;
                     $data['_view'] = 'theclass/add';
                     $this->load->view('layouts/main',$data);
                 }

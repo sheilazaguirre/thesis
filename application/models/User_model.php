@@ -77,7 +77,7 @@ class User_model extends CI_Model
     function validate($params)
     {
         $id = $params['userIDNo'];
-        $query = $this->db->query("SELECT userIDNo from users where userIDNo = '.$id.'");
+        $query = $this->db->query("SELECT userIDNo from users where userIDNo = $id");
         if ($query->num_rows() > 0)
         {
             return 1;

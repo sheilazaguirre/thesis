@@ -5,6 +5,18 @@ class Announcement extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Announcement_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $this->load->view('layouts/main',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -26,28 +38,6 @@ class Announcement extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
 
-    
-
-    /*
-     * Adding a new announcement
-     */
-
-    // function do_upload(){
-    //     $config['upload_path'] = 'uploads/files/';
-    //     $config['allowed_types'] = 'jpg|jpeg|png|gif|docx|pdf|txt';
-    //     $config['file_name'] = $_FILES['filen']['name'];
-        
-    //     //Load upload library and initialize configuration
-    //     $this->load->library('upload',$config);
-    //     $this->upload->initialize($config);
-        
-    //     if($this->upload->do_upload('filen')){
-    //         $uploadData = $this->upload->data();
-    //         $announceFile = $uploadData['file_name'];
-    //     }else{
-    //         $announceFile = 'abc';
-    //     }
-    // } 
     
     function add()
     {   
@@ -90,6 +80,12 @@ class Announcement extends CI_Controller{
            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
            $this->db->set('status', 'Active');
            $announce_id = $this->Announcement_model->add_announcement($params);
+           $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Added announcement',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
            redirect('announcement/index');
        }
        else
@@ -150,7 +146,13 @@ class Announcement extends CI_Controller{
                     'announceDate' => $this->input->post('announceDate'),
                 );
                 $this->db->set('dateModified', 'NOW()', FALSE);
-                $this->Announcement_model->update_announcement($announceID,$params);            
+                $this->Announcement_model->update_announcement($announceID,$params);
+                $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Edited announcement',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);            
                 redirect('announcement/index');
             }
             else
@@ -178,6 +180,12 @@ class Announcement extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Announcement_model->delete_announcement($announceID);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Deleted announcement',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('announcement/index');
         }
         else

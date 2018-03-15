@@ -5,6 +5,18 @@ class Applicant extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Applicant_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 1)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $this->load->view('layouts/main',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     /*
@@ -97,6 +109,12 @@ class Applicant extends CI_Controller{
             );
 
             $applicant_id = $this->Applicant_model->add_applicant($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Added Applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('applicant/index');
         }
         else {
@@ -153,6 +171,12 @@ class Applicant extends CI_Controller{
 
             $this->Applicant_model->approve_applicant($apid, $params1);
             $this->Applicant_model->add_user($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Added student from applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('user/index');
         }
         else
@@ -236,6 +260,12 @@ class Applicant extends CI_Controller{
                 );
 
                 $this->Applicant_model->update_applicant($apid,$params);
+                $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Edited Applicant',
+                    );
+                $this->Auditlog_model->add_auditlog($paramsaudit);
                 redirect('applicant/index');
             }
             else
@@ -260,6 +290,12 @@ class Applicant extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Applicant_model->archive_applicant($apid, $params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Deleted applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('applicant/index');
         }
         else

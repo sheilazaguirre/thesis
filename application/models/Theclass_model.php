@@ -146,13 +146,12 @@ class Theclass_model extends CI_Model
 
     function validateclass($params)
     {
-        $facultyid = $params['facultyID'];
         $timeslot = $params['timeSlotID'];
         $venue = $params['venueID'];
         $sem = $params['semester'];
         $acad = $params['academicYear'];
 
-        $query = $this->db->query("SELECT * from classes where timeSlotID = '.$timeslot.' AND venueID = '.$venue.' AND semester = '.$sem.' AND academicYear = '.$acad.' AND status = 'Active'");
+        $query = $this->db->query("SELECT * from classes where timeSlotID = $timeslot AND venueID = $venue AND semester = '$sem' AND academicYear = $acad ");
         if ($query->num_rows() > 0)
         {
             //Exist
