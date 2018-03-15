@@ -5,6 +5,7 @@ class Reg_Announcement extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Announcement_model');
+        $this->load->model('Auditlog_model');
     } 
 
     /*
@@ -12,6 +13,17 @@ class Reg_Announcement extends CI_Controller{
      */
     function index()
     {
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/assignments',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
         $params['limit'] = RECORDS_PER_PAGE; 
         $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
         
@@ -51,6 +63,17 @@ class Reg_Announcement extends CI_Controller{
     
     function add()
     {   
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/assignments',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
        $this->load->library('form_validation');
 
        $this->form_validation->set_rules('userID','UserID','required|integer');
@@ -90,6 +113,12 @@ class Reg_Announcement extends CI_Controller{
            $this->db->set('dateExpiry', 'NOW() + INTERVAL 6 Month', FALSE);
            $this->db->set('status', 'Active');
            $announce_id = $this->Announcement_model->add_announcement($params);
+           $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Added announcement',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
            redirect('announcement/index');
        }
        else
@@ -107,6 +136,17 @@ class Reg_Announcement extends CI_Controller{
      */
     function edit($announceID)
     {   
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/assignments',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
         // check if the assignment exists before trying to edit it
         $data['announcement'] = $this->Announcement_model->getannouncement($announceID);
         
@@ -150,7 +190,13 @@ class Reg_Announcement extends CI_Controller{
                     'announceDate' => $this->input->post('announceDate'),
                 );
                 $this->db->set('dateModified', 'NOW()', FALSE);
-                $this->Announcement_model->update_announcement($announceID,$params);            
+                $this->Announcement_model->update_announcement($announceID,$params);
+                $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Edited announcement',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);            
                 redirect('announcement/index');
             }
             else
@@ -171,6 +217,17 @@ class Reg_Announcement extends CI_Controller{
      */
     function remove($announceID)
     {
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/assignments',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
         $announcement = $this->Announcement_model->getannouncement($announceID);
 
         // check if the assignment exists before trying to delete it
@@ -178,7 +235,14 @@ class Reg_Announcement extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Announcement_model->delete_announcement($announceID);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Deleted announcement',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('announcement/index');
+            
         }
         else
             show_error('The announcement you are trying to delete does not exist.');

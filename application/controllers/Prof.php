@@ -110,6 +110,7 @@ class Prof extends CI_Controller{
 
     function removeassign($assignID)
     {
+        
         $assignment = $this->Assignment_model->get_assignment($assignID);
 
         // check if the assignment exists before trying to delete it

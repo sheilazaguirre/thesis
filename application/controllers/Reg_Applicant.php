@@ -5,6 +5,7 @@ class Reg_Applicant extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Applicant_model');
+        $this->load->model('Auditlog_model');
     }
 
     /*
@@ -12,6 +13,17 @@ class Reg_Applicant extends CI_Controller{
      */
     function index()
     {
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $this->load->view('prof/assignments',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
         $data['applicant'] = $this->Applicant_model->get_all_applicant();
 
         $data['_view'] = 'applicant/index';
@@ -97,6 +109,12 @@ class Reg_Applicant extends CI_Controller{
             );
 
             $applicant_id = $this->Applicant_model->add_applicant($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Successfully added a new applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('applicant/index');
         }
         else {
@@ -118,7 +136,7 @@ class Reg_Applicant extends CI_Controller{
                 'status' => 'Active',
                 'gender' => $applicant['gender'],
                 'userPassword' => password_hash('gapcmypassword', PASSWORD_BCRYPT),
-                'userIDNo' => '11810051',
+                'userIDNo' => '11810064',
                 'userLN' => $applicant['apln'],
                 'userFN' => $applicant['apfn'],
                 'userMN' => $applicant['apmn'],
@@ -153,6 +171,12 @@ class Reg_Applicant extends CI_Controller{
 
             $this->Applicant_model->approve_applicant($apid, $params1);
             $this->Applicant_model->add_user($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Sucessfully added a student from applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('user/index');
         }
         else
@@ -236,6 +260,12 @@ class Reg_Applicant extends CI_Controller{
                 );
 
                 $this->Applicant_model->update_applicant($apid,$params);
+                $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Successfully edited an applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
                 redirect('applicant/index');
             }
             else
@@ -260,6 +290,12 @@ class Reg_Applicant extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Applicant_model->archive_applicant($apid, $params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Successfully removed an applicant',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('applicant/index');
         }
         else
