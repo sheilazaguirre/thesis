@@ -14,7 +14,7 @@ class Reg_Theclass extends CI_Controller{
     {
         $data['theclasses'] = $this->Theclass_model->get_all_theclasses();
         
-        $data['_view'] = 'theclass/index';
+        $data['_view'] = 'registrar_page/theclass/index';
         $this->load->view('layouts/reg',$data);
     }
     /*
@@ -57,7 +57,7 @@ class Reg_Theclass extends CI_Controller{
                 $resultclass = $this->Theclass_model->add_allclass($classid);
                 
 
-                redirect('theclass/index');
+                redirect('reg_theclass/index');
             }
             else if ($studcount > 50)
             {
@@ -70,7 +70,7 @@ class Reg_Theclass extends CI_Controller{
                 $this->load->model('Venue_model');
                 $data['all_venues'] = $this->Venue_model->get_all_venues();
                 $data['error'] = "The class should not exceed more than 50 student";
-                $data['_view'] = 'theclass/add';
+                $data['_view'] = 'registrar_page/theclass/add';
                 $this->load->view('layouts/reg',$data);
             }
             else
@@ -84,7 +84,7 @@ class Reg_Theclass extends CI_Controller{
                 $this->load->model('Venue_model');
                 $data['all_venues'] = $this->Venue_model->get_all_venues();
                 $data['error'] = "The class should have atleast 25 students";
-                $data['_view'] = 'theclass/add';
+                $data['_view'] = 'registrar_page/theclass/add';
                 $this->load->view('layouts/reg',$data);
             }
 
@@ -101,7 +101,7 @@ class Reg_Theclass extends CI_Controller{
             $this->load->model('Venue_model');
             $data['all_venues'] = $this->Venue_model->get_all_venues();
             
-            $data['_view'] = 'theclass/add';
+            $data['_view'] = 'registrar_page/theclass/add';
             $this->load->view('layouts/reg',$data);
         }
     }  
@@ -134,7 +134,7 @@ class Reg_Theclass extends CI_Controller{
                     'semester' => $this->input->post('semester'),
                 );
                 $this->Theclass_model->update_theclass($classID,$params);            
-                redirect('theclass/index');
+                redirect('reg_theclass/index');
             }
             else
             {
@@ -146,7 +146,7 @@ class Reg_Theclass extends CI_Controller{
                 $data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
                 $this->load->model('Venue_model');
                 $data['all_venues'] = $this->Venue_model->get_all_venues();
-                $data['_view'] = 'theclass/edit';
+                $data['_view'] = 'registrar_page/theclass/edit';
                 $this->load->view('layouts/reg',$data);
             }
         }
@@ -164,7 +164,7 @@ class Reg_Theclass extends CI_Controller{
         {
             $this->db->set('status', 'Archive');
             $this->Theclass_model->delete_theclass($classID);
-            redirect('theclass/index');
+            redirect('reg_theclass/index');
         }
         else
             show_error('The theclass you are trying to delete does not exist.');

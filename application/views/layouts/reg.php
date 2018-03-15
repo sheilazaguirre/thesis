@@ -148,6 +148,19 @@
                                 </li>
 							</ul>
                         </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-desktop"></i> <span>Course</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="active">
+                                    <a href="<?php echo site_url('reg_course/add');?>"><i class="fa fa-plus"></i> Add Course</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('reg_course/index');?>"><i class="fa fa-list-ul"></i> View Course</a>
+                                </li>
+                            </ul>
+                        </li>
 						<!-- <li>
                             <a href="#">
                                 <i class="fa fa-desktop"></i> <span>Classlist</span>
@@ -272,13 +285,16 @@
                 $('#facultyTable').DataTable();
             });
             $(document).ready(function(){
-                $('#subjectTable').DataTable();
+                $('#thesubjectTable').DataTable();
             });
             $(document).ready(function(){
                 $('#timeslotTable').DataTable();
             });
             $(document).ready(function(){
                 $('#tblstudent').DataTable();
+            });
+            $(document).ready(function(){
+                $('#tblaudit').DataTable();
             });
 
         </script>

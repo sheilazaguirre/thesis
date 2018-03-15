@@ -13,21 +13,21 @@ class Reg_Applicant extends CI_Controller{
      */
     function index()
     {
-        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
         {
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
             $data['userID'] = $this->session->userdata('userIDNo');
-            $this->load->view('prof/assignments',$data);
+            $data['applicant'] = $this->Applicant_model->get_all_applicant();
+
+            $data['_view'] = 'registrar_page/applicant/index';
+            $this->load->view('layouts/reg',$data);
         }
         else
         {
             redirect('landing_page/index');
         }
-        $data['applicant'] = $this->Applicant_model->get_all_applicant();
-
-        $data['_view'] = 'applicant/index';
-        $this->load->view('layouts/reg',$data);
+        
     }
 
 
@@ -115,10 +115,10 @@ class Reg_Applicant extends CI_Controller{
                         'auditDesc' => 'Successfully added a new applicant',
                     );
                     $this->Auditlog_model->add_auditlog($paramsaudit);
-            redirect('applicant/index');
+            redirect('reg_applicant/index');
         }
         else {
-            $data['_view'] = 'applicant/add';
+            $data['_view'] = 'registrar_page/applicant/add';
             $this->load->view('layouts/reg', $data);
         }
     }
@@ -177,7 +177,7 @@ class Reg_Applicant extends CI_Controller{
                         'auditDesc' => 'Sucessfully added a student from applicant',
                     );
                     $this->Auditlog_model->add_auditlog($paramsaudit);
-            redirect('user/index');
+            redirect('reg_user/index');
         }
         else
             show_error('The applicant you are trying to insert does not exist.');
@@ -266,11 +266,11 @@ class Reg_Applicant extends CI_Controller{
                         'auditDesc' => 'Successfully edited an applicant',
                     );
                     $this->Auditlog_model->add_auditlog($paramsaudit);
-                redirect('applicant/index');
+                redirect('reg_applicant/index');
             }
             else
             {
-                $data['_view'] = 'applicant/edit';
+                $data['_view'] = 'registrar_page/applicant/edit';
                 $this->load->view('layouts/reg',$data);
             }
         }
@@ -296,7 +296,7 @@ class Reg_Applicant extends CI_Controller{
                         'auditDesc' => 'Successfully removed an applicant',
                     );
                     $this->Auditlog_model->add_auditlog($paramsaudit);
-            redirect('applicant/index');
+            redirect('reg_applicant/index');
         }
         else
             show_error('The applicant you are trying to delete does not exist.');
