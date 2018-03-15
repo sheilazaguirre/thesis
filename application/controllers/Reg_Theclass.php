@@ -6,22 +6,46 @@ class Reg_Theclass extends CI_Controller{
         parent::__construct();
         $this->load->model('Theclass_model');
         $this->load->model('Classlist_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $data['_view'] = 'registrar_page/theclass/index';
+            $this->load->view('layouts/reg',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
     /*
      * Listing of theclasses
      */
     function index()
     {
-        $data['theclasses'] = $this->Theclass_model->get_all_theclasses();
-        
-        $data['_view'] = 'registrar_page/theclass/index';
-        $this->load->view('layouts/reg',$data);
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $data['courses'] = $this->Course_model->get_all_courses($params);
+            $data['_view'] = 'registrar_page/theclass/index';
+            $this->load->view('layouts/reg',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
     /*
      * Adding a new theclass
      */
     function add()
     {   
+        
         $data = array('error' => '');
 
         // $data['tableresult'] = $this->Classlist_model->getclass();

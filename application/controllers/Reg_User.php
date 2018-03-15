@@ -6,6 +6,20 @@ class Reg_User extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('User_model');
+		$this->load->model('Auditlog_model');
+		
+		if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            $data['_view'] = 'registrar_page/user/index';
+            $this->load->view('layouts/reg',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
