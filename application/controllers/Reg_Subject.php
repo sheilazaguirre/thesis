@@ -6,6 +6,19 @@ class Reg_Subject extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Subject_model');
+        $this->load->model('Auditlog_model');
+
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -13,18 +26,29 @@ class Reg_Subject extends CI_Controller{
      */
     function index()
     {
-        $params['limit'] = RECORDS_PER_PAGE; 
-        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
-        
-        $config = $this->config->item('pagination');
-        $config['base_url'] = site_url('reg_subject/index?');
-        $config['total_rows'] = $this->Subject_model->get_all_subjects_count();
-        $this->pagination->initialize($config);
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
+            $data['fn'] = $this->session->userdata('userFN');
+            $data['ln'] = $this->session->userdata('userLN');
+            $data['userID'] = $this->session->userdata('userIDNo');
+            
+            $params['limit'] = RECORDS_PER_PAGE; 
+            $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+            
+            $config = $this->config->item('pagination');
+            $config['base_url'] = site_url('reg_subject/index?');
+            $config['total_rows'] = $this->Subject_model->get_all_subjects_count();
+            $this->pagination->initialize($config);
 
-        $data['subjects'] = $this->Subject_model->get_all_subjects($params);
-        
-        $data['_view'] = 'registrar_page/subject/index';
-        $this->load->view('layouts/reg',$data);
+            $data['subjects'] = $this->Subject_model->get_all_subjects($params);
+            
+            $data['_view'] = 'registrar_page/subject/index';
+            $this->load->view('layouts/reg',$data);
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
 
     /*
@@ -32,6 +56,8 @@ class Reg_Subject extends CI_Controller{
      */
     function add()
     {   
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('subjectType','Subject Type','required|max_length[50]');
@@ -50,6 +76,12 @@ class Reg_Subject extends CI_Controller{
                 'status' => 'Active',
             );
             $subject_id = $this->Subject_model->add_subject($params);
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Added Subject',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('reg_subject/index');
         }
         else
@@ -60,6 +92,11 @@ class Reg_Subject extends CI_Controller{
             $data['_view'] = 'registrar_page/subject/add';
             $this->load->view('layouts/reg',$data);
         }
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }  
 
     /*
@@ -67,6 +104,8 @@ class Reg_Subject extends CI_Controller{
      */
     function edit($subjectID)
     {   
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
         // check if the subject exists before trying to edit it
         $data['subject'] = $this->Subject_model->get_subject($subjectID);
         
@@ -89,7 +128,13 @@ class Reg_Subject extends CI_Controller{
 					'units' => $this->input->post('units'),
                 );
 
-                $this->Subject_model->update_subject($subjectID,$params);            
+                $this->Subject_model->update_subject($subjectID,$params); 
+                $idnum = $this->session->userdata('userIDNo');
+                $paramsaudit = array(
+                    'userIDNo' => $idnum,
+                    'auditDesc' => 'Edited Subject',
+                );
+                $this->Auditlog_model->add_auditlog($paramsaudit);
                 redirect('reg_subject/index');
             }
             else
@@ -103,6 +148,11 @@ class Reg_Subject extends CI_Controller{
         }
         else
             show_error('The subject you are trying to edit does not exist.');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     } 
 
     /*
@@ -110,6 +160,8 @@ class Reg_Subject extends CI_Controller{
      */
     function remove($subjectID)
     {
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
+        {
         $subject = $this->Subject_model->get_subject($subjectID);
 
         // check if the subject exists before trying to delete it
@@ -117,10 +169,21 @@ class Reg_Subject extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Subject_model->delete_subject($subjectID);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Deleted Subject',
+                        );
+                        $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('reg_subject/index');
         }
         else
             show_error('The subject you are trying to delete does not exist.');
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
     }
     
 }
