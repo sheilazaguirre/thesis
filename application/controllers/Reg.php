@@ -15,8 +15,6 @@ class Reg extends CI_Controller{
         $this->load->view('layouts/reg');
     }
 
-    /*
-     * Adding a new auditlog
-     */
+    
     
 }

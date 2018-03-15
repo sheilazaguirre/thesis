@@ -97,7 +97,7 @@ class Reg_Announcement extends CI_Controller{
            $this->load->model('User_model');
            $data['all_users'] = $this->User_model->get_all_users();
 
-           $data['_view'] = 'announcement/add';
+           $data['_view'] = 'reg_announcement/add';
            $this->load->view('layouts/reg',$data);
        }
     }  

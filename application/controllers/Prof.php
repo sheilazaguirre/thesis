@@ -118,6 +118,13 @@ class Prof extends CI_Controller{
             $this->db->set('status', 'Archived');
             $this->db->set('dateModified', 'NOW()', FALSE);
             $this->Assignment_model->delete_assignment($assignID);
+            
+            $idnum = $this->session->userdata('userIDNo');
+            $paramsaudit = array(
+                'userIDNo' => $idnum,
+                'auditDesc' => 'Deleted the assignment',
+            );
+            $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('prof/assignments');
         }
         else
@@ -186,6 +193,13 @@ class Prof extends CI_Controller{
             $this->db->set('status', 'Archived');
             $this->db->set('dateModified', 'NOW()', FALSE);
             $this->Lesson_model->delete_lesson($lessonID);
+
+            $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Deleted the Lesson',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
             redirect('prof/lessons');
         }
         else
@@ -489,6 +503,12 @@ class Prof extends CI_Controller{
                 {
                     if ($this->Prof_model->updatePassword($userIDNo)) 
                     {
+                        $idnum = $this->session->userdata('userIDNo');
+                    $paramsaudit = array(
+                        'userIDNo' => $idnum,
+                        'auditDesc' => 'Edited his password',
+                    );
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
                         echo "Password updated successfully";
 
                     }
