@@ -10,8 +10,6 @@
 		<title>Applicant Report</title>
 		<link rel="shortcut icon" href="<?php echo site_url('resources/my-images/gapc-favicon.ico')?>">
 		<link rel="stylesheet" href="<?php echo site_url('resources/my-css/lux.css')?>">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-		 	rel="stylesheet" />
 	</head>
 	<body>
 		<div id="wrap">
