@@ -385,6 +385,9 @@
             $(document).ready(function(){
                 $('#tblstudent').DataTable();
             });
+            $(document).ready(function(){
+                $('#classTable').DataTable();
+            });
 
         </script>
 

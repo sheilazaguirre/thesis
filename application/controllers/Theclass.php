@@ -52,7 +52,7 @@ class Theclass extends CI_Controller{
                     'status' => 'Active',
                 );
                 $valresult = $this->Theclass_model->validateclass($params);
-                if ($valresult === 1 ) {
+                if ($valresult === 2 ) {
                     $theclass_id = $this->Theclass_model->add_theclass($params);
                     $res = $this->Theclass_model->max();
                     $classid = (int)$res;
