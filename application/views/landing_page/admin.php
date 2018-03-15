@@ -208,7 +208,7 @@
 					<div class="form-group">
 						<div>
 							<input name="userIDNo" type="text" placeholder="ID Number" 
-								class="textbox" required />
+								class="textbox" required autocomplete="off"/>
 							<span class="text-danger"><?php echo form_error('userIDNo'); ?></span>
 						</div>
 					</div>

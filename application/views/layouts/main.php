@@ -93,7 +93,7 @@
                     <ul class="sidebar-menu">
                         <li class="header">MAIN NAVIGATION</li>
                         <li>
-                            <a href="<?php echo site_url();?>">
+                            <a href="<?php echo site_url('admin/dashboard');?>">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -384,6 +384,9 @@
             });
             $(document).ready(function(){
                 $('#tblstudent').DataTable();
+            });
+            $(document).ready(function(){
+                $('#auditTable').DataTable();
             });
 
         </script>

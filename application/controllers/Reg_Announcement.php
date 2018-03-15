@@ -13,29 +13,29 @@ class Reg_Announcement extends CI_Controller{
      */
     function index()
     {
-        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
         {
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
             $data['userID'] = $this->session->userdata('userIDNo');
-            $this->load->view('prof/assignments',$data);
+            $data['announcements'] = $this->Announcement_model->get_announcement();
+            $data['_view'] = 'registrar_page/announcement/index';
+            $this->load->view('layouts/reg',$data);
         }
         else
         {
             redirect('landing_page/index');
         }
-        $params['limit'] = RECORDS_PER_PAGE; 
-        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+        // $params['limit'] = RECORDS_PER_PAGE; 
+        // $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
         
-        $config = $this->config->item('pagination');
-        $config['base_url'] = site_url('announcement/index?');
-        $config['total_rows'] = $this->Announcement_model->get_all_announcements_count();
-        $this->pagination->initialize($config);
+        // $config = $this->config->item('pagination');
+        // $config['base_url'] = site_url('announcement/index?');
+        // $config['total_rows'] = $this->Announcement_model->get_all_announcements_count();
+        // $this->pagination->initialize($config);
 
-        $data['announcements'] = $this->Announcement_model->get_announcement();
         
-        $data['_view'] = 'announcement/index';
-        $this->load->view('layouts/reg',$data);
+      
     }
 
     
@@ -63,17 +63,8 @@ class Reg_Announcement extends CI_Controller{
     
     function add()
     {   
-        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
         {
-            $data['fn'] = $this->session->userdata('userFN');
-            $data['ln'] = $this->session->userdata('userLN');
-            $data['userID'] = $this->session->userdata('userIDNo');
-            $this->load->view('prof/assignments',$data);
-        }
-        else
-        {
-            redirect('landing_page/index');
-        }
        $this->load->library('form_validation');
 
        $this->form_validation->set_rules('userID','UserID','required|integer');
@@ -119,16 +110,26 @@ class Reg_Announcement extends CI_Controller{
                         'auditDesc' => 'Added announcement',
                     );
                     $this->Auditlog_model->add_auditlog($paramsaudit);
-           redirect('announcement/index');
+           redirect('reg_announcement/index');
        }
        else
        {
            $this->load->model('User_model');
            $data['all_users'] = $this->User_model->get_all_users();
 
-           $data['_view'] = 'reg_announcement/add';
+           $data['_view'] = 'registrar_page/announcement/add';
+           $data['fn'] = $this->session->userdata('userFN');
+           $data['ln'] = $this->session->userdata('userLN');
+           $data['userID'] = $this->session->userdata('userIDNo');
            $this->load->view('layouts/reg',$data);
        }
+            
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
+       
     }  
 
     /*
@@ -136,30 +137,22 @@ class Reg_Announcement extends CI_Controller{
      */
     function edit($announceID)
     {   
-        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
         {
-            $data['fn'] = $this->session->userdata('userFN');
-            $data['ln'] = $this->session->userdata('userLN');
-            $data['userID'] = $this->session->userdata('userIDNo');
-            $this->load->view('prof/assignments',$data);
-        }
-        else
-        {
-            redirect('landing_page/index');
-        }
-        // check if the assignment exists before trying to edit it
         $data['announcement'] = $this->Announcement_model->getannouncement($announceID);
-        
+        $data['userID'] = $this->session->userdata('userIDNo');
         if(isset($data['announcement']['announceID']))
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('userID','UserID','required|integer');
+            $this->form_validation->set_rules('userID','UserID','required|integer');
             $this->form_validation->set_rules('announceTitle','AnnounceTitle','required|max_length[50]');
             $this->form_validation->set_rules('announceDetail','AnnounceDetail','required|max_length[150]');
             $this->form_validation->set_rules('announceDate','AnnounceDate','required|max_length[50]');
-		
-			if($this->form_validation->run())     
+
+            
+    
+            if($this->form_validation->run())     
             {   
 
                 $config['upload_path'] = './uploads/announcements';
@@ -196,20 +189,32 @@ class Reg_Announcement extends CI_Controller{
                         'userIDNo' => $idnum,
                         'auditDesc' => 'Edited announcement',
                     );
-                    $this->Auditlog_model->add_auditlog($paramsaudit);            
-                redirect('announcement/index');
+                    $this->Auditlog_model->add_auditlog($paramsaudit);
+                    
+                              
+                    redirect('reg_announcement/index');
             }
             else
             {
-				$this->load->model('User_model');
-				$data['all_users'] = $this->User_model->get_all_users();
+                $this->load->model('User_model');
+                $data['all_users'] = $this->User_model->get_all_users();
 
-                $data['_view'] = 'announcement/edit';
+                $data['_view'] = 'registrar_page/announcement/edit';
                 $this->load->view('layouts/reg',$data);
             }
         }
         else
             show_error('The announcement you are trying to edit does not exist.');
+            
+        }
+        else
+        {
+            redirect('landing_page/index');
+        }
+        // check if the assignment exists before trying to edit it
+        
+        
+        
     } 
 
     /*
@@ -217,35 +222,36 @@ class Reg_Announcement extends CI_Controller{
      */
     function remove($announceID)
     {
-        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 2)
+        if($this->session->userdata('logged_in') == TRUE && $this->session->userdata('userTypeID') == 4)
         {
-            $data['fn'] = $this->session->userdata('userFN');
-            $data['ln'] = $this->session->userdata('userLN');
+            $announcement = $this->Announcement_model->getannouncement($announceID);
             $data['userID'] = $this->session->userdata('userIDNo');
-            $this->load->view('prof/assignments',$data);
+            if(isset($announcement['announceID']))
+            {
+                $this->db->set('status', 'Archived');
+                $this->Announcement_model->delete_announcement($announceID);
+                $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Deleted announcement',
+                        );
+                        $this->Auditlog_model->add_auditlog($paramsaudit);
+                redirect('reg_announcement/index');
+                
+            }
+            else
+                show_error('The announcement you are trying to delete does not exist.');
+                
         }
         else
         {
             redirect('landing_page/index');
         }
-        $announcement = $this->Announcement_model->getannouncement($announceID);
+        
+      }
+        
 
         // check if the assignment exists before trying to delete it
-        if(isset($announcement['announceID']))
-        {
-            $this->db->set('status', 'Archived');
-            $this->Announcement_model->delete_announcement($announceID);
-            $idnum = $this->session->userdata('userIDNo');
-                    $paramsaudit = array(
-                        'userIDNo' => $idnum,
-                        'auditDesc' => 'Deleted announcement',
-                    );
-                    $this->Auditlog_model->add_auditlog($paramsaudit);
-            redirect('announcement/index');
-            
-        }
-        else
-            show_error('The announcement you are trying to delete does not exist.');
-    }
+        
     
 }

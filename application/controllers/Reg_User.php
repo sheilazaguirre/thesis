@@ -15,7 +15,7 @@ class Reg_User extends CI_Controller{
     {
         $data['users'] = $this->User_model->get_all_users();
         
-        $data['_view'] = 'user/index';
+        $data['_view'] = 'registrar_page/user/index';
         $this->load->view('layouts/reg',$data);
     }
 
@@ -95,7 +95,7 @@ class Reg_User extends CI_Controller{
 				);
 				
 				$user_id = $this->User_model->add_user($params);
-				redirect('user/index');
+				redirect('reg_user/index');
 			} 
 			else if ($age >= 40) {
 				show_error('Student too old');
@@ -111,7 +111,7 @@ class Reg_User extends CI_Controller{
 			$this->load->model('Usertype_model');
 			$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
             
-            $data['_view'] = 'user/add';
+            $data['_view'] = 'registrar_page/user/add';
             $this->load->view('layouts/reg',$data);
         }
     }  
@@ -188,14 +188,14 @@ class Reg_User extends CI_Controller{
                 );
 
                 $this->User_model->update_user($userID,$params);            
-                redirect('user/index');
+                redirect('reg_user/index');
             }
             else
             {
 				$this->load->model('Usertype_model');
 				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
 
-                $data['_view'] = 'user/edit';
+                $data['_view'] = 'registrar_page/user/edit';
                 $this->load->view('layouts/reg',$data);
             }
         }
@@ -215,7 +215,7 @@ class Reg_User extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->User_model->delete_user($userID, $params);
-            redirect('user/index');
+            redirect('reg_user/index');
         }
         else
             show_error('The user you are trying to delete does not exist.');

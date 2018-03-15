@@ -15,7 +15,7 @@ class Reg_Auditlog extends CI_Controller{
     {
         $data['auditlogs'] = $this->Auditlog_model->get_all_auditlogs();
         
-        $data['_view'] = 'auditlog/index';
+        $data['_view'] = 'registrar_page/auditlog/index';
         $this->load->view('layouts/reg',$data);
     }
 
@@ -38,14 +38,14 @@ class Reg_Auditlog extends CI_Controller{
             $this->db->set('timestamp', 'NOW()', FALSE);
             $this->db->set('status', 'Active');
             $auditlog_id = $this->Auditlog_model->add_auditlog($params);
-            redirect('auditlog/index');
+            redirect('reg_auditlog/index');
         }
         else
         {
 			$this->load->model('User_model');
 			$data['all_users'] = $this->User_model->get_all_users();
             
-            $data['_view'] = 'auditlog/add';
+            $data['_view'] = 'registrar_page/auditlog/add';
             $this->load->view('layouts/reg',$data);
         }
     }  
@@ -73,14 +73,14 @@ class Reg_Auditlog extends CI_Controller{
                 );
 
                 $this->Auditlog_model->update_auditlog($auditID,$params);            
-                redirect('auditlog/index');
+                redirect('reg_auditlog/index');
             }
             else
             {
 				$this->load->model('User_model');
 				$data['all_users'] = $this->User_model->get_all_users();
 
-                $data['_view'] = 'auditlog/edit';
+                $data['_view'] = 'registrar_page/auditlog/edit';
                 $this->load->view('layouts/reg',$data);
             }
         }
@@ -100,7 +100,7 @@ class Reg_Auditlog extends CI_Controller{
         {
             $this->db->set('status', 'Archive');
             $this->Auditlog_model->delete_auditlog($auditID);
-            redirect('auditlog/index');
+            redirect('reg_auditlog/index');
         }
         else
             show_error('The auditlog you are trying to delete does not exist.');

@@ -17,13 +17,13 @@ class Reg_Subject extends CI_Controller{
         $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
         
         $config = $this->config->item('pagination');
-        $config['base_url'] = site_url('subject/index?');
+        $config['base_url'] = site_url('reg_subject/index?');
         $config['total_rows'] = $this->Subject_model->get_all_subjects_count();
         $this->pagination->initialize($config);
 
         $data['subjects'] = $this->Subject_model->get_all_subjects($params);
         
-        $data['_view'] = 'subject/index';
+        $data['_view'] = 'registrar_page/subject/index';
         $this->load->view('layouts/reg',$data);
     }
 
@@ -50,14 +50,14 @@ class Reg_Subject extends CI_Controller{
                 'status' => 'Active',
             );
             $subject_id = $this->Subject_model->add_subject($params);
-            redirect('subject/index');
+            redirect('reg_subject/index');
         }
         else
         {   
             $this->load->model('Course_model');
             $data['all_courses'] = $this->Course_model->get_all_courses();
                      
-            $data['_view'] = 'subject/add';
+            $data['_view'] = 'registrar_page/subject/add';
             $this->load->view('layouts/reg',$data);
         }
     }  
@@ -90,14 +90,14 @@ class Reg_Subject extends CI_Controller{
                 );
 
                 $this->Subject_model->update_subject($subjectID,$params);            
-                redirect('subject/index');
+                redirect('reg_subject/index');
             }
             else
             {
                 $this->load->model('Course_model');
                 $data['all_courses'] = $this->Course_model->get_all_courses();
 
-                $data['_view'] = 'subject/edit';
+                $data['_view'] = 'registrar_page/subject/edit';
                 $this->load->view('layouts/reg',$data);
             }
         }
@@ -117,7 +117,7 @@ class Reg_Subject extends CI_Controller{
         {
             $this->db->set('status', 'Archived');
             $this->Subject_model->delete_subject($subjectID);
-            redirect('subject/index');
+            redirect('reg_subject/index');
         }
         else
             show_error('The subject you are trying to delete does not exist.');
