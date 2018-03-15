@@ -144,6 +144,7 @@ class Student_Page extends CI_Controller{
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
             $this->load->view('student_page/assignments',$data);
+            
         }
         else
         {
@@ -152,19 +153,32 @@ class Student_Page extends CI_Controller{
         
     }
 
-
-    function auditdownload()
-    {
+    function download($filename = NULL, $idnum) {
         $idnum = $this->session->userdata('userIDNo');
         $paramsaudit = array(
             'userIDNo' => $idnum,
-            'auditDesc' => 'Download',
+            'auditDesc' => 'Download Assignment',
         );
         $this->Auditlog_model->add_auditlog($paramsaudit);
-        redirect('student_page/assignments');
+        
+        $this->load->helper('download');
+        $data = file_get_contents(base_url('../uploads/assignments'.$filename));
+        force_download($filename, $data);
+        
     }
 
-    
-
+    function downloadlesson($filename = NULL, $idnum) {
+        $idnum = $this->session->userdata('userIDNo');
+        $paramsaudit = array(
+            'userIDNo' => $idnum,
+            'auditDesc' => 'Download Lesson',
+        );
+        $this->Auditlog_model->add_auditlog($paramsaudit);
+        
+        $this->load->helper('download');
+        $data = file_get_contents(base_url('../uploads/lessons'.$filename));
+        force_download($filename, $data);
+        
+    }
 
 }

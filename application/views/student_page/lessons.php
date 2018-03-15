@@ -249,8 +249,9 @@
                                                             <td>" .$desc . "</td>
                                                             <td>" .$dateadded . "</td>
                                                             <td>
-                                                                <a href='../uploads/lessons/".$file."' target='_blank' class='btn btn-success' download>
-                                                            Download                                                                </a></td>
+                                                                <a href='".base_url()."student_page/downloadlesson/$file/$_SESSION[userIDNo]' target='_blank' class='btn btn-success'>
+                                                                Download
+                                                                </a></td>
                                                             </td>
                                                         </tr>";
                                                     }

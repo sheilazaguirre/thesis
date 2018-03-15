@@ -248,9 +248,9 @@
                                                                 <td>" .$desc . "</td>
                                                                 <td>" .$dateadded . "</td>
                                                                 <td>
-                                                                    <button class='btn btn-success' onclick='student_page/auditdownload'><a href='../uploads/assignments/".$file."' target='_blank' download>
+                                                                    <a href='".base_url()."student_page/download/$file/$_SESSION[userIDNo]' target='_blank' class='btn btn-success'>
                                                                 Download
-                                                                </a></button></td>
+                                                                </a></td>
                                                                 </td>
                                                             </tr>";
                                                         }
@@ -293,9 +293,9 @@
                                                             <td>" .$desc . "</td>
                                                             <td>" .$dateadded . "</td>
                                                             <td>
-                                                                <button><a href='../uploads/assignment/".$no."' target='_blank' class='btn btn-success' download>
-                                                            Download
-                                                            </a></button></td>
+                                                                <a href='".base_url()."student_page/download/$file/$_SESSION[userIDNo]' target='_blank' class='btn btn-success'>
+                                                                Download
+                                                                </a></td>
                                                             </td>
                                                         </tr>";
                                                     }
