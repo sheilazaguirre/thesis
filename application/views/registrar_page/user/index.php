@@ -4,7 +4,7 @@
             <div class="box-header">
                 <h3 class="box-title">Users Listing</h3>
             	<div class="box-tools">
-                    <a href="<?php echo site_url('user/add'); ?>" class="btn btn-success btn-sm">Add</a> 
+                    <a href="<?php echo site_url('reg_user/add'); ?>" class="btn btn-success btn-sm">Add</a> 
                 </div>
                 <div style="text-align: right; margin-top: 10px;">
                     <a href="<?php echo site_url('reports/userlist'); ?>" class="btn btn-warning btn-sm" target="_blank">Generate Report</a> 

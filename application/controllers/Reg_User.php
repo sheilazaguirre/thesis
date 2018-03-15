@@ -111,6 +111,11 @@ class Reg_User extends CI_Controller{
 				if ($valres === 2)
 				{
 					$user_id = $this->User_model->add_user($params);
+					$idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a user',
+                        );
 					redirect('reg_user/index');
 				}
 				else {
@@ -222,7 +227,12 @@ class Reg_User extends CI_Controller{
                     'datemodified' => date('Y-m-d H:i:s')
                 );
 
-                $this->User_model->update_user($userID,$params);            
+				$this->User_model->update_user($userID,$params);     
+				$idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully edited a user',
+                        );       
                 redirect('reg_user/index');
             }
             else
@@ -249,7 +259,12 @@ class Reg_User extends CI_Controller{
         if(isset($user['userID']))
         {
             $this->db->set('status', 'Archived');
-            $this->User_model->delete_user($userID, $params);
+			$this->User_model->delete_user($userID, $params);
+			$idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully removed a user',
+                        );
             redirect('reg_user/index');
         }
         else

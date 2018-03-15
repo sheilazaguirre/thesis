@@ -83,13 +83,37 @@ class Reg_Theclass extends CI_Controller{
                     'remarks' => $this->input->post('remarks'),
                     'status' => 'Active',
                 );
-                $theclass_id = $this->Theclass_model->add_theclass($params);
-                $res = $this->Theclass_model->max();
-                $classid = (int)$res;
-                $resultclass = $this->Theclass_model->add_allclass($classid);
-                
+                $acad = $this->input->post('academicYear');
+                $valresult = $this->Theclass_model->validateclass($params);
 
-                redirect('reg_theclass/index');
+                if ($valresult === 2 ) 
+                {
+                    $theclass_id = $this->Theclass_model->add_theclass($params);
+                    $res = $this->Theclass_model->max();
+                    $classid = (int)$res;
+                    $resultclass = $this->Theclass_model->add_allclass($classid);
+                    $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully added a new class',
+                        );
+                    
+                    redirect('reg_theclass/index');
+                } else 
+                {
+                    $this->load->model('Subject_model');
+                    $data['all_subjects'] = $this->Subject_model->get_all_subjects();
+                    $this->load->model('User_model');
+                    $data['all_users'] = $this->User_model->get_all_faculty();
+                    $this->load->model('Timeslot_model');
+                    $data['all_timeslots'] = $this->Timeslot_model->get_all_timeslots();
+                    $this->load->model('Venue_model');
+                    $data['all_venues'] = $this->Venue_model->get_all_venues();
+                    $data['error'] = "Timeslot already taken for that room this semester of $acad" ;
+                    $data['_view'] = 'theclass/add';
+                    $this->load->view('layouts/main',$data);
+                }
+                
             }
             else if ($studcount > 50)
             {
@@ -196,6 +220,11 @@ class Reg_Theclass extends CI_Controller{
         {
             $this->db->set('status', 'Archive');
             $this->Theclass_model->delete_theclass($classID);
+            $idnum = $this->session->userdata('userIDNo');
+            $paramsaudit = array(
+                'userIDNo' => $idnum,
+                'auditDesc' => 'Removed an existing class',
+            );
             redirect('reg_theclass/index');
         }
         else
@@ -237,6 +266,11 @@ class Reg_Theclass extends CI_Controller{
                 'dateAdded' => date('Y-m-d'),
                 );
             $result = $this->Theclass_model->add_student($params);
+            $idnum = $this->session->userdata('userIDNo');
+                        $paramsaudit = array(
+                            'userIDNo' => $idnum,
+                            'auditDesc' => 'Successfully enlisted student',
+                        );
 
             if ($result)
             {
