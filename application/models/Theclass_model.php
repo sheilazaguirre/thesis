@@ -34,6 +34,12 @@ class Theclass_model extends CI_Model
         // return $this->db->get('applicant')->result_array();
     }
 
+    function get_all_theclasses_count()
+    {
+        $this->db->from('classes');
+        return $this->db->count_all_results();
+    }
+
         
     /*
      * function to add new theclass

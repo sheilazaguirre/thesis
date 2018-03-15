@@ -194,7 +194,7 @@ function ajaxSearch()
 		};
 		$.ajax({
 			type: "POST",
-			url: "<?php echo base_url(); ?>theclass/autocomplete/",
+			url: "<?php echo base_url(); ?>reg_theclass/autocomplete/",
 			data: post_data,
 			success: function (data) {
 				// return success
@@ -221,7 +221,7 @@ function ajaxSearch()
 				else {
                 $.ajax({
                     type: "POST",
-                    url: "<?php echo base_url(); ?>theclass/insert/",
+                    url: "<?php echo base_url(); ?>reg_theclass/insert/",
                     data: {"idnum": idnum},
 					dataType: "json",
                     success: function (data) {
@@ -252,7 +252,7 @@ function ajaxSearch()
 	function showAllClasses(){
 			$.ajax({
 				type: 'ajax',
-				url: '<?php echo base_url() ?>theclass/showAllClasses/',
+				url: '<?php echo base_url() ?>reg_theclass/showAllClasses/',
 				async: false,
 				dataType: 'json',
 				success: function(data){

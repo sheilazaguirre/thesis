@@ -13,8 +13,6 @@ class Reg_User extends CI_Controller{
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
             $data['userID'] = $this->session->userdata('userIDNo');
-            $data['_view'] = 'registrar_page/user/index';
-            $this->load->view('layouts/reg',$data);
         }
         else
         {

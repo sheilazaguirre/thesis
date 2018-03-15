@@ -13,8 +13,6 @@ class Reg_Theclass extends CI_Controller{
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
             $data['userID'] = $this->session->userdata('userIDNo');
-            $data['_view'] = 'registrar_page/theclass/index';
-            $this->load->view('layouts/reg',$data);
         }
         else
         {
@@ -31,7 +29,17 @@ class Reg_Theclass extends CI_Controller{
             $data['fn'] = $this->session->userdata('userFN');
             $data['ln'] = $this->session->userdata('userLN');
             $data['userID'] = $this->session->userdata('userIDNo');
-            $data['courses'] = $this->Course_model->get_all_courses($params);
+
+            $params['limit'] = RECORDS_PER_PAGE; 
+            $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+            
+            $config = $this->config->item('pagination');
+            $config['base_url'] = site_url('reg_theclass/index?');
+            $config['total_rows'] = $this->Theclass_model->get_all_theclasses_count();
+            $this->pagination->initialize($config);
+
+            $data['theclasses'] = $this->Theclass_model->get_all_theclasses($params);
+            
             $data['_view'] = 'registrar_page/theclass/index';
             $this->load->view('layouts/reg',$data);
         }
