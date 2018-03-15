@@ -104,6 +104,7 @@ class Theclass_model extends CI_Model
         } 
         else
         {
+            // No id exist
             return 3;
         } 
     }

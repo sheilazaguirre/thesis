@@ -76,6 +76,7 @@
 						<div class="form-group">
 							<input type="text" name="userIDNo" value="<?php echo $this->input->post('userIDNo'); ?>" class="form-control" id="userIDNo" />
 							<span class="text-danger"><?php echo form_error('userIDNo');?></span>
+							<span class="text-danger"><?php echo $error2;?></span>
 						</div>
 					</div>
 					<div class="col-md-6">

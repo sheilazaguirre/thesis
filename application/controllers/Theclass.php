@@ -52,13 +52,16 @@ class Theclass extends CI_Controller{
                     'status' => 'Active',
                 );
                 $valresult = $this->Theclass_model->validateclass($params);
-                if ($valresult === 2 ) {
+                var_dump($valresult);
+                if ($valresult === 2 ) 
+                {
                     $theclass_id = $this->Theclass_model->add_theclass($params);
                     $res = $this->Theclass_model->max();
                     $classid = (int)$res;
                     $resultclass = $this->Theclass_model->add_allclass($classid);
                     redirect('theclass/index');
-                } else {
+                } else 
+                {
                     $this->load->model('Subject_model');
                     $data['all_subjects'] = $this->Subject_model->get_all_subjects();
                     $this->load->model('User_model');

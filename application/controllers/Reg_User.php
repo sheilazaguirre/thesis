@@ -24,6 +24,8 @@ class Reg_User extends CI_Controller{
      */
     function add()
     {   
+		$data['error'] = "";
+		$data['error2'] = "";
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('userIDNo','UserIDNo','required|integer');
@@ -60,7 +62,7 @@ class Reg_User extends CI_Controller{
             $num = $diff->format('%y');
 			$age = (int)$num;
 			
-			if ($age >= 14)
+			if ($age >= 14  && $age <39)
 			{
 				$params = array(
 					'userTypeID' => $this->input->post('userTypeID'),
@@ -93,14 +95,35 @@ class Reg_User extends CI_Controller{
 					'dateadded' => date('Y-m-d H:i:s'),
 					'datemodified' => null,
 				);
+				$valres = $this->User_model->validate($params);
+				if ($valres === 2)
+				{
+					$user_id = $this->User_model->add_user($params);
+					redirect('reg_user/index');
+				}
+				else {
+					$this->load->model('Usertype_model');
+				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
+				$data['error2'] = "USERID already exist (Check database)";
+           		$data['_view'] = 'registrar_page/user/add';
+            	$this->load->view('layouts/regmain',$data);
+				}
 				
-				$user_id = $this->User_model->add_user($params);
-				redirect('reg_user/index');
+	
 			} 
 			else if ($age >= 40) {
-				show_error('Student too old');
+				$this->load->model('Usertype_model');
+				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
+				$data['error'] = "Student too old / Invalid years";
+           		$data['_view'] = 'registrar_page/user/add';
+            	$this->load->view('layouts/reg',$data);
 			}
 			else {
+				$this->load->model('Usertype_model');
+				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
+				$data['error'] = "Student too young for college / Invalid years";
+           		$data['_view'] = 'registrar_page/user/add';
+            	$this->load->view('layouts/reg',$data);
 				show_error('Student too young for college');
 			}
 

@@ -5,7 +5,8 @@ class User extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('User_model');
+		$this->load->model('User_model');
+		$this->load->model('Auditlog_model');
     } 
 
     /*
@@ -25,6 +26,7 @@ class User extends CI_Controller{
     function add()
     {   
 		$data['error'] = "";
+		$data['error2'] = "";
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('userIDNo','UserIDNo','required|integer');
@@ -94,9 +96,21 @@ class User extends CI_Controller{
 					'dateadded' => date('Y-m-d H:i:s'),
 					'datemodified' => null,
 				);
+				$valres = $this->User_model->validate($params);
+				if ($valres === 2)
+				{
+					$user_id = $this->User_model->add_user($params);
+					redirect('user/index');
+				}
+				else {
+					$this->load->model('Usertype_model');
+				$data['all_usertype'] = $this->Usertype_model->get_all_usertype();
+				$data['error2'] = "USERID already exist (Check database)";
+           		$data['_view'] = 'user/add';
+            	$this->load->view('layouts/main',$data);
+				}
 				
-				$user_id = $this->User_model->add_user($params);
-				redirect('user/index');
+				
 			} 
 			else if ($age >= 40) {
 				$this->load->model('Usertype_model');

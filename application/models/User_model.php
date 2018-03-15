@@ -73,4 +73,19 @@ class User_model extends CI_Model
         $this->db->where('userID',$userID);
         return $this->db->update('users',$params);
     }
+
+    function validate($params)
+    {
+        $id = $params['userIDNo'];
+        $query = $this->db->query("SELECT userIDNo from users where userIDNo = '.$id.'");
+        if ($query->num_rows() > 0)
+        {
+            return 1;
+        }
+        else 
+        {
+            //Nothing exist
+            return 2;
+        }
+    }
 }
