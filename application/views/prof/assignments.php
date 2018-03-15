@@ -15,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Governor Andres Pascual College - Information Systems</title>
+        <title>GAPC Main</title>
         <link rel="shortcut icon" href="<?php echo site_url('resources/my-images/gapc-favicon.ico')?>">
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -99,6 +99,12 @@
                             <span class="expander">-</span>
                             <a href="<?php echo base_url()?>prof/assignments"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
                         </span>
+                    </li>
+                    <li>
+                        <span class="name">
+                            <span class="expander">-</span>
+                            <a href="<?php echo base_url()?>prof/assignments"><span class="act-underline">MONITOR DOWNLOAD</span></a>
+                        </span>
                     </li>                       
                 </ul>
             </nav>
@@ -113,7 +119,7 @@
                         <!-- col-left -->
                         <div class="col-sm-3 text-left">
                             <!-- slogan start -->
-                            <div class="slogan"> Welcome, "<?php echo $fn; ?> <?php echo $ln; ?>"! </div>
+                            <div class="slogan"> Welcome, "<?php echo $fn;?> <?php echo $ln;?>"! </div>
                             <!-- slogan end -->     
                         </div>
                         <!-- /col-left -->
@@ -180,6 +186,10 @@
                                     <li class="dropdown dropdown-mega-menu">
                                         <span class="dropdown-toggle extra-arrow"></span>
                                         <a href="<?php echo base_url()?>prof/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
+                                    </li>
+                                    <li class="dropdown dropdown-mega-menu">
+                                        <span class="dropdown-toggle extra-arrow"></span>
+                                        <a href="<?php echo base_url()?>prof/downloads" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MONITOR DOWNLOAD</span></a>
                                     </li>
                                 </ul>
                             </div>

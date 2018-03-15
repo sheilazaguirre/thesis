@@ -102,6 +102,12 @@
                             <span class="expander">-</span>
                             <a href="<?php echo base_url()?>prof/assignments"><span class="act-underline">MANAGE ASSSIGNMENTS</span></a>
                         </span>
+                    </li>
+                    <li>
+                        <span class="name">
+                            <span class="expander">-</span>
+                            <a href="<?php echo base_url()?>prof/assignments"><span class="act-underline">MONITOR DOWNLOAD</span></a>
+                        </span>
                     </li>                       
                 </ul>
             </nav>
@@ -184,6 +190,10 @@
                                         <span class="dropdown-toggle extra-arrow"></span>
                                         <a href="<?php echo base_url()?>prof/assignments" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MANAGE ASSIGNMENTS</span></a>
                                     </li>
+                                    <li class="dropdown dropdown-mega-menu">
+                                        <span class="dropdown-toggle extra-arrow"></span>
+                                        <a href="<?php echo base_url()?>prof/downloads" class="dropdown-toggle" data-toggle="dropdown"><span class="act-underline">MONITOR DOWNLOAD</span></a>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
@@ -214,7 +224,7 @@
                                 {
                                     $selected = ($theclass['classID'] == $this->input->post('classID')) ? ' selected="selected"' : "";
 
-                                    echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['classID'].'</option>';
+                                    echo '<option value="'.$theclass['classID'].'" '.$selected.'>'.$theclass['subjectCode'].'</option>';
                                 } 
                                 ?>
                             </select>
